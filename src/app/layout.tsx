@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { MobileBottomDock } from "@/components/navbar/MobileBottomDock";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -18,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "WEBRAJYA — Technology That Runs Your Business",
   description: "WebRajya is a parent technology platform building high-performance connected business software: WebRajya POS for restaurants and WebRajya Invoice for financial billing.",
-  keywords: ["WebRajya", "Restaurant POS", "Business Invoicing", "POS Billing Software", "Cloud Kitchen POS", "Invoice Generator", "GST Billing"],
+  keywords: ["WebRajya", "Restaurant POS", "Business Invoicing", "POS Billing Software", "Cloud Kitchen POS", "Invoice Generator", "GST Billing", "Offline Thermal Billing Software India"],
   authors: [{ name: "WebRajya Platform" }],
   openGraph: {
     title: "WEBRAJYA — Business Technology Platform",
@@ -46,11 +48,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}>
+      <head>
+        <JsonLd />
+      </head>
       <body className="bg-[#F8F3EB] text-[#020C2B] min-h-screen flex flex-col font-sans antialiased selection:bg-[#E58145] selection:text-white pb-16 md:pb-0">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
         <MobileBottomDock />
+        <WhatsAppFloat />
       </body>
     </html>
   );

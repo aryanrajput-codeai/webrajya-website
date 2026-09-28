@@ -139,6 +139,7 @@ const PRICING_DATA = {
 
 export default function PricingPage() {
   const [activeTab, setActiveTab] = useState<"pos" | "invoice">("pos");
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("annual");
   const activeProductData = PRICING_DATA[activeTab];
 
   return (
@@ -160,8 +161,8 @@ export default function PricingPage() {
           </p>
         </div>
 
-        {/* Product Switcher Tabs */}
-        <div className="flex justify-center">
+        {/* Product Switcher Tabs & Billing Cycle */}
+        <div className="flex flex-col items-center gap-4">
           <div className="p-1.5 rounded-2xl bg-white border border-[#020C2B]/10 shadow-sm flex items-center gap-2 max-w-md w-full">
             <button
               onClick={() => setActiveTab("pos")}
@@ -183,6 +184,29 @@ export default function PricingPage() {
               }`}
             >
               <FileText className="w-4 h-4" /> WebRajya Invoice
+            </button>
+          </div>
+
+          {/* Billing Cycle Switcher */}
+          <div className="inline-flex items-center gap-3 p-1.5 rounded-full bg-white border border-[#020C2B]/10 shadow-sm text-xs font-mono">
+            <button
+              onClick={() => setBillingCycle("monthly")}
+              className={`px-3.5 py-1.5 rounded-full font-bold transition-all cursor-pointer ${
+                billingCycle === "monthly" ? "bg-[#020C2B] text-white" : "text-[#525866] hover:text-[#020C2B]"
+              }`}
+            >
+              Monthly Billing
+            </button>
+            <button
+              onClick={() => setBillingCycle("annual")}
+              className={`px-3.5 py-1.5 rounded-full font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                billingCycle === "annual" ? "bg-[#E58145] text-white" : "text-[#525866] hover:text-[#020C2B]"
+              }`}
+            >
+              <span>Annual Billing</span>
+              <span className="text-[10px] bg-emerald-500 text-white px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold">
+                Save 20%
+              </span>
             </button>
           </div>
         </div>
@@ -223,7 +247,9 @@ export default function PricingPage() {
                   <span className="text-lg sm:text-xl font-extrabold text-[#020C2B] block">
                     {plan.pricePlaceholder}
                   </span>
-                  <span className="text-[11px] text-[#020C2B]/60 uppercase">{plan.period}</span>
+                  <span className="text-[11px] text-[#020C2B]/60 uppercase">
+                    {billingCycle === "annual" ? `${plan.period} • Paid Billed Annually (Save 20%)` : plan.period}
+                  </span>
                 </div>
 
                 {/* Feature Checklist */}
