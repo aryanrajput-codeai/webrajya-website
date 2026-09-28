@@ -3,8 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Utensils, FileText, CheckCircle2, Sparkles, Layers, ShieldCheck, Zap } from "lucide-react";
-import { PosDashboardMockup } from "@/components/mockups/PosDashboardMockup";
-import { InvoiceDashboardMockup } from "@/components/mockups/InvoiceDashboardMockup";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 
@@ -96,12 +94,15 @@ export function ProductGateway() {
                 ))}
               </div>
 
-              {/* Product UI Preview Component */}
+              {/* Product Feature Highlight Block */}
               <div className="pt-2">
-                <span className="text-[11px] font-mono text-[#525866] uppercase tracking-wider block mb-2 font-semibold">
-                  Live Interactive Terminal Preview
-                </span>
-                <PosDashboardMockup />
+                <div className="p-4 rounded-2xl bg-[#F8F3EB] border border-[#020C2B]/10 flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-[#E58145]" />
+                    <span className="text-[#020C2B] font-semibold">Sub-Second Billing & KOT Dispatch</span>
+                  </div>
+                  <span className="text-[#E58145] font-bold">100% Offline Ready</span>
+                </div>
               </div>
 
             </div>
@@ -164,12 +165,15 @@ export function ProductGateway() {
                 ))}
               </div>
 
-              {/* Product UI Preview Component */}
+              {/* Product Feature Highlight Block */}
               <div className="pt-2">
-                <span className="text-[11px] font-mono text-[#525866] uppercase tracking-wider block mb-2 font-semibold">
-                  Live Interactive Invoice Studio Preview
-                </span>
-                <InvoiceDashboardMockup />
+                <div className="p-4 rounded-2xl bg-[#F8F3EB] border border-[#020C2B]/10 flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-[#E58145]" />
+                    <span className="text-[#020C2B] font-semibold">Instant GST PDF & WhatsApp Link</span>
+                  </div>
+                  <span className="text-[#E58145] font-bold">Auto Tax Compliant</span>
+                </div>
               </div>
 
             </div>
