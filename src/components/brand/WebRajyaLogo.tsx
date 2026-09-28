@@ -8,6 +8,7 @@ interface WebRajyaLogoProps {
   showText?: boolean;
   className?: string;
   lightText?: boolean;
+  whiteContainer?: boolean; // wraps emblem + text in a crisp white pill bar
 }
 
 export function WebRajyaLogo({
@@ -15,12 +16,13 @@ export function WebRajyaLogo({
   showText = true,
   className = "",
   lightText = false,
+  whiteContainer = false,
 }: WebRajyaLogoProps) {
-  return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      {/* WR Emblem Icon */}
+  const content = (
+    <div className="flex items-center gap-3">
+      {/* WR Emblem Icon in crisp white box for 100% visibility */}
       <div
-        className="relative flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
+        className="relative flex items-center justify-center shrink-0 bg-white p-1 rounded-xl border border-[#020C2B]/10 shadow-xs transition-transform duration-300 group-hover:scale-105"
         style={{ width: size, height: size }}
       >
         <Image
@@ -38,15 +40,15 @@ export function WebRajyaLogo({
         <div className="flex flex-col">
           <span
             className={`font-sans font-black tracking-tight leading-none ${
-              lightText ? "text-white" : "text-[#020C2B]"
-            } group-hover:text-[#F36F21] transition-colors`}
+              whiteContainer || !lightText ? "text-[#020C2B]" : "text-white"
+            } group-hover:text-[#E58145] transition-colors`}
             style={{ fontSize: `${Math.max(16, size * 0.45)}px` }}
           >
             WEBRAJYA
           </span>
           <span
             className={`tracking-widest uppercase font-medium mt-0.5 ${
-              lightText ? "text-[#F8F3EB]/70" : "text-[#525866]"
+              whiteContainer || !lightText ? "text-[#525866]" : "text-[#F8F3EB]/70"
             }`}
             style={{ fontSize: `${Math.max(9, size * 0.22)}px` }}
           >
@@ -56,4 +58,14 @@ export function WebRajyaLogo({
       )}
     </div>
   );
+
+  if (whiteContainer) {
+    return (
+      <div className={`inline-flex items-center bg-white px-3.5 py-2 rounded-2xl border border-[#020C2B]/10 shadow-md ${className}`}>
+        {content}
+      </div>
+    );
+  }
+
+  return <div className={className}>{content}</div>;
 }

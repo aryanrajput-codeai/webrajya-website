@@ -16,7 +16,7 @@ export function Footer() {
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="group inline-block">
-              <WebRajyaLogo size={40} showText={true} lightText={true} />
+              <WebRajyaLogo size={40} showText={true} whiteContainer={true} />
             </Link>
 
             <p className="text-sm text-[#F8F3EB]/80 max-w-sm leading-relaxed">
