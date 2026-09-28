@@ -5,7 +5,6 @@ import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { MobileBottomDock } from "@/components/navbar/MobileBottomDock";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -56,7 +55,6 @@ export default function RootLayout({
         <main className="flex-grow">{children}</main>
         <Footer />
         <MobileBottomDock />
-        <WhatsAppFloat />
       </body>
     </html>
   );
