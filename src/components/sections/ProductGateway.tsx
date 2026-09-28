@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 
 export function ProductGateway() {
   return (
-    <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-[#F8F3EB]">
+    <section className="relative pt-28 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-[#F8F3EB]">
       {/* Background Decorative Grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-radial-glow pointer-events-none" />
@@ -16,22 +16,22 @@ export function ProductGateway() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Parent Brand Hero Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-6">
+        <div className="text-center max-w-3xl mx-auto space-y-5 sm:space-y-6">
           
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#020C2B]/5 border border-[#020C2B]/15 text-[#020C2B] text-xs font-mono font-semibold tracking-wide uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#020C2B]/5 border border-[#020C2B]/15 text-[#020C2B] text-[11px] sm:text-xs font-mono font-semibold tracking-wide uppercase">
             <Sparkles className="w-3.5 h-3.5 text-[#E58145]" /> Connected Business Software Platform
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#020C2B] tracking-tight leading-[1.1]">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#020C2B] tracking-tight leading-[1.15] sm:leading-[1.1]">
             Connected Software That <br />
             <span className="text-[#E58145]">Runs Your Business.</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-[#525866] max-w-xl mx-auto leading-relaxed font-normal">
+          <p className="text-sm sm:text-lg text-[#525866] max-w-xl mx-auto leading-relaxed font-normal">
             Choose your specialized platform: WebRajya POS for high-speed dining or WebRajya Invoice for financial billing.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-5 text-xs text-[#525866] font-mono">
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-xs text-[#525866] font-mono">
             <span className="flex items-center gap-1.5">
               <Zap className="w-4 h-4 text-[#E58145]" /> Zero-Lag Speed
             </span>
@@ -46,27 +46,27 @@ export function ProductGateway() {
         </div>
 
         {/* Product Gateway Selector Grid */}
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           
           {/* WEBRAJYA POS CARD */}
-          <div className="group relative rounded-3xl p-6 sm:p-8 bg-white border border-[#020C2B]/10 hover:border-[#E58145] transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
-            <div className="space-y-6">
+          <div className="group relative rounded-3xl p-5 sm:p-8 bg-white border border-[#020C2B]/10 hover:border-[#E58145] transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
+            <div className="space-y-5 sm:space-y-6">
               
               {/* Product Header */}
-              <div className="flex items-start justify-between">
+              <div className="flex items-start justify-between gap-3">
                 <div>
                   <Badge variant="pos" icon={<Utensils className="w-3.5 h-3.5 text-[#E58145]" />}>
                     WebRajya POS
                   </Badge>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-[#020C2B] mt-3 group-hover:text-[#E58145] transition-colors">
+                  <h2 className="text-xl sm:text-3xl font-extrabold text-[#020C2B] mt-3 group-hover:text-[#E58145] transition-colors leading-tight">
                     Zero-Lag Restaurant Billing.
                   </h2>
-                  <p className="text-sm text-[#525866] mt-1">
+                  <p className="text-xs sm:text-sm text-[#525866] mt-1">
                     Settle orders, dispatch KOTs &amp; manage floor tables in under 3 seconds.
                   </p>
                 </div>
-                <div className="w-12 h-12 rounded-2xl bg-[#020C2B] border border-[#020C2B]/10 flex items-center justify-center text-[#E58145] shadow-md shrink-0 group-hover:scale-105 transition-transform">
-                  <Utensils className="w-6 h-6 text-[#E58145]" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#020C2B] border border-[#020C2B]/10 flex items-center justify-center text-[#E58145] shadow-md shrink-0 group-hover:scale-105 transition-transform">
+                  <Utensils className="w-5 h-5 sm:w-6 sm:h-6 text-[#E58145]" />
                 </div>
               </div>
 
@@ -76,7 +76,7 @@ export function ProductGateway() {
               </p>
 
               {/* Capability Tags Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                 {[
                   "POS & Billing",
                   "Menu Management",
@@ -88,18 +88,18 @@ export function ProductGateway() {
                   "Owner Dashboard",
                   "Thermal Printing"
                 ].map(cap => (
-                  <span key={cap} className="inline-flex items-center gap-1.5 text-xs text-[#020C2B] bg-[#F8F3EB]/60 px-2.5 py-1.5 rounded-lg border border-[#020C2B]/10">
-                    <CheckCircle2 className="w-3 h-3 text-[#E58145] shrink-0" /> {cap}
+                  <span key={cap} className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-[#020C2B] bg-[#F8F3EB]/60 px-2.5 py-1.5 rounded-lg border border-[#020C2B]/10">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#E58145] shrink-0" /> {cap}
                   </span>
                 ))}
               </div>
 
               {/* Product Feature Highlight Block */}
-              <div className="pt-2">
-                <div className="p-4 rounded-2xl bg-[#F8F3EB] border border-[#020C2B]/10 flex items-center justify-between text-xs font-mono">
+              <div className="pt-1">
+                <div className="p-3.5 sm:p-4 rounded-2xl bg-[#F8F3EB] border border-[#020C2B]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs font-mono">
                   <div className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-[#E58145]" />
-                    <span className="text-[#020C2B] font-semibold">Sub-Second Billing & KOT Dispatch</span>
+                    <Zap className="w-4 h-4 text-[#E58145] shrink-0" />
+                    <span className="text-[#020C2B] font-semibold">Sub-Second Billing &amp; KOT Dispatch</span>
                   </div>
                   <span className="text-[#E58145] font-bold">100% Offline Ready</span>
                 </div>
@@ -108,36 +108,36 @@ export function ProductGateway() {
             </div>
 
             {/* Card CTA */}
-            <div className="mt-8 pt-6 border-t border-[#020C2B]/10 flex items-center justify-between">
+            <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-[#020C2B]/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <span className="text-xs text-[#525866] block font-mono">WebRajya POS</span>
                 <span className="text-sm font-semibold text-[#020C2B]">Built for food operations</span>
               </div>
-              <Button href="/pos" variant="cta" size="md" icon={<ArrowRight className="w-4 h-4" />}>
+              <Button href="/pos" variant="cta" size="md" className="w-full sm:w-auto text-center justify-center" icon={<ArrowRight className="w-4 h-4" />}>
                 Explore WebRajya POS
               </Button>
             </div>
           </div>
 
           {/* WEBRAJYA INVOICE CARD */}
-          <div className="group relative rounded-3xl p-6 sm:p-8 bg-white border border-[#020C2B]/10 hover:border-[#E58145] transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
-            <div className="space-y-6">
+          <div className="group relative rounded-3xl p-5 sm:p-8 bg-white border border-[#020C2B]/10 hover:border-[#E58145] transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
+            <div className="space-y-5 sm:space-y-6">
               
               {/* Product Header */}
-              <div className="flex items-start justify-between">
+              <div className="flex items-start justify-between gap-3">
                 <div>
                   <Badge variant="invoice" icon={<FileText className="w-3.5 h-3.5 text-[#E58145]" />}>
                     WebRajya Invoice
                   </Badge>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-[#020C2B] mt-3 group-hover:text-[#E58145] transition-colors">
+                  <h2 className="text-xl sm:text-3xl font-extrabold text-[#020C2B] mt-3 group-hover:text-[#E58145] transition-colors leading-tight">
                     GST Billing &amp; Instant PDF Share.
                   </h2>
-                  <p className="text-sm text-[#525866] mt-1">
+                  <p className="text-xs sm:text-sm text-[#525866] mt-1">
                     Create professional invoices, track receivables &amp; send WhatsApp links.
                   </p>
                 </div>
-                <div className="w-12 h-12 rounded-2xl bg-[#020C2B] border border-[#020C2B]/10 flex items-center justify-center text-[#E58145] shadow-md shrink-0 group-hover:scale-105 transition-transform">
-                  <FileText className="w-6 h-6 text-[#E58145]" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#020C2B] border border-[#020C2B]/10 flex items-center justify-center text-[#E58145] shadow-md shrink-0 group-hover:scale-105 transition-transform">
+                  <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-[#E58145]" />
                 </div>
               </div>
 
@@ -147,7 +147,7 @@ export function ProductGateway() {
               </p>
 
               {/* Capability Tags Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                 {[
                   "Invoice Creation",
                   "Products & Services",
@@ -159,18 +159,18 @@ export function ProductGateway() {
                   "PDF / Print / Share",
                   "Business Dashboard"
                 ].map(cap => (
-                  <span key={cap} className="inline-flex items-center gap-1.5 text-xs text-[#020C2B] bg-[#F8F3EB]/60 px-2.5 py-1.5 rounded-lg border border-[#020C2B]/10">
-                    <CheckCircle2 className="w-3 h-3 text-[#E58145] shrink-0" /> {cap}
+                  <span key={cap} className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-[#020C2B] bg-[#F8F3EB]/60 px-2.5 py-1.5 rounded-lg border border-[#020C2B]/10">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#E58145] shrink-0" /> {cap}
                   </span>
                 ))}
               </div>
 
               {/* Product Feature Highlight Block */}
-              <div className="pt-2">
-                <div className="p-4 rounded-2xl bg-[#F8F3EB] border border-[#020C2B]/10 flex items-center justify-between text-xs font-mono">
+              <div className="pt-1">
+                <div className="p-3.5 sm:p-4 rounded-2xl bg-[#F8F3EB] border border-[#020C2B]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs font-mono">
                   <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-[#E58145]" />
-                    <span className="text-[#020C2B] font-semibold">Instant GST PDF & WhatsApp Link</span>
+                    <ShieldCheck className="w-4 h-4 text-[#E58145] shrink-0" />
+                    <span className="text-[#020C2B] font-semibold">Instant GST PDF &amp; WhatsApp Link</span>
                   </div>
                   <span className="text-[#E58145] font-bold">Auto Tax Compliant</span>
                 </div>
@@ -179,12 +179,12 @@ export function ProductGateway() {
             </div>
 
             {/* Card CTA */}
-            <div className="mt-8 pt-6 border-t border-[#020C2B]/10 flex items-center justify-between">
+            <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-[#020C2B]/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <span className="text-xs text-[#525866] block font-mono">WebRajya Invoice</span>
-                <span className="text-sm font-semibold text-[#020C2B]">Built for fast billing & cash flow</span>
+                <span className="text-sm font-semibold text-[#020C2B]">Built for fast billing &amp; cash flow</span>
               </div>
-              <Button href="/invoice" variant="primary" size="md" icon={<ArrowRight className="w-4 h-4" />}>
+              <Button href="/invoice" variant="primary" size="md" className="w-full sm:w-auto text-center justify-center" icon={<ArrowRight className="w-4 h-4" />}>
                 Explore WebRajya Invoice
               </Button>
             </div>
