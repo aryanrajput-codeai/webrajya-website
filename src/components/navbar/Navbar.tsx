@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, Utensils, FileText, ArrowRight, Layers, Tag, HelpCircle, Phone } from "lucide-react";
+import { ChevronDown, Menu, X, Utensils, FileText, Car, ArrowRight, Layers, Tag, HelpCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { PRODUCTS } from "@/data/products";
 
@@ -13,6 +13,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -21,6 +22,16 @@ export function Navbar() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setProductsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   useEffect(() => {
@@ -49,13 +60,13 @@ export function Navbar() {
             
             {/* Products Dropdown Trigger */}
             <div
+              ref={dropdownRef}
               className="relative"
-              onMouseEnter={() => setProductsDropdownOpen(true)}
-              onMouseLeave={() => setProductsDropdownOpen(false)}
             >
               <button
+                onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
                 className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-                  pathname.startsWith("/pos") || pathname.startsWith("/invoice") || productsDropdownOpen
+                  pathname.startsWith("/pos") || pathname.startsWith("/invoice") || pathname.startsWith("/mygarage") || productsDropdownOpen
                     ? "text-white bg-[#020C2B]"
                     : "text-[#020C2B] hover:text-[#E58145] hover:bg-[#020C2B]/5"
                 }`}
@@ -76,10 +87,11 @@ export function Navbar() {
                     <Link
                       key={product.id}
                       href={product.route}
+                      onClick={() => setProductsDropdownOpen(false)}
                       className="flex items-start gap-3 p-3 rounded-xl transition-all border border-transparent hover:bg-[#F8F3EB] hover:border-[#E58145]/30 group"
                     >
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 bg-[#020C2B] text-white group-hover:bg-[#E58145] transition-colors">
-                        {product.id === "pos" ? <Utensils className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
+                        {product.id === "pos" ? <Utensils className="w-4 h-4" /> : product.id === "invoice" ? <FileText className="w-4 h-4" /> : <Car className="w-4 h-4" />}
                       </div>
                       <div>
                         <span className="font-bold text-[#020C2B] text-xs group-hover:text-[#E58145] block">
@@ -171,7 +183,7 @@ export function Navbar() {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-7 h-7 rounded-lg bg-[#020C2B] text-white flex items-center justify-center">
-                      {product.id === "pos" ? <Utensils className="w-3.5 h-3.5" /> : <FileText className="w-3.5 h-3.5" />}
+                      {product.id === "pos" ? <Utensils className="w-3.5 h-3.5" /> : product.id === "invoice" ? <FileText className="w-3.5 h-3.5" /> : <Car className="w-3.5 h-3.5" />}
                     </div>
                     <span className="font-bold text-sm text-[#020C2B]">{product.name}</span>
                   </div>

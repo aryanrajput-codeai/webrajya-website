@@ -210,6 +210,98 @@ export const PRODUCTS: WebRajyaProduct[] = [
         answer: "No limits. Store unlimited customers, items, and billing histories."
       }
     ]
+  },
+  {
+    id: "mygarage",
+    slug: "mygarage",
+    name: "MYGARAGE SAAS",
+    brandTitle: "MyGarage SaaS",
+    tagline: "All-in-One Digital Locker, Service History & Expense Tracker for Car & Bike Owners",
+    shortDescription: "A modern, responsive SaaS web application built for vehicle owners to track documents (RC, Insurance, PUC), service history, fuel/maintenance expenses, and expiry alerts in one sleek dashboard.",
+    targetAudience: "For individual car & bike owners, commercial fleet operators & auto enthusiasts.",
+    heroHeadline: "Never Miss RC, Insurance or PUC Expiries Ever Again.",
+    heroSubheadline: "Manage all your vehicles, maintenance invoices, fuel logs, and traffic challans in one secure digital dashboard.",
+    badge: "Automotive SaaS Platform",
+    accentColor: "#0EA5E9",
+    gradientClass: "from-[#020C2B] via-[#020C2B] to-[#0EA5E9]",
+    borderGlowClass: "hover:border-[#0EA5E9] hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)]",
+    badgeBgClass: "bg-[#0EA5E9]/15 border-[#0EA5E9]/30",
+    badgeTextClass: "text-[#0EA5E9]",
+    route: "/mygarage",
+    highlights: [
+      "Multi-Vehicle Fleet",
+      "Document Locker",
+      "Service Ledger",
+      "Expense Analytics & CSV",
+      "Expiry Alerts",
+      "Vahan & Challan API",
+      "PDF & QR Export"
+    ],
+    capabilities: [
+      {
+        id: "fleet",
+        name: "Multi-Vehicle Fleet Support",
+        description: "Manage Cars, Bikes, Scooters, and Commercial vehicles with search & fuel engine filters.",
+        icon: "Car",
+        status: "REAL"
+      },
+      {
+        id: "documents",
+        name: "Real-Time Document Locker",
+        description: "Track RC, Insurance, PUC, Driving Licence & Road Tax with days-remaining counters.",
+        icon: "FileCheck",
+        status: "REAL"
+      },
+      {
+        id: "service",
+        name: "Service Ledger & Odometer",
+        description: "Log periodic service invoices, oil changes, tire rotations, and battery maintenance records.",
+        icon: "Wrench",
+        status: "REAL"
+      },
+      {
+        id: "expenses",
+        name: "Expense Analytics & CSV Export",
+        description: "Financial breakdown by category with one-click CSV spreadsheet export for accounting.",
+        icon: "BarChart3",
+        status: "REAL"
+      },
+      {
+        id: "alerts",
+        name: "Prioritized Expiry Alerts",
+        description: "High/Medium/Low priority notifications with instant completion state persistence.",
+        icon: "Bell",
+        status: "REAL"
+      },
+      {
+        id: "api",
+        name: "Vahan & Challan API Ready",
+        description: "Built-in route handlers for querying vehicle specs and traffic challans directly.",
+        icon: "ShieldAlert",
+        status: "REAL"
+      },
+      {
+        id: "export",
+        name: "PDF & QR Code Export",
+        description: "Instant client-side PDF service reports and quick-scan vehicle emergency QR cards.",
+        icon: "QrCode",
+        status: "REAL"
+      }
+    ],
+    faqs: [
+      {
+        question: "Can I manage both cars and two-wheelers in MyGarage?",
+        answer: "Yes, MyGarage supports unlimited cars, motorcycles, scooters, and commercial vehicles under a single account."
+      },
+      {
+        question: "How do document expiry reminders work?",
+        answer: "MyGarage automatically tracks days remaining for RC, Insurance, PUC, and Driving Licence, highlighting alerts in High, Medium, and Low urgency categories."
+      },
+      {
+        question: "Is my data stored securely?",
+        answer: "Yes. MyGarage uses a decoupled repository pattern allowing local device storage or seamless sync with Supabase cloud databases."
+      }
+    ]
   }
 ];
 

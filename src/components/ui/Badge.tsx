@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: "brand" | "pos" | "invoice" | "neutral" | "outline";
+  variant?: "brand" | "pos" | "invoice" | "mygarage" | "neutral" | "outline";
   className?: string;
   icon?: React.ReactNode;
 }
@@ -15,6 +15,7 @@ export function Badge({ children, variant = "brand", className, icon }: BadgePro
     brand: "bg-[#020C2B]/10 text-[#020C2B] border border-[#020C2B]/20",
     pos: "bg-[#E58145]/15 text-[#020C2B] border border-[#E58145]/30",
     invoice: "bg-[#E58145]/15 text-[#020C2B] border border-[#E58145]/30",
+    mygarage: "bg-[#0EA5E9]/15 text-[#020C2B] border border-[#0EA5E9]/30",
     neutral: "bg-[#020C2B]/5 text-[#020C2B] border border-[#020C2B]/15",
     outline: "bg-transparent text-[#020C2B] border border-[#020C2B]/30"
   };

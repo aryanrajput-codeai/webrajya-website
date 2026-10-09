@@ -1,5 +1,5 @@
 export interface ProductWorkflow {
-  id: "pos" | "invoice";
+  id: "pos" | "invoice" | "mygarage";
   title: string;
   tagline: string;
   actionLabel: string;
@@ -17,7 +17,7 @@ export interface FourStepStory {
 }
 
 export const HOW_WEBRJYA_WORKS_HEADER = {
-  eyebrow: "HOW WEBRAJYA WORKS",
+  eyebrow: "HOW WEBRJYA WORKS",
   headline: "Connected Business Workflows.",
   supportingCopy: "Information moves automatically from front-line operations to owner dashboards with zero manual entry.",
   centralNode: {
@@ -46,6 +46,16 @@ export const PRODUCT_WORKFLOWS: ProductWorkflow[] = [
     ctaText: "Explore Invoice →",
     capabilities: ["Invoices", "Customers", "Payments", "Receivables", "Reports"],
     sequentialFlow: ["CREATE", "SEND", "TRACK", "COLLECT", "UNDERSTAND"]
+  },
+  {
+    id: "mygarage",
+    title: "MYGARAGE SAAS",
+    tagline: "For vehicle owners, fleets & enthusiasts",
+    actionLabel: "TRACK & MAINTAIN",
+    route: "/mygarage",
+    ctaText: "Explore MyGarage →",
+    capabilities: ["Fleet", "Locker", "Ledger", "Expenses", "Alerts", "Vahan API"],
+    sequentialFlow: ["ADD", "STORE", "LOG", "ALERT", "EXPORT"]
   }
 ];
 
@@ -53,25 +63,25 @@ export const FOUR_STEP_STORY: FourStepStory[] = [
   {
     number: "01",
     title: "Select Platform",
-    description: "Choose WebRajya POS for dining or WebRajya Invoice for billing.",
+    description: "Choose WebRajya POS for dining, WebRajya Invoice for billing, or MyGarage SaaS for vehicle management.",
     iconName: "Layers"
   },
   {
     number: "02",
     title: "Run Operations",
-    description: "Execute orders, manage tables, and dispatch KOTs in seconds.",
+    description: "Execute orders, manage tables, track expiries, and dispatch KOTs in seconds.",
     iconName: "Sliders"
   },
   {
     number: "03",
     title: "Auto-Sync Data",
-    description: "Floor activity automatically updates inventory and customer ledgers.",
+    description: "Floor activity and maintenance logs automatically update inventory and customer ledgers.",
     iconName: "Network"
   },
   {
     number: "04",
     title: "Track Insights",
-    description: "Monitor live daily sales and revenue in your exact local timezone.",
+    description: "Monitor live daily sales, fuel expenses, and document statuses in real time.",
     iconName: "BarChart3"
   }
 ];

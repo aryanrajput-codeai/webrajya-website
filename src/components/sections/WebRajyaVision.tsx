@@ -82,12 +82,28 @@ export function WebRajyaVision() {
                   <span className="text-xs font-mono text-white font-semibold px-2.5 py-1 rounded bg-[#E58145]">Active</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#F8F3EB]/50 border border-dashed border-[#020C2B]/20 flex items-center justify-between opacity-75">
+                <div className="p-4 rounded-xl bg-[#F8F3EB] border border-[#0EA5E9]/30 flex items-center justify-between">
                   <div>
-                    <span className="font-medium text-[#020C2B]/80 text-xs block font-mono">+ Future Business Solutions</span>
-                    <span className="text-[11px] text-[#525866]">Planned WebRajya product modules</span>
+                    <span className="font-bold text-[#020C2B] text-sm block">MYGARAGE SAAS</span>
+                    <span className="text-xs text-[#525866]">Vehicle Locker &amp; Expense Tracking Platform</span>
                   </div>
-                  <span className="text-[10px] font-mono text-[#525866]">Roadmap</span>
+                  <span className="text-xs font-mono text-white font-semibold px-2.5 py-1 rounded bg-[#0EA5E9]">Active</span>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#F8F3EB]/60 border border-dashed border-[#020C2B]/20 hidden md:flex items-center justify-between opacity-75">
+                  <div>
+                    <span className="font-bold text-[#020C2B] text-sm block">+ UPCOMING PROJECT MODULE</span>
+                    <span className="text-xs text-[#525866]">Planned WebRajya business software extension</span>
+                  </div>
+                  <span className="text-xs font-mono text-[#525866] font-semibold px-2.5 py-1 rounded bg-[#020C2B]/10 border border-[#020C2B]/15">Upcoming Project</span>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#F8F3EB]/60 border border-dashed border-[#020C2B]/20 hidden md:flex items-center justify-between opacity-75">
+                  <div>
+                    <span className="font-bold text-[#020C2B] text-sm block">+ UPCOMING PROJECT MODULE</span>
+                    <span className="text-xs text-[#525866]">Planned WebRajya connected solution</span>
+                  </div>
+                  <span className="text-xs font-mono text-[#525866] font-semibold px-2.5 py-1 rounded bg-[#020C2B]/10 border border-[#020C2B]/15">Upcoming Project</span>
                 </div>
               </div>
 
