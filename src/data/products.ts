@@ -132,82 +132,82 @@ export const PRODUCTS: WebRajyaProduct[] = [
     slug: "invoice",
     name: "WEBRAJYA INVOICE",
     brandTitle: "WebRajya Invoice",
-    tagline: "Send GST invoices & collect unpaid balances faster.",
-    shortDescription: "Instant GST invoice builder, client credit ledgers, receivables tracking, and 1-click WhatsApp PDF sharing.",
-    targetAudience: "For vendors, service providers, distributors & growing businesses.",
-    heroHeadline: "Send GST Invoices & Collect Unpaid Balances Faster.",
-    heroSubheadline: "Create professional invoices, track client receivables, and share print-ready vector PDFs directly via WhatsApp.",
-    badge: "Financial Billing Platform",
-    accentColor: "#E58145",
-    gradientClass: "from-[#020C2B] via-[#020C2B] to-[#E58145]",
-    borderGlowClass: "hover:border-[#E58145] hover:shadow-[0_8px_30px_rgba(2,12,43,0.12)]",
-    badgeBgClass: "bg-[#E58145]/15 border-[#E58145]/30",
+    tagline: "Billing That Keeps Your Business Moving.",
+    shortDescription: "Create bills faster, manage inventory, track customer payments and stay in control of your business—all from one simple platform.",
+    targetAudience: "Designed for Indian retailers, stationery shops, wholesalers and growing businesses.",
+    heroHeadline: "Billing That Keeps Your Business Moving.",
+    heroSubheadline: "Create bills faster, manage your inventory, track customer payments and stay in control of your business—all from one simple platform.",
+    badge: "Smart Billing Software",
+    accentColor: "#2563EB",
+    gradientClass: "from-[#020C2B] via-[#020C2B] to-[#2563EB]",
+    borderGlowClass: "hover:border-[#2563EB] hover:shadow-[0_8px_30px_rgba(37,99,235,0.15)]",
+    badgeBgClass: "bg-[#2563EB]/15 border-[#2563EB]/30",
     badgeTextClass: "text-[#020C2B]",
     route: "/invoice",
     highlights: [
-      "3-Step Invoicing",
-      "GST & Custom Tax Math",
-      "Client Credit Ledger",
-      "Receivables Tracker",
-      "Vector PDF Export",
-      "WhatsApp Sharing"
+      "Fast Retail Billing",
+      "Smart Inventory",
+      "Customer Khata",
+      "GST & Non-GST",
+      "Local-First Workflows",
+      "Barcode & Printing"
     ],
     capabilities: [
       {
-        id: "creation",
-        name: "3-Step Invoice Generator",
-        description: "Create professional GST invoices with item rate cards and automated tax totals.",
+        id: "billing",
+        name: "Fast Billing & Invoicing",
+        description: "Quick product lookup, barcode scanning, keyboard-friendly navigation, and instant bill calculations.",
         icon: "FileText",
         status: "REAL"
       },
       {
-        id: "products",
-        name: "Product & Service Catalog",
-        description: "Save default rate cards, item descriptions, and HSN/SAC tax rules.",
+        id: "inventory",
+        name: "Smart Inventory Management",
+        description: "Track product quantities, barcodes, purchase/selling prices, and low-stock alerts in one catalog.",
         icon: "Package",
         status: "REAL"
       },
       {
         id: "customers",
-        name: "Client Directory & Ledger",
-        description: "Track customer balances, payment histories, and automated unpaid reminders.",
+        name: "Customer Management & Khata",
+        description: "Maintain customer ledger profiles, sales history, payment records, and outstanding balances.",
         icon: "Users",
         status: "REAL"
       },
       {
-        id: "payments",
-        name: "Payment Status Tracker",
-        description: "Log partial/full cash, UPI, or bank payments with instant status updates.",
+        id: "tax",
+        name: "GST & Non-GST Billing",
+        description: "Configurable tax rules with CGST, SGST, IGST calculations and non-GST compliant invoice formats.",
         icon: "CheckCircle2",
         status: "REAL"
       },
       {
-        id: "receivables",
-        name: "Aging Receivables Ledger",
-        description: "Monitor overdue balances and total pending receivables in real time.",
-        icon: "Clock",
+        id: "purchases",
+        name: "Purchase & Supplier Management",
+        description: "Keep purchasing activity connected with inventory, supplier records, and purchase cost tracking.",
+        icon: "Boxes",
         status: "REAL"
       },
       {
-        id: "export",
-        name: "Vector PDF & WhatsApp Share",
-        description: "Export print-ready invoices or share paperless billing links directly via WhatsApp.",
-        icon: "Share2",
+        id: "reports",
+        name: "Business Reports",
+        description: "Daily sales summaries, product performance, stock reports, and customer outstanding ledgers.",
+        icon: "TrendingUp",
         status: "REAL"
       }
     ],
     faqs: [
       {
-        question: "Can I generate GST-compliant invoices?",
-        answer: "Yes. WebRajya Invoice automatically calculates CGST, SGST, IGST, and supports custom tax rules."
+        question: "What is WebRajya Invoice?",
+        answer: "WebRajya Invoice is a billing and business-management application designed for Indian retailers, stationery shops, wholesalers and other small businesses. It brings invoicing, products, inventory, customers, payments and business reports into one platform."
       },
       {
-        question: "How do I share invoices with clients?",
-        answer: "Download vector PDFs with one click or send instant WhatsApp paperless invoice links directly."
+        question: "How much does WebRajya Invoice cost?",
+        answer: "The introductory annual price is ₹2,499. Applicable taxes, subscription conditions and renewal terms are displayed clearly before purchase."
       },
       {
-        question: "Is there a limit on customer directory storage?",
-        answer: "No limits. Store unlimited customers, items, and billing histories."
+        question: "Can I use WebRajya Invoice without the internet?",
+        answer: "WebRajya Invoice is designed around a local-first architecture. Offline availability depends on the supported feature, initial setup and device configuration."
       }
     ]
   },
