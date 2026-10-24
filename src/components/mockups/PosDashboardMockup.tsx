@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Utensils, Plus, Minus, Printer, CheckCircle2, ShoppingBag, Wifi, Layers, Check } from "lucide-react";
 
 interface MenuItem {

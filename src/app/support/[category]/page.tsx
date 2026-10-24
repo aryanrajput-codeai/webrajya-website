@@ -61,9 +61,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </Link>
 
           <div className="space-y-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#020C2B] text-white text-xs font-mono font-bold uppercase">
-              {category.name}
-            </span>
             <h1 className="text-3xl sm:text-4xl font-black text-[#020C2B]">
               {category.name} Documentation &amp; Guides
             </h1>

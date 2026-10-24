@@ -24,10 +24,6 @@ export function ProductGateway() {
         {/* Parent Brand Hero Header with Staggered Entrance */}
         <FadeIn direction="up" distance={28} duration={0.6}>
           <div className="text-center max-w-4xl mx-auto space-y-5 sm:space-y-6">
-            
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#020C2B]/5 border border-[#020C2B]/15 text-[#020C2B] text-[11px] sm:text-xs font-mono font-semibold tracking-wide uppercase shadow-sm backdrop-blur-xs">
-              <Sparkles className="w-3.5 h-3.5 text-[#E58145] animate-pulse" /> Connected Business Software Platform
-            </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#020C2B] tracking-tight leading-[1.15] sm:leading-[1.1]">
               Connected Software That <br />

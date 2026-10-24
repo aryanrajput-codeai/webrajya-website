@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { ChefHat, Printer, Monitor, CheckCircle2, Clock, Check, Utensils, Flame, Sparkles } from "lucide-react";
 import { FadeIn, BentoCard, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 
@@ -39,9 +39,6 @@ export function KitchenKotSection() {
         {/* Section Header */}
         <FadeIn direction="up">
           <div className="text-center max-w-3xl mx-auto space-y-4">
-            <span className="text-xs font-mono uppercase text-[#020C2B] tracking-wider bg-[#020C2B]/5 px-4 py-1.5 rounded-full border border-[#020C2B]/15 font-semibold shadow-xs inline-flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#E58145]" /> Kitchen Automation
-            </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
               Kitchen Order Tickets &amp; KDS Display
             </h2>

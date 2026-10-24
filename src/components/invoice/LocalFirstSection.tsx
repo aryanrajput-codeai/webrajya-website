@@ -36,9 +36,6 @@ export function LocalFirstSection() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider bg-[#2563EB]/20 px-3.5 py-1 rounded-full border border-[#2563EB]/40 font-bold">
-            Local-First Architecture
-          </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
             Your Billing Shouldn&apos;t Depend on a <br className="hidden sm:inline" />
             Perfect Internet Connection.

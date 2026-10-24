@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Star,
   CheckCircle2,
@@ -138,10 +138,6 @@ export function CustomerReviewsSection() {
         {/* SECTION HEADER */}
         <FadeIn direction="up">
           <div className="text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#020C2B]/5 border border-[#020C2B]/10 text-[#020C2B] text-xs font-mono font-semibold">
-              <Sparkles className="w-3.5 h-3.5 text-[#E58145]" />
-              Verified Customer Reviews
-            </div>
 
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#020C2B] leading-tight">
               Trusted by 1,200+ Indian Businesses
@@ -373,59 +369,44 @@ export function CustomerReviewsSection() {
                   >
                   {/* Top Row: User & Verification */}
                   <div className="space-y-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-center gap-3">
-                        {/* Avatar initials with gradient */}
-                        <div
-                          className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${review.avatarColor || "from-blue-600 to-indigo-700"} text-white font-bold text-sm flex items-center justify-center shadow-sm shrink-0`}
-                        >
-                          {review.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .slice(0, 2)
-                            .join("")
-                            .toUpperCase()}
-                        </div>
-
-                        <div>
-                          <div className="flex items-center gap-1.5">
-                            <h4 className="font-bold text-sm text-[#020C2B] leading-tight">
-                              {review.name}
-                            </h4>
-                            {review.verified && (
-                              <span
-                                title="Verified Business User"
-                                className="inline-flex text-emerald-600"
-                              >
-                                <CheckCircle2 className="w-3.5 h-3.5 fill-emerald-100" />
-                              </span>
-                            )}
-                          </div>
-                          <div className="flex items-center gap-1 text-[11px] text-[#525866] pt-0.5">
-                            <Building2 className="w-3 h-3 text-[#525866]/70 shrink-0" />
-                            <span className="truncate max-w-[170px]" title={review.business}>
-                              {review.business}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-1 text-[10px] text-[#525866]/80 font-mono">
-                            <MapPin className="w-2.5 h-2.5 shrink-0" />
-                            <span className="truncate max-w-[170px]">{review.city}</span>
-                          </div>
-                        </div>
+                    <div className="flex items-center gap-3">
+                      {/* Avatar initials with gradient */}
+                      <div
+                        className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${review.avatarColor || "from-blue-600 to-indigo-700"} text-white font-bold text-sm flex items-center justify-center shadow-sm shrink-0`}
+                      >
+                        {review.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .slice(0, 2)
+                          .join("")
+                          .toUpperCase()}
                       </div>
 
-                      {/* Product Badge */}
-                      <span
-                        className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-full shrink-0 border ${
-                          review.product === "WebRajya POS"
-                            ? "bg-[#E58145]/10 text-[#E58145] border-[#E58145]/30"
-                            : review.product === "MyGarage"
-                            ? "bg-emerald-50 text-emerald-700 border-emerald-200"
-                            : "bg-[#020C2B]/5 text-[#020C2B] border-[#020C2B]/15"
-                        }`}
-                      >
-                        {review.product}
-                      </span>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <h4 className="font-bold text-sm text-[#020C2B] leading-tight">
+                            {review.name}
+                          </h4>
+                          {review.verified && (
+                            <span
+                              title="Verified Business User"
+                              className="inline-flex text-emerald-600"
+                            >
+                              <CheckCircle2 className="w-3.5 h-3.5 fill-emerald-100" />
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-1 text-[11px] text-[#525866] pt-0.5">
+                          <Building2 className="w-3 h-3 text-[#525866]/70 shrink-0" />
+                          <span className="truncate max-w-[220px]" title={review.business}>
+                            {review.business}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1 text-[10px] text-[#525866]/80 font-mono">
+                          <MapPin className="w-2.5 h-2.5 shrink-0" />
+                          <span className="truncate max-w-[220px]">{review.city}</span>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Star Rating & Date */}
@@ -454,26 +435,12 @@ export function CustomerReviewsSection() {
                     <p className="text-xs sm:text-sm text-[#525866] leading-relaxed">
                       {review.comment}
                     </p>
-
-                    {/* Tags */}
-                    {review.tags && review.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {review.tags.map((tag, tIdx) => (
-                          <span
-                            key={tIdx}
-                            className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#F8F3EB] text-[#525866] border border-[#020C2B]/5"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
                   </div>
 
                   {/* Bottom Helpful Bar */}
                   <div className="pt-3 border-t border-[#020C2B]/10 flex items-center justify-between text-xs">
                     <span className="text-[11px] text-[#525866] font-mono">
-                      {review.role}
+                      {review.role} · <span className="font-semibold text-[#020C2B]">{review.product}</span>
                     </span>
 
                       <button

@@ -45,10 +45,6 @@ export function RealWorldUseCases() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#020C2B]/5 border border-[#020C2B]/15 text-[#020C2B] text-xs font-mono font-bold tracking-wider uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-[#E58145]" />
-            BUILT FOR REAL BUSINESS
-          </span>
 
           <h2
             id="use-cases-title"
@@ -110,9 +106,6 @@ export function RealWorldUseCases() {
           {/* Header Row */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-[#020C2B]/10">
             <div className="space-y-2 max-w-2xl">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E58145]/15 text-[#020C2B] border border-[#E58145]/30 text-xs font-mono font-bold uppercase">
-                {currentCase.badge}
-              </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#020C2B]">
                 {currentCase.headline}
               </h3>

@@ -53,10 +53,6 @@ export function PosComparisonSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-[#020C2B] text-xs font-mono uppercase tracking-widest border border-[#020C2B]/10 shadow-sm font-semibold">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#E58145]" /> Head-To-Head Comparison
-          </div>
-
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#020C2B]">
             Why Top Restaurants Switch to <br />
             <span className="text-[#E58145]">WebRajya POS</span>

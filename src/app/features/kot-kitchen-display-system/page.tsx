@@ -69,10 +69,6 @@ export default function KotKitchenDisplayPage() {
 
       <section className="relative pt-8 pb-16 md:pt-16 md:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E58145]/10 border border-[#E58145]/20 text-[#E58145] text-xs font-mono font-bold uppercase tracking-wider">
-            <ChefHat className="w-3.5 h-3.5" /> Kitchen Order Automation
-          </div>
-
           <h1 className="text-4xl sm:text-6xl font-black text-[#020C2B] tracking-tight leading-tight max-w-4xl mx-auto">
             <span className="text-[#E58145]">KOT Billing Software</span> &amp; Digital KDS
           </h1>

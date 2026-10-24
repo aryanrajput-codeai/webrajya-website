@@ -19,10 +19,6 @@ export function MyGarageHero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         {/* Hero Header */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
-          <Badge variant="mygarage" icon={<Car className="w-3.5 h-3.5" />}>
-            WEBRAJYA MYGARAGE • AUTOMOTIVE SAAS PLATFORM
-          </Badge>
-
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#020C2B] tracking-tight leading-[1.08]">
             Never Miss RC, Insurance or <br />
             <span className="text-[#0EA5E9]">

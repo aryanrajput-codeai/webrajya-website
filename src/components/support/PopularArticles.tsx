@@ -15,9 +15,6 @@ export function PopularArticles({
   return (
     <div className="space-y-6 font-sans">
       <div className="text-center space-y-1">
-        <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase text-[#E58145] tracking-wider bg-[#E58145]/10 px-3 py-1 rounded-full border border-[#E58145]/20 font-bold">
-          <Star className="w-3.5 h-3.5" /> ESSENTIAL GUIDES
-        </span>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-[#020C2B]">
           {title}
         </h2>

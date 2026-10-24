@@ -10,7 +10,8 @@ import {
   useScroll,
   useVelocity,
   useReducedMotion,
-} from "framer-motion";
+  type HTMLMotionProps,
+} from "motion/react";
 import { cn } from "@/lib/utils";
 
 // --- 1. SPATIAL STAGE CONTAINER ---
@@ -217,7 +218,7 @@ export function Scroll3DParallax({
 }
 
 // --- 5. TACTILE 3D SPRING BUTTON ---
-import type { HTMLMotionProps } from "framer-motion";
+
 
 export interface Tactile3DButtonProps extends Omit<HTMLMotionProps<"button">, "ref"> {
   children: React.ReactNode;

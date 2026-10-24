@@ -34,10 +34,6 @@ export function DemoSuccess({ lead, whatsappUrl }: DemoSuccessProps) {
 
       {/* Header */}
       <div className="space-y-3">
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#020C2B] text-white text-xs font-mono font-bold uppercase tracking-wider">
-          REQUEST READY
-        </span>
-
         <h2 className="text-3xl sm:text-4xl font-black text-[#020C2B] tracking-tight">
           Continue in WhatsApp
         </h2>

@@ -58,9 +58,6 @@ export default function ContactPage() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E58145]/10 border border-[#E58145]/20 text-[#E58145] text-xs font-mono font-bold uppercase">
-            Get In Touch
-          </span>
           <h1 className="text-4xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
             Contact WebRajya Software Team
           </h1>

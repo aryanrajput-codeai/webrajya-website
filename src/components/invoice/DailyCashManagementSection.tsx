@@ -49,9 +49,6 @@ export function DailyCashManagementSection() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-xs font-mono uppercase text-[#2563EB] tracking-wider bg-[#2563EB]/10 px-3.5 py-1 rounded-full border border-[#2563EB]/20 font-bold">
-            Cash Drawer Discipline
-          </span>
           <h2 className="text-3xl sm:text-5xl font-black text-[#0F172A] tracking-tight">
             End the Day Knowing Where Your Money Went.
           </h2>

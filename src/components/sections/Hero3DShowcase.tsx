@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import {
   Utensils,
   FileText,
@@ -25,15 +25,6 @@ export function Hero3DShowcase() {
   return (
     <div className="w-full py-6 md:py-10">
       <Motion3DStage perspective={1400} className="max-w-6xl mx-auto px-4">
-        
-        {/* Floating Indicator */}
-        <div className="flex items-center justify-center gap-2 mb-6">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#020C2B]/5 border border-[#020C2B]/10 text-[11px] font-mono text-[#525866] font-semibold uppercase tracking-wider backdrop-blur-sm">
-            <Sparkles className="w-3 h-3 text-[#E58145]" />
-            Interactive 3D Spatial Triad · Hover to Explore Depth
-          </span>
-        </div>
-
         {/* 3D Product Triad Stack */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           

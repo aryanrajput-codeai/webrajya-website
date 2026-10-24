@@ -12,9 +12,6 @@ export function ReceivablesAndReportsSection() {
         
         {/* Receivables & Reports Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-xs font-mono uppercase text-[#E58145] tracking-wider bg-[#E58145]/10 px-3.5 py-1 rounded-full border border-[#E58145]/20 font-bold">
-            Cash Flow &amp; Analytics
-          </span>
           <h2 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
             Receivables &amp; Business Intelligence
           </h2>

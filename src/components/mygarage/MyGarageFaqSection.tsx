@@ -18,9 +18,6 @@ export function MyGarageFaqSection() {
     <section className="py-20 bg-white border-t border-[#020C2B]/10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center space-y-3">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0EA5E9] bg-[#0EA5E9]/10 px-3 py-1 rounded-full border border-[#0EA5E9]/20">
-            ❓ Frequently Asked Questions
-          </span>
           <h2 className="text-3xl sm:text-4xl font-black text-[#020C2B] tracking-tight">
             Everything You Need to Know About MyGarage SaaS.
           </h2>

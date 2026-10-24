@@ -24,9 +24,6 @@ export function SupportCategories() {
   return (
     <div className="space-y-6 font-sans">
       <div className="text-center space-y-1">
-        <span className="text-xs font-mono uppercase text-[#020C2B] tracking-wider bg-[#020C2B]/5 px-3 py-1 rounded-full border border-[#020C2B]/10 font-bold">
-          DOCUMENTATION CATEGORIES
-        </span>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-[#020C2B]">
           Browse Support Categories
         </h2>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Star, X, CheckCircle2, Sparkles, AlertCircle } from "lucide-react";
 import { ReviewItem } from "@/data/reviews";
 

@@ -10,10 +10,6 @@ export function SupportCTA() {
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#E58145]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="space-y-3 relative z-10">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#F8F3EB] text-xs font-mono font-semibold">
-          <MessageSquare className="w-3.5 h-3.5 text-[#E58145]" /> Direct Team Support
-        </span>
-
         <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
           Need more help?
         </h2>

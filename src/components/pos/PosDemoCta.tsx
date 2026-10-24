@@ -10,10 +10,6 @@ export function PosDemoCta() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
         
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E58145]/10 border border-[#E58145]/30 text-[#E58145] text-xs font-mono font-medium">
-          <Sparkles className="w-3.5 h-3.5" /> High-Performance Restaurant POS
-        </div>
-
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
           Your restaurant runs every day. <br />
           <span className="text-[#E58145]">

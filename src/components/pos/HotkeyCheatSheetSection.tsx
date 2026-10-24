@@ -125,10 +125,6 @@ export function HotkeyCheatSheetSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#020C2B]/5 text-[#020C2B] text-xs font-mono uppercase tracking-widest border border-[#020C2B]/15 font-semibold">
-            <Zap className="w-3.5 h-3.5 text-[#E58145]" /> Built for Zero-Lag Cashier Speed
-          </div>
-
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#020C2B]">
             Why Click When You Can Type? <br />
             <span className="text-[#E58145]">Master WebRajya Hotkeys.</span>

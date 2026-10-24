@@ -16,9 +16,6 @@ export default function AboutPage() {
         
         {/* HERO Header */}
         <div className="text-center max-w-3xl mx-auto space-y-6">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E58145]/10 border border-[#E58145]/20 text-[#E58145] text-xs font-mono font-bold uppercase">
-            About WebRajya
-          </span>
           <h1 className="text-4xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
             Engineering Software for Real Everyday Operations
           </h1>

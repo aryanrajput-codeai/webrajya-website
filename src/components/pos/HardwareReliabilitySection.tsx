@@ -10,10 +10,6 @@ export function HardwareReliabilitySection() {
           
           {/* Thermal Printing */}
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#020C2B]/5 border border-[#020C2B]/15 text-[#020C2B] text-xs font-mono font-semibold uppercase">
-              <Printer className="w-3.5 h-3.5 text-[#E58145]" /> Thermal Printing &amp; Hardware
-            </div>
-
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#020C2B] tracking-tight">
               High-Speed Thermal Printing &amp; Universal Hardware Compatibility
             </h2>

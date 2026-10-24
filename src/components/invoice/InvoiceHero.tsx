@@ -21,11 +21,6 @@ export function InvoiceHero() {
         
         {/* Hero Header */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/25 text-[#2563EB] text-xs font-mono font-bold tracking-wider uppercase">
-            <Sparkles className="w-3.5 h-3.5" />
-            WEBRAJYA INVOICE · SMART BILLING SOFTWARE
-          </div>
-
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0F172A] tracking-tight leading-[1.08]">
             Billing That Keeps Your <br />
             <span className="text-[#2563EB]">

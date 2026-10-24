@@ -15,11 +15,7 @@ export function WebRajyaVision() {
           {/* Left Text Column */}
           <div className="lg:col-span-6 space-y-6">
             <FadeIn direction="right" distance={24}>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#020C2B]/5 border border-[#020C2B]/15 text-[#020C2B] text-xs font-mono font-semibold">
-                <Layers className="w-3.5 h-3.5 text-[#E58145]" /> Parent Brand Architecture
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#020C2B] tracking-tight leading-tight mt-4">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#020C2B] tracking-tight leading-tight">
                 {COMPANY_INFO.visionTitle}
               </h2>
 

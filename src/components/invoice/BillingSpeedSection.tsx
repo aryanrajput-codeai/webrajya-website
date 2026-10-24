@@ -1,5 +1,6 @@
 import React from "react";
 import { Search, ShoppingCart, CreditCard, Printer, CheckCircle2 } from "lucide-react";
+import { StaggerContainer, StaggerItem, BentoCard } from "@/components/ui/motion";
 
 export function BillingSpeedSection() {
   const STEPS = [
@@ -35,9 +36,6 @@ export function BillingSpeedSection() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-xs font-mono uppercase text-[#2563EB] tracking-wider bg-[#2563EB]/10 px-3.5 py-1 rounded-full border border-[#2563EB]/20 font-bold">
-            Counter Ergonomics
-          </span>
           <h2 className="text-3xl sm:text-5xl font-black text-[#0F172A] tracking-tight">
             Fewer Clicks. Faster Checkout.
           </h2>
@@ -48,32 +46,30 @@ export function BillingSpeedSection() {
 
         {/* 4 Steps Row */}
         <div className="space-y-4">
-          <div className="text-center mb-6">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0F172A] bg-[#F1F5F9] px-4 py-1.5 rounded-full border border-[#CBD5E1]">
-              Scan. Add. Bill. Print.
-            </span>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {STEPS.map(s => (
-              <div
-                key={s.num}
-                className="p-6 rounded-3xl bg-[#F8FAFC] border border-[#E2E8F0] shadow-xs hover:border-[#2563EB]/40 hover:shadow-md transition-all space-y-4 relative"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-white border border-[#CBD5E1] flex items-center justify-center shadow-xs">
-                    {s.icon}
-                  </div>
-                  <span className="text-2xl font-black font-mono text-[#CBD5E1]">0{s.num}</span>
-                </div>
+              <StaggerItem key={s.num}>
+                <BentoCard
+                  className="p-6 rounded-3xl bg-[#F8FAFC] border border-[#E2E8F0] shadow-xs hover:border-[#2563EB]/40 hover:shadow-md transition-all space-y-4 relative h-full flex flex-col justify-between"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-[#CBD5E1] flex items-center justify-center shadow-xs">
+                        {s.icon}
+                      </div>
+                      <span className="text-2xl font-black font-mono text-[#CBD5E1]">0{s.num}</span>
+                    </div>
 
-                <div className="space-y-1.5">
-                  <h3 className="text-lg font-bold text-[#0F172A]">{s.title}</h3>
-                  <p className="text-xs text-[#64748B] leading-relaxed">{s.desc}</p>
-                </div>
-              </div>
+                    <div className="space-y-1.5">
+                      <h3 className="text-lg font-bold text-[#0F172A]">{s.title}</h3>
+                      <p className="text-xs text-[#64748B] leading-relaxed">{s.desc}</p>
+                    </div>
+                  </div>
+                </BentoCard>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
 
         {/* Workflow Showcase Box */}

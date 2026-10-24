@@ -56,10 +56,6 @@ export function HowWebRajyaWorks() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#020C2B]/5 border border-[#020C2B]/15 text-[#020C2B] text-xs font-mono font-bold tracking-wider uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-[#E58145]" />
-            {HOW_WEBRJYA_WORKS_HEADER.eyebrow}
-          </span>
 
           <h2
             id="how-webrajya-works-title"
@@ -613,9 +609,6 @@ export function HowWebRajyaWorks() {
         {/* FOUR STEP STORY SECTION */}
         <div className="pt-10 space-y-8">
           <div className="text-center space-y-2">
-            <span className="text-xs font-mono uppercase text-[#020C2B] tracking-wider bg-[#020C2B]/5 px-3 py-1 rounded-full border border-[#020C2B]/10 font-bold">
-              OPERATIONAL CYCLE
-            </span>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#020C2B] tracking-tight">
               Four Steps to Connected Operations
             </h3>

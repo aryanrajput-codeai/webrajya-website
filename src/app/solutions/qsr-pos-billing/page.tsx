@@ -69,10 +69,6 @@ export default function QsrPosBillingPage() {
 
       <section className="relative pt-8 pb-16 md:pt-16 md:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E58145]/10 border border-[#E58145]/20 text-[#E58145] text-xs font-mono font-bold uppercase tracking-wider">
-            <Zap className="w-3.5 h-3.5" /> High-Speed Counter Billing
-          </div>
-
           <h1 className="text-4xl sm:text-6xl font-black text-[#020C2B] tracking-tight leading-tight max-w-4xl mx-auto">
             <span className="text-[#E58145]">QSR &amp; Fast Food</span> Billing Software
           </h1>

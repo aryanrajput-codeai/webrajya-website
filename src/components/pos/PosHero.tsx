@@ -26,10 +26,6 @@ export function PosHero({ onBookDemoClick }: PosHeroProps) {
         
         {/* Hero Header */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
-          <Badge variant="pos" icon={<Zap className="w-3.5 h-3.5 text-[#E58145]" />}>
-            WEBRAJYA POS • SUB-3 SECOND RESTAURANT OPERATING SYSTEM
-          </Badge>
-
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#020C2B] tracking-tight leading-[1.08]">
             The Lightning-Fast Restaurant POS <br />
             <span className="text-[#E58145]">

@@ -1,16 +1,30 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useReducedMotion, Variants, HTMLMotionProps } from "framer-motion";
+import { motion, useReducedMotion, type Variants, type HTMLMotionProps } from "motion/react";
 import { cn } from "@/lib/utils";
 
-// --- ANIMATION CONFIGURATION ---
-const defaultSpring = {
+// --- STANDARDIZED SPRING TOKENS ---
+export const springGentle = {
   type: "spring" as const,
-  stiffness: 100,
-  damping: 20,
-  mass: 0.8,
+  stiffness: 260,
+  damping: 25,
 };
+
+export const springBouncy = {
+  type: "spring" as const,
+  stiffness: 420,
+  damping: 18,
+};
+
+export const springSnappy = {
+  type: "spring" as const,
+  stiffness: 500,
+  damping: 32,
+};
+
+// Default spring uses gentle natural physics
+const defaultSpring = springGentle;
 
 // --- FADE IN PRIMITIVE ---
 export interface FadeInProps extends React.HTMLAttributes<HTMLDivElement> {

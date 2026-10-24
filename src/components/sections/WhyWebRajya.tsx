@@ -20,9 +20,6 @@ export function WhyWebRajya() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="text-xs font-mono uppercase text-[#020C2B] tracking-wider bg-[#020C2B]/5 px-3.5 py-1.5 rounded-full border border-[#020C2B]/15 font-semibold">
-            Engineered For Excellence
-          </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#020C2B] tracking-tight">
             Why WebRajya?
           </h2>

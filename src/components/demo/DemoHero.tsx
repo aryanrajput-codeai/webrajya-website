@@ -5,11 +5,6 @@ export function DemoHero() {
   return (
     <div className="space-y-6 font-sans">
       <div className="space-y-4">
-        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E58145]/10 border border-[#E58145]/20 text-[#E58145] text-xs font-mono font-bold uppercase tracking-wider">
-          <Sparkles className="w-3.5 h-3.5 text-[#E58145]" />
-          BOOK A DEMO
-        </span>
-
         <h1 className="text-4xl sm:text-5xl font-black text-[#020C2B] tracking-tight leading-tight">
           See WebRajya in action.
         </h1>

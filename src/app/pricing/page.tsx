@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Utensils, FileText, CheckCircle2, ArrowRight, Sparkles, HelpCircle, ShieldCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -88,10 +88,6 @@ export default function PricingPage() {
         {/* Page Header */}
         <FadeIn direction="up">
           <div className="text-center max-w-3xl mx-auto space-y-4">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E58145]/10 border border-[#E58145]/20 text-[#E58145] text-xs font-mono font-bold uppercase">
-              Transparent Product Pricing
-            </span>
-
             <h1 className="text-4xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
               Simple Plans for Every Stage of Business
             </h1>
@@ -184,9 +180,9 @@ export default function PricingPage() {
 
         {/* Selected Product Sub-Header */}
         <div className="text-center space-y-1">
-          <Badge variant={activeTab === "pos" ? "pos" : "invoice"}>
+          <h3 className="text-lg font-bold text-[#020C2B]">
             {activeTab === "pos" ? PRICING_DATA.pos.productName : INVOICE_PRICING.productName}
-          </Badge>
+          </h3>
           <p className="text-xs text-[#020C2B]/60 font-mono mt-1">
             {activeTab === "pos" ? PRICING_DATA.pos.tagline : INVOICE_PRICING.tagline}
           </p>

@@ -58,10 +58,6 @@ export function BusinessIntelligence() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#020C2B]/5 border border-[#020C2B]/15 text-[#020C2B] text-xs font-mono font-bold tracking-wider uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-[#E58145]" />
-            FROM ACTIVITY TO INSIGHT
-          </span>
 
           <h2
             id="bi-title"

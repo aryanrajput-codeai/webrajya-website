@@ -10,10 +10,6 @@ export function PdfShareDashboardSection() {
           
           {/* PDF & Sharing */}
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E58145]/10 border border-[#E58145]/20 text-[#E58145] text-xs font-mono font-bold uppercase">
-              <Download className="w-3.5 h-3.5" /> PDF Export &amp; Sharing
-            </div>
-
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#020C2B] tracking-tight">
               High-Resolution PDF &amp; Direct WhatsApp Share
             </h2>

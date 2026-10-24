@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 import { Box, Maximize2, Sparkles, Layers, ShieldCheck, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 

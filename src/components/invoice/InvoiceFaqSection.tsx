@@ -51,9 +51,6 @@ export function InvoiceFaqSection() {
         
         {/* Header */}
         <div className="text-center space-y-3">
-          <span className="text-xs font-mono uppercase text-[#2563EB] tracking-wider bg-[#2563EB]/10 px-3.5 py-1 rounded-full border border-[#2563EB]/20 font-bold">
-            Frequently Asked Questions
-          </span>
           <h2 className="text-3xl sm:text-4xl font-black text-[#0F172A] tracking-tight">
             Got Questions? We Have Answers.
           </h2>
