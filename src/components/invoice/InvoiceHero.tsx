@@ -5,10 +5,15 @@ import { ArrowRight, Keyboard, Boxes, CheckCircle2, Sparkles } from "lucide-reac
 import { Button } from "@/components/ui/Button";
 import { InvoiceCounterMockup } from "@/components/invoice/InvoiceCounterMockup";
 import { INVOICE_PRICING } from "@/config/pricing";
+import { Isometric3DStage } from "@/components/ui/Isometric3DStage";
+import { Canvas3DScene } from "@/components/ui/Canvas3DScene";
 
 export function InvoiceHero() {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#F8FAFC]">
+      {/* 3D Constellation Mesh Background */}
+      <Canvas3DScene className="absolute inset-0 pointer-events-none w-full h-full z-0 opacity-60" />
+
       {/* Background Soft Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#2563EB]/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -72,17 +77,19 @@ export function InvoiceHero() {
           </div>
         </div>
 
-        {/* Hero Visual: Realistic Counter Mockup */}
+        {/* Hero Visual: 3D Realistic Counter Mockup */}
         <div className="pt-4 max-w-6xl mx-auto">
-          <div className="text-center mb-3">
-            <span className="text-[11px] font-mono text-[#2563EB] uppercase tracking-wider bg-white px-3 py-1 rounded-full border border-[#E2E8F0] font-bold shadow-xs">
-              Live Retail Billing Counter Interface
-            </span>
-          </div>
-          <InvoiceCounterMockup />
+          <Isometric3DStage
+            title="Live Retail Billing Counter Interface"
+            badge="Interactive 3D Cash Desk"
+            accentColor="invoice"
+          >
+            <InvoiceCounterMockup />
+          </Isometric3DStage>
         </div>
 
       </div>
     </section>
   );
 }
+

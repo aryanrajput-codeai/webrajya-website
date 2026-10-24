@@ -86,6 +86,15 @@
   50% { transform: translateY(-8px); }
 }
 
+@keyframes float-3d {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(2.5deg) rotateY(-2.5deg);
+  }
+}
+
 @keyframes pulse-subtle {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.6; }
@@ -95,7 +104,49 @@
   animation: float 6s ease-in-out infinite;
 }
 
+.animate-float-3d {
+  animation: float-3d 8s ease-in-out infinite;
+}
+
 .animate-pulse-subtle {
   animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 3D Spatial Utilities */
+.perspective-800 {
+  perspective: 800px;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* 3D Elevated Shadow Tokens */
+.shadow-3d-floating {
+  box-shadow: 0 30px 60px -15px rgba(2, 12, 43, 0.16), 0 10px 24px -10px rgba(2, 12, 43, 0.08), 0 0 0 1px rgba(2, 12, 43, 0.06);
+}
+
+.shadow-3d-pos {
+  box-shadow: 0 30px 60px -15px rgba(229, 129, 69, 0.28), 0 12px 24px -10px rgba(229, 129, 69, 0.14), 0 0 0 1px rgba(229, 129, 69, 0.22);
+}
+
+.shadow-3d-invoice {
+  box-shadow: 0 30px 60px -15px rgba(2, 12, 43, 0.25), 0 12px 24px -10px rgba(2, 12, 43, 0.12), 0 0 0 1px rgba(2, 12, 43, 0.15);
+}
+
+.shadow-3d-garage {
+  box-shadow: 0 30px 60px -15px rgba(14, 165, 233, 0.26), 0 12px 24px -10px rgba(14, 165, 233, 0.14), 0 0 0 1px rgba(14, 165, 233, 0.22);
 }
 

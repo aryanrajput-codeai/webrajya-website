@@ -4,10 +4,15 @@ import React from "react";
 import { Car, ShieldCheck, Zap, Download } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { MyGarageDashboardMockup } from "@/components/mockups/MyGarageDashboardMockup";
+import { Isometric3DStage } from "@/components/ui/Isometric3DStage";
+import { Canvas3DScene } from "@/components/ui/Canvas3DScene";
 
 export function MyGarageHero() {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#F8F3EB]">
+      {/* 3D Constellation Mesh Background */}
+      <Canvas3DScene className="absolute inset-0 pointer-events-none w-full h-full z-0 opacity-70" />
+
       {/* Background Cyan Radial Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#0EA5E9]/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -43,16 +48,18 @@ export function MyGarageHero() {
           </div>
         </div>
 
-        {/* Live Interactive Dashboard Preview */}
-        <div className="pt-6 max-w-6xl mx-auto">
-          <div className="text-center mb-4">
-            <span className="text-[11px] font-mono text-[#0EA5E9] uppercase tracking-widest bg-[#0EA5E9]/10 px-3 py-1 rounded-full border border-[#0EA5E9]/20 font-bold">
-              Live Dashboard Interface Simulator
-            </span>
-          </div>
-          <MyGarageDashboardMockup />
+        {/* 3D Interactive Dashboard Preview */}
+        <div className="pt-4 max-w-6xl mx-auto">
+          <Isometric3DStage
+            title="Live Vehicle Locker & Expiry Simulator"
+            badge="Interactive 3D Fleet Stage"
+            accentColor="garage"
+          >
+            <MyGarageDashboardMockup />
+          </Isometric3DStage>
         </div>
       </div>
     </section>
   );
 }
+

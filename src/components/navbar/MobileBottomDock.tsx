@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { Home, Utensils, FileText, MessageSquareCode, Tag } from "lucide-react";
 
 export function MobileBottomDock() {
@@ -57,8 +58,9 @@ export function MobileBottomDock() {
               href={item.href}
               className="flex flex-col items-center group -mt-5 shrink-0 focus:outline-none"
             >
-              <div
-                className={`w-13 h-13 rounded-full bg-white border-4 border-[#F8F3EB] p-1.5 flex items-center justify-center shadow-xl transition-transform duration-200 group-active:scale-95 ${
+              <motion.div
+                whileTap={{ scale: 0.92 }}
+                className={`w-13 h-13 rounded-full bg-white border-4 border-[#F8F3EB] p-1.5 flex items-center justify-center shadow-xl transition-all duration-200 ${
                   isActive ? "ring-2 ring-[#E58145] shadow-[#E58145]/40" : ""
                 }`}
               >
@@ -67,7 +69,7 @@ export function MobileBottomDock() {
                   alt="WebRajya Logo Emblem"
                   className="w-7 h-7 object-contain drop-shadow-sm"
                 />
-              </div>
+              </motion.div>
               <span className="text-[10px] font-black text-[#020C2B] tracking-tight mt-0.5 font-sans">
                 {item.label}
               </span>
@@ -79,12 +81,17 @@ export function MobileBottomDock() {
           <Link
             key={item.href}
             href={item.href}
-            className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition-colors shrink-0 ${
-              isActive ? "text-[#E58145]" : "text-[#525866] hover:text-[#020C2B]"
-            }`}
+            className="relative flex flex-col items-center gap-0.5 py-1 px-3 rounded-xl transition-colors shrink-0"
           >
-            <Icon className={`w-5 h-5 ${isActive ? "text-[#E58145]" : "text-[#525866]"}`} />
-            <span className={`text-[10px] font-sans ${isActive ? "font-bold text-[#E58145]" : "font-medium text-[#525866]"}`}>
+            {isActive && (
+              <motion.div
+                layoutId="activeDockIndicator"
+                className="absolute inset-0 bg-[#020C2B]/5 rounded-xl -z-10"
+                transition={{ type: "spring", stiffness: 380, damping: 28 }}
+              />
+            )}
+            <Icon className={`w-5 h-5 transition-colors ${isActive ? "text-[#E58145]" : "text-[#525866]"}`} />
+            <span className={`text-[10px] font-sans transition-colors ${isActive ? "font-bold text-[#E58145]" : "font-medium text-[#525866]"}`}>
               {item.label}
             </span>
           </Link>

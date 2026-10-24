@@ -71,6 +71,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/#reviews" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Customer Reviews
+                </Link>
+              </li>
+              <li>
                 <Link href="/pos" className="text-[#94A3B8] hover:text-white transition-colors text-xs pt-1 flex items-center gap-1">
                   <span>WebRajya POS Terminal</span>
                 </Link>

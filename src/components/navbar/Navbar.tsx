@@ -3,10 +3,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, Utensils, FileText, Car, ArrowRight, Layers, Tag, HelpCircle, Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Menu, X, Utensils, FileText, Car, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { MagneticHover } from "@/components/ui/motion";
 import { PRODUCTS } from "@/data/products";
-
 import { WebRajyaLogo } from "@/components/brand/WebRajyaLogo";
 
 export function Navbar() {
@@ -65,7 +66,7 @@ export function Navbar() {
             >
               <button
                 onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
                   pathname.startsWith("/pos") || pathname.startsWith("/invoice") || pathname.startsWith("/mygarage") || productsDropdownOpen
                     ? "text-white bg-[#020C2B]"
                     : "text-[#020C2B] hover:text-[#E58145] hover:bg-[#020C2B]/5"
@@ -76,35 +77,43 @@ export function Navbar() {
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${productsDropdownOpen ? "rotate-180" : ""}`} />
               </button>
 
-              {/* Dropdown Menu */}
-              {productsDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-80 p-3 rounded-2xl bg-white border border-[#020C2B]/10 shadow-2xl backdrop-blur-2xl animate-in fade-in slide-in-from-top-2 duration-200 space-y-2">
-                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#525866] px-3 pt-1">
-                    WebRajya Platforms
-                  </div>
-                  
-                  {PRODUCTS.map(product => (
-                    <Link
-                      key={product.id}
-                      href={product.route}
-                      onClick={() => setProductsDropdownOpen(false)}
-                      className="flex items-start gap-3 p-3 rounded-xl transition-all border border-transparent hover:bg-[#F8F3EB] hover:border-[#E58145]/30 group"
-                    >
-                      <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 bg-[#020C2B] text-white group-hover:bg-[#E58145] transition-colors">
-                        {product.id === "pos" ? <Utensils className="w-4 h-4" /> : product.id === "invoice" ? <FileText className="w-4 h-4" /> : <Car className="w-4 h-4" />}
-                      </div>
-                      <div>
-                        <span className="font-bold text-[#020C2B] text-xs group-hover:text-[#E58145] block">
-                          {product.name}
-                        </span>
-                        <p className="text-[11px] text-[#525866] line-clamp-1 mt-0.5 font-normal">
-                          {product.tagline}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              )}
+              {/* Animated Dropdown Menu */}
+              <AnimatePresence>
+                {productsDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 380, damping: 26 }}
+                    className="absolute top-full left-0 mt-2 w-80 p-3 rounded-2xl bg-white border border-[#020C2B]/10 shadow-2xl backdrop-blur-2xl space-y-2 z-50 origin-top"
+                  >
+                    <div className="text-[10px] uppercase font-mono tracking-wider text-[#525866] px-3 pt-1">
+                      WebRajya Platforms
+                    </div>
+                    
+                    {PRODUCTS.map(product => (
+                      <Link
+                        key={product.id}
+                        href={product.route}
+                        onClick={() => setProductsDropdownOpen(false)}
+                        className="flex items-start gap-3 p-3 rounded-xl transition-all border border-transparent hover:bg-[#F8F3EB] hover:border-[#E58145]/30 group"
+                      >
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 bg-[#020C2B] text-white group-hover:bg-[#E58145] transition-colors">
+                          {product.id === "pos" ? <Utensils className="w-4 h-4" /> : product.id === "invoice" ? <FileText className="w-4 h-4" /> : <Car className="w-4 h-4" />}
+                        </div>
+                        <div>
+                          <span className="font-bold text-[#020C2B] text-xs group-hover:text-[#E58145] block">
+                            {product.name}
+                          </span>
+                          <p className="text-[11px] text-[#525866] line-clamp-1 mt-0.5 font-normal">
+                            {product.tagline}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             <Link
@@ -151,15 +160,17 @@ export function Navbar() {
 
           {/* Right Action CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button href="/demo" variant="primary" size="sm" icon={<ArrowRight className="w-3.5 h-3.5" />}>
-              Book a Demo
-            </Button>
+            <MagneticHover>
+              <Button href="/demo" variant="primary" size="sm" icon={<ArrowRight className="w-3.5 h-3.5" />}>
+                Book a Demo
+              </Button>
+            </MagneticHover>
           </div>
 
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl bg-white text-[#020C2B] hover:text-[#E58145] border border-[#020C2B]/10 focus:outline-none focus:ring-2 focus:ring-[#E58145]"
+            className="lg:hidden p-2.5 rounded-xl bg-white text-[#020C2B] hover:text-[#E58145] border border-[#020C2B]/10 focus:outline-none focus:ring-2 focus:ring-[#E58145] cursor-pointer"
             aria-label="Toggle Navigation"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -168,47 +179,55 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[72px] bg-[#F8F3EB] border-b border-[#020C2B]/15 p-5 shadow-2xl backdrop-blur-2xl animate-in fade-in slide-in-from-top-4 duration-200 max-h-[85vh] overflow-y-auto">
-          <div className="space-y-4">
-            
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono uppercase text-[#525866] tracking-wider block font-semibold">WebRajya Products</span>
-              {PRODUCTS.map(product => (
-                <Link
-                  key={product.id}
-                  href={product.route}
-                  className="flex items-center justify-between p-3 rounded-xl bg-white border border-[#020C2B]/10 text-[#020C2B]"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-lg bg-[#020C2B] text-white flex items-center justify-center">
-                      {product.id === "pos" ? <Utensils className="w-3.5 h-3.5" /> : product.id === "invoice" ? <FileText className="w-3.5 h-3.5" /> : <Car className="w-3.5 h-3.5" />}
+      {/* Animated Mobile Drawer */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: "easeOut" }}
+            className="lg:hidden fixed inset-x-0 top-[72px] bg-[#F8F3EB]/98 border-b border-[#020C2B]/15 p-5 shadow-2xl backdrop-blur-2xl max-h-[85vh] overflow-y-auto overflow-hidden z-40"
+          >
+            <div className="space-y-4">
+              
+              <div className="space-y-2">
+                <span className="text-[10px] font-mono uppercase text-[#525866] tracking-wider block font-semibold">WebRajya Products</span>
+                {PRODUCTS.map(product => (
+                  <Link
+                    key={product.id}
+                    href={product.route}
+                    className="flex items-center justify-between p-3 rounded-xl bg-white border border-[#020C2B]/10 text-[#020C2B] hover:border-[#E58145] transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-7 h-7 rounded-lg bg-[#020C2B] text-white flex items-center justify-center">
+                        {product.id === "pos" ? <Utensils className="w-3.5 h-3.5" /> : product.id === "invoice" ? <FileText className="w-3.5 h-3.5" /> : <Car className="w-3.5 h-3.5" />}
+                      </div>
+                      <span className="font-bold text-sm text-[#020C2B]">{product.name}</span>
                     </div>
-                    <span className="font-bold text-sm text-[#020C2B]">{product.name}</span>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-[#E58145]" />
-                </Link>
-              ))}
-            </div>
+                    <ArrowRight className="w-4 h-4 text-[#E58145]" />
+                  </Link>
+                ))}
+              </div>
 
-            <div className="pt-2 border-t border-[#020C2B]/10 flex flex-col gap-2 font-medium text-sm text-[#020C2B]">
-              <Link href="/pos#pos-workflow" className="p-2 hover:text-[#E58145]">Solutions</Link>
-              <Link href="/pricing" className="p-2 hover:text-[#E58145]">Pricing</Link>
-              <Link href="/contact#faq" className="p-2 hover:text-[#E58145]">Resources &amp; FAQ</Link>
-              <Link href="/about" className="p-2 hover:text-[#E58145]">About</Link>
-              <Link href="/contact" className="p-2 hover:text-[#E58145]">Contact</Link>
-            </div>
+              <div className="pt-2 border-t border-[#020C2B]/10 flex flex-col gap-2 font-medium text-sm text-[#020C2B]">
+                <Link href="/pos#pos-workflow" className="p-2 hover:text-[#E58145] rounded-lg">Solutions</Link>
+                <Link href="/pricing" className="p-2 hover:text-[#E58145] rounded-lg">Pricing</Link>
+                <Link href="/contact#faq" className="p-2 hover:text-[#E58145] rounded-lg">Resources &amp; FAQ</Link>
+                <Link href="/about" className="p-2 hover:text-[#E58145] rounded-lg">About</Link>
+                <Link href="/contact" className="p-2 hover:text-[#E58145] rounded-lg">Contact</Link>
+              </div>
 
-            <div className="pt-3 border-t border-[#020C2B]/10">
-              <Button href="/demo" variant="primary" className="w-full">
-                Book a Demo
-              </Button>
-            </div>
+              <div className="pt-3 border-t border-[#020C2B]/10">
+                <Button href="/demo" variant="primary" className="w-full">
+                  Book a Demo
+                </Button>
+              </div>
 
-          </div>
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

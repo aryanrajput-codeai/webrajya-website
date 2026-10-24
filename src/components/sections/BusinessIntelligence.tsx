@@ -3,18 +3,10 @@
 import React, { useState } from "react";
 import {
   BarChart3,
-  TrendingUp,
-  PieChart,
-  Eye,
-  Search,
-  Zap,
-  Award,
-  ArrowRight,
   Sparkles,
-  Layers,
-  ShieldCheck,
   CheckCircle2
 } from "lucide-react";
+import { Motion3DStage, Tilt3DCard, FloatZ } from "@/components/ui/motion3d";
 
 export function BusinessIntelligence() {
   const [timeframe, setTimeframe] = useState<"Today" | "Week" | "Month">("Today");
@@ -149,40 +141,51 @@ export function BusinessIntelligence() {
           </div>
         </div>
 
-        {/* FOUR INSIGHT STAGES */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {STAGES.map(stage => (
-            <div
-              key={stage.number}
-              className="p-6 rounded-3xl bg-white border border-[#020C2B]/10 hover:border-[#E58145] shadow-sm hover:shadow-md transition-all space-y-3 flex flex-col justify-between"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-mono font-black text-[#E58145]">
-                    {stage.number}
-                  </span>
-                  <span className="text-[10px] font-mono text-[#525866] uppercase tracking-wider">
-                    Stage {stage.number}
-                  </span>
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-[#020C2B]">{stage.title}</h4>
-                  <p className="text-xs text-[#E58145] font-mono font-semibold mt-0.5">{stage.subtitle}</p>
-                </div>
-                <p className="text-xs text-[#525866] leading-relaxed">
-                  {stage.desc}
-                </p>
-              </div>
+        {/* FOUR INSIGHT STAGES IN 3D PERSPECTIVE */}
+        <Motion3DStage perspective={1300}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {STAGES.map(stage => (
+              <Tilt3DCard key={stage.number} maxTilt={9} scale={1.02} className="rounded-3xl">
+                <div
+                  className="h-full p-6 rounded-3xl bg-white border border-[#020C2B]/10 hover:border-[#E58145] shadow-3d-floating transition-all space-y-3 flex flex-col justify-between"
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <FloatZ z={30}>
+                        <span className="text-2xl font-mono font-black text-[#E58145]">
+                          {stage.number}
+                        </span>
+                      </FloatZ>
+                      <FloatZ z={25}>
+                        <span className="text-[10px] font-mono text-[#525866] uppercase tracking-wider">
+                          Stage {stage.number}
+                        </span>
+                      </FloatZ>
+                    </div>
+                    <div>
+                      <FloatZ z={20}>
+                        <h4 className="text-lg font-bold text-[#020C2B]">{stage.title}</h4>
+                        <p className="text-xs text-[#E58145] font-mono font-semibold mt-0.5">{stage.subtitle}</p>
+                      </FloatZ>
+                    </div>
+                    <p className="text-xs text-[#525866] leading-relaxed">
+                      {stage.desc}
+                    </p>
+                  </div>
 
-              <div className="pt-3 border-t border-[#020C2B]/10 text-[10px] font-mono text-[#525866]">
-                WebRajya Intelligence Standard
-              </div>
-            </div>
-          ))}
-        </div>
+                  <div className="pt-3 border-t border-[#020C2B]/10 text-[10px] font-mono text-[#525866]">
+                    WebRajya Intelligence Standard
+                  </div>
+                </div>
+              </Tilt3DCard>
+            ))}
+          </div>
+        </Motion3DStage>
 
         {/* INTERACTIVE DASHBOARD MOCKUP (ILLUSTRATIVE DEMO DATA) */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[#FAF5EF] text-[#020C2B] border border-[#020C2B]/10 shadow-xl space-y-6">
+        <Tilt3DCard maxTilt={4} scale={1.01} className="rounded-3xl">
+          <div className="p-6 sm:p-8 rounded-3xl bg-[#FAF5EF] text-[#020C2B] border border-[#020C2B]/10 shadow-xl space-y-6" style={{ transformStyle: "preserve-3d" }}>
           
           <div className="flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-[#020C2B]/10">
             <div className="flex items-center gap-3">
@@ -245,6 +248,7 @@ export function BusinessIntelligence() {
             <span className="text-[#E58145] font-bold">WebRajya Standard</span>
           </div>
         </div>
+        </Tilt3DCard>
 
       </div>
     </section>
