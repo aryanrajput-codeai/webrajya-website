@@ -183,7 +183,7 @@ function PricingContent() {
                   key={plan.id}
                   className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all relative ${
                     isEarlyLifetime
-                      ? "bg-[#020C2B] text-white border-2 border-[#E58145] shadow-xl md:-translate-y-2"
+                      ? "bg-[#020C2B] text-white border-2 border-[#E58145]/80 shadow-2xl shadow-[#E58145]/15 md:-translate-y-2"
                       : isYearly
                       ? "bg-white border-2 border-[#2563EB] shadow-lg md:-translate-y-1"
                       : "bg-white border border-slate-200 shadow-sm"
@@ -191,9 +191,9 @@ function PricingContent() {
                 >
                   {/* Floating Badges */}
                   {isEarlyLifetime && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#E58145] text-white shadow-md flex items-center gap-1 whitespace-nowrap">
+                    <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-[11px] font-mono uppercase font-bold tracking-widest bg-gradient-to-r from-[#E58145] to-[#f5a05a] text-white shadow-lg shadow-[#E58145]/40 flex items-center gap-1.5 whitespace-nowrap ring-2 ring-[#020C2B]">
                       <Flame className="w-3.5 h-3.5 animate-pulse" />
-                      Peoples&apos; Choice • 50 Slots
+                      LIMITED · 50 SLOTS
                     </span>
                   )}
                   {isYearly && !isEarlyLifetime && (
@@ -214,36 +214,36 @@ function PricingContent() {
 
                     {/* Price Block */}
                     <div
-                      className={`p-4 rounded-2xl font-mono text-center space-y-1 ${
+                      className={`p-4 rounded-2xl font-mono text-center space-y-1.5 ${
                         isEarlyLifetime
-                          ? "bg-white/10 border border-white/15"
+                          ? "bg-white/8 border border-[#E58145]/30 shadow-inner shadow-[#E58145]/10"
                           : "bg-[#F8F3EB] border border-slate-200"
                       }`}
                     >
                       {plan.formattedRegularPrice && (
-                        <span className="text-xs line-through text-slate-400 block">
+                        <span className={`text-[11px] line-through block ${isEarlyLifetime ? "text-slate-500" : "text-slate-400"}`}>
                           Regular: {plan.formattedRegularPrice}
                         </span>
                       )}
-                      <div className="flex items-baseline justify-center gap-1">
-                        <span className={`text-3xl font-black ${isEarlyLifetime ? "text-white" : "text-[#020C2B]"}`}>
+                      <div className="flex items-baseline justify-center gap-1.5">
+                        <span className={`font-black leading-none ${isEarlyLifetime ? "text-white text-4xl" : "text-[#020C2B] text-3xl"}`}>
                           {plan.formattedPrice}
                         </span>
-                        <span className={`text-xs ${isEarlyLifetime ? "text-slate-300" : "text-slate-600"}`}>
+                        <span className={`text-xs leading-tight ${isEarlyLifetime ? "text-slate-300" : "text-slate-600"}`}>
                           {plan.billingPeriod}
                         </span>
                       </div>
                       <p
-                        className={`text-xs font-bold ${
+                        className={`text-xs font-bold tracking-wide ${
                           isEarlyLifetime ? "text-amber-300" : "text-[#2563EB]"
                         }`}
                       >
                         {plan.effectiveMonthlyCost}
                       </p>
                       {plan.savingsText && (
-                        <p className={`text-[11px] font-medium ${isEarlyLifetime ? "text-emerald-400" : "text-emerald-600"}`}>
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold ${isEarlyLifetime ? "bg-emerald-500/20 text-emerald-300 ring-1 ring-emerald-500/30" : "bg-emerald-50 text-emerald-700"}`}>
                           {plan.savingsText}
-                        </p>
+                        </span>
                       )}
                     </div>
 
@@ -286,12 +286,12 @@ function PricingContent() {
                   </div>
 
                   {/* Card CTA */}
-                  <div className="mt-8 pt-4 border-t border-slate-100">
+                  <div className={`mt-8 pt-4 ${isEarlyLifetime ? "border-t border-[#E58145]/20" : "border-t border-slate-100"}`}>
                     <Button
                       href={plan.ctaHref(activeTab)}
                       variant={isEarlyLifetime ? "cta" : isYearly ? "cta" : "outline"}
-                      size="lg"
-                      className="w-full font-bold shadow-xs"
+                      size={isEarlyLifetime ? "xl" : "lg"}
+                      className={`w-full font-bold ${isEarlyLifetime ? "shadow-lg shadow-[#E58145]/30 text-base" : "shadow-xs"}`}
                       icon={<ArrowRight className="w-4 h-4" />}
                     >
                       {plan.ctaLabel}
