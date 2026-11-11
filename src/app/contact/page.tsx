@@ -4,8 +4,11 @@ import React, { useState } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Loader2, Sparkles, Utensils, FileText } from "lucide-react";
 import { SITE_CONFIG } from "@/data/config";
 import { GENERAL_FAQS } from "@/data/company";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { submitContactLead } from "@/lib/leadService";
+import { JabalpurLocationMap } from "@/components/ui/JabalpurLocationMap";
 
 export default function ContactPage() {
   const [selectedProduct, setSelectedProduct] = useState<"pos" | "invoice" | "general">("pos");
@@ -107,6 +110,16 @@ export default function ContactPage() {
               </div>
             </div>
 
+            {/* Friendly Support Illustration */}
+            <div className="p-4 rounded-3xl bg-white border border-[#020C2B]/10 shadow-xs flex items-center justify-center">
+              <img
+                src="/illustrations/support-team.svg"
+                alt="WebRajya Customer Support Specialist"
+                className="w-full max-h-48 object-contain"
+                loading="lazy"
+              />
+            </div>
+
             <div className="p-6 rounded-3xl bg-[#020C2B] border border-[#E58145]/30 space-y-3 shadow-xl text-white">
               <h4 className="font-semibold text-white text-sm">Looking for an Interactive Walkthrough?</h4>
               <p className="text-xs text-[#F8F3EB]/80 leading-relaxed">
@@ -181,50 +194,50 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-[#020C2B]/70">Full Name *</label>
-                      <input
+                      <Label className="text-xs font-mono text-[#020C2B]/70">Full Name *</Label>
+                      <Input
                         type="text"
                         required
                         placeholder="John Doe"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-[#F8F3EB] border border-[#020C2B]/10 rounded-xl px-3.5 py-2.5 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145]"
+                        className="h-11 rounded-xl bg-[#F8F3EB] border border-[#020C2B]/10"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-[#020C2B]/70">Work Email *</label>
-                      <input
+                      <Label className="text-xs font-mono text-[#020C2B]/70">Work Email *</Label>
+                      <Input
                         type="email"
                         required
                         placeholder="john@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-[#F8F3EB] border border-[#020C2B]/10 rounded-xl px-3.5 py-2.5 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145]"
+                        className="h-11 rounded-xl bg-[#F8F3EB] border border-[#020C2B]/10"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-[#020C2B]/70">Phone Number</label>
-                      <input
+                      <Label className="text-xs font-mono text-[#020C2B]/70">Phone Number</Label>
+                      <Input
                         type="tel"
                         placeholder="+91 98765 43210"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-[#F8F3EB] border border-[#020C2B]/10 rounded-xl px-3.5 py-2.5 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145]"
+                        className="h-11 rounded-xl bg-[#F8F3EB] border border-[#020C2B]/10"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-[#020C2B]/70">Business / Venue Name</label>
-                      <input
+                      <Label className="text-xs font-mono text-[#020C2B]/70">Business / Venue Name</Label>
+                      <Input
                         type="text"
                         placeholder="Company Name"
                         value={formData.businessName}
                         onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                        className="w-full bg-[#F8F3EB] border border-[#020C2B]/10 rounded-xl px-3.5 py-2.5 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145]"
+                        className="h-11 rounded-xl bg-[#F8F3EB] border border-[#020C2B]/10"
                       />
                     </div>
                   </div>
@@ -263,6 +276,15 @@ export default function ContactPage() {
             </div>
           </div>
 
+        </div>
+
+        {/* Jabalpur HQ Location Map */}
+        <div className="space-y-4 max-w-5xl mx-auto pt-6">
+          <div className="text-center space-y-1">
+            <span className="text-xs font-mono uppercase text-[#E58145] tracking-wider font-bold">Visit or Write to Us</span>
+            <h2 className="text-2xl font-bold text-[#020C2B]">Our Central Madhya Pradesh Office</h2>
+          </div>
+          <JabalpurLocationMap />
         </div>
 
         {/* General FAQs */}

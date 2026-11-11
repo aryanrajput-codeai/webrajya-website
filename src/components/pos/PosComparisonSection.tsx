@@ -2,7 +2,7 @@
 
 import React from "react";
 import { CheckCircle2, XCircle, Zap, ShieldCheck, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 interface ComparisonRow {
   feature: string;

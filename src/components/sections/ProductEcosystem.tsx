@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Utensils, FileText, Car, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { Motion3DStage, Tilt3DCard, FloatZ } from "@/components/ui/motion3d";
 
 export function ProductEcosystem() {

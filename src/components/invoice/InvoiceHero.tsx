@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ArrowRight, Keyboard, Boxes, CheckCircle2, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { InvoiceCounterMockup } from "@/components/invoice/InvoiceCounterMockup";
 import { INVOICE_PRICING } from "@/config/pricing";
 import { Isometric3DStage } from "@/components/ui/Isometric3DStage";

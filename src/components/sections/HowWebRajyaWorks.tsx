@@ -606,6 +606,74 @@ export function HowWebRajyaWorks() {
 
         </div>
 
+        {/* VISUAL THREE-STAGE WORKFLOW STRIP (FRIENDLY UNDRAW ILLUSTRATIONS) */}
+        <div className="pt-6 space-y-6">
+          <div className="text-center space-y-2">
+            <span className="text-xs font-mono uppercase text-[#E58145] tracking-wider font-bold">
+              Simple 3-Stage Workflow
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#020C2B] tracking-tight">
+              From Counter Setup to Daily Revenue Insights
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-3xl bg-white border border-[#020C2B]/10 shadow-xs hover:border-[#E58145]/40 transition-all text-center space-y-4">
+              <div className="w-full h-44 rounded-2xl bg-[#F8F3EB] p-3 flex items-center justify-center">
+                <img
+                  src="/illustrations/quick-setup.svg"
+                  alt="Plug and play hardware connection"
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[11px] font-mono text-[#E58145] uppercase font-bold">Stage 01</span>
+                <h4 className="text-base font-bold text-[#020C2B]">1. Plug &amp; Play Setup</h4>
+                <p className="text-xs text-[#525866] leading-relaxed">
+                  Connect your barcode scanner and thermal receipt printer (58mm or 80mm). Ready in under 10 minutes.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-white border border-[#020C2B]/10 shadow-xs hover:border-[#E58145]/40 transition-all text-center space-y-4">
+              <div className="w-full h-44 rounded-2xl bg-[#F8F3EB] p-3 flex items-center justify-center">
+                <img
+                  src="/illustrations/instant-billing.svg"
+                  alt="Sub-3 second billing and thermal invoice dispatch"
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[11px] font-mono text-[#E58145] uppercase font-bold">Stage 02</span>
+                <h4 className="text-base font-bold text-[#020C2B]">2. Sub-3s Zero-Lag Invoicing</h4>
+                <p className="text-xs text-[#525866] leading-relaxed">
+                  Fast keyboard shortcuts, instant barcode scanning, and split-second thermal receipt or KOT dispatch.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-white border border-[#020C2B]/10 shadow-xs hover:border-[#E58145]/40 transition-all text-center space-y-4">
+              <div className="w-full h-44 rounded-2xl bg-[#F8F3EB] p-3 flex items-center justify-center">
+                <img
+                  src="/illustrations/business-growth.svg"
+                  alt="Customer Khata and automated business reports"
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[11px] font-mono text-[#E58145] uppercase font-bold">Stage 03</span>
+                <h4 className="text-base font-bold text-[#020C2B]">3. Khata &amp; Daily Growth Pulse</h4>
+                <p className="text-xs text-[#525866] leading-relaxed">
+                  Customer credit tracking, inventory balance updates, and automated daily sales summaries.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* FOUR STEP STORY SECTION */}
         <div className="pt-10 space-y-8">
           <div className="text-center space-y-2">

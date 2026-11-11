@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Keyboard, Printer, Zap, Command, CornerDownLeft, Sparkles, Check, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 interface HotkeyItem {
   key: string;

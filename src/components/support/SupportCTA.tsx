@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { MessageSquare, ArrowRight, Play, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 export function SupportCTA() {
   return (

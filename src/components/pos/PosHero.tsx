@@ -2,8 +2,8 @@
 
 import React from "react";
 import { ArrowRight, ShieldCheck, Zap, CheckCircle2, Play } from "lucide-react";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { PosDashboardMockup } from "@/components/mockups/PosDashboardMockup";
 import { Isometric3DStage } from "@/components/ui/Isometric3DStage";
 import { Canvas3DScene } from "@/components/ui/Canvas3DScene";

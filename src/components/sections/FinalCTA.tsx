@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowRight, Utensils, FileText, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { COMPANY_INFO } from "@/data/company";
 
 export function FinalCTA() {

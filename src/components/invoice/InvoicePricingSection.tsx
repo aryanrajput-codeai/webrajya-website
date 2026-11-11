@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight, HelpCircle, Sparkles, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { PRICING_CONFIG, GST_CONFIG, FEATURE_INCLUSION_ASSUMPTION_NOTE } from "@/config/pricing";
 
 export function InvoicePricingSection() {

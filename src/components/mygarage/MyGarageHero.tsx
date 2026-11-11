@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Car, ShieldCheck, Zap, Download } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/badge";
 import { MyGarageDashboardMockup } from "@/components/mockups/MyGarageDashboardMockup";
 import { Isometric3DStage } from "@/components/ui/Isometric3DStage";
 import { Canvas3DScene } from "@/components/ui/Canvas3DScene";

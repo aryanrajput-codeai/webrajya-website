@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Menu, X, Utensils, FileText, Car, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { MagneticHover } from "@/components/ui/motion";
 import { PRODUCTS } from "@/data/products";
 import { WebRajyaLogo } from "@/components/brand/WebRajyaLogo";
@@ -162,12 +162,12 @@ export function Navbar() {
           <MagneticHover>
             <Button
               href="/demo"
-              variant="primary"
+              variant="cta"
               size="sm"
-              className="rounded-full shadow-sm text-xs px-4 py-1.5"
+              className="rounded-full shadow-sm text-xs px-4 py-1.5 font-bold bg-[#E58145] hover:bg-[#d47035] text-white"
               icon={<ArrowRight className="w-3.5 h-3.5" />}
             >
-              Book a Demo
+              Book a Free Demo
             </Button>
           </MagneticHover>
         </div>
@@ -240,8 +240,8 @@ export function Navbar() {
                 </div>
 
                 <div className="pt-3 border-t border-[#020C2B]/10">
-                  <Button href="/demo" variant="primary" className="w-full rounded-full">
-                    Book a Demo
+                  <Button href="/demo" variant="cta" className="w-full rounded-full bg-[#E58145] hover:bg-[#d47035] text-white font-bold">
+                    Book a Free Demo
                   </Button>
                 </div>
               </div>

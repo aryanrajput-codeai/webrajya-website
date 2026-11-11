@@ -23,7 +23,7 @@ export function MobileBottomDock() {
       exact: false,
     },
     {
-      label: "Book Demo",
+      label: "Free Demo",
       href: "/demo",
       icon: MessageSquareCode,
       isCenterFab: true,

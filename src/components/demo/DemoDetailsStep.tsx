@@ -1,4 +1,6 @@
 import React from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface DemoDetailsStepProps {
   fullName: string;
@@ -26,7 +28,7 @@ export function DemoDetailsStep({
           STEP 03 OF 04
         </span>
         <h2 className="text-2xl font-extrabold text-[#020C2B]">
-          Your contact details
+          Your Contact Details
         </h2>
         <p className="text-xs text-[#525866]">
           Enter your contact information so our team can coordinate your walkthrough.
@@ -35,21 +37,20 @@ export function DemoDetailsStep({
 
       <div className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          
           {/* Full Name */}
           <div className="space-y-1.5">
-            <label htmlFor="fullName-input" className="text-xs font-mono text-[#020C2B] font-bold block">
+            <Label htmlFor="fullName-input" className="text-xs font-mono text-[#020C2B] font-bold">
               Full Name *
-            </label>
-            <input
+            </Label>
+            <Input
               id="fullName-input"
               type="text"
               value={fullName}
-              onChange={e => onChangeField("fullName", e.target.value)}
-              placeholder="John Doe"
+              onChange={(e) => onChangeField("fullName", e.target.value)}
+              placeholder="e.g. Rajesh Patel"
               aria-invalid={!!errors.fullName}
               aria-describedby={errors.fullName ? "fullName-error" : undefined}
-              className={`w-full bg-[#F8F3EB] border rounded-xl px-4 py-2.5 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145] focus:ring-2 focus:ring-[#E58145]/20 ${
+              className={`h-11 rounded-xl bg-[#F8F3EB] border ${
                 errors.fullName ? "border-rose-500 bg-rose-50/50" : "border-[#020C2B]/15"
               }`}
             />
@@ -62,46 +63,44 @@ export function DemoDetailsStep({
 
           {/* Business Name */}
           <div className="space-y-1.5">
-            <label htmlFor="businessName-details-input" className="text-xs font-mono text-[#020C2B] font-bold block">
+            <Label htmlFor="businessName-input" className="text-xs font-mono text-[#020C2B] font-bold">
               Business Name *
-            </label>
-            <input
-              id="businessName-details-input"
+            </Label>
+            <Input
+              id="businessName-input"
               type="text"
               value={businessName}
-              onChange={e => onChangeField("businessName", e.target.value)}
-              placeholder="e.g. Royal Feast Cafe"
+              onChange={(e) => onChangeField("businessName", e.target.value)}
+              placeholder="e.g. Om Sai Mart"
               aria-invalid={!!errors.businessName}
-              aria-describedby={errors.businessName ? "businessName-details-error" : undefined}
-              className={`w-full bg-[#F8F3EB] border rounded-xl px-4 py-2.5 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145] focus:ring-2 focus:ring-[#E58145]/20 ${
+              aria-describedby={errors.businessName ? "businessName-error" : undefined}
+              className={`h-11 rounded-xl bg-[#F8F3EB] border ${
                 errors.businessName ? "border-rose-500 bg-rose-50/50" : "border-[#020C2B]/15"
               }`}
             />
             {errors.businessName && (
-              <p id="businessName-details-error" className="text-xs font-mono text-rose-600">
+              <p id="businessName-error" className="text-xs font-mono text-rose-600">
                 {errors.businessName}
               </p>
             )}
           </div>
-
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          
           {/* Phone Number */}
           <div className="space-y-1.5">
-            <label htmlFor="phone-input" className="text-xs font-mono text-[#020C2B] font-bold block">
-              Phone Number *
-            </label>
-            <input
+            <Label htmlFor="phone-input" className="text-xs font-mono text-[#020C2B] font-bold">
+              Phone Number (WhatsApp) *
+            </Label>
+            <Input
               id="phone-input"
               type="tel"
               value={phone}
-              onChange={e => onChangeField("phone", e.target.value)}
+              onChange={(e) => onChangeField("phone", e.target.value)}
               placeholder="+91 98765 43210"
               aria-invalid={!!errors.phone}
               aria-describedby={errors.phone ? "phone-error" : undefined}
-              className={`w-full bg-[#F8F3EB] border rounded-xl px-4 py-2.5 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145] focus:ring-2 focus:ring-[#E58145]/20 ${
+              className={`h-11 rounded-xl bg-[#F8F3EB] border ${
                 errors.phone ? "border-rose-500 bg-rose-50/50" : "border-[#020C2B]/15"
               }`}
             />
@@ -114,18 +113,18 @@ export function DemoDetailsStep({
 
           {/* Email Address */}
           <div className="space-y-1.5">
-            <label htmlFor="email-input" className="text-xs font-mono text-[#020C2B] font-bold block">
+            <Label htmlFor="email-input" className="text-xs font-mono text-[#020C2B] font-bold">
               Email Address *
-            </label>
-            <input
+            </Label>
+            <Input
               id="email-input"
               type="email"
               value={email}
-              onChange={e => onChangeField("email", e.target.value)}
-              placeholder="name@company.com"
+              onChange={(e) => onChangeField("email", e.target.value)}
+              placeholder="rajesh@example.com"
               aria-invalid={!!errors.email}
               aria-describedby={errors.email ? "email-error" : undefined}
-              className={`w-full bg-[#F8F3EB] border rounded-xl px-4 py-2.5 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145] focus:ring-2 focus:ring-[#E58145]/20 ${
+              className={`h-11 rounded-xl bg-[#F8F3EB] border ${
                 errors.email ? "border-rose-500 bg-rose-50/50" : "border-[#020C2B]/15"
               }`}
             />
@@ -135,21 +134,20 @@ export function DemoDetailsStep({
               </p>
             )}
           </div>
-
         </div>
 
-        {/* Message / What would you like to see? */}
+        {/* Optional Notes */}
         <div className="space-y-1.5">
-          <label htmlFor="message-input" className="text-xs font-mono text-[#020C2B] font-bold block">
-            What would you like to see in the demo? (Optional)
-          </label>
+          <Label htmlFor="notes-input" className="text-xs font-mono text-[#020C2B] font-bold">
+            Operational Requirements or Questions (Optional)
+          </Label>
           <textarea
-            id="message-input"
+            id="notes-input"
             rows={3}
             value={message || ""}
-            onChange={e => onChangeField("message", e.target.value)}
-            placeholder="Tell us about your registers, billing counters, or invoicing requirements..."
-            className="w-full bg-[#F8F3EB] border border-[#020C2B]/15 rounded-xl px-4 py-2.5 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145] focus:ring-2 focus:ring-[#E58145]/20 resize-none font-medium"
+            onChange={(e) => onChangeField("message", e.target.value)}
+            placeholder="Tell us about your counter setup, number of billing lanes, or printer models..."
+            className="w-full bg-[#F8F3EB] border border-[#020C2B]/15 rounded-xl px-4 py-2.5 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145] focus:ring-2 focus:ring-[#E58145]/20 resize-none transition-colors"
           />
         </div>
       </div>

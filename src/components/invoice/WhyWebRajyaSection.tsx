@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { INVOICE_PRICING } from "@/config/pricing";
 
 export function WhyWebRajyaSection() {

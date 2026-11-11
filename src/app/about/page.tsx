@@ -2,7 +2,8 @@ import React from "react";
 import Metadata from "next";
 import { Sparkles, ShieldCheck, Layers, Cpu, CheckCircle2, ArrowRight } from "lucide-react";
 import { COMPANY_INFO, WEBRAJYA_PRINCIPLES } from "@/data/company";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
+import { JabalpurLocationMap } from "@/components/ui/JabalpurLocationMap";
 
 export const metadata = {
   title: "About WEBRAJYA — Connected Business Software Platform",
@@ -62,6 +63,18 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* JABALPUR HQ LOCATION MAP */}
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <span className="text-xs font-mono uppercase text-[#E58145] tracking-wider font-bold">Headquarters</span>
+            <h2 className="text-3xl font-extrabold text-[#020C2B]">Engineered in Jabalpur, India</h2>
+            <p className="text-xs sm:text-sm text-[#020C2B]/70 max-w-xl mx-auto">
+              Our engineering and product support teams are based in Jabalpur, Madhya Pradesh, delivering rapid assistance to businesses across India.
+            </p>
+          </div>
+          <JabalpurLocationMap />
         </div>
 
         {/* BOTTOM CTA */}

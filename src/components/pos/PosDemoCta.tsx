@@ -1,6 +1,6 @@
 import React from "react";
 import { Utensils, ArrowRight, Play, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 export function PosDemoCta() {
   return (

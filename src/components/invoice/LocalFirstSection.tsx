@@ -1,6 +1,6 @@
 import React from "react";
 import { HardDrive, RefreshCw, ShieldCheck, Zap, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { INVOICE_PRICING } from "@/config/pricing";
 
 export function LocalFirstSection() {

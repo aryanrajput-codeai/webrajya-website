@@ -15,7 +15,7 @@ import {
   BarChart3,
   Monitor
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "Restaurant POS System & Restaurant Management Software | WebRajya",

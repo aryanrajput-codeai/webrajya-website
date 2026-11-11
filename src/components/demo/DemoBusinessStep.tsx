@@ -1,6 +1,8 @@
 import React from "react";
 import { Utensils, Store, Briefcase, Truck, UserCheck, HelpCircle, CheckCircle2 } from "lucide-react";
 import { BusinessTypeOption } from "@/lib/demoSubmission";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface DemoBusinessStepProps {
   businessType: BusinessTypeOption | string;
@@ -33,7 +35,7 @@ export function DemoBusinessStep({
           STEP 01 OF 04
         </span>
         <h2 className="text-2xl font-extrabold text-[#020C2B]">
-          Tell us about your business
+          Tell Us About Your Business
         </h2>
         <p className="text-xs text-[#525866]">
           Select your operational business type so we can customize your demo walkthrough.
@@ -42,11 +44,11 @@ export function DemoBusinessStep({
 
       {/* Business Type Selector Grid */}
       <div className="space-y-2">
-        <label className="text-xs font-mono text-[#020C2B] font-bold block">
+        <Label className="text-xs font-mono text-[#020C2B] font-bold block">
           Select Business Type *
-        </label>
+        </Label>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {options.map(opt => {
+          {options.map((opt) => {
             const isSelected = businessType === opt.label;
             return (
               <button
@@ -60,7 +62,7 @@ export function DemoBusinessStep({
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  {opt.icon}
+                  <span className="p-1.5 rounded-lg bg-white/10 shrink-0">{opt.icon}</span>
                   <span>{opt.label}</span>
                 </div>
                 {isSelected && <CheckCircle2 className="w-4 h-4 text-[#E58145] shrink-0" />}
@@ -77,18 +79,18 @@ export function DemoBusinessStep({
 
       {/* Business Name Input */}
       <div className="space-y-2">
-        <label htmlFor="businessName-input" className="text-xs font-mono text-[#020C2B] font-bold block">
+        <Label htmlFor="businessName-input" className="text-xs font-mono text-[#020C2B] font-bold block">
           Business / Venue Name *
-        </label>
-        <input
+        </Label>
+        <Input
           id="businessName-input"
           type="text"
           value={businessName}
-          onChange={e => onChangeName(e.target.value)}
+          onChange={(e) => onChangeName(e.target.value)}
           placeholder="e.g. Royal Feast Cafe or Acme Digital"
           aria-invalid={!!errors.businessName}
           aria-describedby={errors.businessName ? "businessName-error" : undefined}
-          className={`w-full bg-[#F8F3EB] border rounded-xl px-4 py-3 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145] focus:ring-2 focus:ring-[#E58145]/20 font-medium ${
+          className={`h-11 rounded-xl bg-[#F8F3EB] border ${
             errors.businessName ? "border-rose-500 bg-rose-50/50" : "border-[#020C2B]/15"
           }`}
         />

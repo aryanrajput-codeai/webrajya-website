@@ -1,5 +1,6 @@
 import React from "react";
 import { ProductGateway } from "@/components/sections/ProductGateway";
+import { CustomerMarquee } from "@/components/sections/CustomerMarquee";
 import { WebRajyaVision } from "@/components/sections/WebRajyaVision";
 import { HowWebRajyaWorks } from "@/components/sections/HowWebRajyaWorks";
 import { RealWorldUseCases } from "@/components/sections/RealWorldUseCases";
@@ -15,6 +16,9 @@ export default function GatewayPage() {
     <div className="w-full overflow-hidden">
       {/* SECTION 1 — PRODUCT GATEWAY */}
       <ProductGateway />
+
+      {/* SECTION 1.5 — TRUST & VERIFIED CUSTOMERS MARQUEE */}
+      <CustomerMarquee />
 
       {/* SECTION 2 — WEBRAJYA VISION */}
       <WebRajyaVision />

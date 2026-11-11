@@ -1,5 +1,7 @@
 import React from "react";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, CheckCircle2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface DemoScheduleStepProps {
   preferredDate: string;
@@ -29,29 +31,28 @@ export function DemoScheduleStep({
           STEP 04 OF 04
         </span>
         <h2 className="text-2xl font-extrabold text-[#020C2B]">
-          Preferred demo schedule
+          Preferred Demo Schedule
         </h2>
         <p className="text-xs text-[#525866]">
           We&apos;ll use your preference when arranging the demo walkthrough.
         </p>
       </div>
 
-      <div className="space-y-4">
-        
+      <div className="space-y-5">
         {/* Preferred Date Input */}
         <div className="space-y-1.5">
-          <label htmlFor="preferredDate-input" className="text-xs font-mono text-[#020C2B] font-bold flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5 text-[#E58145]" /> Preferred demo date *
-          </label>
-          <input
+          <Label htmlFor="preferredDate-input" className="text-xs font-mono text-[#020C2B] font-bold flex items-center gap-1.5">
+            <Calendar className="w-3.5 h-3.5 text-[#E58145]" /> Preferred Demo Date *
+          </Label>
+          <Input
             id="preferredDate-input"
             type="date"
             min={todayStr}
             value={preferredDate}
-            onChange={e => onChangeField("preferredDate", e.target.value)}
+            onChange={(e) => onChangeField("preferredDate", e.target.value)}
             aria-invalid={!!errors.preferredDate}
             aria-describedby={errors.preferredDate ? "preferredDate-error" : undefined}
-            className={`w-full bg-[#F8F3EB] border rounded-xl px-4 py-3 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145] focus:ring-2 focus:ring-[#E58145]/20 font-mono font-medium ${
+            className={`h-11 rounded-xl bg-[#F8F3EB] font-mono ${
               errors.preferredDate ? "border-rose-500 bg-rose-50/50" : "border-[#020C2B]/15"
             }`}
           />
@@ -62,36 +63,37 @@ export function DemoScheduleStep({
           )}
         </div>
 
-        {/* Preferred Time Selector */}
-        <div className="space-y-1.5">
-          <label htmlFor="preferredTime-select" className="text-xs font-mono text-[#020C2B] font-bold flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5 text-[#E58145]" /> Preferred demo time *
-          </label>
-          <select
-            id="preferredTime-select"
-            value={preferredTime}
-            onChange={e => onChangeField("preferredTime", e.target.value)}
-            aria-invalid={!!errors.preferredTime}
-            aria-describedby={errors.preferredTime ? "preferredTime-error" : undefined}
-            className={`w-full bg-[#F8F3EB] border rounded-xl px-4 py-3 text-[#020C2B] text-sm focus:outline-none focus:border-[#E58145] focus:ring-2 focus:ring-[#E58145]/20 font-medium cursor-pointer ${
-              errors.preferredTime ? "border-rose-500 bg-rose-50/50" : "border-[#020C2B]/15"
-            }`}
-          >
-            <option value="">-- Select preferred time slot --</option>
-            {timeOptions.map(t => (
-              <option key={t} value={t}>{t}</option>
-            ))}
-          </select>
+        {/* Preferred Time Window */}
+        <div className="space-y-2">
+          <Label className="text-xs font-mono text-[#020C2B] font-bold flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-[#E58145]" /> Preferred Time Window *
+          </Label>
+          <div className="space-y-2">
+            {timeOptions.map((time) => {
+              const isSelected = preferredTime === time;
+              return (
+                <button
+                  key={time}
+                  type="button"
+                  onClick={() => onChangeField("preferredTime", time)}
+                  className={`w-full p-3.5 rounded-xl border text-xs font-mono flex items-center justify-between transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#E58145] ${
+                    isSelected
+                      ? "bg-[#020C2B] text-white border-[#E58145] font-bold shadow-sm"
+                      : "bg-[#F8F3EB] border-[#020C2B]/10 text-[#020C2B] hover:border-[#E58145]/40 hover:bg-white"
+                  }`}
+                >
+                  <span>{time}</span>
+                  {isSelected && <CheckCircle2 className="w-4 h-4 text-[#E58145] shrink-0" />}
+                </button>
+              );
+            })}
+          </div>
           {errors.preferredTime && (
-            <p id="preferredTime-error" className="text-xs font-mono text-rose-600">
+            <p id="preferredTime-error" className="text-xs font-mono text-rose-600 pt-1">
               {errors.preferredTime}
             </p>
           )}
         </div>
-
-        <p className="text-xs text-[#525866] font-mono pt-2">
-          Note: Your requested slot is used as your preferred timing when our team reaches out to confirm your session.
-        </p>
       </div>
     </div>
   );

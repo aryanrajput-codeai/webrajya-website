@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" fill="none" width="100%" height="100%">
+  <!-- Background soft halo -->
+  <circle cx="250" cy="175" r="130" fill="#F8F3EB" />
+  
+  <!-- Desk line -->
+  <path d="M70 280 H430" stroke="#020C2B" stroke-width="4" stroke-linecap="round" />
+  
+  <!-- Analytics Dashboard Board -->
+  <rect x="120" y="80" width="260" height="170" rx="16" fill="#FFFFFF" stroke="#020C2B" stroke-width="3" filter="drop-shadow(0 14px 28px rgba(2,12,43,0.1))" />
+  
+  <!-- Dashboard Top Bar -->
+  <circle cx="145" cy="102" r="4" fill="#EF4444" />
+  <circle cx="157" cy="102" r="4" fill="#F59E0B" />
+  <circle cx="169" cy="102" r="4" fill="#10B981" />
+  <rect x="190" y="98" width="90" height="8" rx="4" fill="#F8F3EB" />
+  
+  <!-- Bar chart in board -->
+  <rect x="150" y="190" width="22" height="40" rx="4" fill="#020C2B" />
+  <rect x="185" y="170" width="22" height="60" rx="4" fill="#020C2B" opacity="0.6" />
+  <rect x="220" y="150" width="22" height="80" rx="4" fill="#E58145" opacity="0.8" />
+  <rect x="255" y="130" width="22" height="100" rx="4" fill="#E58145" />
+  <rect x="290" y="115" width="22" height="115" rx="4" fill="#10B981" />
+  
+  <!-- Trend line with dot -->
+  <path d="M161 185 L196 165 L231 145 L266 125 L301 110" stroke="#E58145" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="301" cy="110" r="5" fill="#E58145" stroke="#FFFFFF" stroke-width="2" />
+  
+  <!-- Revenue Metric Pill -->
+  <g transform="translate(300, 70)">
+    <rect x="0" y="0" width="115" height="42" rx="12" fill="#020C2B" filter="drop-shadow(0 6px 14px rgba(2,12,43,0.2))" />
+    <text x="12" y="18" font-family="sans-serif" font-size="9" fill="#94A3B8" font-weight="bold">COLLECTED</text>
+    <text x="12" y="33" font-family="monospace" font-size="13" fill="#10B981" font-weight="900">₹8,45,000</text>
+  </g>
+  
+  <!-- Khata ledger notebook (Left) -->
+  <g transform="translate(60, 200)">
+    <rect x="0" y="0" width="55" height="70" rx="6" fill="#E58145" stroke="#020C2B" stroke-width="2.5" />
+    <rect x="8" y="12" width="38" height="6" rx="3" fill="#FFFFFF" />
+    <rect x="8" y="24" width="30" height="4" rx="2" fill="#FFFFFF" opacity="0.7" />
+    <rect x="8" y="32" width="35" height="4" rx="2" fill="#FFFFFF" opacity="0.7" />
+    <rect x="8" y="40" width="25" height="4" rx="2" fill="#FFFFFF" opacity="0.7" />
+    <circle cx="27" cy="56" r="6" fill="#020C2B" />
+    <text x="27" y="60" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#FFFFFF" font-weight="bold">✓</text>
+  </g>
+</svg>

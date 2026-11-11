@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { FileText, Utensils, CheckCircle2, ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { PRICING_CONFIG, GST_CONFIG, FEATURE_INCLUSION_ASSUMPTION_NOTE } from "@/config/pricing";
 
 export function HomepagePricingTeaser() {
@@ -285,3 +285,4 @@ export function HomepagePricingTeaser() {
     </section>
   );
 }
+

@@ -11,7 +11,7 @@ import {
   Monitor,
   Flame
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "KOT Billing Software & Kitchen Display System (KDS) | WebRajya",

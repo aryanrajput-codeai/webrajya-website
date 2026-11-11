@@ -11,7 +11,7 @@ import {
   CreditCard,
   QrCode
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "QSR & Fast Food Billing Software | High-Speed Counter POS | WebRajya",
