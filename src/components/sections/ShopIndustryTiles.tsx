@@ -69,7 +69,6 @@ export function ShopIndustryTiles() {
       <div className="max-w-6xl mx-auto space-y-14">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <Badge variant="invoice">Targeted Retail Solutions</Badge>
           <h2 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
             Built for Your Shop in Nagpur
           </h2>

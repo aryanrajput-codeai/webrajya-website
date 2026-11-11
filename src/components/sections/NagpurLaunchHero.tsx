@@ -8,11 +8,9 @@ import {
   Zap,
   ShieldCheck,
   WifiOff,
-  Sparkles,
   Phone
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { LAUNCH_CONFIG } from "@/config/launch";
 import { trackEvent } from "@/lib/analytics";
@@ -40,12 +38,6 @@ export function NagpurLaunchHero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 sm:space-y-12">
         <div className="text-center max-w-4xl mx-auto space-y-6">
-          {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#020C2B]/10 shadow-xs text-xs font-semibold text-[#020C2B]">
-            <Sparkles className="w-3.5 h-3.5 text-[#E58145]" />
-            <span>Launch in Nagpur, Maharashtra • WebRajya Invoice</span>
-          </div>
-
           {/* Clear Headline */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#020C2B] tracking-tight leading-[1.15] sm:leading-[1.1]">
             Affordable, Easy-to-Use Billing &amp; Inventory Software for Nagpur Retailers
@@ -82,15 +74,6 @@ export function NagpurLaunchHero() {
               <span>{t("whatsapp_us", "WhatsApp Us", "WhatsApp karein")}</span>
             </a>
           </div>
-
-          {/* Strict Trust Line */}
-          <p className="text-xs sm:text-sm font-mono font-bold text-emerald-700 bg-emerald-50/80 px-4 py-2 rounded-2xl border border-emerald-200 inline-block">
-            {t(
-              "trial_trust",
-              "3-day free trial after live demo. Personal setup help.",
-              "Live demo ke baad 3 din ka free trial. Personal setup me poori madad."
-            )}
-          </p>
 
           {/* Verified Technical Pillars */}
           <div className="pt-4 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-slate-600 font-mono">

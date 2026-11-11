@@ -40,7 +40,6 @@ export function FourStepFlow() {
       <div className="max-w-6xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <Badge variant="invoice">Simple 4-Step Onboarding</Badge>
           <h2 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
             From Demo to Live Billing in 4 Simple Steps
           </h2>

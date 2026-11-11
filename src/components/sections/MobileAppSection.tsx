@@ -53,10 +53,6 @@ export function MobileAppSection() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Col: Explainer & Action */}
         <div className="space-y-6">
-          <Badge variant="invoice">
-            {isLive ? "Now Available on Mobile" : "Mobile App Coming Soon"}
-          </Badge>
-
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#020C2B] tracking-tight">
             {isLive
               ? "Manage Your Shop from Anywhere with WebRajya Mobile"

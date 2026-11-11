@@ -1,24 +1,20 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  ChevronDown,
   Menu,
   X,
-  FileText,
-  Utensils,
-  Car,
   ArrowRight,
   Phone,
   Smartphone,
-  Shirt,
   Tv,
-  BookOpen,
+  Shirt,
   Footprints,
-  Layers
+  BookOpen,
+  Layers,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MagneticHover } from "@/components/ui/motion";
@@ -32,8 +28,6 @@ import { useLanguage } from "@/context/LanguageContext";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [shopsDropdownOpen, setShopsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const { t } = useLanguage();
 
@@ -46,18 +40,7 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setShopsDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  useEffect(() => {
     setMobileMenuOpen(false);
-    setShopsDropdownOpen(false);
   }, [pathname]);
 
   const SHOP_LINKS = [
@@ -99,56 +82,6 @@ export function Navbar() {
           >
             Invoice
           </Link>
-
-          {/* Nagpur Shops Dropdown */}
-          <div ref={dropdownRef} className="relative">
-            <button
-              onClick={() => setShopsDropdownOpen(!shopsDropdownOpen)}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
-                pathname.startsWith("/industry") || shopsDropdownOpen
-                  ? "text-white bg-[#020C2B] shadow-xs"
-                  : "text-[#020C2B] hover:text-[#E58145] hover:bg-[#020C2B]/5"
-              }`}
-              aria-expanded={shopsDropdownOpen}
-            >
-              <span>Shops in Nagpur</span>
-              <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                  shopsDropdownOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-
-            <AnimatePresence>
-              {shopsDropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 28 }}
-                  className="absolute top-full left-0 mt-3 w-72 p-2.5 rounded-2xl bg-white/95 border border-white/90 shadow-[0_20px_50px_rgba(2,12,43,0.16)] backdrop-blur-3xl space-y-1 z-50 origin-top"
-                >
-                  <div className="text-[10px] uppercase font-mono tracking-wider text-slate-500 px-3 py-1">
-                    Select Your Business Type
-                  </div>
-                  {SHOP_LINKS.map((shop) => {
-                    const Icon = shop.icon;
-                    return (
-                      <Link
-                        key={shop.href}
-                        href={shop.href}
-                        onClick={() => setShopsDropdownOpen(false)}
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-800 hover:bg-[#F8F3EB] hover:text-[#2563EB] transition-colors"
-                      >
-                        <Icon className="w-4 h-4 text-[#2563EB]" />
-                        <span>{shop.name}</span>
-                      </Link>
-                    );
-                  })}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
 
           <Link
             href="/features"

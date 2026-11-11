@@ -53,7 +53,6 @@ export function NagpurHomeFaq() {
     <section className="py-24 bg-white border-t border-[#020C2B]/10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-12">
         <div className="text-center space-y-3">
-          <Badge variant="invoice">Answers for Shop Owners</Badge>
           <h2 className="text-3xl sm:text-4xl font-black text-[#020C2B] tracking-tight">
             Frequently Asked Questions
           </h2>
