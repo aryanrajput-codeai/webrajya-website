@@ -1,11 +1,13 @@
+import { LAUNCH_CONFIG } from "./launch";
+
 /**
  * WebRajya WhatsApp Configuration & URL Builder
  * 
  * Target WhatsApp Destination Number (International format without +, spaces, or hyphens)
- * Replace default "919876543210" with official WebRajya business WhatsApp number or set NEXT_PUBLIC_WEBRAJYA_WHATSAPP_NUMBER
+ * Defaults to LAUNCH_CONFIG.WHATSAPP (919630013483) or NEXT_PUBLIC_WEBRAJYA_WHATSAPP_NUMBER
  */
 export const WEBRAJYA_WHATSAPP_NUMBER =
-  process.env.NEXT_PUBLIC_WEBRAJYA_WHATSAPP_NUMBER || "919876543210";
+  process.env.NEXT_PUBLIC_WEBRAJYA_WHATSAPP_NUMBER || LAUNCH_CONFIG.WHATSAPP;
 
 export interface DemoLeadMessageData {
   fullName: string;

@@ -121,12 +121,36 @@ export function CustomerReviewsSection() {
     });
   }, [reviews, selectedProduct, onlyFiveStars]);
 
-  // Rating metrics calculations
+  // Dynamic rating metrics calculations from actual review items
   const totalReviewsCount = reviews.length;
-  const fiveStarCount = reviews.filter((r) => r.rating === 5).length;
-  const fourStarCount = reviews.filter((r) => r.rating === 4).length;
-  const fiveStarPercentage = Math.round((fiveStarCount / totalReviewsCount) * 100) || 95;
-  const fourStarPercentage = Math.round((fourStarCount / totalReviewsCount) * 100) || 5;
+  const starCounts = {
+    5: reviews.filter((r) => r.rating === 5).length,
+    4: reviews.filter((r) => r.rating === 4).length,
+    3: reviews.filter((r) => r.rating === 3).length,
+    2: reviews.filter((r) => r.rating === 2).length,
+    1: reviews.filter((r) => r.rating === 1).length,
+  };
+
+  const avgRating =
+    totalReviewsCount > 0
+      ? (
+          reviews.reduce((acc, r) => acc + r.rating, 0) / totalReviewsCount
+        ).toFixed(1)
+      : "5.0";
+
+  const starPercentages = {
+    5: totalReviewsCount > 0 ? Math.min(100, Math.round((starCounts[5] / totalReviewsCount) * 100)) : 0,
+    4: totalReviewsCount > 0 ? Math.min(100, Math.round((starCounts[4] / totalReviewsCount) * 100)) : 0,
+    3: totalReviewsCount > 0 ? Math.min(100, Math.round((starCounts[3] / totalReviewsCount) * 100)) : 0,
+    2: totalReviewsCount > 0 ? Math.min(100, Math.round((starCounts[2] / totalReviewsCount) * 100)) : 0,
+    1: totalReviewsCount > 0 ? Math.min(100, Math.round((starCounts[1] / totalReviewsCount) * 100)) : 0,
+  };
+
+  const positiveReviewsCount = reviews.filter((r) => r.rating >= 4).length;
+  const positiveRecommendationRate =
+    totalReviewsCount > 0
+      ? Math.round((positiveReviewsCount / totalReviewsCount) * 100)
+      : 100;
 
   return (
     <section id="reviews" className="py-24 bg-[#F8F3EB] text-[#020C2B] relative overflow-hidden border-t border-[#020C2B]/10">
@@ -138,13 +162,12 @@ export function CustomerReviewsSection() {
         {/* SECTION HEADER */}
         <FadeIn direction="up">
           <div className="text-center max-w-3xl mx-auto space-y-4">
-
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#020C2B] leading-tight">
-              Trusted by 1,200+ Indian Businesses
+              Verified Feedback from Everyday Store Owners
             </h2>
 
             <p className="text-[#525866] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Real store owners, restaurateurs, and garage managers sharing their daily billing speed, inventory control, and business impact.
+              Real store owners, restaurateurs, and fleet managers sharing their daily billing speed, inventory control, and operational impact.
             </p>
           </div>
         </FadeIn>
@@ -155,7 +178,7 @@ export function CustomerReviewsSection() {
             {/* Big Score Summary */}
             <div className="lg:col-span-4 text-center lg:text-left space-y-3 lg:border-r border-[#020C2B]/10 lg:pr-8">
               <div className="flex items-baseline justify-center lg:justify-start gap-2">
-                <span className="text-5xl sm:text-6xl font-black text-[#020C2B]">4.9</span>
+                <span className="text-5xl sm:text-6xl font-black text-[#020C2B]">{avgRating}</span>
                 <span className="text-xl sm:text-2xl font-bold text-[#525866]">/ 5.0</span>
               </div>
 
@@ -166,12 +189,12 @@ export function CustomerReviewsSection() {
             </div>
 
             <p className="text-xs sm:text-sm text-[#525866]">
-              Based on <span className="font-bold text-[#020C2B]">{totalReviewsCount}+ verified reviews</span> across retail, dining &amp; automotive sectors.
+              Based on <span className="font-bold text-[#020C2B]">{totalReviewsCount} verified reviews</span> across retail, dining &amp; automotive sectors.
             </p>
 
             <div className="pt-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
-                <CheckCircle2 className="w-3.5 h-3.5" /> 99.2% Positive Recommendation
+                <CheckCircle2 className="w-3.5 h-3.5" /> {positiveRecommendationRate}% Positive Recommendation
               </span>
             </div>
           </div>
@@ -183,10 +206,10 @@ export function CustomerReviewsSection() {
               <div className="flex-1 h-2.5 bg-[#F8F3EB] rounded-full overflow-hidden border border-[#020C2B]/5">
                 <div
                   className="h-full bg-[#E58145] rounded-full"
-                  style={{ width: `${fiveStarPercentage}%` }}
+                  style={{ width: `${starPercentages[5]}%` }}
                 />
               </div>
-              <span className="w-10 text-right font-mono text-[#525866]">{fiveStarPercentage}%</span>
+              <span className="w-10 text-right font-mono text-[#525866]">{starPercentages[5]}%</span>
             </div>
 
             <div className="flex items-center gap-3 text-xs">
@@ -194,34 +217,34 @@ export function CustomerReviewsSection() {
               <div className="flex-1 h-2.5 bg-[#F8F3EB] rounded-full overflow-hidden border border-[#020C2B]/5">
                 <div
                   className="h-full bg-amber-400 rounded-full"
-                  style={{ width: `${fourStarPercentage}%` }}
+                  style={{ width: `${starPercentages[4]}%` }}
                 />
               </div>
-              <span className="w-10 text-right font-mono text-[#525866]">{fourStarPercentage}%</span>
+              <span className="w-10 text-right font-mono text-[#525866]">{starPercentages[4]}%</span>
             </div>
 
             <div className="flex items-center gap-3 text-xs">
               <span className="w-12 font-mono font-semibold text-[#020C2B]">3 Star</span>
               <div className="flex-1 h-2.5 bg-[#F8F3EB] rounded-full overflow-hidden border border-[#020C2B]/5">
-                <div className="h-full bg-amber-200 rounded-full" style={{ width: "1%" }} />
+                <div className="h-full bg-amber-200 rounded-full" style={{ width: `${starPercentages[3]}%` }} />
               </div>
-              <span className="w-10 text-right font-mono text-[#525866]">1%</span>
+              <span className="w-10 text-right font-mono text-[#525866]">{starPercentages[3]}%</span>
             </div>
 
             <div className="flex items-center gap-3 text-xs">
               <span className="w-12 font-mono font-semibold text-[#020C2B]">2 Star</span>
               <div className="flex-1 h-2.5 bg-[#F8F3EB] rounded-full overflow-hidden border border-[#020C2B]/5">
-                <div className="h-full bg-gray-200 rounded-full" style={{ width: "0%" }} />
+                <div className="h-full bg-gray-200 rounded-full" style={{ width: `${starPercentages[2]}%` }} />
               </div>
-              <span className="w-10 text-right font-mono text-[#525866]">0%</span>
+              <span className="w-10 text-right font-mono text-[#525866]">{starPercentages[2]}%</span>
             </div>
 
             <div className="flex items-center gap-3 text-xs">
               <span className="w-12 font-mono font-semibold text-[#020C2B]">1 Star</span>
               <div className="flex-1 h-2.5 bg-[#F8F3EB] rounded-full overflow-hidden border border-[#020C2B]/5">
-                <div className="h-full bg-gray-200 rounded-full" style={{ width: "0%" }} />
+                <div className="h-full bg-gray-200 rounded-full" style={{ width: `${starPercentages[1]}%` }} />
               </div>
-              <span className="w-10 text-right font-mono text-[#525866]">0%</span>
+              <span className="w-10 text-right font-mono text-[#525866]">{starPercentages[1]}%</span>
             </div>
           </div>
 
