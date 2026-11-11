@@ -12,6 +12,7 @@ export default function SupportSlaPage() {
     <LegalPageLayout
       title="7. Support SLA (Annual and Lifetime customers)"
       subtitle="WebRajya Invoice: Website Policies"
+      effectiveDate="18 November 2026"
     >
       <section className="space-y-6">
         <div>
@@ -118,4 +119,3 @@ export default function SupportSlaPage() {
     </LegalPageLayout>
   );
 }
-

@@ -159,7 +159,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/subscription-terms" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Subscription &amp; Auto-Renewal Terms
+                  Subscription and Renewal Terms
                 </Link>
               </li>
               <li>

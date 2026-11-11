@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
-import { Placeholder } from "@/components/legal/Placeholder";
 import { LEGAL_CONFIG } from "@/config/legal";
 import { getLegalMetadata } from "@/components/legal/metadata";
 
@@ -14,6 +13,7 @@ export default function DataRetentionPage() {
     <LegalPageLayout
       title="6. Data Retention and Deletion Policy"
       subtitle="WebRajya Invoice: Website Policies"
+      effectiveDate="18 November 2026"
     >
       <section className="space-y-6">
         <div>
@@ -63,8 +63,7 @@ export default function DataRetentionPage() {
               While your plan is active, you can view, print and download your invoices and reports from inside the software at no extra charge.
             </li>
             <li>
-              A full export of your business data is a paid service at{" "}
-              <Placeholder>{LEGAL_CONFIG.EXPORT_FEE}</Placeholder>. It is available while your plan is active and during the 1-year retention period. We will deliver it in Excel or CSV format within 5 working days of payment.
+              A full export of your business data is a paid service at ₹999. It is available while your plan is active and during the 1-year retention period. We will deliver it in Excel or CSV format within 5 working days of payment.
             </li>
             <li>
               Paying for an export does not reduce any right you have under the law to access your personal data.
@@ -82,8 +81,8 @@ export default function DataRetentionPage() {
         <div>
           <h2 className="text-lg font-bold text-slate-900 mb-2">Questions</h2>
           <p>
-            <Placeholder>{LEGAL_CONFIG.PRIVACY_CONTACT_NAME}</Placeholder>,{" "}
-            <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline">
+            {LEGAL_CONFIG.PRIVACY_CONTACT_NAME},{" "}
+            <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline font-medium">
               {LEGAL_CONFIG.CONTACT_EMAIL}
             </a>
             , {LEGAL_CONFIG.CONTACT_PHONE}.

@@ -37,17 +37,17 @@ export const LEGAL_CONFIG: LegalConfigType = {
   // Flag: Set to true ONLY after legal counsel review AND all placeholders are resolved
   LEGAL_APPROVED: false,
 
-  // Config values to fill in (currently populated with exact document placeholders)
-  EFFECTIVE_DATE: "[EFFECTIVE DATE]",
-  OWNER_FULL_NAME: "[OWNER FULL NAME]",
-  PRIVACY_CONTACT_NAME: "[PRIVACY CONTACT NAME]",
-  PAYMENT_GATEWAY: "[PAYMENT GATEWAY]",
-  SUPABASE_REGION: "[INDIA REGION, confirm Mumbai]",
-  ENCRYPTION_AT_REST: "[and at rest, confirm]",
-  ANALYTICS_TOOL_NOTE: "[ANALYTICS TOOL, EMAIL OR SMS SERVICE, if used]",
-  EXPORT_FEE: "[EXPORT FEE]",
-  ADDITIONAL_LOCATION_PRICE: "[ADDITIONAL LOCATION PRICE]",
-  FAIR_USE_LIMITS: "[FAIR-USE LIMITS, for example users and storage]",
+  // Confirmed values from WebRajya Invoice: Legal Policies (v2) - 18 November 2026
+  EFFECTIVE_DATE: "18 November 2026",
+  OWNER_FULL_NAME: "Aryan Rajput",
+  PRIVACY_CONTACT_NAME: "Aryan Rajput",
+  PAYMENT_GATEWAY: "UPI or bank transfer",
+  SUPABASE_REGION: "Mumbai, India region (ap-south-1)",
+  ENCRYPTION_AT_REST: "and at rest",
+  ANALYTICS_TOOL_NOTE: "Google Analytics, only if you accept analytics cookies",
+  EXPORT_FEE: "₹999",
+  ADDITIONAL_LOCATION_PRICE: "Contact us for details",
+  FAIR_USE_LIMITS: "one account, one shop location and one user",
 
   // Confirmed contact details from document
   CONTACT_EMAIL: "info@webrajya.com",

@@ -37,9 +37,9 @@ const policies = [
     icon: FileText
   },
   {
-    title: "3. Subscription and Auto-Renewal Terms",
+    title: "3. Subscription and Renewal Terms",
     href: "/subscription-terms",
-    description: "Monthly & annual billing rules, autopay consent guidelines, payment failure policies, and grace period timelines.",
+    description: "Monthly & annual billing rules, manual renewal via UPI or bank transfer, payment failure policies, and grace period timelines.",
     icon: RefreshCw
   },
   {

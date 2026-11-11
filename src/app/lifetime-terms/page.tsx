@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
-import { Placeholder } from "@/components/legal/Placeholder";
-import { LEGAL_CONFIG } from "@/config/legal";
 import { getLegalMetadata } from "@/components/legal/metadata";
 
 export const metadata: Metadata = getLegalMetadata(
@@ -14,6 +12,7 @@ export default function LifetimeTermsPage() {
     <LegalPageLayout
       title="5. Lifetime Licence Terms"
       subtitle="WebRajya Invoice: Website Policies"
+      effectiveDate="18 November 2026"
     >
       <section className="space-y-6">
         <div>
@@ -21,7 +20,8 @@ export default function LifetimeTermsPage() {
             1. What you get
           </h2>
           <p>
-            A non-exclusive, non-transferable licence to use WebRajya Invoice for one business at one shop location, for as long as this licence lasts. Transfer to another owner is possible only with our written consent.
+            A non-exclusive, non-transferable licence to use WebRajya Invoice for{" "}
+            <strong>one business, one account, one shop location and one user</strong>, for as long as this licence lasts. Transfer to another owner is possible only with our written consent.
           </p>
         </div>
 
@@ -30,8 +30,7 @@ export default function LifetimeTermsPage() {
             2. More locations
           </h2>
           <p>
-            Each additional shop location needs its own licence, at{" "}
-            <Placeholder>{LEGAL_CONFIG.ADDITIONAL_LOCATION_PRICE}</Placeholder>.
+            Each additional shop location needs its own licence, and each additional user needs a separate licence. Contact us for details.
           </p>
         </div>
 
@@ -50,8 +49,7 @@ export default function LifetimeTermsPage() {
           </h2>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>
-              Hosting of your data within the fair-use limits:{" "}
-              <Placeholder>{LEGAL_CONFIG.FAIR_USE_LIMITS}</Placeholder>.
+              Hosting of your data within the fair-use limits: one account, one shop location and one user.
             </li>
             <li>Basic support, as set out in the Support SLA.</li>
             <li>Bug fixes, security updates and maintenance.</li>

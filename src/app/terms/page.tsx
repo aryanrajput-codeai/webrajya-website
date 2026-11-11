@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
-import { Placeholder } from "@/components/legal/Placeholder";
 import { LEGAL_CONFIG } from "@/config/legal";
 import { getLegalMetadata } from "@/components/legal/metadata";
 
@@ -34,6 +33,7 @@ export default function TermsPage() {
     <LegalPageLayout
       title="2. Terms and Conditions"
       subtitle="WebRajya Invoice: Website Policies"
+      effectiveDate="18 November 2026"
       toc={tocItems}
     >
       <section id="section-1" className="mb-6">
@@ -42,7 +42,7 @@ export default function TermsPage() {
         </h2>
         <p>
           WebRajya Invoice is billing, inventory and business management software provided by{" "}
-          <Placeholder>{LEGAL_CONFIG.OWNER_FULL_NAME}</Placeholder>, trading as WebRajya, {LEGAL_CONFIG.CONTACT_ADDRESS} (“we”). By using the website, trial, web software or mobile app (when available), you (“Customer”) accept these Terms and the linked policies.
+          {LEGAL_CONFIG.OWNER_FULL_NAME}, trading as WebRajya, {LEGAL_CONFIG.CONTACT_ADDRESS} (“we”). By using the website, trial, web software or mobile app (when available), you (“Customer”) accept these Terms and the linked policies.
         </p>
       </section>
 
@@ -63,7 +63,7 @@ export default function TermsPage() {
       <section id="section-4" className="mb-6">
         <h2 className="text-lg font-bold text-slate-900 mb-2">4. Plans and prices</h2>
         <p>
-          Current plans are Monthly (₹599 per month), Annual (₹5,999 per year) and Lifetime. Prices on the website are final prices. We are not registered for GST at present and do not charge GST. After we register, GST will apply to new invoices and renewals as the law requires, and we will tell you before it applies. See the Subscription and Auto-Renewal Terms and the Lifetime Licence Terms.
+          Current plans are Monthly (₹599 per month), Annual (₹5,999 per year) and Lifetime. Prices on the website are final prices. We are not registered for GST at present and do not charge GST. After we register, GST will apply to new invoices and renewals as the law requires, and we will tell you before it applies. See the Subscription and Renewal Terms and the Lifetime Licence Terms.
         </p>
       </section>
 
@@ -154,7 +154,7 @@ export default function TermsPage() {
       <section id="section-17" className="mb-6">
         <h2 className="text-lg font-bold text-slate-900 mb-2">17. Contact</h2>
         <p>
-          <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline">
+          <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline font-medium">
             {LEGAL_CONFIG.CONTACT_EMAIL}
           </a>
           , {LEGAL_CONFIG.CONTACT_PHONE}, {LEGAL_CONFIG.CONTACT_ADDRESS}.

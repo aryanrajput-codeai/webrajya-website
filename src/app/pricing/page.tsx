@@ -423,7 +423,7 @@ function PricingContent() {
           <RefundNote className="text-center" />
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500 pt-2">
             <Link href="/subscription-terms" className="hover:underline">
-              Subscription &amp; Auto-Renewal Terms
+              Subscription and Renewal Terms
             </Link>
             <span>•</span>
             <Link href="/refund-policy" className="hover:underline">

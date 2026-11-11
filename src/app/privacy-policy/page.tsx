@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
-import { Placeholder } from "@/components/legal/Placeholder";
 import { LEGAL_CONFIG } from "@/config/legal";
 import { getLegalMetadata } from "@/components/legal/metadata";
 
@@ -26,14 +25,13 @@ export default function PrivacyPolicyPage() {
     <LegalPageLayout
       title="1. Privacy Policy"
       subtitle="WebRajya Invoice: Website Policies"
+      effectiveDate="18 November 2026"
       toc={tocItems}
     >
       <section id="who-we-are">
         <p>
-          <strong>Who we are.</strong> WebRajya Invoice (“we”, “us”) is operated by{" "}
-          <Placeholder>{LEGAL_CONFIG.OWNER_FULL_NAME}</Placeholder>, trading as WebRajya, at{" "}
-          {LEGAL_CONFIG.CONTACT_ADDRESS}, India. Contact:{" "}
-          <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline">
+          <strong>Who we are.</strong> WebRajya Invoice (“we”, “us”) is operated by {LEGAL_CONFIG.OWNER_FULL_NAME}, trading as WebRajya, at {LEGAL_CONFIG.CONTACT_ADDRESS}, India. Contact:{" "}
+          <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline font-medium">
             {LEGAL_CONFIG.CONTACT_EMAIL}
           </a>
           , {LEGAL_CONFIG.CONTACT_PHONE}.
@@ -57,8 +55,7 @@ export default function PrivacyPolicyPage() {
             <strong>Account and contact details:</strong> name, shop name, phone, email, shop type, area or address, language preference.
           </li>
           <li>
-            <strong>Billing details:</strong> plan, payment status, transaction reference and amount. We do not store card numbers or UPI PINs. Payments are handled by{" "}
-            <Placeholder>{LEGAL_CONFIG.PAYMENT_GATEWAY}</Placeholder> or by direct UPI or bank transfer, in which case we see the payer name, UPI ID or bank reference.
+            <strong>Billing details:</strong> plan, payment status, transaction reference and amount. We do not store card numbers or UPI PINs. Payments are made by UPI or bank transfer, and we see the payer name, UPI ID or bank reference.
           </li>
           <li>
             <strong>Business data you enter in the software.</strong>
@@ -88,7 +85,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <section id="consent-sharing">
-        <h2>Consent & Who we share data with.</h2>
+        <h2>Consent &amp; Who we share data with.</h2>
         <p>
           <strong>Consent.</strong> We ask for your consent for specific purposes in clear language. You can withdraw consent at any time by contacting us. Withdrawing may mean we can no longer provide some or all of the service.
         </p>
@@ -98,9 +95,9 @@ export default function PrivacyPolicyPage() {
         </p>
         <ul>
           <li>Supabase, our database and hosting provider.</li>
-          <li><Placeholder>{LEGAL_CONFIG.PAYMENT_GATEWAY}</Placeholder>, for payments.</li>
+          <li>Your bank or UPI provider, only as needed to process a payment you make.</li>
           <li>WhatsApp Business, for messaging you.</li>
-          <li><Placeholder>{LEGAL_CONFIG.ANALYTICS_TOOL_NOTE}</Placeholder>.</li>
+          <li>Google Analytics, only if you accept analytics cookies.</li>
           <li>Our accountant and legal advisers, under confidentiality.</li>
           <li>Authorities, where the law requires it.</li>
         </ul>
@@ -110,15 +107,13 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <section id="storage-security">
-        <h2>Where data is stored & Security.</h2>
+        <h2>Where data is stored &amp; Security.</h2>
         <p>
-          <strong>Where data is stored.</strong> Your data is hosted with Supabase on servers in{" "}
-          <Placeholder>{LEGAL_CONFIG.SUPABASE_REGION}</Placeholder>. Some providers, such as messaging or analytics services, may process limited data outside India.
+          <strong>Where data is stored.</strong> Your data is hosted with Supabase on servers in the Mumbai, India region (ap-south-1). Some providers, including Supabase for a few limited purposes and messaging or analytics services, may process limited data outside India.
         </p>
 
         <p>
-          <strong>Security.</strong> We use encryption in transit{" "}
-          <Placeholder>{LEGAL_CONFIG.ENCRYPTION_AT_REST}</Placeholder>, strong authentication, role-based access controls, an automatic backup every 24 hours (kept for 7 days) and regular security reviews. No system is completely secure. If a breach affects your personal data, we will inform you and the authorities as the law requires.
+          <strong>Security.</strong> We use encryption in transit and at rest, strong authentication, role-based access controls, an automatic backup every 24 hours (kept for 7 days) and regular security reviews. No system is completely secure. If a breach affects your personal data, we will inform you and the authorities as the law requires.
         </p>
       </section>
 
@@ -147,8 +142,8 @@ export default function PrivacyPolicyPage() {
           <li>Allow a person you nominate to exercise these rights if you die or cannot act.</li>
         </ul>
         <p>
-          Email <Placeholder>{LEGAL_CONFIG.PRIVACY_CONTACT_NAME}</Placeholder> at{" "}
-          <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline">
+          Email {LEGAL_CONFIG.PRIVACY_CONTACT_NAME} at{" "}
+          <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline font-medium">
             {LEGAL_CONFIG.CONTACT_EMAIL}
           </a>
           . We will acknowledge within 7 days and aim to resolve within 30 days. We may need to verify your identity first. A full export of your business data is a paid service (see the Data Retention and Deletion Policy), and this does not reduce any right you have under law. If your concern is not resolved, you may approach the Data Protection Board of India once its complaint process is available to you.
@@ -156,7 +151,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <section id="children-cookies-changes">
-        <h2>Children, Cookies & Changes.</h2>
+        <h2>Children, Cookies &amp; Changes.</h2>
         <p>
           <strong>Children.</strong> The software is for businesses. It is not meant for anyone under 18.
         </p>
@@ -171,8 +166,8 @@ export default function PrivacyPolicyPage() {
       <section id="grievance-contact">
         <h2>Grievance contact.</h2>
         <p>
-          <Placeholder>{LEGAL_CONFIG.PRIVACY_CONTACT_NAME}</Placeholder>,{" "}
-          <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline">
+          {LEGAL_CONFIG.PRIVACY_CONTACT_NAME},{" "}
+          <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline font-medium">
             {LEGAL_CONFIG.CONTACT_EMAIL}
           </a>
           , {LEGAL_CONFIG.CONTACT_PHONE}.<br />
@@ -182,4 +177,3 @@ export default function PrivacyPolicyPage() {
     </LegalPageLayout>
   );
 }
-

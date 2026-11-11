@@ -13,6 +13,7 @@ export default function RefundPolicyPage() {
     <LegalPageLayout
       title="4. Cancellation and Refund Policy"
       subtitle="WebRajya Invoice: Website Policies"
+      effectiveDate="18 November 2026"
     >
       <section className="space-y-6">
         <div>
@@ -32,7 +33,7 @@ export default function RefundPolicyPage() {
               The software failed to work as described on our website for your plan, you reported it with details, and we could not fix it within 7 days of your report. We refund the amount you paid for that plan period, or for Lifetime the amount you paid for the licence.
             </li>
             <li>
-              You were charged for an auto-renewal after you had validly cancelled it before the renewal date.
+              You were charged after you had validly told us you were stopping, before the next payment was due.
             </li>
           </ul>
           <p className="mt-3 text-slate-600 italic">
@@ -55,7 +56,7 @@ export default function RefundPolicyPage() {
           <h2 className="text-lg font-bold text-slate-900 mb-2">How to claim</h2>
           <p>
             Send your payment proof and a short description by WhatsApp or email to{" "}
-            <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline">
+            <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline font-medium">
               {LEGAL_CONFIG.CONTACT_EMAIL}
             </a>{" "}
             / {LEGAL_CONFIG.CONTACT_PHONE}. We will reply within 2 working days. Approved refunds go back to the original payment method, or to the paying account for UPI or bank transfers, within 7 to 10 working days.
@@ -79,4 +80,3 @@ export default function RefundPolicyPage() {
     </LegalPageLayout>
   );
 }
-

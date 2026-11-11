@@ -1,19 +1,18 @@
 import { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
-import { Placeholder } from "@/components/legal/Placeholder";
-import { LEGAL_CONFIG } from "@/config/legal";
 import { getLegalMetadata } from "@/components/legal/metadata";
 
 export const metadata: Metadata = getLegalMetadata(
-  "Subscription and Auto-Renewal Terms",
-  "WebRajya Invoice Subscription Terms: billing intervals, autopay rules, grace period, and cancellation policy."
+  "Subscription and Renewal Terms",
+  "WebRajya Invoice Subscription and Renewal Terms: billing plans, manual renewal via UPI/bank transfer, grace period, and cancellation terms."
 );
 
 export default function SubscriptionTermsPage() {
   return (
     <LegalPageLayout
-      title="3. Subscription and Auto-Renewal Terms"
+      title="3. Subscription and Renewal Terms"
       subtitle="WebRajya Invoice: Website Policies"
+      effectiveDate="18 November 2026"
     >
       <section className="space-y-6">
         <div>
@@ -27,20 +26,17 @@ export default function SubscriptionTermsPage() {
 
         <div>
           <h2 className="text-lg font-bold text-slate-900 mb-2">
-            2. Automatic renewal
+            2. Renewal
           </h2>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>
-              Monthly renews automatically only if you choose payment-gateway autopay and tick a separate consent box at sign-up. The box is never pre-ticked.
+              All plans renew manually for now. We accept payment by UPI or bank transfer, and we never charge your account automatically.
             </li>
             <li>
-              Annual does not renew automatically. You renew it yourself.
+              You renew by paying again before your plan expires. We remind you first (see section 3).
             </li>
             <li>
-              If you pay by direct UPI or bank transfer, there is no automatic renewal. We send reminders and you pay again yourself.
-            </li>
-            <li>
-              Autopay is run through <Placeholder>{LEGAL_CONFIG.PAYMENT_GATEWAY}</Placeholder> and follows the rules for recurring payments, including any advance notice of the charge that the rules require.
+              If we offer automatic renewal in future, we will ask for your separate, explicit consent first and update these Terms.
             </li>
           </ul>
         </div>
@@ -56,10 +52,10 @@ export default function SubscriptionTermsPage() {
 
         <div>
           <h2 className="text-lg font-bold text-slate-900 mb-2">
-            4. Cancelling auto-renewal
+            4. Cancelling
           </h2>
           <p>
-            You can cancel at any time before the next charge date through WhatsApp or email. We will confirm in writing within 1 working day. Cancelling stops future charges. You keep access until the end of the period you already paid for. The current period is not refunded (see the Cancellation and Refund Policy).
+            You can stop using the service at any time by telling us through WhatsApp or email. We will confirm in writing within 1 working day. Nothing further is charged after you stop, because we do not charge automatically. You keep access until the end of the period you already paid for. The current period is not refunded (see the Cancellation and Refund Policy).
           </p>
         </div>
 
@@ -68,7 +64,7 @@ export default function SubscriptionTermsPage() {
             5. Failed or missed payment
           </h2>
           <p>
-            A failed autopay or a missed manual payment is treated as expiry.
+            A missed payment is treated as expiry.
           </p>
         </div>
 
@@ -122,4 +118,3 @@ export default function SubscriptionTermsPage() {
     </LegalPageLayout>
   );
 }
-
