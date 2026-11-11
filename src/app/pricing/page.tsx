@@ -11,18 +11,13 @@ import {
   ArrowRight,
   Sparkles,
   ShieldCheck,
-  HelpCircle
+  HelpCircle,
+  Clock,
+  Flame
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   Table,
   TableHeader,
@@ -37,12 +32,11 @@ import {
   AccordionTrigger,
   AccordionContent
 } from "@/components/ui/accordion";
-import {
-  PRICING_CONFIG,
-  GST_CONFIG,
-  FEATURE_INCLUSION_ASSUMPTION_NOTE,
-  LIFETIME_PLAN_SPECS
-} from "@/config/pricing";
+import { PRICING_CONFIG, LIFETIME_INCLUSION_STATEMENT } from "@/config/pricing";
+import { LAUNCH_CONFIG } from "@/config/launch";
+import { GstNote } from "@/components/ui/GstNote";
+import { RefundNote } from "@/components/ui/RefundNote";
+import { DecemberOfferBanner } from "@/components/sections/DecemberOfferBanner";
 
 function PricingContent() {
   const searchParams = useSearchParams();
@@ -60,275 +54,244 @@ function PricingContent() {
   const currentProduct = PRICING_CONFIG[activeTab];
   const plans = currentProduct.plans || [];
 
-  const accentColor = activeTab === "invoice" ? "#2563EB" : "#E58145";
-  const accentBg = activeTab === "invoice" ? "bg-[#2563EB]" : "bg-[#E58145]";
-  const accentBorder = activeTab === "invoice" ? "border-[#2563EB]" : "border-[#E58145]";
-
   const FAQS = [
     {
-      id: "faq-1",
-      question: "How do renewals work for monthly and yearly plans?",
+      id: "faq-renewals",
+      question: "How do renewals and advance reminders work?",
       answer:
-        "Monthly plans renew every 30 days, while Yearly plans renew every 12 months from your activation date. We send proactive renewal reminders via email and WhatsApp well in advance so your billing counter never experiences unexpected downtime.",
+        "Monthly plans renew every 30 days, and Annual plans renew every 12 months. We send automatic advance renewal notices 7 days and 2 days before expiry via WhatsApp and email so your billing counter never faces unexpected disruption.",
       linkText: "Read Subscription & Renewal Policy",
       linkHref: "/subscription-policy"
     },
     {
-      id: "faq-2",
-      question: "Can I upgrade from Monthly → Yearly → Lifetime?",
+      id: "faq-grace-period",
+      question: "What is the 3-day view-only grace period if I stop paying?",
       answer:
-        "Yes, absolutely. You can start on a Monthly plan to evaluate WebRajya in your day-to-day workflow, and seamlessly upgrade to Yearly (to save ₹1,189 annually) or Lifetime (to eliminate recurring software fees permanently) at any point without losing any data."
-    },
-    {
-      id: "faq-3",
-      question: "What is your refund policy?",
-      answer:
-        "We offer full guided demo walkthroughs before onboarding to verify hardware and workflow fit. If you experience technical defects where the software fails its core advertised functions and our engineering team cannot resolve it within 14 days of written notice, you may request a pro-rated refund.",
-      linkText: "Read Refund Policy",
-      linkHref: "/refund"
-    },
-    {
-      id: "faq-4",
-      question: "Are prices inclusive or exclusive of GST?",
-      answer:
-        `Prices are currently listed as exclusive of GST (${GST_CONFIG.displayNote}). TODO: Confirm whether final prices are inclusive or exclusive of GST. Applicable tax invoices with your business GSTIN are generated upon purchase for input tax credit claims.`
-    },
-    {
-      id: "faq-5",
-      question: "What payment methods do you accept?",
-      answer:
-        "We accept all standard Indian commercial payment methods including UPI (Google Pay, PhonePe, Paytm, BHIM), Net Banking across all major Indian banks, Debit/Credit Cards (RuPay, Visa, Mastercard), and bank NEFT/IMPS transfers for annual or lifetime licensing.",
-      linkText: "View billing and payment terms",
+        "If your subscription expires before renewal, your software never locks you out of your records. You get an automatic 3-day view-only grace period to view past invoices, customer Khata balances, and export records to Excel. New bill generation resumes immediately upon renewal.",
+      linkText: "Read Grace Period Details",
       linkHref: "/subscription-policy"
     },
     {
-      id: "faq-6",
-      question: "What happens to my data if I stop paying for a monthly or yearly plan?",
+      id: "faq-upgrade",
+      question: "Can I upgrade from Monthly → Annual → Lifetime?",
       answer:
-        "Because WebRajya uses local-first data architecture, all your invoices, customer khata ledgers, receipts, and inventory records remain securely stored on your local computer or storage. If a subscription lapses, you retain access to your historical records; active billing operations resume as soon as the plan is renewed."
+        "Yes, absolutely. Many retailers start on the Monthly plan (₹599/mo) and upgrade to the Annual plan (₹5,999/yr to save ₹1,189) or Early Lifetime (₹19,999 one-time) at any point without losing any customer records or product data."
     },
     {
-      id: "faq-7",
+      id: "faq-early-lifetime",
+      question: "What is the Early Lifetime plan for Nagpur?",
+      answer:
+        `For our December launch in Nagpur, the first ${LAUNCH_CONFIG.EARLY_LIFETIME_SLOTS_TOTAL} customers can secure a Lifetime license for ₹19,999 (saving ₹6,000 off the regular ₹25,999 price). There are currently ${LAUNCH_CONFIG.EARLY_LIFETIME_SLOTS_REMAINING} slots remaining before the price reverts to ₹25,999.`
+    },
+    {
+      id: "faq-lifetime-includes",
+      question: "What is included in the Lifetime plan?",
+      answer:
+        `${LIFETIME_INCLUSION_STATEMENT} You get permanent software operation on your counter with zero monthly or yearly renewal charges.`,
+      linkText: "Read Lifetime Terms",
+      linkHref: "/lifetime-terms"
+    },
+    {
+      id: "faq-refunds",
+      question: "What is your refund policy?",
+      answer:
+        "We offer a full 3-day free trial on your own counter before any payment is collected. If you experience persistent technical defects that our team cannot resolve within 7 business days, you are eligible for a prorated refund under our policy.",
+      linkText: "View Refund Policy",
+      linkHref: "/refund"
+    },
+    {
+      id: "faq-gst",
+      question: "Are prices inclusive or exclusive of GST?",
+      answer:
+        "Tax terms are confirmed prior to payment enablement. Invoices with your business GSTIN are provided upon license purchase for input tax credit claims."
+    },
+    {
+      id: "faq-both",
       question: "Can I use both WebRajya Invoice and WebRajya POS together?",
       answer:
-        "Yes. While each software product has its own dedicated operational focus (Invoice for retail inventory & khata, POS for restaurant tables & KOTs), they can be deployed together within your business. We do not offer arbitrary bundle discounts, but our team can help configure your multi-product architecture.",
-      linkText: "Talk to our team about dual setup",
-      linkHref: "/demo?product=not_sure&intent=both"
+        "Yes! Many businesses operating both a retail counter and a dining area or cafe connect WebRajya POS and WebRajya Invoice together. Contact our Nagpur onboarding team to discuss your multi-counter setup."
     }
   ];
 
   return (
-    <div className="w-full bg-[#F8F3EB] text-[#020C2B] min-h-screen pt-28 pb-20 relative overflow-hidden font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+    <div className="w-full bg-[#F8F3EB] text-[#020C2B] min-h-screen pt-28 pb-20 font-sans relative overflow-hidden">
+      {/* December Launch Offer Banner */}
+      <div className="mb-8">
+        <DecemberOfferBanner />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
         
-        {/* Page Header */}
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <Badge variant="pos">Transparent Pricing</Badge>
-          <h1 className="text-4xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            Simple, Honest Software Pricing
+          <Badge variant="invoice">Honest &amp; Transparent</Badge>
+          <h1 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
+            Simple, Fair Pricing for Your Shop
           </h1>
-          <p className="text-[#020C2B]/80 text-base sm:text-lg">
-            Both WebRajya Invoice and WebRajya POS share the exact same transparent plans. Pick the product and billing period that suits your business.
+          <p className="text-[#020C2B]/80 text-base sm:text-lg leading-relaxed">
+            All core features included across every plan. No hidden charges, zero surprise price hikes.
           </p>
-          <div className="inline-block p-2.5 rounded-xl bg-white/80 border border-[#020C2B]/10 text-xs font-mono text-[#020C2B]/80">
-            {FEATURE_INCLUSION_ASSUMPTION_NOTE}
+
+          {/* Product Switch Tabs */}
+          <div className="pt-2 flex justify-center">
+            <div className="inline-flex p-1.5 rounded-full bg-white border border-[#020C2B]/10 shadow-xs">
+              <button
+                onClick={() => setActiveTab("invoice")}
+                className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  activeTab === "invoice"
+                    ? "bg-[#2563EB] text-white shadow-sm"
+                    : "text-[#020C2B]/80 hover:text-[#020C2B]"
+                }`}
+              >
+                <FileText className="w-4 h-4" />
+                <span>WebRajya Invoice</span>
+              </button>
+              <button
+                onClick={() => setActiveTab("pos")}
+                className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  activeTab === "pos"
+                    ? "bg-[#E58145] text-white shadow-sm"
+                    : "text-[#020C2B]/80 hover:text-[#020C2B]"
+                }`}
+              >
+                <Utensils className="w-4 h-4" />
+                <span>WebRajya POS</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Product Switcher Tabs */}
-        <div className="flex flex-col items-center gap-3">
-          <div className="p-1.5 rounded-2xl bg-white border border-[#020C2B]/10 shadow-sm flex items-center gap-2 max-w-md w-full relative">
-            <button
-              type="button"
-              onClick={() => setActiveTab("invoice")}
-              className={`relative flex-1 py-3 px-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer z-10 ${
-                activeTab === "invoice" ? "text-white" : "text-[#020C2B]/70 hover:text-[#020C2B]"
-              }`}
-            >
-              {activeTab === "invoice" && (
-                <motion.div
-                  layoutId="activePricingProductTab"
-                  className="absolute inset-0 bg-[#2563EB] rounded-xl shadow-xs -z-10"
-                  transition={{ type: "spring", stiffness: 450, damping: 30 }}
-                />
-              )}
-              <FileText className="w-4 h-4" /> WebRajya Invoice
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveTab("pos")}
-              className={`relative flex-1 py-3 px-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer z-10 ${
-                activeTab === "pos" ? "text-white" : "text-[#020C2B]/70 hover:text-[#020C2B]"
-              }`}
-            >
-              {activeTab === "pos" && (
-                <motion.div
-                  layoutId="activePricingProductTab"
-                  className="absolute inset-0 bg-[#E58145] rounded-xl shadow-xs -z-10"
-                  transition={{ type: "spring", stiffness: 450, damping: 30 }}
-                />
-              )}
-              <Utensils className="w-4 h-4" /> WebRajya POS
-            </button>
-          </div>
-
-          <div className="text-center">
-            <h2 className="text-lg font-bold text-[#020C2B]">{currentProduct.name}</h2>
-            <p className="text-xs text-[#020C2B]/70 font-mono">{currentProduct.tagline}</p>
-          </div>
-        </div>
-
-        {/* 3 Plan Cards (Powered by shadcn Card tokens) */}
+        {/* Pricing Cards Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
+            exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"
+            className={`grid grid-cols-1 ${
+              activeTab === "invoice" ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3"
+            } gap-6 sm:gap-8 items-stretch`}
           >
             {plans.map((plan) => {
               const isYearly = plan.id === "yearly";
+              const isEarlyLifetime = plan.id === "early_lifetime";
               const isLifetime = plan.id === "lifetime";
 
               return (
                 <Card
                   key={plan.id}
-                  className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all relative ${
-                    isYearly
-                      ? `bg-white border-2 shadow-xl md:-translate-y-2 ${accentBorder}`
-                      : isLifetime
-                      ? "bg-[#020C2B] text-white border border-white/20 shadow-lg"
-                      : "bg-white border border-[#020C2B]/10 shadow-sm hover:border-[#020C2B]/30"
+                  className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all relative ${
+                    isEarlyLifetime
+                      ? "bg-[#020C2B] text-white border-2 border-[#E58145] shadow-xl md:-translate-y-2"
+                      : isYearly
+                      ? "bg-white border-2 border-[#2563EB] shadow-lg md:-translate-y-1"
+                      : "bg-white border border-slate-200 shadow-sm"
                   }`}
                 >
-                  {/* Badges */}
-                  {isYearly && (
-                    <span
-                      className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-mono uppercase font-bold tracking-wider text-white shadow-sm flex items-center gap-1 ${accentBg}`}
-                    >
-                      <Sparkles className="w-3.5 h-3.5" /> Best Value • Save ₹1,189
+                  {/* Floating Badges */}
+                  {isEarlyLifetime && (
+                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#E58145] text-white shadow-md flex items-center gap-1 whitespace-nowrap">
+                      <Flame className="w-3.5 h-3.5 animate-pulse" />
+                      Peoples&apos; Choice • 50 Slots
                     </span>
                   )}
-                  {isLifetime && (
-                    <span
-                      className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-mono uppercase font-bold tracking-wider shadow-sm font-semibold ${
-                        activeTab === "invoice" ? "bg-[#38BDF8] text-[#0F172A]" : "bg-[#E58145] text-white"
-                      }`}
-                    >
-                      Pay once, use forever
+                  {isYearly && !isEarlyLifetime && (
+                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#2563EB] text-white shadow-sm flex items-center gap-1 whitespace-nowrap">
+                      <Sparkles className="w-3.5 h-3.5" /> Most Popular • Save ₹1,189
                     </span>
                   )}
 
-                  <div className="space-y-6">
+                  <div className="space-y-5">
                     <div>
-                      <h3 className={`text-xl sm:text-2xl font-black ${isLifetime ? "text-white" : "text-[#020C2B]"}`}>
+                      <h3 className={`text-xl font-black ${isEarlyLifetime ? "text-white" : "text-[#020C2B]"}`}>
                         {plan.name}
                       </h3>
-                      <p className={`text-xs mt-1 min-h-[32px] ${isLifetime ? "text-slate-300" : "text-[#020C2B]/70"}`}>
+                      <p className={`text-xs mt-1 min-h-[30px] ${isEarlyLifetime ? "text-slate-300" : "text-slate-600"}`}>
                         {plan.tagline}
                       </p>
                     </div>
 
-                    {/* Price Box */}
+                    {/* Price Block */}
                     <div
-                      className={`p-5 rounded-2xl font-mono text-center space-y-1.5 ${
-                        isLifetime ? "bg-white/10 border border-white/15" : "bg-[#F8F3EB] border border-[#020C2B]/10"
+                      className={`p-4 rounded-2xl font-mono text-center space-y-1 ${
+                        isEarlyLifetime
+                          ? "bg-white/10 border border-white/15"
+                          : "bg-[#F8F3EB] border border-slate-200"
                       }`}
                     >
-                      <div className="flex items-baseline justify-center gap-1.5">
-                        <span className={`text-3xl sm:text-4xl font-black ${isLifetime ? "text-white" : "text-[#020C2B]"}`}>
+                      {plan.formattedRegularPrice && (
+                        <span className="text-xs line-through text-slate-400 block">
+                          Regular: {plan.formattedRegularPrice}
+                        </span>
+                      )}
+                      <div className="flex items-baseline justify-center gap-1">
+                        <span className={`text-3xl font-black ${isEarlyLifetime ? "text-white" : "text-[#020C2B]"}`}>
                           {plan.formattedPrice}
                         </span>
-                        <span className={`text-xs font-semibold ${isLifetime ? "text-slate-300" : "text-[#020C2B]/70"}`}>
+                        <span className={`text-xs ${isEarlyLifetime ? "text-slate-300" : "text-slate-600"}`}>
                           {plan.billingPeriod}
                         </span>
                       </div>
-
                       <p
                         className={`text-xs font-bold ${
-                          isLifetime
-                            ? activeTab === "invoice" ? "text-[#38BDF8]" : "text-[#E58145]"
-                            : activeTab === "invoice" ? "text-[#2563EB]" : "text-[#E58145]"
+                          isEarlyLifetime ? "text-amber-300" : "text-[#2563EB]"
                         }`}
                       >
                         {plan.effectiveMonthlyCost}
                       </p>
-
                       {plan.savingsText && (
-                        <p className={`text-[11px] font-medium ${isLifetime ? "text-emerald-400" : "text-emerald-600"}`}>
+                        <p className={`text-[11px] font-medium ${isEarlyLifetime ? "text-emerald-400" : "text-emerald-600"}`}>
                           {plan.savingsText}
                         </p>
                       )}
                     </div>
 
-                    {/* GST Note */}
-                    <p className={`text-[11px] text-center font-mono ${isLifetime ? "text-slate-400" : "text-[#020C2B]/70"}`}>
-                      {GST_CONFIG.displayNote}
-                    </p>
+                    {/* Shared GST Component directly under price */}
+                    <GstNote className="text-center" />
 
                     {/* Features List */}
-                    <div className="space-y-2.5 pt-2">
+                    <div className="space-y-2 pt-2">
                       <span
                         className={`text-[10px] font-mono uppercase tracking-wider block font-bold ${
-                          isLifetime ? "text-slate-300" : "text-[#020C2B]"
+                          isEarlyLifetime ? "text-slate-300" : "text-slate-700"
                         }`}
                       >
-                        Included Features:
+                        Included:
                       </span>
                       <div className="space-y-2 text-xs">
-                        {plan.features.map((feature) => (
-                          <div key={feature} className="flex items-start gap-2">
+                        {plan.features.map((feat) => (
+                          <div key={feat} className="flex items-start gap-2">
                             <CheckCircle2
                               className={`w-4 h-4 shrink-0 mt-0.5 ${
-                                isLifetime
-                                  ? activeTab === "invoice" ? "text-[#38BDF8]" : "text-[#E58145]"
-                                  : activeTab === "invoice" ? "text-[#2563EB]" : "text-[#E58145]"
+                                isEarlyLifetime ? "text-emerald-400" : "text-emerald-600"
                               }`}
                             />
-                            <span className={isLifetime ? "text-slate-200" : "text-[#020C2B]/85"}>{feature}</span>
+                            <span className={isEarlyLifetime ? "text-slate-200" : "text-slate-700"}>
+                              {feat}
+                            </span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    {/* Lifetime Details block */}
-                    {isLifetime && plan.lifetimeDetails && (
-                      <div className="p-3.5 rounded-xl bg-white/5 border border-dashed border-white/20 text-[11px] space-y-1.5">
-                        <span className="font-bold text-amber-300 block flex items-center gap-1 font-mono uppercase text-[10px]">
-                          <ShieldCheck className="w-3.5 h-3.5" /> What&apos;s Included in Lifetime:
-                        </span>
-                        <p className="text-slate-200">• {plan.lifetimeDetails.licenseType}</p>
-                        <p className="text-amber-300 font-mono text-[10px] leading-tight">
-                          • {plan.lifetimeDetails.updateDurationTodo}
-                        </p>
-                        <p className="text-amber-300 font-mono text-[10px] leading-tight">
-                          • {plan.lifetimeDetails.supportSlaTodo}
-                        </p>
-                        <p className="text-amber-300 font-mono text-[10px] leading-tight">
-                          • {plan.lifetimeDetails.deviceLimitTodo}
-                        </p>
+                    {/* Lifetime Note if applicable */}
+                    {plan.lifetimeNote && (
+                      <div className={`p-3 rounded-xl text-[11px] leading-relaxed border border-dashed ${
+                        isEarlyLifetime ? "bg-white/5 border-white/20 text-slate-300" : "bg-slate-50 border-slate-200 text-slate-600"
+                      }`}>
+                        {plan.lifetimeNote}
                       </div>
                     )}
                   </div>
 
                   {/* Card CTA */}
-                  <div className="mt-8 pt-4 border-t border-slate-200/20">
+                  <div className="mt-8 pt-4 border-t border-slate-100">
                     <Button
                       href={plan.ctaHref(activeTab)}
-                      variant={isYearly ? "cta" : isLifetime ? "cta" : "outline"}
+                      variant={isEarlyLifetime ? "cta" : isYearly ? "cta" : "outline"}
                       size="lg"
-                      className={`w-full ${
-                        isYearly
-                          ? `${accentBg} text-white`
-                          : isLifetime
-                          ? activeTab === "invoice"
-                            ? "bg-[#38BDF8] hover:bg-[#0284C7] text-[#0F172A] font-bold"
-                            : "bg-[#E58145] hover:bg-[#D97706] text-white font-bold"
-                          : "border-[#020C2B]/20 hover:bg-[#020C2B]/5 text-[#020C2B]"
-                      }`}
+                      className="w-full font-bold shadow-xs"
                       icon={<ArrowRight className="w-4 h-4" />}
                     >
                       {plan.ctaLabel}
@@ -340,193 +303,109 @@ function PricingContent() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Dual Product Callout ("Need both Invoice and POS?") */}
-        <div className="max-w-3xl mx-auto p-6 rounded-3xl bg-white border border-[#020C2B]/10 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="space-y-1 text-center sm:text-left">
-            <h3 className="text-base sm:text-lg font-bold text-[#020C2B]">
-              Need both WebRajya Invoice and WebRajya POS?
-            </h3>
-            <p className="text-xs text-[#020C2B]/70">
-              Operate retail counters alongside restaurant kitchens without duplicate customer or product records.
-            </p>
-          </div>
-          <Button
-            href="/demo?product=not_sure&intent=both"
-            variant="cta"
-            size="md"
-            className="shrink-0 bg-[#020C2B] text-white hover:bg-[#020C2B]/90"
-            icon={<ArrowRight className="w-4 h-4" />}
-          >
-            Talk to us
-          </Button>
-        </div>
-
-        {/* Plan Comparison Table (Powered by shadcn Table) */}
+        {/* Compact Comparison Table */}
         <div className="space-y-6 pt-6">
           <div className="text-center space-y-2">
-            <Badge variant="pos">Full Breakdown</Badge>
+            <Badge variant="pos">Full Comparison</Badge>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#020C2B]">
-              Compare What&apos;s Included Across Plans
+              Monthly vs Annual vs Lifetime Comparison
             </h2>
-            <p className="text-xs text-[#020C2B]/70 font-mono">
-              Zero tier gating: identical core software capabilities on every plan.
+            <p className="text-xs text-slate-600 font-mono">
+              All core software features are identical across all plans. Only the billing period and savings differ.
             </p>
           </div>
 
-          <div className="rounded-3xl border border-[#020C2B]/10 bg-white shadow-sm overflow-hidden">
+          <div className="rounded-3xl border border-slate-200 bg-white shadow-sm overflow-hidden">
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#FAF6F0] font-mono text-[#020C2B] hover:bg-[#FAF6F0]">
-                  <TableHead className="p-4 sm:p-5 font-bold text-[#020C2B]">Plan Dimension</TableHead>
-                  <TableHead className="p-4 sm:p-5 font-bold text-[#020C2B]">Monthly Plan</TableHead>
-                  <TableHead className="p-4 sm:p-5 font-bold text-[#E58145]">Yearly Plan (Best Value)</TableHead>
-                  <TableHead className="p-4 sm:p-5 font-bold text-[#020C2B]">Lifetime Plan</TableHead>
+                <TableRow className="bg-[#FAF6F0] font-mono text-[#020C2B]">
+                  <TableHead className="p-4 sm:p-5 font-bold">Feature / Plan Term</TableHead>
+                  <TableHead className="p-4 sm:p-5 font-bold">Monthly Plan</TableHead>
+                  <TableHead className="p-4 sm:p-5 font-bold text-[#2563EB]">Annual Plan (Best Value)</TableHead>
+                  <TableHead className="p-4 sm:p-5 font-bold text-[#020C2B]">Lifetime License</TableHead>
                 </TableRow>
               </TableHeader>
-              <TableBody className="text-[#020C2B]/85">
+              <TableBody className="text-xs sm:text-sm">
                 <TableRow>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-[#020C2B]">Upfront Price</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-mono">₹599</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-mono font-bold text-[#E58145]">₹5,999</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-mono font-bold">₹25,999</TableCell>
+                  <TableCell className="p-4 font-semibold text-slate-800">Software Price</TableCell>
+                  <TableCell className="p-4 font-mono font-bold">₹599 / month</TableCell>
+                  <TableCell className="p-4 font-mono font-bold text-[#2563EB]">₹5,999 / year (~₹500/mo)</TableCell>
+                  <TableCell className="p-4 font-mono font-bold text-emerald-700">₹19,999 (First 50) / ₹25,999</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-[#020C2B]">Billing Cadence</TableCell>
-                  <TableCell className="p-4 sm:p-5">Billed monthly</TableCell>
-                  <TableCell className="p-4 sm:p-5">Billed annually</TableCell>
-                  <TableCell className="p-4 sm:p-5">One-time payment</TableCell>
+                  <TableCell className="p-4 font-semibold text-slate-800">Annual Savings</TableCell>
+                  <TableCell className="p-4 font-mono text-slate-500">—</TableCell>
+                  <TableCell className="p-4 font-mono font-bold text-emerald-600">Saves ₹1,189 / year</TableCell>
+                  <TableCell className="p-4 font-mono font-bold text-emerald-600">Zero recurring fees forever</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-[#020C2B]">Effective Monthly Cost</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-mono">₹599 / month</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-mono font-bold text-emerald-600">About ₹500 / month</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-mono text-emerald-600">Pay once, use forever</TableCell>
+                  <TableCell className="p-4 font-semibold text-slate-800">Fast Counter Billing</TableCell>
+                  <TableCell className="p-4">Included</TableCell>
+                  <TableCell className="p-4">Included</TableCell>
+                  <TableCell className="p-4">Included</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-[#020C2B]">Annual Savings</TableCell>
-                  <TableCell className="p-4 sm:p-5 text-[#64748B]">—</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-emerald-600">
-                    Saves ₹1,189 vs monthly (approx. 17%)
-                  </TableCell>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-emerald-600">
-                    Zero ongoing subscription fees
-                  </TableCell>
+                  <TableCell className="p-4 font-semibold text-slate-800">Inventory &amp; Khata</TableCell>
+                  <TableCell className="p-4">Included</TableCell>
+                  <TableCell className="p-4">Included</TableCell>
+                  <TableCell className="p-4">Included</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-[#020C2B]">Core Modules &amp; Features</TableCell>
-                  <TableCell className="p-4 sm:p-5">
-                    <span className="inline-flex items-center gap-1.5 text-emerald-600 font-medium">
-                      <CheckCircle2 className="w-4 h-4 shrink-0" /> Full Access
-                    </span>
-                  </TableCell>
-                  <TableCell className="p-4 sm:p-5">
-                    <span className="inline-flex items-center gap-1.5 text-emerald-600 font-medium">
-                      <CheckCircle2 className="w-4 h-4 shrink-0" /> Full Access
-                    </span>
-                  </TableCell>
-                  <TableCell className="p-4 sm:p-5">
-                    <span className="inline-flex items-center gap-1.5 text-emerald-600 font-medium">
-                      <CheckCircle2 className="w-4 h-4 shrink-0" /> Full Access
-                    </span>
-                  </TableCell>
+                  <TableCell className="p-4 font-semibold text-slate-800">Customer Support SLA</TableCell>
+                  <TableCell className="p-4">Standard (Mon-Sat)</TableCell>
+                  <TableCell className="p-4 font-semibold text-[#2563EB]">Priority WhatsApp &amp; Remote Desk</TableCell>
+                  <TableCell className="p-4">Basic support &amp; bug fixes included</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-[#020C2B]">License Duration</TableCell>
-                  <TableCell className="p-4 sm:p-5">30-day active period</TableCell>
-                  <TableCell className="p-4 sm:p-5">365-day active period</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-semibold">Perpetual (No expiration)</TableCell>
+                  <TableCell className="p-4 font-semibold text-slate-800">3-Day View-Only Grace Period</TableCell>
+                  <TableCell className="p-4">3 days</TableCell>
+                  <TableCell className="p-4">3 days</TableCell>
+                  <TableCell className="p-4 font-mono text-slate-500">Not applicable (Perpetual)</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-[#020C2B]">Software Updates</TableCell>
-                  <TableCell className="p-4 sm:p-5">During active month</TableCell>
-                  <TableCell className="p-4 sm:p-5">During active year</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-mono text-[11px] text-amber-600">
-                    TODO: Clarify duration of updates included
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-[#020C2B]">Customer Support SLA</TableCell>
-                  <TableCell className="p-4 sm:p-5">Standard email &amp; chat</TableCell>
-                  <TableCell className="p-4 sm:p-5">Standard email &amp; chat</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-mono text-[11px] text-amber-600">
-                    TODO: Clarify ongoing support SLA
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="p-4 sm:p-5 font-semibold text-[#020C2B]">Devices / Counters Permitted</TableCell>
-                  <TableCell className="p-4 sm:p-5">Standard single counter/business</TableCell>
-                  <TableCell className="p-4 sm:p-5">Standard single counter/business</TableCell>
-                  <TableCell className="p-4 sm:p-5 font-mono text-[11px] text-amber-600">
-                    TODO: Confirm permitted devices/counters
-                  </TableCell>
-                </TableRow>
-                <TableRow className="bg-[#FAF6F0]/80">
-                  <TableCell className="p-4 sm:p-5 font-bold text-[#020C2B]">
-                    MyGarage SaaS Plan
-                    <span className="block text-[11px] font-mono text-slate-500 font-normal">
-                      Vehicle &amp; fleet management
-                    </span>
-                  </TableCell>
-                  <TableCell colSpan={3} className="p-4 sm:p-5">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                      <div className="space-y-0.5">
-                        <Badge variant="mygarage">Coming Soon</Badge>
-                        <p className="text-xs text-[#020C2B]/80 font-medium pt-1">
-                          Pricing not yet defined for MyGarage SaaS. Contact our product team for pilot access and onboarding.
-                        </p>
-                        <p className="text-[11px] font-mono text-amber-600">
-                          TODO: Define official commercial pricing for MyGarage SaaS.
-                        </p>
-                      </div>
-                      <Button
-                        href="/demo?product=not_sure&intent=mygarage"
-                        variant="outline"
-                        size="sm"
-                        className="shrink-0 border-[#020C2B]/20 hover:bg-[#020C2B]/5 text-[#020C2B]"
-                      >
-                        Contact us
-                      </Button>
-                    </div>
-                  </TableCell>
+                  <TableCell className="p-4 font-semibold text-slate-800">Advance Renewal Notices</TableCell>
+                  <TableCell className="p-4">7 days &amp; 2 days prior</TableCell>
+                  <TableCell className="p-4">7 days &amp; 2 days prior</TableCell>
+                  <TableCell className="p-4 font-mono text-slate-500">Not applicable (Perpetual)</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
           </div>
         </div>
 
-        {/* Pricing FAQ Section (Powered by shadcn Accordion) */}
+        {/* Pricing FAQ Section */}
         <div className="space-y-8 max-w-4xl mx-auto pt-8">
           <div className="text-center space-y-2">
-            <Badge variant="pos">Got Questions?</Badge>
+            <Badge variant="pos">Clear Answers</Badge>
             <h2 className="text-3xl font-black text-[#020C2B]">
               Frequently Asked Pricing Questions
             </h2>
-            <p className="text-xs text-[#020C2B]/70">
-              Clear answers regarding subscriptions, upgrades, renewals, and refunds.
+            <p className="text-xs text-slate-600">
+              Clear answers regarding renewals, 3-day grace period, upgrades, and refunds.
             </p>
           </div>
 
-          <div className="bg-white rounded-3xl border border-[#020C2B]/10 p-6 sm:p-8 shadow-xs">
+          <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
             <Accordion className="space-y-4">
               {FAQS.map((faq) => (
                 <AccordionItem
                   key={faq.id}
                   value={faq.id}
-                  className="rounded-2xl border border-[#020C2B]/10 p-2 sm:p-3 overflow-hidden"
+                  className="rounded-2xl border border-slate-200 p-2 sm:p-3 overflow-hidden"
                 >
                   <AccordionTrigger className="font-bold text-sm sm:text-base text-[#020C2B] px-3 hover:no-underline cursor-pointer">
-                    <span className="flex items-center gap-3">
+                    <span className="flex items-center gap-3 text-left">
                       <HelpCircle className="w-5 h-5 text-[#E58145] shrink-0" />
-                      {faq.question}
+                      <span>{faq.question}</span>
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="px-3 pt-2 text-slate-600 text-xs sm:text-sm leading-relaxed space-y-2">
+                  <AccordionContent className="px-3 pt-2 text-slate-600 text-xs sm:text-sm leading-relaxed space-y-2 pl-11">
                     <p>{faq.answer}</p>
                     {faq.linkHref && faq.linkText && (
                       <p className="pt-1">
                         <Link
                           href={faq.linkHref}
-                          className="text-[#E58145] font-bold hover:underline inline-flex items-center gap-1 text-xs"
+                          className="text-[#2563EB] hover:text-[#020C2B] font-semibold underline underline-offset-2 transition-colors"
                         >
                           {faq.linkText} &rarr;
                         </Link>
@@ -539,22 +418,24 @@ function PricingContent() {
           </div>
         </div>
 
-        {/* Policy Links Banner */}
-        <div className="text-center text-xs text-[#020C2B]/70 space-y-2 pt-4">
-          <p>
-            For legal and contractual terms governing software access, review our published policies:
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 font-semibold text-[#020C2B]">
-            <Link href="/subscription-policy" className="hover:text-[#E58145] underline underline-offset-4">
-              Subscription &amp; Renewal Policy
+        {/* Policy Links & Refund Note Banner */}
+        <div className="text-center space-y-2 pt-4">
+          <RefundNote className="text-center" />
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500 pt-2">
+            <Link href="/subscription-policy" className="hover:underline">
+              Subscription Policy
             </Link>
             <span>•</span>
-            <Link href="/refund" className="hover:text-[#E58145] underline underline-offset-4">
+            <Link href="/refund" className="hover:underline">
               Refund Policy
             </Link>
             <span>•</span>
-            <Link href="/terms" className="hover:text-[#E58145] underline underline-offset-4">
-              Terms of Service
+            <Link href="/lifetime-terms" className="hover:underline">
+              Lifetime Terms
+            </Link>
+            <span>•</span>
+            <Link href="/sla" className="hover:underline">
+              Support SLA
             </Link>
           </div>
         </div>
@@ -568,8 +449,8 @@ export default function PricingPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#F8F3EB] flex items-center justify-center pt-28">
-          <div className="text-sm font-mono text-[#020C2B]">Loading pricing plans...</div>
+        <div className="min-h-screen pt-32 text-center text-sm font-mono text-slate-500">
+          Loading WebRajya Pricing...
         </div>
       }
     >

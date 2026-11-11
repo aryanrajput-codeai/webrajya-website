@@ -2,124 +2,93 @@
 
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { motion } from "motion/react";
-import { Home, Utensils, FileText, MessageSquareCode, Tag } from "lucide-react";
+import { Phone, MessageCircle, CalendarCheck, Home, Tag } from "lucide-react";
+import { LAUNCH_CONFIG } from "@/config/launch";
+import { trackEvent } from "@/lib/analytics";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function MobileBottomDock() {
-  const pathname = usePathname();
+  const { t } = useLanguage();
 
-  const NAV_ITEMS = [
-    {
-      label: "Home",
-      href: "/",
-      icon: Home,
-      exact: true,
-    },
-    {
-      label: "POS",
-      href: "/pos",
-      icon: Utensils,
-      exact: false,
-    },
-    {
-      label: "Free Demo",
-      href: "/demo",
-      icon: MessageSquareCode,
-      isCenterFab: true,
-    },
-    {
-      label: "Invoice",
-      href: "/invoice",
-      icon: FileText,
-      exact: false,
-    },
-    {
-      label: "Pricing",
-      href: "/pricing",
-      icon: Tag,
-      exact: false,
-    },
-  ];
+  const handleCallClick = () => {
+    trackEvent("call_click", { location: "mobile_bottom_dock" });
+  };
+
+  const handleWhatsAppClick = () => {
+    trackEvent("whatsapp_click", { location: "mobile_bottom_dock" });
+  };
+
+  const whatsappMessage = encodeURIComponent(
+    "Hi WebRajya, I want to book a free demo of WebRajya Invoice for my shop in Nagpur."
+  );
+  const whatsappUrl = `https://wa.me/${LAUNCH_CONFIG.WHATSAPP}?text=${whatsappMessage}`;
 
   return (
     <div className="md:hidden fixed bottom-3 left-3 right-3 z-50 pointer-events-none flex justify-center pb-[env(safe-area-inset-bottom,0px)]">
-      <nav className="pointer-events-auto w-full max-w-md bg-white/70 backdrop-blur-2xl backdrop-saturate-180 border border-white/80 rounded-full px-2 py-1.5 flex items-center justify-around shadow-[0_12px_40px_-6px_rgba(2,12,43,0.18),0_4px_16px_0_rgba(2,12,43,0.06),inset_0_1.5px_2px_0_rgba(255,255,255,0.9)] relative overflow-visible">
-        
-        {/* Specular Top Rim Refraction Line */}
-        <div className="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none" />
+      <nav
+        aria-label="Mobile quick action navigation"
+        className="pointer-events-auto w-full max-w-md bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-full px-2 py-1.5 flex items-center justify-between shadow-2xl"
+      >
+        {/* 1. Home Link */}
+        <Link
+          href="/"
+          className="flex flex-col items-center justify-center py-1 px-2.5 rounded-full text-slate-600 hover:text-[#020C2B] transition-colors"
+          aria-label="Home"
+        >
+          <Home className="w-4 h-4" />
+          <span className="text-[10px] font-bold tracking-tight">Home</span>
+        </Link>
 
-        {NAV_ITEMS.map((item) => {
-          const isActive = item.exact
-            ? pathname === item.href
-            : pathname.startsWith(item.href) && item.href !== "/";
+        {/* 2. Direct Call Action */}
+        <a
+          href={`tel:${LAUNCH_CONFIG.PHONE}`}
+          onClick={handleCallClick}
+          className="flex flex-col items-center justify-center py-1 px-2.5 rounded-full text-slate-700 hover:text-[#020C2B] transition-colors"
+          aria-label={`Call WebRajya at ${LAUNCH_CONFIG.PHONE_DISPLAY}`}
+        >
+          <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-800">
+            <Phone className="w-4 h-4" />
+          </div>
+          <span className="text-[10px] font-bold tracking-tight mt-0.5">Call</span>
+        </a>
 
-          const Icon = item.icon;
+        {/* 3. Center CTA: Book Demo */}
+        <Link
+          href="/demo"
+          className="flex flex-col items-center -mt-5 px-3 group focus:outline-none"
+        >
+          <div className="w-13 h-13 rounded-full bg-[#E58145] text-white flex items-center justify-center shadow-lg shadow-[#E58145]/30 border-2 border-white transform active:scale-95 transition-all">
+            <CalendarCheck className="w-6 h-6" />
+          </div>
+          <span className="text-[10px] font-black text-[#020C2B] tracking-tight mt-1">
+            {t("book_demo", "Book Demo", "Demo Book")}
+          </span>
+        </Link>
 
-          if (item.isCenterFab) {
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="flex flex-col items-center group -mt-6 shrink-0 focus:outline-none relative"
-              >
-                {/* Breathing Ambient Halo */}
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#E58145]/40 via-amber-400/30 to-[#E58145]/20 blur-md -z-10 animate-pulse pointer-events-none" />
+        {/* 4. WhatsApp Quick Enquiry */}
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleWhatsAppClick}
+          className="flex flex-col items-center justify-center py-1 px-2.5 rounded-full text-emerald-700 hover:text-emerald-800 transition-colors"
+          aria-label="Enquire via WhatsApp"
+        >
+          <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+            <MessageCircle className="w-4 h-4" />
+          </div>
+          <span className="text-[10px] font-bold tracking-tight mt-0.5">WhatsApp</span>
+        </a>
 
-                <motion.div
-                  whileTap={{ scale: 0.9, rotate: -2 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  transition={{ type: "spring", stiffness: 450, damping: 20 }}
-                  className={`w-12 h-12 rounded-full bg-white/90 backdrop-blur-xl border border-white p-1.5 flex items-center justify-center shadow-[0_8px_24px_rgba(229,129,69,0.32),inset_0_1px_1.5px_rgba(255,255,255,0.95)] transition-all ${
-                    isActive ? "ring-2 ring-[#E58145] ring-offset-2 ring-offset-[#F8F3EB]" : ""
-                  }`}
-                >
-                  <img
-                    src="/webrajya-logo.svg"
-                    alt="WebRajya Logo Emblem"
-                    className="w-7 h-7 object-contain drop-shadow-sm"
-                  />
-                </motion.div>
-                <span className={`text-[10px] tracking-tight mt-0.5 font-sans ${
-                  isActive ? "font-black text-[#E58145]" : "font-bold text-[#020C2B]"
-                }`}>
-                  {item.label}
-                </span>
-              </Link>
-            );
-          }
-
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="relative flex flex-col items-center gap-0.5 py-1 px-3 rounded-full transition-colors shrink-0 group focus:outline-none"
-            >
-              {/* Luminous Frosted Glass Active Pill */}
-              {isActive && (
-                <motion.div
-                  layoutId="activeDockGlassIndicator"
-                  className="absolute inset-0 bg-[#E58145]/12 border border-[#E58145]/30 rounded-full -z-10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] backdrop-blur-xs"
-                  transition={{ type: "spring", stiffness: 450, damping: 30 }}
-                />
-              )}
-              
-              <motion.div
-                whileTap={{ scale: 0.85 }}
-                className="flex flex-col items-center gap-0.5"
-              >
-                <Icon className={`w-5 h-5 transition-transform duration-200 group-hover:scale-110 ${
-                  isActive ? "text-[#E58145]" : "text-[#525866]"
-                }`} />
-                <span className={`text-[10px] font-sans transition-colors ${
-                  isActive ? "font-bold text-[#E58145]" : "font-medium text-[#525866]"
-                }`}>
-                  {item.label}
-                </span>
-              </motion.div>
-            </Link>
-          );
-        })}
+        {/* 5. Pricing Link */}
+        <Link
+          href="/pricing"
+          className="flex flex-col items-center justify-center py-1 px-2.5 rounded-full text-slate-600 hover:text-[#020C2B] transition-colors"
+          aria-label="Pricing"
+        >
+          <Tag className="w-4 h-4" />
+          <span className="text-[10px] font-bold tracking-tight">Pricing</span>
+        </Link>
       </nav>
     </div>
   );

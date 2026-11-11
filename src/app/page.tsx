@@ -1,50 +1,69 @@
 import React from "react";
-import { ProductGateway } from "@/components/sections/ProductGateway";
+import type { Metadata } from "next";
+import { NagpurLaunchHero } from "@/components/sections/NagpurLaunchHero";
+import { DecemberOfferBanner } from "@/components/sections/DecemberOfferBanner";
 import { CustomerMarquee } from "@/components/sections/CustomerMarquee";
-import { WebRajyaVision } from "@/components/sections/WebRajyaVision";
-import { HowWebRajyaWorks } from "@/components/sections/HowWebRajyaWorks";
-import { RealWorldUseCases } from "@/components/sections/RealWorldUseCases";
-import { BusinessIntelligence } from "@/components/sections/BusinessIntelligence";
-import { WhyWebRajya } from "@/components/sections/WhyWebRajya";
-import { ProductEcosystem } from "@/components/sections/ProductEcosystem";
+import { ProblemToSolutionStrip } from "@/components/sections/ProblemToSolutionStrip";
+import { ShopIndustryTiles } from "@/components/sections/ShopIndustryTiles";
+import { FourStepFlow } from "@/components/sections/FourStepFlow";
 import { HomepagePricingTeaser } from "@/components/sections/HomepagePricingTeaser";
-import { CustomerReviewsSection } from "@/components/reviews/CustomerReviewsSection";
+import { MobileAppSection } from "@/components/sections/MobileAppSection";
+import { NagpurHomeFaq } from "@/components/sections/NagpurHomeFaq";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
-export default function GatewayPage() {
+export const metadata: Metadata = {
+  title: "Billing & Inventory Software in Nagpur | WebRajya Invoice",
+  description:
+    "Affordable, easy-to-use retail billing and stock software with personal customer support in Nagpur. 3-day free trial after live demo for mobile, cloth, footwear, and stationery shops.",
+  keywords: [
+    "Billing Software Nagpur",
+    "Retail Billing Nagpur",
+    "Shop Inventory Software Nagpur",
+    "WebRajya Invoice",
+    "Mobile Shop Software Nagpur",
+    "GST Billing Nagpur"
+  ],
+  openGraph: {
+    title: "Billing & Inventory Software in Nagpur | WebRajya Invoice",
+    description: "Start your 3-day free trial with personal setup support in Nagpur, Maharashtra.",
+    url: "https://webrajya.com",
+    siteName: "WebRajya",
+    locale: "en_IN",
+    type: "website"
+  }
+};
+
+export default function HomePage() {
   return (
     <div className="w-full overflow-hidden">
-      {/* SECTION 1 — PRODUCT GATEWAY */}
-      <ProductGateway />
+      {/* 1. HERO SECTION */}
+      <NagpurLaunchHero />
 
-      {/* SECTION 1.5 — TRUST & VERIFIED CUSTOMERS MARQUEE */}
+      {/* 2. DECEMBER LAUNCH OFFER BANNER */}
+      <DecemberOfferBanner />
+
+      {/* 3. VERIFIED CUSTOMERS PROOF MARQUEE */}
       <CustomerMarquee />
 
-      {/* SECTION 2 — WEBRAJYA VISION */}
-      <WebRajyaVision />
+      {/* 4. PROBLEM TO SOLUTION STRIP */}
+      <ProblemToSolutionStrip />
 
-      {/* SECTION 3 — HOW WEBRAJYA WORKS */}
-      <HowWebRajyaWorks />
+      {/* 5. BUILT FOR YOUR SHOP TILES (6 INDUSTRY PAGES) */}
+      <ShopIndustryTiles />
 
-      {/* SECTION 4 — REAL-WORLD USE CASES */}
-      <RealWorldUseCases />
+      {/* 6. 4-STEP FLOW: DEMO → 3-DAY TRIAL → SETUP → START BILLING */}
+      <FourStepFlow />
 
-      {/* SECTION 5 — BUSINESS INTELLIGENCE STORY */}
-      <BusinessIntelligence />
-
-      {/* SECTION 6 — WHY WEBRAJYA */}
-      <WhyWebRajya />
-
-      {/* SECTION 7 — PRODUCT ECOSYSTEM */}
-      <ProductEcosystem />
-
-      {/* SECTION 8 — FAIR & TRANSPARENT PRICING */}
+      {/* 7. FAIR & TRANSPARENT PRICING TEASER */}
       <HomepagePricingTeaser />
 
-      {/* SECTION 9 — VERIFIED CUSTOMER REVIEWS */}
-      <CustomerReviewsSection />
+      {/* 8. MOBILE APP SECTION (GOVERNED BY APP_LIVE FLAG) */}
+      <MobileAppSection />
 
-      {/* SECTION 10 — FINAL CTA */}
+      {/* 9. FREQUENTLY ASKED QUESTIONS (ACCORDION) */}
+      <NagpurHomeFaq />
+
+      {/* 10. FINAL CONVERSION CTA */}
       <FinalCTA />
     </div>
   );

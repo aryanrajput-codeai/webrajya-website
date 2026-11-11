@@ -2,44 +2,44 @@
  * WebRajya Centralized Pricing Configuration
  * 
  * REAL PRICING (all in INR):
- * WebRajya Invoice and WebRajya POS each have the SAME three plans, sold per product:
+ * WebRajya Invoice:
  * - Monthly: ₹599 per month
- * - Yearly: ₹5,999 per year (about ₹500/month; saves ₹1,189 vs paying monthly, roughly 17%)
+ * - Annual: ₹5,999 per year ("Most Popular / Recommended", about ₹500/month; saves ₹1,189 vs paying monthly)
+ * - Early Lifetime: ₹19,999 one-time payment (Limited: first 50 customers, dynamic remaining counter)
+ * - Regular Lifetime: ₹25,999 one-time payment (standard price after first 50 slots)
+ * 
+ * WebRajya POS:
+ * - Monthly: ₹599 per month
+ * - Annual: ₹5,999 per year
  * - Lifetime: ₹25,999 one-time payment
  * 
- * MyGarage has NO price defined yet: displays "Contact us" / "Coming soon" with a TODO.
- * 
- * OPEN ITEMS / ASSUMPTIONS:
- * - GST: Whether prices include or exclude GST.
- *   TODO: Confirm whether prices are inclusive or exclusive of GST.
- * - Lifetime plan: What it includes (updates duration, support SLA, allowed devices/counters/outlets).
- *   TODO: Clarify exact Lifetime plan terms, device limits, and updates policy.
- * - Feature differences: All core software features are included across all plans; only billing period differs.
+ * MyGarage:
+ * - Contact us / Coming soon (no price defined yet)
  */
 
-export type PlanBillingCycle = "monthly" | "yearly" | "lifetime";
+import { LAUNCH_CONFIG } from "./launch";
+
+export type PlanBillingCycle = "monthly" | "yearly" | "early_lifetime" | "lifetime";
 
 export interface PlanPricingItem {
   id: PlanBillingCycle;
   name: string;
   price: number;
   formattedPrice: string;
+  regularPrice?: number;
+  formattedRegularPrice?: string;
   billingPeriod: string;
   billingCadence: string;
   effectiveMonthlyCost: string;
   savingsText?: string;
   badgeText?: string;
   isPopular?: boolean;
+  isEarlyBird?: boolean;
   tagline: string;
   features: string[];
   ctaLabel: string;
   ctaHref: (productId: string) => string;
-  lifetimeDetails?: {
-    licenseType: string;
-    updateDurationTodo: string;
-    supportSlaTodo: string;
-    deviceLimitTodo: string;
-  };
+  lifetimeNote?: string;
 }
 
 export interface ProductPricingConfig {
@@ -53,141 +53,200 @@ export interface ProductPricingConfig {
   comingSoonNote?: string;
 }
 
-export interface GstPricingConfig {
-  isInclusive: boolean;
-  displayNote: string;
-  todoNotice: string;
-}
+export const LIFETIME_INCLUSION_STATEMENT =
+  "Includes software licence, basic support, bug fixes and maintenance. Major upgrades may be charged separately as defined in the Lifetime Terms.";
 
-/**
- * GST Configuration
- * TODO: Confirm whether prices are inclusive or exclusive of GST.
- * Currently set to exclusive of GST with explicit disclosure.
- */
-export const GST_CONFIG: GstPricingConfig = {
-  isInclusive: false,
-  displayNote: "Prices are exclusive of GST. Applicable Goods & Services Tax is calculated at checkout.",
-  todoNotice: "TODO: Confirm whether prices are inclusive or exclusive of GST."
-};
-
-/**
- * Feature Assumption Note:
- * All core software features are included across all plans.
- * Only the billing period and license duration differ.
- */
 export const FEATURE_INCLUSION_ASSUMPTION_NOTE =
-  "All core product features and capabilities are fully included across Monthly, Yearly, and Lifetime plans. Only the billing period, savings, and license duration differ.";
+  "All core product features (billing, inventory, khata, and reports) are fully included across Monthly, Annual, and Lifetime plans. Only the billing period, savings, and license duration differ.";
 
-/**
- * Lifetime Plan Clarification Placeholders
- */
-export const LIFETIME_PLAN_SPECS = {
-  licenseTitle: "Perpetual Software License",
-  description: "Pay once, use forever. No recurring monthly or yearly subscription fees.",
-  updateDurationTodo: "TODO: Clarify duration of software updates included (e.g. 1 year of updates vs lifetime updates)",
-  supportSlaTodo: "TODO: Clarify ongoing customer support SLA and duration",
-  deviceLimitTodo: "TODO: Confirm number of devices, counters, or outlets permitted per lifetime license"
-};
-
-// Common features for WebRajya Invoice
-const INVOICE_FEATURES = [
+// Common verified features for WebRajya Invoice
+export const INVOICE_FEATURES = [
   "Fast counter billing & GST/non-GST invoicing",
   "Product catalog & barcode scanner integration",
   "Inventory management with low-stock alerts",
-  "Customer Khata ledger & payment tracking",
-  "Purchase & vendor management records",
+  "Customer Khata ledger & credit balance tracking",
+  "Purchase & supplier management records",
   "Daily sales, tax, and revenue reports",
   "Offline-first resilience with local storage",
   "Thermal receipt (58mm/80mm) & A4 invoice printing"
 ];
 
-// Common features for WebRajya POS
-const POS_FEATURES = [
+// Common verified features for WebRajya POS
+export const POS_FEATURES = [
   "Sub-3-second cashier billing & instant hotkeys",
   "Kitchen Order Ticket (KOT) thermal routing",
   "Visual floor plan & live table status management",
-  "Recipe costing & ingredient-level tracking",
+  "Recipe costing & ingredient-level deduction",
   "Offline local network resilience (bills print without internet)",
   "Daily sales, taxes & payment mode analytics",
   "Multi-counter & waiter tablet connectivity",
   "Standard thermal printer & cash drawer integration"
 ];
 
-function createPlansForProduct(
-  productId: "invoice" | "pos",
-  features: string[]
-): PlanPricingItem[] {
-  return [
-    {
-      id: "monthly",
-      name: "Monthly",
-      price: 599,
-      formattedPrice: "₹599",
-      billingPeriod: "/ month",
-      billingCadence: "Billed monthly",
-      effectiveMonthlyCost: "₹599 / month",
-      savingsText: undefined,
-      badgeText: undefined,
-      isPopular: false,
-      tagline: "Pay as you go with complete flexibility.",
-      features: [...features],
-      ctaLabel: "Book a Free Demo",
-      ctaHref: (prodId) => `/demo?product=${prodId}&plan=monthly`
-    },
-    {
-      id: "yearly",
-      name: "Yearly",
-      price: 5999,
-      formattedPrice: "₹5,999",
-      billingPeriod: "/ year",
-      billingCadence: "Billed annually",
-      effectiveMonthlyCost: "About ₹500 / month",
-      savingsText: "Save ₹1,189 vs paying monthly (roughly 17% savings)",
-      badgeText: "Best Value",
-      isPopular: true,
-      tagline: "Our most popular plan for established operations.",
-      features: [...features],
-      ctaLabel: "Book a Free Demo",
-      ctaHref: (prodId) => `/demo?product=${prodId}&plan=yearly`
-    },
-    {
-      id: "lifetime",
-      name: "Lifetime",
-      price: 25999,
-      formattedPrice: "₹25,999",
-      billingPeriod: "one-time payment",
-      billingCadence: "One-time investment",
-      effectiveMonthlyCost: "Pay once, use forever",
-      savingsText: "Zero recurring subscription fees",
-      badgeText: "Pay once, use forever",
-      isPopular: false,
-      tagline: "Perpetual license for long-term peace of mind.",
-      features: [
-        ...features,
-        "Perpetual software license (no recurring subscription)",
-        "Zero monthly or annual software renewal fees"
-      ],
-      ctaLabel: "Book a Free Demo",
-      ctaHref: (prodId) => `/demo?product=${prodId}&plan=lifetime`,
-      lifetimeDetails: {
-        licenseType: LIFETIME_PLAN_SPECS.licenseTitle,
-        updateDurationTodo: LIFETIME_PLAN_SPECS.updateDurationTodo,
-        supportSlaTodo: LIFETIME_PLAN_SPECS.supportSlaTodo,
-        deviceLimitTodo: LIFETIME_PLAN_SPECS.deviceLimitTodo
-      }
-    }
-  ];
+function getPlanCta(planId: string, productId: string) {
+  if (LAUNCH_CONFIG.PAYMENTS_ENABLED) {
+    return `${LAUNCH_CONFIG.PAYMENT_GATEWAY_URL}?product=${productId}&plan=${planId}`;
+  }
+  return `/demo?product=${productId}&plan=${planId}`;
 }
+
+export const INVOICE_PLANS: PlanPricingItem[] = [
+  {
+    id: "monthly",
+    name: "Monthly",
+    price: 599,
+    formattedPrice: "₹599",
+    billingPeriod: "/ month",
+    billingCadence: "Billed monthly",
+    effectiveMonthlyCost: "₹599 / month",
+    isPopular: false,
+    tagline: "Pay as you go with complete monthly flexibility.",
+    features: [
+      "Full billing, inventory & khata features",
+      "Offline-first local billing capability",
+      "Standard phone & WhatsApp support (Mon-Sat)",
+      "Continuous bug fixes & maintenance updates",
+      "Monthly data backups"
+    ],
+    ctaLabel: LAUNCH_CONFIG.PAYMENTS_ENABLED ? "Subscribe Now" : "Book Free Demo",
+    ctaHref: (prodId) => getPlanCta("monthly", prodId)
+  },
+  {
+    id: "yearly",
+    name: "Annual",
+    price: 5999,
+    formattedPrice: "₹5,999",
+    regularPrice: 7188,
+    formattedRegularPrice: "₹7,188",
+    billingPeriod: "/ year",
+    billingCadence: "Billed annually (~₹500 / month)",
+    effectiveMonthlyCost: "About ₹500 / month",
+    savingsText: "Save ₹1,189 vs paying monthly (roughly 17% savings)",
+    badgeText: "Most Popular / Recommended",
+    isPopular: true,
+    tagline: "Our most popular plan for retail shops. Lowest annual cost.",
+    features: [
+      "All features in Monthly plan included",
+      "Saves ₹1,189 compared to monthly billing",
+      "Priority WhatsApp & remote desktop support",
+      "3-day view-only grace period on renewal",
+      "Free initial catalog import & setup assistance"
+    ],
+    ctaLabel: LAUNCH_CONFIG.PAYMENTS_ENABLED ? "Subscribe Annually" : "Book Free Demo",
+    ctaHref: (prodId) => getPlanCta("yearly", prodId)
+  },
+  {
+    id: "early_lifetime",
+    name: "Early Lifetime",
+    price: 19999,
+    formattedPrice: "₹19,999",
+    regularPrice: 25999,
+    formattedRegularPrice: "₹25,999",
+    billingPeriod: "one-time payment",
+    billingCadence: "One-time investment",
+    effectiveMonthlyCost: "Pay once, use forever",
+    savingsText: "Save ₹6,000 off regular lifetime price",
+    badgeText: `Limited: first ${LAUNCH_CONFIG.EARLY_LIFETIME_SLOTS_TOTAL} customers (${LAUNCH_CONFIG.EARLY_LIFETIME_SLOTS_REMAINING} slots remaining)`,
+    isPopular: false,
+    isEarlyBird: true,
+    tagline: "Special launch price for our first 50 Nagpur customers.",
+    features: [
+      "Perpetual software licence (never pay monthly renewal fees)",
+      "Zero monthly or yearly subscription charges",
+      "Basic support, bug fixes and maintenance included",
+      "Free in-shop or remote setup by Nagpur team",
+      "Regular price ₹25,999 after first 50 customers"
+    ],
+    lifetimeNote: LIFETIME_INCLUSION_STATEMENT,
+    ctaLabel: LAUNCH_CONFIG.PAYMENTS_ENABLED ? "Claim Early Lifetime" : "Book Free Demo",
+    ctaHref: (prodId) => getPlanCta("early_lifetime", prodId)
+  },
+  {
+    id: "lifetime",
+    name: "Regular Lifetime",
+    price: 25999,
+    formattedPrice: "₹25,999",
+    billingPeriod: "one-time payment",
+    billingCadence: "One-time investment",
+    effectiveMonthlyCost: "Standard perpetual license",
+    savingsText: "Price after first 50 customers are claimed",
+    badgeText: "Standard Lifetime",
+    isPopular: false,
+    tagline: "Perpetual license for long-term operational certainty.",
+    features: [
+      "Perpetual software licence",
+      "Zero recurring renewal fees",
+      "Basic support, bug fixes and maintenance included",
+      "Data export and local backup utilities"
+    ],
+    lifetimeNote: LIFETIME_INCLUSION_STATEMENT,
+    ctaLabel: LAUNCH_CONFIG.PAYMENTS_ENABLED ? "Purchase License" : "Book Free Demo",
+    ctaHref: (prodId) => getPlanCta("lifetime", prodId)
+  }
+];
+
+export const POS_PLANS: PlanPricingItem[] = [
+  {
+    id: "monthly",
+    name: "Monthly",
+    price: 599,
+    formattedPrice: "₹599",
+    billingPeriod: "/ month",
+    billingCadence: "Billed monthly",
+    effectiveMonthlyCost: "₹599 / month",
+    isPopular: false,
+    tagline: "Pay as you go with restaurant billing flexibility.",
+    features: POS_FEATURES,
+    ctaLabel: LAUNCH_CONFIG.PAYMENTS_ENABLED ? "Subscribe Now" : "Book Free Demo",
+    ctaHref: (prodId) => getPlanCta("monthly", prodId)
+  },
+  {
+    id: "yearly",
+    name: "Annual",
+    price: 5999,
+    formattedPrice: "₹5,999",
+    billingPeriod: "/ year",
+    billingCadence: "Billed annually (~₹500 / month)",
+    effectiveMonthlyCost: "About ₹500 / month",
+    savingsText: "Save ₹1,189 vs paying monthly",
+    badgeText: "Most Popular / Recommended",
+    isPopular: true,
+    tagline: "Recommended for restaurants & cafes.",
+    features: POS_FEATURES,
+    ctaLabel: LAUNCH_CONFIG.PAYMENTS_ENABLED ? "Subscribe Annually" : "Book Free Demo",
+    ctaHref: (prodId) => getPlanCta("yearly", prodId)
+  },
+  {
+    id: "lifetime",
+    name: "Lifetime",
+    price: 25999,
+    formattedPrice: "₹25,999",
+    billingPeriod: "one-time payment",
+    billingCadence: "One-time investment",
+    effectiveMonthlyCost: "Pay once, use forever",
+    savingsText: "Zero recurring subscription fees",
+    badgeText: "Pay once, use forever",
+    isPopular: false,
+    tagline: "Perpetual restaurant billing license.",
+    features: [
+      ...POS_FEATURES,
+      "Perpetual software licence (no monthly renewals)"
+    ],
+    lifetimeNote: LIFETIME_INCLUSION_STATEMENT,
+    ctaLabel: LAUNCH_CONFIG.PAYMENTS_ENABLED ? "Purchase License" : "Book Free Demo",
+    ctaHref: (prodId) => getPlanCta("lifetime", prodId)
+  }
+];
 
 export const PRICING_CONFIG: Record<"invoice" | "pos" | "mygarage", ProductPricingConfig> = {
   invoice: {
     id: "invoice",
     name: "WebRajya Invoice",
     brandTitle: "WEBRAJYA INVOICE",
-    tagline: "Smart retail billing, inventory & customer khata for Indian businesses.",
-    description: "Built for stationery shops, retail stores, supermarkets, and wholesale traders.",
+    tagline: "Affordable, easy-to-use billing and inventory software with personal customer support.",
+    description: "Built for mobile, electronics, clothing, footwear, stationery, and furniture retail shops.",
     status: "active",
-    plans: createPlansForProduct("invoice", INVOICE_FEATURES)
+    plans: INVOICE_PLANS
   },
   pos: {
     id: "pos",
@@ -196,7 +255,7 @@ export const PRICING_CONFIG: Record<"invoice" | "pos" | "mygarage", ProductPrici
     tagline: "Zero-lag restaurant POS billing with instant KOT and table management.",
     description: "Built for cafes, quick-service counters, fine dine, bars, and cloud kitchens.",
     status: "active",
-    plans: createPlansForProduct("pos", POS_FEATURES)
+    plans: POS_PLANS
   },
   mygarage: {
     id: "mygarage",
@@ -206,7 +265,6 @@ export const PRICING_CONFIG: Record<"invoice" | "pos" | "mygarage", ProductPrici
     description: "Track RC, Insurance, PUC expiries, service logs, and maintenance costs.",
     status: "coming_soon",
     comingSoonNote: "Pricing coming soon. Contact our team for early access and pilot onboarding."
-    // TODO: Define official pricing for MyGarage SaaS when commercial tier is launched.
   }
 };
 
@@ -224,17 +282,16 @@ export const INVOICE_PRICING = {
   currencySymbol: "₹",
   period: "/year",
   billingTerm: "Billed annually",
-  badge: "Best Value",
+  badge: "Most Popular / Recommended",
   savingsNote: "Save ₹1,189 vs paying monthly (roughly 17% savings)",
-  taxNote: GST_CONFIG.displayNote,
   features: INVOICE_FEATURES,
   ctaPrimary: {
-    text: "Book a Free Demo",
+    text: "Book Free Demo",
     href: "/demo?product=invoice&plan=yearly"
   },
   ctaSecondary: {
-    text: "View All Plans",
+    text: "View Pricing",
     href: "/pricing?product=invoice"
   },
-  termsNote: "Applicable for 1 active business license. Software updates and support provided per active plan."
+  termsNote: LIFETIME_INCLUSION_STATEMENT
 };

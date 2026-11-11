@@ -1,53 +1,71 @@
 import React from "react";
-import { ArrowRight, Utensils, FileText, Sparkles } from "lucide-react";
+import { ArrowRight, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { COMPANY_INFO } from "@/data/company";
+import { Badge } from "@/components/ui/badge";
+import { LAUNCH_CONFIG } from "@/config/launch";
+import { GstNote } from "@/components/ui/GstNote";
+import { RefundNote } from "@/components/ui/RefundNote";
 
 export function FinalCTA() {
+  const whatsappMessage = encodeURIComponent(
+    "Hi WebRajya, I want to book a free demo of WebRajya Invoice for my shop in Nagpur."
+  );
+  const whatsappUrl = `https://wa.me/${LAUNCH_CONFIG.WHATSAPP}?text=${whatsappMessage}`;
+
   return (
-    <section className="py-24 bg-[#F8F3EB] text-[#020C2B] border-t border-[#020C2B]/10 relative overflow-hidden font-sans">
+    <section className="py-24 bg-[#020C2B] text-white relative overflow-hidden font-sans">
       {/* Background Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-[#E58145]/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-[#2563EB]/15 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+        <Badge variant="invoice">Nagpur Retail Launch</Badge>
 
-        <h2 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight leading-tight">
-          {COMPANY_INFO.finalCtaTitle}
+        <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+          Ready to Speed Up Your Billing Counter?
         </h2>
 
-        <p className="text-[#525866] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          {COMPANY_INFO.finalCtaSubtext}
+        <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          Book a 20-minute live demonstration in your shop or online. If you like it, get a 3-day
+          free trial on your own counter with hands-on setup support from our Nagpur team.
         </p>
 
         {/* Action Buttons */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
-            href="/pos"
+            href="/demo"
             variant="cta"
-            size="lg"
-            icon={<Utensils className="w-4 h-4" />}
-            iconPosition="left"
-            className="w-full sm:w-auto"
+            size="xl"
+            className="w-full sm:w-auto font-bold shadow-lg shadow-[#E58145]/20"
+            icon={<ArrowRight className="w-4 h-4" />}
           >
-            Explore WebRajya POS
+            Book In-Shop Free Demo
           </Button>
 
           <Button
-            href="/invoice"
-            variant="secondary"
-            size="lg"
-            icon={<FileText className="w-4 h-4" />}
-            iconPosition="left"
-            className="w-full sm:w-auto"
+            href={whatsappUrl}
+            variant="outline"
+            size="xl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto border-white/20 bg-white/5 hover:bg-white/10 text-white flex items-center justify-center gap-2"
           >
-            Explore WebRajya Invoice
+            <MessageCircle className="w-5 h-5 text-emerald-400" />
+            <span>Chat on WhatsApp</span>
           </Button>
         </div>
 
-        <p className="text-xs text-[#525866] font-mono pt-4">
-          No credit card required for initial walkthrough • Instant Setup
-        </p>
+        <div className="pt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 font-mono">
+          <span>3-day free trial after live demo</span>
+          <span>•</span>
+          <span>Free personal setup help in Nagpur</span>
+          <span>•</span>
+          <a href={`tel:${LAUNCH_CONFIG.PHONE}`} className="hover:text-white transition-colors">
+            Call: {LAUNCH_CONFIG.PHONE_DISPLAY}
+          </a>
+        </div>
 
+        <GstNote className="text-slate-400" />
+        <RefundNote className="text-slate-400" />
       </div>
     </section>
   );

@@ -1,10 +1,12 @@
 import { MetadataRoute } from 'next';
 import { SITE_CONFIG } from '@/data/config';
+import { LAUNCH_CONFIG } from '@/config/launch';
+import { INDUSTRIES_DATA } from '@/data/industries';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.siteUrl;
 
-  return [
+  const routes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -12,33 +14,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/pos`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/invoice`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/mygarage`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      priority: 0.95,
     },
     {
       url: `${baseUrl}/pricing`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/demo`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/features`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/learn`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
@@ -60,34 +62,49 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/solutions/restaurant-pos-system`,
+      url: `${baseUrl}/pos`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.95,
+      priority: 0.8,
     },
     {
-      url: `${baseUrl}/solutions/qsr-pos-billing`,
+      url: `${baseUrl}/mygarage`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/features/kot-kitchen-display-system`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
   ];
+
+  // Add the 6 Nagpur Industry Shop Pages
+  Object.keys(INDUSTRIES_DATA).forEach((slug) => {
+    routes.push({
+      url: `${baseUrl}/industry/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    });
+  });
+
+  // Only include legal pages if LEGAL_APPROVED === true
+  if (LAUNCH_CONFIG.LEGAL_APPROVED) {
+    const legalPages = [
+      '/privacy',
+      '/terms',
+      '/subscription-policy',
+      '/refund',
+      '/lifetime-terms',
+      '/data-retention',
+      '/sla',
+    ];
+    legalPages.forEach((path) => {
+      routes.push({
+        url: `${baseUrl}${path}`,
+        lastModified: new Date(),
+        changeFrequency: 'yearly',
+        priority: 0.3,
+      });
+    });
+  }
+
+  return routes;
 }

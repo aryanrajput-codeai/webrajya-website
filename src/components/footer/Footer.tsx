@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, Shield, Layers, Globe, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Shield, Layers, Globe, MessageCircle, Phone, Mail, MapPin } from "lucide-react";
 import { SITE_CONFIG } from "@/data/config";
 import { WebRajyaLogo } from "@/components/brand/WebRajyaLogo";
+import { LAUNCH_CONFIG } from "@/config/launch";
+import { GstNote } from "@/components/ui/GstNote";
 
 export function Footer() {
   return (
@@ -20,114 +22,139 @@ export function Footer() {
             </Link>
 
             <div className="space-y-1">
-              <span className="font-bold text-white text-sm block">WebRajya Invoice</span>
+              <span className="font-bold text-white text-sm block">WebRajya Invoice — Nagpur</span>
               <p className="text-xs text-[#CBD5E1] max-w-sm leading-relaxed">
-                Smart billing and inventory management for Indian businesses.
+                Affordable, easy-to-use billing and inventory software with personal customer support for Nagpur retailers.
               </p>
             </div>
 
-            <p className="text-xs text-[#94A3B8] max-w-sm leading-relaxed">
-              {SITE_CONFIG.name} is a business technology platform engineering connected software products designed to simplify everyday business operations.
-            </p>
+            <div className="space-y-1.5 text-xs text-[#94A3B8]">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#E58145] shrink-0" />
+                <span>{LAUNCH_CONFIG.NAGPUR_ADDRESS}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-[#E58145] shrink-0" />
+                <a href={`tel:${LAUNCH_CONFIG.PHONE}`} className="hover:text-white transition-colors">
+                  {LAUNCH_CONFIG.PHONE_DISPLAY}
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-[#E58145] shrink-0" />
+                <a href={`mailto:${LAUNCH_CONFIG.EMAIL}`} className="hover:text-white transition-colors">
+                  {LAUNCH_CONFIG.EMAIL}
+                </a>
+              </div>
+            </div>
 
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-2 pt-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 text-[#F8F3EB] border border-white/10 text-xs font-mono">
-                <Shield className="w-3.5 h-3.5 text-[#2563EB]" /> Operational Software
+                <Shield className="w-3.5 h-3.5 text-[#2563EB]" /> 3-Day Free Trial
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 text-[#F8F3EB] border border-white/10 text-xs font-mono">
-                <Layers className="w-3.5 h-3.5 text-[#2563EB]" /> Multi-Product Brand
+                <Layers className="w-3.5 h-3.5 text-[#2563EB]" /> Offline Local-First
               </span>
             </div>
           </div>
 
-          {/* Product Col */}
+          {/* Nagpur Industry Shops Col */}
           <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">Product</h4>
+            <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">
+              Shops in Nagpur
+            </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/invoice#billing-speed" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors flex items-center gap-1 group">
-                  <span>Billing &amp; Invoicing</span>
+                <Link href="/industry/mobile-shops" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Mobile &amp; Accessories
+                </Link>
+              </li>
+              <li>
+                <Link href="/industry/electronics" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Consumer Electronics
+                </Link>
+              </li>
+              <li>
+                <Link href="/industry/clothing-garments" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Clothing &amp; Garments
+                </Link>
+              </li>
+              <li>
+                <Link href="/industry/footwear" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Footwear &amp; Shoes
+                </Link>
+              </li>
+              <li>
+                <Link href="/industry/stationery-books" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Stationery &amp; Books
+                </Link>
+              </li>
+              <li>
+                <Link href="/industry/furniture" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Furniture Showrooms
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Product & Resources Col */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">
+              Product &amp; Support
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              <li>
+                <Link href="/features" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors flex items-center gap-1 group">
+                  <span>Verified Features</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </Link>
-              </li>
-              <li>
-                <Link href="/invoice#inventory-profit" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Inventory Management
-                </Link>
-              </li>
-              <li>
-                <Link href="/invoice#key-features" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Customer Management
-                </Link>
-              </li>
-              <li>
-                <Link href="/invoice#inventory-profit" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Reports
                 </Link>
               </li>
               <li>
                 <Link href="/pricing" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Pricing Plans
+                  Transparent Pricing
                 </Link>
               </li>
               <li>
-                <Link href="/#reviews" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Customer Reviews
+                <Link href="/demo" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Book In-Shop Demo
                 </Link>
               </li>
               <li>
-                <Link href="/pos" className="text-[#94A3B8] hover:text-white transition-colors text-xs pt-1 flex items-center gap-1">
-                  <span>WebRajya POS Terminal</span>
+                <Link href="/learn" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Tutorials &amp; Learn
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Support Col */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">Support</h4>
-            <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/support" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors flex items-center gap-1 group">
-                  <span>Help Center</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Link href="/support" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Support Desk
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  About WebRajya
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Contact Support
-                </Link>
-              </li>
-              <li>
-                <Link href="/demo?product=invoice&intent=get-started" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Getting Started
-                </Link>
-              </li>
-              <li>
-                <Link href="/invoice#key-features" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Data Export &amp; Backup
-                </Link>
-              </li>
-              <li>
-                <Link href="/invoice#faq" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Frequently Asked Questions
+                  Contact Nagpur Team
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Legal Col */}
+          {/* Legal & Compliance Col (All 7 Legal Pages) */}
           <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">Legal &amp; Compliance</h4>
-            <ul className="space-y-2.5 text-sm">
+            <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">
+              Legal &amp; Policy
+            </h4>
+            <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/privacy" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Privacy Policy
+                  Privacy Policy (DPDP Act)
                 </Link>
               </li>
               <li>
                 <Link href="/terms" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Terms of Service
+                  Terms &amp; Conditions
                 </Link>
               </li>
               <li>
@@ -137,7 +164,22 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/refund" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Refund Policy
+                  Cancellation &amp; Refund
+                </Link>
+              </li>
+              <li>
+                <Link href="/lifetime-terms" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Lifetime Licence Terms
+                </Link>
+              </li>
+              <li>
+                <Link href="/data-retention" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Data Retention &amp; Deletion
+                </Link>
+              </li>
+              <li>
+                <Link href="/sla" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Support SLA
                 </Link>
               </li>
             </ul>
@@ -145,20 +187,30 @@ export function Footer() {
 
         </div>
 
+        {/* GST Note directly under footer columns */}
+        <div className="py-4">
+          <GstNote className="text-slate-400 text-center" />
+        </div>
+
         {/* Bottom copyright bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#94A3B8] font-mono">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#94A3B8] font-mono border-t border-white/5">
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             <p>© 2026 WEBRAJYA. All rights reserved.</p>
             <span className="hidden sm:inline text-white/20">•</span>
-            <p className="text-white/80">WEBRAJYA · Technology that runs your business.</p>
+            <p className="text-white/80">Nagpur, Maharashtra · Affordable, complete billing software.</p>
           </div>
           
           <div className="flex items-center gap-4 text-[#CBD5E1]">
-            <Link href="/contact" className="hover:text-[#60A5FA] transition-colors flex items-center gap-1">
-              <Globe className="w-3.5 h-3.5 text-[#2563EB]" /> India Hub
-            </Link>
-            <Link href="/demo?product=invoice" className="hover:text-[#60A5FA] transition-colors flex items-center gap-1">
-              <MessageCircle className="w-3.5 h-3.5 text-[#2563EB]" /> Book a Demo
+            <a
+              href={`https://wa.me/${LAUNCH_CONFIG.WHATSAPP}?text=${encodeURIComponent("Hi WebRajya, I have an enquiry about billing software in Nagpur.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-emerald-400 transition-colors flex items-center gap-1"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-400" /> WhatsApp
+            </a>
+            <Link href="/demo" className="hover:text-[#60A5FA] transition-colors flex items-center gap-1">
+              Book Free Demo
             </Link>
           </div>
         </div>
