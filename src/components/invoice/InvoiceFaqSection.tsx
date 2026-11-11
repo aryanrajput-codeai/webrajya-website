@@ -9,7 +9,7 @@ export function InvoiceFaqSection() {
     },
     {
       question: "How much does WebRajya Invoice cost?",
-      answer: "The introductory annual price is ₹2,499. Applicable taxes, subscription conditions and renewal terms are displayed clearly before purchase."
+      answer: "WebRajya Invoice offers three straightforward plans: Monthly at ₹599/month, Yearly at ₹5,999/year (about ₹500/month; saves ₹1,189 vs paying monthly), and a Lifetime license at ₹25,999 one-time payment. All plans include full access to billing, inventory, and khata management."
     },
     {
       question: "Can I use WebRajya Invoice without the internet?",
