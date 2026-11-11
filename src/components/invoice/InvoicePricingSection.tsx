@@ -44,7 +44,7 @@ export function InvoicePricingSection() {
                 key={plan.id}
                 className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all relative ${
                   isEarlyLifetime
-                    ? "bg-[#020C2B] text-white border-2 border-[#E58145] shadow-xl md:-translate-y-2"
+                    ? "bg-white border-2 border-[#E58145] shadow-xl md:-translate-y-2 ring-1 ring-[#E58145]/20"
                     : isYearly
                     ? "bg-white border-2 border-[#2563EB] shadow-xl md:-translate-y-1"
                     : "bg-white border border-[#E2E8F0] shadow-sm hover:border-[#2563EB]/40"
@@ -52,7 +52,7 @@ export function InvoicePricingSection() {
               >
                 {/* Badges */}
                 {isEarlyLifetime && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#E58145] text-white shadow-md flex items-center gap-1 whitespace-nowrap">
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#E58145] text-white shadow-md flex items-center gap-1 whitespace-nowrap ring-2 ring-white">
                     <Flame className="w-3.5 h-3.5 animate-pulse" />
                     Limited • {LAUNCH_CONFIG.EARLY_LIFETIME_SLOTS_REMAINING} Slots
                   </span>
@@ -66,21 +66,17 @@ export function InvoicePricingSection() {
                 <div className="space-y-6">
                   {/* Plan Name & Tagline */}
                   <div>
-                    <h3 className={`text-xl sm:text-2xl font-black ${isEarlyLifetime ? "text-white" : "text-[#0F172A]"}`}>
+                    <h3 className="text-xl sm:text-2xl font-black text-[#0F172A]">
                       {plan.name}
                     </h3>
-                    <p className={`text-xs mt-1 min-h-[32px] ${isEarlyLifetime ? "text-slate-300" : "text-[#64748B]"}`}>
+                    <p className="text-xs mt-1 min-h-[32px] text-[#64748B]">
                       {plan.tagline}
                     </p>
                   </div>
 
                   {/* Price Box */}
                   <div
-                    className={`p-4 rounded-2xl font-mono text-center space-y-1.5 ${
-                      isEarlyLifetime
-                        ? "bg-white/10 border border-white/15"
-                        : "bg-[#F8FAFC] border border-[#E2E8F0]"
-                    }`}
+                    className="p-4 rounded-2xl font-mono text-center space-y-1.5 bg-[#F8FAFC] border border-[#E58145]/30"
                   >
                     {plan.formattedRegularPrice && (
                       <span className="text-xs line-through text-slate-400 block">
@@ -88,20 +84,20 @@ export function InvoicePricingSection() {
                       </span>
                     )}
                     <div className="flex items-baseline justify-center gap-1.5">
-                      <span className={`text-3xl font-black ${isEarlyLifetime ? "text-white" : "text-[#0F172A]"}`}>
+                      <span className="text-3xl font-black text-[#0F172A]">
                         {plan.formattedPrice}
                       </span>
-                      <span className={`text-xs font-semibold ${isEarlyLifetime ? "text-slate-300" : "text-[#64748B]"}`}>
+                      <span className="text-xs font-semibold text-[#64748B]">
                         {plan.billingPeriod}
                       </span>
                     </div>
 
-                    <p className={`text-xs font-bold ${isEarlyLifetime ? "text-amber-300" : "text-[#2563EB]"}`}>
+                    <p className={`text-xs font-bold ${isEarlyLifetime ? "text-[#E58145]" : "text-[#2563EB]"}`}>
                       {plan.effectiveMonthlyCost}
                     </p>
 
                     {plan.savingsText && (
-                      <p className={`text-[11px] font-medium ${isEarlyLifetime ? "text-emerald-400" : "text-emerald-600"}`}>
+                      <p className="text-[11px] font-medium text-emerald-600">
                         {plan.savingsText}
                       </p>
                     )}
@@ -113,9 +109,7 @@ export function InvoicePricingSection() {
                   {/* Feature Checklist */}
                   <div className="space-y-2.5 pt-2">
                     <span
-                      className={`text-[10px] font-mono uppercase tracking-wider block font-bold ${
-                        isEarlyLifetime ? "text-slate-300" : "text-[#0F172A]"
-                      }`}
+                      className="text-[10px] font-mono uppercase tracking-wider block font-bold text-[#0F172A]"
                     >
                       Included Features:
                     </span>
@@ -123,11 +117,9 @@ export function InvoicePricingSection() {
                       {plan.features.map((feature) => (
                         <div key={feature} className="flex items-start gap-2.5">
                           <CheckCircle2
-                            className={`w-4 h-4 shrink-0 mt-0.5 ${
-                              isEarlyLifetime ? "text-emerald-400" : "text-[#16A34A]"
-                            }`}
+                            className="w-4 h-4 shrink-0 mt-0.5 text-[#16A34A]"
                           />
-                          <span className={isEarlyLifetime ? "text-slate-200" : "text-[#334155]"}>
+                          <span className="text-[#334155]">
                             {feature}
                           </span>
                         </div>
@@ -137,9 +129,7 @@ export function InvoicePricingSection() {
 
                   {/* Lifetime Note if applicable */}
                   {plan.lifetimeNote && (
-                    <div className={`p-3 rounded-xl text-[11px] leading-relaxed border border-dashed ${
-                      isEarlyLifetime ? "bg-white/5 border-white/20 text-slate-300" : "bg-slate-50 border-slate-200 text-slate-600"
-                    }`}>
+                    <div className="p-3 rounded-xl text-[11px] leading-relaxed border border-dashed bg-slate-50 border-slate-200 text-slate-600">
                       {plan.lifetimeNote}
                     </div>
                   )}

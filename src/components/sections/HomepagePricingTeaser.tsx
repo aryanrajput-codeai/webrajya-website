@@ -94,7 +94,7 @@ export function HomepagePricingTeaser() {
                   key={plan.id}
                   className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all relative ${
                     isEarlyLifetime
-                      ? "bg-[#020C2B] text-white border-2 border-[#E58145] shadow-xl md:-translate-y-2"
+                      ? "bg-white border-2 border-[#E58145] shadow-xl md:-translate-y-2 ring-1 ring-[#E58145]/20"
                       : isYearly
                       ? "bg-white border-2 border-[#2563EB] shadow-lg md:-translate-y-1"
                       : "bg-white border border-slate-200 shadow-sm"
@@ -102,7 +102,7 @@ export function HomepagePricingTeaser() {
                 >
                   {/* Badges */}
                   {isEarlyLifetime && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#E58145] text-white shadow-md flex items-center gap-1 whitespace-nowrap">
+                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#E58145] text-white shadow-md flex items-center gap-1 whitespace-nowrap ring-2 ring-white">
                       <Flame className="w-3.5 h-3.5 animate-pulse" />
                       Limited • {LAUNCH_CONFIG.EARLY_LIFETIME_SLOTS_REMAINING} Slots
                     </span>
@@ -115,21 +115,17 @@ export function HomepagePricingTeaser() {
 
                   <div className="space-y-5">
                     <div>
-                      <h3 className={`text-xl font-black ${isEarlyLifetime ? "text-white" : "text-[#020C2B]"}`}>
+                      <h3 className="text-xl font-black text-[#020C2B]">
                         {plan.name}
                       </h3>
-                      <p className={`text-xs mt-1 min-h-[30px] ${isEarlyLifetime ? "text-slate-300" : "text-slate-600"}`}>
+                      <p className="text-xs mt-1 min-h-[30px] text-slate-600">
                         {plan.tagline}
                       </p>
                     </div>
 
                     {/* Price Block */}
                     <div
-                      className={`p-4 rounded-2xl font-mono text-center space-y-1 ${
-                        isEarlyLifetime
-                          ? "bg-white/10 border border-white/15"
-                          : "bg-[#F8F3EB] border border-slate-200"
-                      }`}
+                      className="p-4 rounded-2xl font-mono text-center space-y-1 bg-[#F8F3EB] border border-[#E58145]/30"
                     >
                       {plan.formattedRegularPrice && (
                         <span className="text-xs line-through text-slate-400 block">
@@ -137,22 +133,22 @@ export function HomepagePricingTeaser() {
                         </span>
                       )}
                       <div className="flex items-baseline justify-center gap-1">
-                        <span className={`text-3xl font-black ${isEarlyLifetime ? "text-white" : "text-[#020C2B]"}`}>
+                        <span className="text-3xl font-black text-[#020C2B]">
                           {plan.formattedPrice}
                         </span>
-                        <span className={`text-xs ${isEarlyLifetime ? "text-slate-300" : "text-slate-600"}`}>
+                        <span className="text-xs text-slate-600">
                           {plan.billingPeriod}
                         </span>
                       </div>
                       <p
                         className={`text-xs font-bold ${
-                          isEarlyLifetime ? "text-amber-300" : "text-[#2563EB]"
+                          isEarlyLifetime ? "text-[#E58145]" : "text-[#2563EB]"
                         }`}
                       >
                         {plan.effectiveMonthlyCost}
                       </p>
                       {plan.savingsText && (
-                        <p className={`text-[11px] font-medium ${isEarlyLifetime ? "text-emerald-400" : "text-emerald-600"}`}>
+                        <p className="text-[11px] font-medium text-emerald-600">
                           {plan.savingsText}
                         </p>
                       )}
@@ -164,9 +160,7 @@ export function HomepagePricingTeaser() {
                     {/* Features List */}
                     <div className="space-y-2 pt-2">
                       <span
-                        className={`text-[10px] font-mono uppercase tracking-wider block font-bold ${
-                          isEarlyLifetime ? "text-slate-300" : "text-slate-700"
-                        }`}
+                        className="text-[10px] font-mono uppercase tracking-wider block font-bold text-slate-700"
                       >
                         Included:
                       </span>
@@ -174,11 +168,9 @@ export function HomepagePricingTeaser() {
                         {plan.features.slice(0, 4).map((feat) => (
                           <div key={feat} className="flex items-start gap-2">
                             <CheckCircle2
-                              className={`w-4 h-4 shrink-0 mt-0.5 ${
-                                isEarlyLifetime ? "text-emerald-400" : "text-emerald-600"
-                              }`}
+                              className="w-4 h-4 shrink-0 mt-0.5 text-emerald-600"
                             />
-                            <span className={isEarlyLifetime ? "text-slate-200" : "text-slate-700"}>
+                            <span className="text-slate-700">
                               {feat}
                             </span>
                           </div>
@@ -188,9 +180,7 @@ export function HomepagePricingTeaser() {
 
                     {/* Lifetime Note if applicable */}
                     {plan.lifetimeNote && (
-                      <div className={`p-3 rounded-xl text-[11px] leading-relaxed border border-dashed ${
-                        isEarlyLifetime ? "bg-white/5 border-white/20 text-slate-300" : "bg-slate-50 border-slate-200 text-slate-600"
-                      }`}>
+                      <div className="p-3 rounded-xl text-[11px] leading-relaxed border border-dashed bg-slate-50 border-slate-200 text-slate-600">
                         {plan.lifetimeNote}
                       </div>
                     )}
