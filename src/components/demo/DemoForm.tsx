@@ -6,7 +6,8 @@ import { ArrowRight, ArrowLeft, MessageSquare } from "lucide-react";
 import {
   DemoLead,
   validateDemoStep,
-  processWhatsAppDemoSubmission
+  processWhatsAppDemoSubmission,
+  PlanInterestOption
 } from "@/lib/demoSubmission";
 import { trackDemoEvent } from "@/lib/analytics";
 import { DemoBusinessStep } from "./DemoBusinessStep";
@@ -17,9 +18,10 @@ import { DemoSuccess } from "./DemoSuccess";
 
 interface DemoFormProps {
   initialProduct?: "pos" | "invoice";
+  initialPlan?: PlanInterestOption;
 }
 
-export function DemoForm({ initialProduct }: DemoFormProps) {
+export function DemoForm({ initialProduct, initialPlan }: DemoFormProps) {
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(1);
 
   const [lead, setLead] = useState<DemoLead>({
@@ -27,6 +29,7 @@ export function DemoForm({ initialProduct }: DemoFormProps) {
     businessName: "",
     businessType: "Restaurant / Café",
     productInterest: initialProduct || "pos",
+    planInterest: initialPlan || "yearly",
     phone: "",
     email: "",
     preferredDate: "",
@@ -37,14 +40,20 @@ export function DemoForm({ initialProduct }: DemoFormProps) {
   const [completedWhatsAppUrl, setCompletedWhatsAppUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    trackDemoEvent("demo_page_view", { initialProduct });
-  }, [initialProduct]);
+    trackDemoEvent("demo_page_view", { initialProduct, initialPlan });
+  }, [initialProduct, initialPlan]);
 
   useEffect(() => {
     if (initialProduct && (initialProduct === "pos" || initialProduct === "invoice")) {
       setLead(prev => ({ ...prev, productInterest: initialProduct }));
     }
   }, [initialProduct]);
+
+  useEffect(() => {
+    if (initialPlan) {
+      setLead(prev => ({ ...prev, planInterest: initialPlan }));
+    }
+  }, [initialPlan]);
 
   const handleNextStep = () => {
     const stepErrors = validateDemoStep(currentStep, lead);
@@ -57,7 +66,8 @@ export function DemoForm({ initialProduct }: DemoFormProps) {
         });
       } else if (currentStep === 2) {
         trackDemoEvent("demo_product_selected", {
-          product: lead.productInterest
+          product: lead.productInterest,
+          plan: lead.planInterest
         });
       } else if (currentStep === 3) {
         trackDemoEvent("demo_form_started");
@@ -93,11 +103,13 @@ export function DemoForm({ initialProduct }: DemoFormProps) {
     if (result.openedSuccessfully) {
       trackDemoEvent("demo_whatsapp_opened", {
         product: lead.productInterest,
+        plan: lead.planInterest,
         businessType: lead.businessType
       });
     } else {
       trackDemoEvent("demo_whatsapp_open_failed", {
         product: lead.productInterest,
+        plan: lead.planInterest,
         businessType: lead.businessType
       });
     }
@@ -172,8 +184,10 @@ export function DemoForm({ initialProduct }: DemoFormProps) {
         {currentStep === 2 && (
           <DemoProductStep
             productInterest={lead.productInterest}
+            planInterest={lead.planInterest}
             errors={errors}
             onSelectProduct={prod => setLead(prev => ({ ...prev, productInterest: prod }))}
+            onSelectPlan={plan => setLead(prev => ({ ...prev, planInterest: plan }))}
           />
         )}
 
