@@ -1,5 +1,13 @@
 import React from "react";
+import { HelpCircle } from "lucide-react";
 import { PRODUCTS } from "@/data/products";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 
 const posFaqs = PRODUCTS.find(p => p.id === "pos")?.faqs || [];
 
@@ -26,18 +34,35 @@ export function PosFaqSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
         <div className="text-center space-y-3">
+          <Badge variant="pos">POS Knowledge Base</Badge>
           <h2 className="text-3xl sm:text-4xl font-black text-[#020C2B] tracking-tight">
             WebRajya POS Frequently Asked Questions
           </h2>
+          <p className="text-slate-600 text-sm sm:text-base">
+            Everything you need to know about restaurant and QSR billing workflows.
+          </p>
         </div>
 
-        <div className="space-y-4">
-          {allFaqs.map(faq => (
-            <div key={faq.question} className="p-6 rounded-2xl bg-white border border-[#020C2B]/10 shadow-sm space-y-2">
-              <h3 className="font-bold text-[#020C2B] text-base sm:text-lg">{faq.question}</h3>
-              <p className="text-sm text-[#020C2B]/80 leading-relaxed font-normal">{faq.answer}</p>
-            </div>
-          ))}
+        <div className="bg-white rounded-3xl border border-[#020C2B]/10 p-6 sm:p-8 shadow-xs">
+          <Accordion className="space-y-4">
+            {allFaqs.map((faq, index) => (
+              <AccordionItem
+                key={faq.question}
+                value={`pos-faq-${index}`}
+                className="rounded-2xl border border-[#020C2B]/10 p-2 sm:p-3 overflow-hidden"
+              >
+                <AccordionTrigger className="font-bold text-sm sm:text-base text-[#020C2B] px-3 hover:no-underline cursor-pointer">
+                  <span className="flex items-center gap-3 text-left">
+                    <HelpCircle className="w-5 h-5 text-[#D97706] shrink-0" />
+                    <span>{faq.question}</span>
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="px-3 pt-2 text-[#020C2B]/80 text-xs sm:text-sm leading-relaxed pl-11">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
 
       </div>
