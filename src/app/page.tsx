@@ -6,6 +6,7 @@ import { RealWorldUseCases } from "@/components/sections/RealWorldUseCases";
 import { BusinessIntelligence } from "@/components/sections/BusinessIntelligence";
 import { WhyWebRajya } from "@/components/sections/WhyWebRajya";
 import { ProductEcosystem } from "@/components/sections/ProductEcosystem";
+import { HomepagePricingTeaser } from "@/components/sections/HomepagePricingTeaser";
 import { CustomerReviewsSection } from "@/components/reviews/CustomerReviewsSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
@@ -33,10 +34,13 @@ export default function GatewayPage() {
       {/* SECTION 7 — PRODUCT ECOSYSTEM */}
       <ProductEcosystem />
 
-      {/* SECTION 8 — VERIFIED CUSTOMER REVIEWS */}
+      {/* SECTION 8 — FAIR & TRANSPARENT PRICING */}
+      <HomepagePricingTeaser />
+
+      {/* SECTION 9 — VERIFIED CUSTOMER REVIEWS */}
       <CustomerReviewsSection />
 
-      {/* SECTION 9 — FINAL CTA */}
+      {/* SECTION 10 — FINAL CTA */}
       <FinalCTA />
     </div>
   );
