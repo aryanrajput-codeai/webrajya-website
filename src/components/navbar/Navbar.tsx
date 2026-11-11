@@ -15,6 +15,10 @@ import {
   Footprints,
   BookOpen,
   Layers,
+  ChevronDown,
+  FileText,
+  UtensilsCrossed,
+  Car,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MagneticHover } from "@/components/ui/motion";
@@ -28,6 +32,7 @@ import { useLanguage } from "@/context/LanguageContext";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const pathname = usePathname();
   const { t } = useLanguage();
 
@@ -41,7 +46,35 @@ export function Navbar() {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setProductsOpen(false);
   }, [pathname]);
+
+  const PRODUCT_LINKS = [
+    {
+      name: "WebRajya Invoice",
+      desc: "Fast retail billing, stock & customer khata",
+      href: "/invoice",
+      icon: FileText,
+      accent: "text-[#2563EB]",
+      bg: "bg-blue-50",
+    },
+    {
+      name: "WebRajya POS",
+      desc: "Restaurant, cafe & hotkey billing terminal",
+      href: "/pos",
+      icon: UtensilsCrossed,
+      accent: "text-[#E58145]",
+      bg: "bg-orange-50",
+    },
+    {
+      name: "MyGarage SaaS",
+      desc: "Vehicle document locker & fleet maintenance",
+      href: "/mygarage",
+      icon: Car,
+      accent: "text-emerald-600",
+      bg: "bg-emerald-50",
+    },
+  ];
 
   const SHOP_LINKS = [
     { name: "Mobile Shops", href: "/industry/mobile-shops", icon: Smartphone },
@@ -71,17 +104,71 @@ export function Navbar() {
 
         {/* Desktop Nav Items */}
         <nav className="hidden lg:flex items-center gap-1">
-          {/* Invoice Product Link */}
-          <Link
-            href="/invoice"
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
-              pathname === "/invoice"
-                ? "text-white bg-[#020C2B] shadow-xs"
-                : "text-[#020C2B] hover:text-[#E58145] hover:bg-[#020C2B]/5"
-            }`}
+          {/* Products Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setProductsOpen(true)}
+            onMouseLeave={() => setProductsOpen(false)}
           >
-            Invoice
-          </Link>
+            <button
+              type="button"
+              onClick={() => setProductsOpen((prev) => !prev)}
+              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors flex items-center gap-1 cursor-pointer ${
+                pathname === "/invoice" || pathname === "/pos" || pathname === "/mygarage"
+                  ? "text-[#E58145] bg-[#E58145]/10"
+                  : "text-[#020C2B] hover:text-[#E58145] hover:bg-[#020C2B]/5"
+              }`}
+              aria-expanded={productsOpen}
+            >
+              <span>Products</span>
+              <ChevronDown
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  productsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {/* Dropdown Menu */}
+            <AnimatePresence>
+              {productsOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute top-full left-0 mt-2 w-72 p-2 rounded-2xl bg-white border border-slate-200 shadow-xl shadow-[#020C2B]/10 z-50 space-y-1"
+                >
+                  {PRODUCT_LINKS.map((prod) => {
+                    const Icon = prod.icon;
+                    return (
+                      <Link
+                        key={prod.href}
+                        href={prod.href}
+                        onClick={() => setProductsOpen(false)}
+                        className={`flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group ${
+                          pathname === prod.href ? "bg-slate-50" : ""
+                        }`}
+                      >
+                        <div
+                          className={`w-8 h-8 rounded-lg ${prod.bg} ${prod.accent} flex items-center justify-center shrink-0 mt-0.5`}
+                        >
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-xs font-bold text-[#020C2B] group-hover:text-[#E58145] transition-colors">
+                            {prod.name}
+                          </div>
+                          <div className="text-[11px] text-slate-500 leading-snug">
+                            {prod.desc}
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           <Link
             href="/features"
@@ -206,22 +293,38 @@ export function Navbar() {
               </div>
 
               <div className="pt-2 border-t border-slate-100 flex flex-col gap-2 text-sm font-semibold text-slate-800">
-                <Link href="/invoice" className="py-1.5 hover:text-[#E58145]">
-                  WebRajya Invoice
+                <span className="text-[10px] font-mono uppercase text-slate-500 tracking-wider block font-semibold pt-1">
+                  Products
+                </span>
+                <Link href="/invoice" className="py-1 hover:text-[#E58145] flex items-center justify-between text-xs">
+                  <span>WebRajya Invoice</span>
+                  <span className="text-[10px] font-mono text-[#2563EB] bg-blue-50 px-2 py-0.5 rounded-full">Retail</span>
                 </Link>
-                <Link href="/features" className="py-1.5 hover:text-[#E58145]">
+                <Link href="/pos" className="py-1 hover:text-[#E58145] flex items-center justify-between text-xs">
+                  <span>WebRajya POS</span>
+                  <span className="text-[10px] font-mono text-[#E58145] bg-orange-50 px-2 py-0.5 rounded-full">Restaurant</span>
+                </Link>
+                <Link href="/mygarage" className="py-1 hover:text-[#E58145] flex items-center justify-between text-xs">
+                  <span>MyGarage SaaS</span>
+                  <span className="text-[10px] font-mono text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Fleet</span>
+                </Link>
+
+                <span className="text-[10px] font-mono uppercase text-slate-500 tracking-wider block font-semibold pt-2 border-t border-slate-100">
+                  Navigation
+                </span>
+                <Link href="/features" className="py-1 hover:text-[#E58145] text-xs">
                   Verified Features
                 </Link>
-                <Link href="/pricing" className="py-1.5 hover:text-[#E58145]">
+                <Link href="/pricing" className="py-1 hover:text-[#E58145] text-xs">
                   Pricing &amp; Plans
                 </Link>
-                <Link href="/learn" className="py-1.5 hover:text-[#E58145]">
+                <Link href="/learn" className="py-1 hover:text-[#E58145] text-xs">
                   Video Tutorials
                 </Link>
-                <Link href="/support" className="py-1.5 hover:text-[#E58145]">
+                <Link href="/support" className="py-1 hover:text-[#E58145] text-xs">
                   Support &amp; SLA
                 </Link>
-                <Link href="/contact" className="py-1.5 hover:text-[#E58145]">
+                <Link href="/contact" className="py-1 hover:text-[#E58145] text-xs">
                   Contact Nagpur Team
                 </Link>
               </div>

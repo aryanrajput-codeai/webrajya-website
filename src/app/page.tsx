@@ -8,20 +8,26 @@ import { FourStepFlow } from "@/components/sections/FourStepFlow";
 import { HomepagePricingTeaser } from "@/components/sections/HomepagePricingTeaser";
 import { MobileAppSection } from "@/components/sections/MobileAppSection";
 import { NagpurHomeFaq } from "@/components/sections/NagpurHomeFaq";
+import { FounderSection } from "@/components/sections/FounderSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
   title: "Billing & Inventory Software in Nagpur | WebRajya Invoice",
   description:
-    "Affordable, easy-to-use retail billing and stock software with personal customer support in Nagpur. 3-day free trial after live demo for mobile, cloth, footwear, and stationery shops.",
+    "Affordable, easy-to-use retail billing and stock software with personal customer support in Nagpur. Part of the WebRajya ecosystem alongside WebRajya POS and MyGarage SaaS.",
   keywords: [
     "Billing Software Nagpur",
     "Retail Billing Nagpur",
     "Shop Inventory Software Nagpur",
     "WebRajya Invoice",
+    "WebRajya POS",
+    "MyGarage SaaS",
     "Mobile Shop Software Nagpur",
     "GST Billing Nagpur"
   ],
+  alternates: {
+    canonical: "https://webrajya.com",
+  },
   openGraph: {
     title: "Billing & Inventory Software in Nagpur | WebRajya Invoice",
     description: "Start your 3-day free trial with personal setup support in Nagpur, Maharashtra.",
@@ -59,7 +65,10 @@ export default function HomePage() {
       {/* 9. FREQUENTLY ASKED QUESTIONS (ACCORDION) */}
       <NagpurHomeFaq />
 
-      {/* 10. FINAL CONVERSION CTA */}
+      {/* 10. FOUNDER'S COMMITMENT & IN-SHOP SUPPORT NOTE */}
+      <FounderSection />
+
+      {/* 11. FINAL CONVERSION CTA */}
       <FinalCTA />
     </div>
   );
