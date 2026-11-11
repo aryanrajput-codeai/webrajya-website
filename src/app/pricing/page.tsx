@@ -181,29 +181,25 @@ function PricingContent() {
               return (
                 <Card
                   key={plan.id}
-                  className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all relative ${
-                    isEarlyLifetime
-                      ? "bg-white border-2 border-[#E58145] shadow-xl md:-translate-y-2 ring-1 ring-[#E58145]/20"
-                      : isYearly
-                      ? "bg-white border-2 border-[#2563EB] shadow-lg md:-translate-y-1"
-                      : "bg-white border border-slate-200 shadow-sm"
-                  }`}
+                  className="rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all relative bg-white border border-slate-200 shadow-sm"
                 >
-                  {/* Floating Badges */}
-                  {isEarlyLifetime && (
-                    <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-[11px] font-mono uppercase font-bold tracking-widest bg-gradient-to-r from-[#E58145] to-[#f5a05a] text-white shadow-lg shadow-[#E58145]/30 flex items-center gap-1.5 whitespace-nowrap ring-2 ring-white">
-                      <Flame className="w-3.5 h-3.5 animate-pulse" />
-                      LIMITED · 50 SLOTS
-                    </span>
-                  )}
-                  {isYearly && !isEarlyLifetime && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#2563EB] text-white shadow-sm flex items-center gap-1 whitespace-nowrap">
-                      <Sparkles className="w-3.5 h-3.5" /> Most Popular • Save ₹1,189
-                    </span>
-                  )}
-
                   <div className="space-y-5">
                     <div>
+                      {isEarlyLifetime && (
+                        <div className="mb-2.5">
+                          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#E58145] text-white shadow-xs">
+                            <Flame className="w-3.5 h-3.5 animate-pulse" />
+                            LIMITED · 50 SLOTS
+                          </span>
+                        </div>
+                      )}
+                      {isYearly && !isEarlyLifetime && (
+                        <div className="mb-2.5">
+                          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20">
+                            <Sparkles className="w-3.5 h-3.5" /> Most Popular • Save ₹1,189
+                          </span>
+                        </div>
+                      )}
                       <h3 className="text-xl font-black text-[#020C2B]">
                         {plan.name}
                       </h3>
@@ -214,7 +210,7 @@ function PricingContent() {
 
                     {/* Price Block */}
                     <div
-                      className="p-4 rounded-2xl font-mono text-center space-y-1.5 bg-[#F8F3EB] border border-[#E58145]/30"
+                      className="p-4 rounded-2xl font-mono text-center space-y-1.5 bg-[#F8F3EB] border border-slate-200"
                     >
                       {plan.formattedRegularPrice && (
                         <span className="text-[11px] line-through block text-slate-400">
