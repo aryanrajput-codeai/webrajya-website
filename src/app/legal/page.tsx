@@ -97,6 +97,10 @@ export default function LegalIndexPage() {
           <p className="text-slate-600 text-base mt-2">
             The agreements, operational policies, and terms governing WebRajya Invoice and services.
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 text-xs text-slate-700 font-medium bg-slate-100 px-3 py-1.5 rounded-md border border-slate-200">
+            <span>Effective date:</span>
+            <span className="font-semibold text-slate-900">{LEGAL_CONFIG.EFFECTIVE_DATE}</span>
+          </div>
         </header>
 
         {/* Policy Grid */}
