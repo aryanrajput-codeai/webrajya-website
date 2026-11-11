@@ -9,12 +9,14 @@ export type BusinessTypeOption =
   | "Other";
 
 export type ProductInterestOption = "pos" | "invoice" | "not_sure";
+export type PlanInterestOption = "monthly" | "yearly" | "lifetime" | "not_sure";
 
 export interface DemoLead {
   fullName: string;
   businessName: string;
   businessType: BusinessTypeOption | string;
   productInterest: ProductInterestOption;
+  planInterest?: PlanInterestOption;
   phone: string;
   email: string;
   preferredDate: string;

@@ -12,6 +12,7 @@ export interface DemoLeadMessageData {
   businessName: string;
   businessType: string;
   productInterest: string;
+  planInterest?: string;
   phone: string;
   email: string;
   preferredDate: string;
@@ -34,6 +35,17 @@ export function buildDemoWhatsAppUrl(data: DemoLeadMessageData): string {
       ? "Not sure yet"
       : data.productInterest;
 
+  const planLabel =
+    data.planInterest === "monthly"
+      ? "Monthly (₹599/mo)"
+      : data.planInterest === "yearly"
+      ? "Yearly (₹5,999/yr - Best Value)"
+      : data.planInterest === "lifetime"
+      ? "Lifetime (₹25,999 one-time)"
+      : data.planInterest === "not_sure"
+      ? "Not sure yet"
+      : data.planInterest || "Not specified";
+
   const rawMessage = `Hello WebRajya,
 
 I would like to request a demo.
@@ -44,6 +56,7 @@ Name: ${data.fullName.trim()}
 Business: ${data.businessName.trim()}
 Business Type: ${data.businessType}
 Product: ${productLabel}
+Plan Interest: ${planLabel}
 
 Phone: ${data.phone.trim()}
 Email: ${data.email.trim()}
