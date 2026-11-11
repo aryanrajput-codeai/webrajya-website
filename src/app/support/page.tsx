@@ -9,6 +9,9 @@ import { SupportCTA } from "@/components/support/SupportCTA";
 export const metadata: Metadata = {
   title: "WebRajya Support | Help & Documentation",
   description: "Find help, guides and documentation for WebRajya POS and WebRajya Invoice.",
+  alternates: {
+    canonical: "https://webrajya.com/support",
+  },
   openGraph: {
     title: "WebRajya Support | Help & Documentation",
     description: "Guides, tutorials, thermal printer setup, and financial billing documentation for WebRajya POS and WebRajya Invoice.",

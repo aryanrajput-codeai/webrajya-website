@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Book Free In-Shop Demo in Nagpur | WebRajya Invoice",
   description:
     "Schedule a 20-minute live demonstration of WebRajya Invoice for your shop in Nagpur. 3-day free trial after live demo with personal setup assistance.",
+  alternates: {
+    canonical: "https://webrajya.com/demo",
+  },
   keywords: [
     "Billing Software Demo Nagpur",
     "Retail Billing Trial Nagpur",

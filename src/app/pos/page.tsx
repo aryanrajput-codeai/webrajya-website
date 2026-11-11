@@ -22,6 +22,9 @@ import { PosDemoCta } from "@/components/pos/PosDemoCta";
 export const metadata: Metadata = {
   title: "WebRajya POS — Zero-Lag Restaurant POS Built for Speed",
   description: "Process orders, dispatch KOTs, and settle bills in under 3 seconds. 100% keyboard control for Mac and Windows.",
+  alternates: {
+    canonical: "https://webrajya.com/pos",
+  },
   keywords: ["WebRajya POS", "Zero-Lag POS", "Restaurant Hotkeys", "KOT System", "Table Management Software", "Fastest Restaurant Billing"],
   openGraph: {
     title: "WebRajya POS — The Zero-Lag Restaurant POS",

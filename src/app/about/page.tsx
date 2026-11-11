@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "About WebRajya — Affordable, Complete Retail Billing Software",
   description:
     "WebRajya engineers fast, offline-first billing and inventory management software with personal in-shop setup support for retailers in Nagpur, Maharashtra.",
+  alternates: {
+    canonical: "https://webrajya.com/about",
+  },
   openGraph: {
     title: "About WebRajya — Retail Technology Platform",
     description: "Built for Indian retail shop owners with hands-on setup support in Nagpur.",

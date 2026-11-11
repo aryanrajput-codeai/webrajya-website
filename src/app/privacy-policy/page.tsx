@@ -5,7 +5,8 @@ import { getLegalMetadata } from "@/components/legal/metadata";
 
 export const metadata: Metadata = getLegalMetadata(
   "Privacy Policy",
-  "WebRajya Invoice Privacy Policy: how we handle your personal data, customer records, and privacy rights."
+  "WebRajya Invoice Privacy Policy: how we handle your personal data, customer records, and privacy rights.",
+  "/privacy-policy"
 );
 
 const tocItems = [

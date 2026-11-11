@@ -5,7 +5,8 @@ import { getLegalMetadata } from "@/components/legal/metadata";
 
 export const metadata: Metadata = getLegalMetadata(
   "Terms and Conditions",
-  "WebRajya Invoice Terms and Conditions: rules, responsibilities, liability limits, and dispute resolution."
+  "WebRajya Invoice Terms and Conditions: rules, responsibilities, liability limits, and dispute resolution.",
+  "/terms"
 );
 
 const tocItems = [

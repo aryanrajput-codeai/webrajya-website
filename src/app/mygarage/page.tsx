@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "MyGarage — Vehicle Management SaaS by WebRajya",
   description:
     "MyGarage is an all-in-one vehicle management SaaS built by WebRajya. Track RC, Insurance, PUC expiries, service logs, and expenses in one modern dashboard.",
+  alternates: {
+    canonical: "https://webrajya.com/mygarage",
+  },
   keywords: [
     "Vehicle Management System",
     "WebRajya",

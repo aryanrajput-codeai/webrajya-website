@@ -32,6 +32,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://webrajya.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: "WebRajya Invoice — Retail Billing & Inventory Software in Nagpur",
   description: "Affordable, easy-to-use billing and inventory software with personal customer support for retail shops in Nagpur. 3-day free trial after live demo.",
   keywords: [

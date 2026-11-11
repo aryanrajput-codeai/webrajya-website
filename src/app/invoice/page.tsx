@@ -17,6 +17,9 @@ import { InvoiceFinalCta } from "@/components/invoice/InvoiceFinalCta";
 export const metadata: Metadata = {
   title: "WebRajya Invoice — Smart Billing Software for Indian Retailers",
   description: "Create bills faster, manage your inventory, track customer payments and stay in control of your business—all from one simple platform. Designed for retailers, stationery shops, and wholesalers.",
+  alternates: {
+    canonical: "https://webrajya.com/invoice",
+  },
   keywords: [
     "WebRajya Invoice",
     "Retail Billing Software",
