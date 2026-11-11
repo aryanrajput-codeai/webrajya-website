@@ -92,107 +92,93 @@ export function HomepagePricingTeaser() {
               return (
                 <div
                   key={plan.id}
-                  className="rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all relative bg-white border border-slate-200 shadow-sm"
+                  className="rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all bg-white border border-slate-200/90 shadow-sm hover:shadow-md relative"
                 >
-                  <div className="space-y-4">
+                  <div className="flex-1 flex flex-col">
                     {/* Aligned Badge Slot */}
-                    <div className="h-7 flex items-center">
+                    <div className="h-6 flex items-center mb-2">
                       {isEarlyLifetime ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#E58145] text-white shadow-xs">
-                          <Flame className="w-3.5 h-3.5 animate-pulse" />
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold tracking-wider bg-[#E58145] text-white">
+                          <Flame className="w-3 h-3 animate-pulse" />
                           Limited • {LAUNCH_CONFIG.EARLY_LIFETIME_SLOTS_REMAINING} Slots
                         </span>
                       ) : isYearly ? (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase font-bold tracking-wider bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20">
-                          <Sparkles className="w-3.5 h-3.5" /> Most Popular • Save ₹1,189
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold tracking-wider bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20">
+                          <Sparkles className="w-3 h-3" /> Most Popular
                         </span>
                       ) : (
-                        <div className="h-7" aria-hidden="true" />
+                        <div className="h-6" aria-hidden="true" />
                       )}
                     </div>
 
                     {/* Aligned Plan Name & Tagline */}
                     <div>
-                      <h3 className="text-xl font-black text-[#020C2B] h-7 flex items-center">
+                      <h3 className="text-2xl font-black text-[#020C2B] tracking-tight">
                         {plan.name}
                       </h3>
-                      <p className="text-xs mt-1 h-9 line-clamp-2 text-slate-600">
+                      <p className="text-xs text-slate-500 mt-1 h-9 line-clamp-2 leading-relaxed">
                         {plan.tagline}
                       </p>
                     </div>
 
-                    {/* Uniform Height Price Block */}
-                    <div
-                      className="h-44 p-4 rounded-2xl font-mono text-center flex flex-col justify-between bg-[#F8F3EB] border border-slate-200"
-                    >
-                      <div className="h-4 flex items-center justify-center">
+                    {/* Clean Open Price Section (No heavy box) */}
+                    <div className="pt-4 pb-4 border-b border-slate-100 flex flex-col justify-end min-h-[125px]">
+                      <div className="h-4 flex items-center">
                         {plan.formattedRegularPrice ? (
-                          <span className="text-[11px] line-through text-slate-400 block">
-                            Regular: {plan.formattedRegularPrice}
+                          <span className="text-xs line-through text-slate-400">
+                            Regular {plan.formattedRegularPrice}
                           </span>
                         ) : (
-                          <span className="text-[11px] block invisible">Regular</span>
+                          <span className="invisible text-xs">Regular</span>
                         )}
                       </div>
 
-                      <div className="flex items-baseline justify-center gap-1.5 my-0.5">
-                        <span className="font-black leading-none text-[#020C2B] text-3xl sm:text-4xl">
+                      <div className="flex items-baseline gap-1.5 my-1">
+                        <span className="text-3xl sm:text-4xl font-black text-[#020C2B] tracking-tight leading-none">
                           {plan.formattedPrice}
                         </span>
-                        <span className="text-xs leading-tight text-slate-600">
+                        <span className="text-xs font-semibold text-slate-500">
                           {plan.billingPeriod}
                         </span>
                       </div>
 
-                      <p
-                        className={`text-xs font-bold tracking-wide ${
-                          isEarlyLifetime ? "text-[#E58145]" : "text-[#2563EB]"
-                        }`}
-                      >
-                        {plan.effectiveMonthlyCost}
-                      </p>
-
-                      <div className="h-6 flex items-center justify-center">
-                        {plan.savingsText ? (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/20">
-                            {plan.savingsText}
+                      <div className="flex items-center gap-2 mt-0.5 h-6">
+                        <span className="text-xs font-bold text-slate-700">
+                          {plan.effectiveMonthlyCost}
+                        </span>
+                        {plan.savingsText && (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            {isEarlyLifetime ? "Save ₹6,000" : "Save 17%"}
                           </span>
-                        ) : (
-                          <span className="invisible text-[11px]">Savings</span>
                         )}
                       </div>
-                    </div>
 
-                    {/* Single shared GST note */}
-                    <GstNote className="text-center" />
-
-                    {/* Features List */}
-                    <div className="space-y-2 pt-1">
-                      <span
-                        className="text-[10px] font-mono uppercase tracking-wider block font-bold text-slate-700"
-                      >
-                        Included:
-                      </span>
-                      <div className="space-y-2 text-xs min-h-[140px]">
-                        {plan.features.slice(0, 4).map((feat) => (
-                          <div key={feat} className="flex items-start gap-2">
-                            <CheckCircle2
-                              className="w-4 h-4 shrink-0 mt-0.5 text-emerald-600"
-                            />
-                            <span className="text-slate-700">
-                              {feat}
-                            </span>
-                          </div>
-                        ))}
+                      <div className="mt-2 text-[11px] text-slate-400">
+                        <GstNote />
                       </div>
                     </div>
 
-                    {/* Lifetime Note if applicable */}
-                    <div className="min-h-[85px] flex flex-col justify-end">
+                    {/* Features List */}
+                    <div className="pt-4 space-y-2.5 flex-1">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold block">
+                        Included:
+                      </span>
+                      <ul className="space-y-2 text-xs text-slate-700 min-h-[130px]">
+                        {plan.features.slice(0, 4).map((feat) => (
+                          <li key={feat} className="flex items-start gap-2 leading-snug">
+                            <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600 mt-0.5" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Lifetime Note (Clean subtle note, no heavy dashed box) */}
+                    <div className="min-h-[55px] pt-3 flex flex-col justify-end">
                       {plan.lifetimeNote ? (
-                        <div className="p-3 rounded-xl text-[11px] leading-relaxed border border-dashed bg-slate-50 border-slate-200 text-slate-600">
+                        <p className="text-[11px] text-slate-400 leading-relaxed font-sans italic">
                           {plan.lifetimeNote}
-                        </div>
+                        </p>
                       ) : null}
                     </div>
                   </div>
@@ -203,7 +189,7 @@ export function HomepagePricingTeaser() {
                       href={plan.ctaHref(selectedProduct)}
                       variant={isEarlyLifetime || isYearly ? "cta" : "outline"}
                       size="lg"
-                      className="w-full font-bold shadow-xs"
+                      className="w-full font-bold shadow-xs text-sm"
                       icon={<ArrowRight className="w-4 h-4" />}
                     >
                       {plan.ctaLabel}
