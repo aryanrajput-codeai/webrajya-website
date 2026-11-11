@@ -1,19 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Noto_Sans_Devanagari, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { MobileBottomDock } from "@/components/navbar/MobileBottomDock";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({
+const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const notoSansDevanagari = Noto_Sans_Devanagari({
+  variable: "--font-devanagari",
+  subsets: ["devanagari"],
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -46,15 +57,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}>
+    <html
+      lang="en"
+      className={cn(
+        "scroll-smooth",
+        plusJakartaSans.variable,
+        notoSansDevanagari.variable,
+        jetbrainsMono.variable
+      )}
+    >
       <head>
         <JsonLd />
       </head>
       <body className="bg-[#F8F3EB] text-[#020C2B] min-h-screen flex flex-col font-sans antialiased selection:bg-[#E58145] selection:text-white pb-16 md:pb-0">
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <MobileBottomDock />
+        <TooltipProvider delay={150}>
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <FloatingWhatsApp />
+          <MobileBottomDock />
+        </TooltipProvider>
       </body>
     </html>
   );
