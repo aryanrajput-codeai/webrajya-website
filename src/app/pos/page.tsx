@@ -15,6 +15,7 @@ import { PosComparisonSection } from "@/components/pos/PosComparisonSection";
 import { PosTestimonialsSection } from "@/components/pos/PosTestimonialsSection";
 import { RestaurantTypesSection } from "@/components/pos/RestaurantTypesSection";
 import { WhyWebRajyaPos } from "@/components/pos/WhyWebRajyaPos";
+import { PosPricingSection } from "@/components/pos/PosPricingSection";
 import { PosFaqSection } from "@/components/pos/PosFaqSection";
 import { PosDemoCta } from "@/components/pos/PosDemoCta";
 
@@ -77,10 +78,13 @@ export default function PosPage() {
       {/* 15. WHY WEBRAJYA POS */}
       <WhyWebRajyaPos />
 
-      {/* 16. FAQ */}
+      {/* 16. TRANSPARENT PRICING PLANS */}
+      <PosPricingSection />
+
+      {/* 17. FAQ */}
       <PosFaqSection />
 
-      {/* 17. BOOK A DEMO / FINAL CTA */}
+      {/* 18. BOOK A DEMO / FINAL CTA */}
       <PosDemoCta />
     </div>
   );

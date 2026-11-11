@@ -65,7 +65,7 @@ export default function InvoicePage() {
       {/* 9. DAILY CASH MANAGEMENT & RECONCILIATION */}
       <DailyCashManagementSection />
 
-      {/* 10. TRANSPARENT ANNUAL PRICING (₹2,499/YR) */}
+      {/* 10. TRANSPARENT PRICING PLANS (MONTHLY, YEARLY, LIFETIME) */}
       <InvoicePricingSection />
 
       {/* 11. WHY WEBRAJYA INVOICE COMPARISON */}
