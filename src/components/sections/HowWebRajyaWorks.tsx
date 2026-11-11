@@ -711,7 +711,7 @@ export function HowWebRajyaWorks() {
                 <div className="mt-6 pt-3 border-t border-[#020C2B]/10 flex items-center justify-between text-[11px] font-mono text-[#525866]">
                   <span>Step {step.number}</span>
                   <span className="text-[#020C2B] font-semibold group-hover:text-[#E58145] transition-colors">
-                    WebRajya Standard
+                    Retail Workflow
                   </span>
                 </div>
               </div>

@@ -31,7 +31,7 @@ export const WEBRAJYA_PRINCIPLES = [
   },
   {
     title: "Accurate",
-    description: "Local timezone synchronization (`isDateToday()`) for zero-discrepancy reports.",
+    description: "Automatic end-of-day reconciliation and zero-discrepancy daily register reports.",
     icon: "Building2"
   },
   {

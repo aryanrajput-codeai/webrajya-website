@@ -299,7 +299,7 @@ export const PRODUCTS: WebRajyaProduct[] = [
       },
       {
         question: "Is my data stored securely?",
-        answer: "Yes. MyGarage uses a decoupled repository pattern allowing local device storage or seamless sync with Supabase cloud databases."
+        answer: "Yes. MyGarage uses an offline-first architecture that stores data securely on your local device with optional encrypted cloud backup sync."
       }
     ]
   }

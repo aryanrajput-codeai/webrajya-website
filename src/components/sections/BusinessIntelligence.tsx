@@ -171,7 +171,7 @@ export function BusinessIntelligence() {
                   </div>
 
                   <div className="pt-3 border-t border-[#020C2B]/10 text-[10px] font-mono text-[#525866]">
-                    WebRajya Intelligence Standard
+                    Built for Retail Efficiency
                   </div>
                 </div>
               </Tilt3DCard>
@@ -241,7 +241,7 @@ export function BusinessIntelligence() {
 
           <div className="p-4 rounded-2xl bg-white border border-[#020C2B]/10 flex items-center justify-between text-xs font-mono text-[#525866] shadow-xs">
             <span>Illustrative analytics view representing WebRajya reports architecture</span>
-            <span className="text-[#E58145] font-bold">WebRajya Standard</span>
+            <span className="text-[#E58145] font-bold">Architecture Preview</span>
           </div>
         </div>
         </Tilt3DCard>

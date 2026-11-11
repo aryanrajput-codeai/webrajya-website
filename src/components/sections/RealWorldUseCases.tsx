@@ -117,7 +117,7 @@ export function RealWorldUseCases() {
             <div className="shrink-0 flex flex-col sm:flex-row items-start sm:items-center gap-3">
               <div className="p-3.5 rounded-2xl bg-[#020C2B] text-white font-mono text-xs">
                 <span className="text-[#E58145] font-bold block">{currentCase.productName}</span>
-                <span className="text-[11px] text-slate-300">Targeted Operating Software</span>
+                <span className="text-[11px] text-slate-300">Dedicated Business Software</span>
               </div>
 
               <Link

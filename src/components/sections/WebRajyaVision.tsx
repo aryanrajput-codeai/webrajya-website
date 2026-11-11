@@ -29,7 +29,7 @@ export function WebRajyaVision() {
                     <Cpu className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#020C2B] text-sm">Unified Software Engine</h4>
+                    <h4 className="font-bold text-[#020C2B] text-sm">Shared Technology Platform</h4>
                     <p className="text-xs text-[#525866] leading-relaxed">
                       Common authentication, consistent design principles, and reliable cloud sync across all WebRajya products.
                     </p>

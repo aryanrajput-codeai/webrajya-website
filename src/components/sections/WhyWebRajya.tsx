@@ -49,7 +49,7 @@ export function WhyWebRajya() {
 
               <div className="mt-6 pt-4 border-t border-[#020C2B]/10 flex items-center justify-between text-[11px] font-mono text-[#525866]">
                 <span>Principle #{index + 1}</span>
-                <span className="text-[#020C2B] font-semibold group-hover:text-[#E58145] transition-colors">WebRajya Standard</span>
+                <span className="text-[#020C2B] font-semibold group-hover:text-[#E58145] transition-colors">Core Standard</span>
               </div>
             </div>
           ))}
