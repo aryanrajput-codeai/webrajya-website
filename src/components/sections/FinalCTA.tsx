@@ -1,7 +1,6 @@
 import React from "react";
 import { ArrowRight, Phone, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { LAUNCH_CONFIG } from "@/config/launch";
 import { GstNote } from "@/components/ui/GstNote";
 import { RefundNote } from "@/components/ui/RefundNote";
@@ -18,8 +17,6 @@ export function FinalCTA() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-[#2563EB]/15 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
-        <Badge variant="invoice">Nagpur Retail Launch</Badge>
-
         <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
           Ready to Speed Up Your Billing Counter?
         </h2>

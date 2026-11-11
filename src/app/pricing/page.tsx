@@ -16,7 +16,6 @@ import {
   Flame
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import {
   Table,
@@ -124,7 +123,6 @@ function PricingContent() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <Badge variant="invoice">Honest &amp; Transparent</Badge>
           <h1 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
             Simple, Fair Pricing for Your Shop
           </h1>
@@ -307,7 +305,6 @@ function PricingContent() {
         {/* Compact Comparison Table */}
         <div className="space-y-6 pt-6">
           <div className="text-center space-y-2">
-            <Badge variant="pos">Full Comparison</Badge>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#020C2B]">
               Monthly vs Annual vs Lifetime Comparison
             </h2>
@@ -377,7 +374,6 @@ function PricingContent() {
         {/* Pricing FAQ Section */}
         <div className="space-y-8 max-w-4xl mx-auto pt-8">
           <div className="text-center space-y-2">
-            <Badge variant="pos">Clear Answers</Badge>
             <h2 className="text-3xl font-black text-[#020C2B]">
               Frequently Asked Pricing Questions
             </h2>

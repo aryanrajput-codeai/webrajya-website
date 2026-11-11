@@ -33,7 +33,6 @@ import {
 import { INDUSTRIES_DATA, IndustryShopConfig } from "@/data/industries";
 import { LAUNCH_CONFIG } from "@/config/launch";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { GstNote } from "@/components/ui/GstNote";
 import {
   Accordion,
@@ -127,11 +126,6 @@ export default async function IndustryPage({ params }: PageProps) {
       {/* 1. HERO SECTION */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center gap-2">
-            <Badge variant="invoice">Built for Nagpur Retailers</Badge>
-            <Badge variant="neutral">{industry.name}</Badge>
-          </div>
-
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#020C2B] tracking-tight leading-tight">
             {industry.heroHeadline}
           </h1>
@@ -249,7 +243,6 @@ export default async function IndustryPage({ params }: PageProps) {
       {/* 4. PROBLEM TO SOLUTION MATRIX */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-10">
         <div className="text-center space-y-2">
-          <Badge variant="pos">Everyday Shop Realities</Badge>
           <h2 className="text-2xl sm:text-3xl font-black text-[#020C2B]">
             How WebRajya Solves Common Retail Bottlenecks
           </h2>
@@ -317,7 +310,6 @@ export default async function IndustryPage({ params }: PageProps) {
       {/* 6. CONVERSION CTA */}
       <section className="py-20 bg-[#020C2B] text-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <Badge variant="invoice">Get Started in Nagpur</Badge>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
             Upgrade Your {industry.shopTypeLabel} Today
           </h2>

@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PlayCircle, BookOpen, Video, FileText, ArrowRight, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
   title: "Learn & Video Tutorials — WebRajya Invoice",
@@ -78,7 +77,6 @@ export default function LearnPage() {
       <div className="max-w-6xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <Badge variant="invoice">Free Training &amp; Knowledge Base</Badge>
           <h1 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
             Learn WebRajya Invoice
           </h1>

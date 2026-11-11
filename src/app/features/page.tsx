@@ -17,7 +17,6 @@ import {
   Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { GstNote } from "@/components/ui/GstNote";
 
 export const metadata: Metadata = {
@@ -147,7 +146,6 @@ export default function FeaturesPage() {
       <div className="max-w-6xl mx-auto space-y-20">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <Badge variant="invoice">Verified Capabilities</Badge>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#020C2B] tracking-tight">
             Complete Feature Guide
           </h1>
@@ -184,7 +182,7 @@ export default function FeaturesPage() {
                     <span className="w-10 h-10 rounded-xl bg-blue-50 text-[#2563EB] flex items-center justify-center border border-blue-100">
                       <Icon className="w-5 h-5" />
                     </span>
-                    <Badge variant="neutral">{module.badge}</Badge>
+                    <span className="text-xs font-mono font-bold text-slate-500 uppercase">{module.badge}</span>
                   </div>
 
                   <div className="space-y-2">

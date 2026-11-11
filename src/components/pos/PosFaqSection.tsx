@@ -7,7 +7,6 @@ import {
   AccordionTrigger,
   AccordionContent
 } from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
 
 const posFaqs = PRODUCTS.find(p => p.id === "pos")?.faqs || [];
 
@@ -34,7 +33,6 @@ export function PosFaqSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
         <div className="text-center space-y-3">
-          <Badge variant="pos">POS Knowledge Base</Badge>
           <h2 className="text-3xl sm:text-4xl font-black text-[#020C2B] tracking-tight">
             WebRajya POS Frequently Asked Questions
           </h2>

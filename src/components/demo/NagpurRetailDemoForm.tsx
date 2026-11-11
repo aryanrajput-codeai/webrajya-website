@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import { LAUNCH_CONFIG } from "@/config/launch";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { trackEvent, getUtmParams } from "@/lib/analytics";
@@ -158,8 +157,7 @@ export function NagpurRetailDemoForm() {
     <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl p-6 sm:p-10 space-y-8">
       {/* Form Header */}
       <div className="space-y-2 border-b border-slate-100 pb-5">
-        <div className="flex items-center justify-between">
-          <Badge variant="invoice">Free In-Shop Demo</Badge>
+        <div className="flex items-center justify-end">
           <span className="text-xs font-mono text-emerald-700 font-bold flex items-center gap-1">
             <ShieldCheck className="w-4 h-4 text-emerald-600" /> 3-Day Free Trial
           </span>

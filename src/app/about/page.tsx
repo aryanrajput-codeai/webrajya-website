@@ -4,7 +4,6 @@ import { Sparkles, ShieldCheck, Layers, Cpu, CheckCircle2, ArrowRight, MapPin } 
 import { COMPANY_INFO, WEBRAJYA_PRINCIPLES } from "@/data/company";
 import { LAUNCH_CONFIG } from "@/config/launch";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { NagpurLocationMap } from "@/components/ui/NagpurLocationMap";
 
 export const metadata: Metadata = {
@@ -28,7 +27,6 @@ export default function AboutPage() {
         
         {/* HERO Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <Badge variant="invoice">About WebRajya</Badge>
           <h1 className="text-4xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
             Software Built for Real Everyday Operations
           </h1>

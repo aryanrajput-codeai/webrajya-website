@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { CheckCircle2, ShieldCheck, MapPin, Store, MessageCircle, Phone, Loader2 } from "lucide-react";
 import { NagpurRetailDemoForm } from "@/components/demo/NagpurRetailDemoForm";
 import { LAUNCH_CONFIG } from "@/config/launch";
-import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
   title: "Book Free In-Shop Demo in Nagpur | WebRajya Invoice",
@@ -37,7 +36,6 @@ export default function DemoPage() {
           {/* Left Column: Nagpur Launch Value & Trust */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <Badge variant="invoice">Nagpur Retail Launch</Badge>
               <h1 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight leading-tight">
                 See WebRajya on Your Counter.
               </h1>
