@@ -22,9 +22,9 @@ export function Footer() {
             </Link>
 
             <div className="space-y-1">
-              <span className="font-bold text-white text-sm block">WebRajya Invoice — Nagpur</span>
+              <span className="font-bold text-white text-sm block">WebRajya Technologies</span>
               <p className="text-xs text-[#CBD5E1] max-w-sm leading-relaxed">
-                Affordable, easy-to-use billing and inventory software with personal customer support for Nagpur retailers.
+                Reliable, easy-to-use business &amp; retail operating software with personal hands-on setup support. Home to WebRajya Invoice, POS, and MyGarage.
               </p>
             </div>
 
@@ -99,12 +99,24 @@ export function Footer() {
           {/* Product & Resources Col */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">
-              Product &amp; Support
+              Products &amp; Support
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/features" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors flex items-center gap-1 group">
-                  <span>Verified Features</span>
+                <Link href="/invoice" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors flex items-center gap-1 group">
+                  <span>WebRajya Invoice</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Link>
+              </li>
+              <li>
+                <Link href="/pos" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors flex items-center gap-1 group">
+                  <span>WebRajya POS</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Link>
+              </li>
+              <li>
+                <Link href="/mygarage" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors flex items-center gap-1 group">
+                  <span>MyGarage SaaS</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
@@ -115,7 +127,12 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/demo" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Book In-Shop Demo
+                  Book Free Demo
+                </Link>
+              </li>
+              <li>
+                <Link href="/features" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Verified Features
                 </Link>
               </li>
               <li>
