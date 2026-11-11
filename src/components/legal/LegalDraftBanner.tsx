@@ -33,3 +33,4 @@ export function LegalDraftBanner({ documentName = "Legal Document" }: LegalDraft
     </div>
   );
 }
+

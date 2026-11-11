@@ -24,3 +24,4 @@ export function GstNote({ className = "" }: GstNoteProps) {
     </p>
   );
 }
+

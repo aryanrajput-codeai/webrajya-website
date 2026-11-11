@@ -65,3 +65,4 @@ export function NagpurLocationMap({ className = "" }: NagpurLocationMapProps) {
     </div>
   );
 }
+

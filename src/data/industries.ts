@@ -390,3 +390,4 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
     ]
   }
 };
+

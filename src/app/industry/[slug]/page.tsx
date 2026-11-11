@@ -351,3 +351,4 @@ export default async function IndustryPage({ params }: PageProps) {
     </div>
   );
 }
+

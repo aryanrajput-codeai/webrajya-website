@@ -112,3 +112,4 @@ export const LAUNCH_CONFIG: LaunchConfig = {
   CRM_WEBHOOK_URL: process.env.CRM_WEBHOOK_URL || "/api/leads",
   OWNER_NOTIFICATION_EMAIL: "aaryanrajputofficial@gmail.com"
 };
+
