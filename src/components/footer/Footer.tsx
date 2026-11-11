@@ -141,30 +141,30 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal & Compliance Col (All 7 Legal Pages) */}
+          {/* Legal Column (All 7 Legal Pages + /legal index) */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">
-              Legal &amp; Policy
+              Legal
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/privacy" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Privacy Policy (DPDP Act)
+                <Link href="/privacy-policy" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Privacy Policy
                 </Link>
               </li>
               <li>
                 <Link href="/terms" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Terms &amp; Conditions
+                  Terms and Conditions
                 </Link>
               </li>
               <li>
-                <Link href="/subscription-policy" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Subscription &amp; Renewal Policy
+                <Link href="/subscription-terms" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Subscription &amp; Auto-Renewal Terms
                 </Link>
               </li>
               <li>
-                <Link href="/refund" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Cancellation &amp; Refund
+                <Link href="/refund-policy" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                  Cancellation and Refund Policy
                 </Link>
               </li>
               <li>
@@ -174,12 +174,17 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/data-retention" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Data Retention &amp; Deletion
+                  Data Retention and Deletion
                 </Link>
               </li>
               <li>
-                <Link href="/sla" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/support-sla" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
                   Support SLA
+                </Link>
+              </li>
+              <li className="pt-1 border-t border-white/10">
+                <Link href="/legal" className="text-[#60A5FA] hover:text-white transition-colors font-medium">
+                  View All Policies &rarr;
                 </Link>
               </li>
             </ul>

@@ -1,90 +1,95 @@
-import React from "react";
-import type { Metadata } from "next";
-import { LAUNCH_CONFIG } from "@/config/launch";
-import { LegalDraftBanner } from "@/components/legal/LegalDraftBanner";
+import { Metadata } from "next";
+import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
+import { Placeholder } from "@/components/legal/Placeholder";
+import { LEGAL_CONFIG } from "@/config/legal";
+import { getLegalMetadata } from "@/components/legal/metadata";
 
-export const metadata: Metadata = {
-  title: "Data Retention & Deletion Policy — WebRajya Invoice",
-  description:
-    "Data retention terms: accounts maintained for 1 year post-expiration, deletion advisory sent 15 days in advance.",
-  robots: LAUNCH_CONFIG.LEGAL_APPROVED
-    ? { index: true, follow: true }
-    : { index: false, follow: false }
-};
+export const metadata: Metadata = getLegalMetadata(
+  "Data Retention and Deletion Policy",
+  "WebRajya Invoice Data Retention and Deletion Policy: retention periods, deletion warnings, and paid export services."
+);
 
 export default function DataRetentionPage() {
   return (
-    <div className="w-full bg-[#F8F3EB] text-[#020C2B] min-h-screen pt-24 pb-20">
-      <LegalDraftBanner documentName="Data Retention &amp; Deletion Policy" />
+    <LegalPageLayout
+      title="6. Data Retention and Deletion Policy"
+      subtitle="WebRajya Invoice: Website Policies"
+    >
+      <section className="space-y-6">
+        <div>
+          <h2 className="!mt-0 !pt-0 !border-0 text-lg font-bold text-slate-900 mb-2">
+            Timeline for a paid plan
+          </h2>
+          <ol className="list-decimal pl-5 space-y-1.5">
+            <li>Your plan expires. A 3-day view-only grace period begins.</li>
+            <li>
+              After the grace period, access is suspended. Your account and business data are kept securely for 1 year from the expiry date.
+            </li>
+            <li>If you renew within that year, your access and data are restored.</li>
+            <li>
+              15 days before the planned deletion date, we send a deletion warning by WhatsApp and email (and SMS where we have your number) to the contacts we hold.
+            </li>
+            <li>
+              On the deletion date, your account and business data are permanently deleted from our live systems.
+            </li>
+            <li>
+              Daily backups are kept for 7 days, so deleted data can remain in backups for up to 7 days before it disappears.
+            </li>
+          </ol>
+        </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 pt-8">
-        <div className="border-b border-[#020C2B]/10 pb-6 space-y-2">
-          <span className="text-xs font-mono uppercase text-[#2563EB] font-bold">
-            Customer Data Safeguards
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#020C2B]">
-            Data Retention &amp; Deletion Policy
-          </h1>
-          <p className="text-xs text-slate-500 font-mono">
-            1-Year Post-Expiry Retention • 15-Day Advance Deletion Warning
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">Other cases</h2>
+          <ul className="list-disc pl-5 space-y-1.5">
+            <li>
+              <strong>Trial not converted to a paid plan:</strong> the trial account and data are deleted 7 days after the trial ends.
+            </li>
+            <li>
+              <strong>Lifetime licence:</strong> the 1-year period starts when the licence ends or the product is shut down.
+            </li>
+            <li>
+              <strong>Earlier deletion on request:</strong> you can ask us to delete your data sooner. We will, unless the law requires us to keep some of it. Deletion is permanent.
+            </li>
+            <li>
+              <strong>Records we must keep:</strong> billing and transaction records are kept for as long as the law requires.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">Getting a copy of your data</h2>
+          <ul className="list-disc pl-5 space-y-1.5">
+            <li>
+              While your plan is active, you can view, print and download your invoices and reports from inside the software at no extra charge.
+            </li>
+            <li>
+              A full export of your business data is a paid service at{" "}
+              <Placeholder>{LEGAL_CONFIG.EXPORT_FEE}</Placeholder>. It is available while your plan is active and during the 1-year retention period. We will deliver it in Excel or CSV format within 5 working days of payment.
+            </li>
+            <li>
+              Paying for an export does not reduce any right you have under the law to access your personal data.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">Backups</h2>
+          <p>
+            We take an automatic backup every 24 hours and keep each for 7 days. These are for our own disaster recovery. They are not a customer export service.
           </p>
         </div>
 
-        <div className="space-y-8 text-sm text-slate-700 leading-relaxed font-normal bg-white p-6 sm:p-10 rounded-3xl border border-slate-200">
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#020C2B]">1. Overview</h2>
-            <p>
-              Your business accounting and customer Khata ledgers represent critical operational
-              assets. This policy defines the retention timeline for inactive licenses and our
-              protocol for secure data deletion in compliance with applicable Indian tax and privacy
-              regulations.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#020C2B]">
-              2. 1-Year Retention Window Following Expiry
-            </h2>
-            <p>
-              If a Monthly or Annual subscription is not renewed, your archived cloud account backups
-              (where enabled) are preserved in secure storage for a period of exactly{" "}
-              <strong>1 year (365 days)</strong> from the date of license expiration. This allows you
-              to renew your license at a later date or retrieve past financial statements without loss
-              of operational history.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#020C2B]">
-              3. 15-Day Final Deletion Advisory
-            </h2>
-            <p>
-              Before any inactive account data is permanently purged from cloud infrastructure,
-              WebRajya issues an explicit warning notice:
-            </p>
-            <ul className="list-disc pl-5 space-y-1.5 text-slate-600">
-              <li>
-                A written deletion alert is dispatched via WhatsApp and registered email{" "}
-                <strong>15 days prior</strong> to scheduled deletion.
-              </li>
-              <li>
-                The alert includes a direct one-click link to download your full historical database
-                in standard CSV/Excel format.
-              </li>
-            </ul>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#020C2B]">4. Local Data Ownership</h2>
-            <p>
-              Because WebRajya Invoice utilizes a local-first architecture, local database files
-              installed on your shop computer remain on your hardware indefinitely under your
-              physical control, unaffected by cloud retention schedules.
-            </p>
-          </section>
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">Questions</h2>
+          <p>
+            <Placeholder>{LEGAL_CONFIG.PRIVACY_CONTACT_NAME}</Placeholder>,{" "}
+            <a href={`mailto:${LEGAL_CONFIG.CONTACT_EMAIL}`} className="text-emerald-700 underline">
+              {LEGAL_CONFIG.CONTACT_EMAIL}
+            </a>
+            , {LEGAL_CONFIG.CONTACT_PHONE}.
+          </p>
         </div>
-      </div>
-    </div>
+      </section>
+    </LegalPageLayout>
   );
 }
-

@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
+    "prebuild": "node scripts/check-placeholders.mjs",
     "build": "next build --webpack",
+    "check:placeholders": "node scripts/check-placeholders.mjs",
     "start": "next start",
     "lint": "eslint"
   },

@@ -60,8 +60,8 @@ function PricingContent() {
       question: "How do renewals and advance reminders work?",
       answer:
         "Monthly plans renew every 30 days, and Annual plans renew every 12 months. We send automatic advance renewal notices 7 days and 2 days before expiry via WhatsApp and email so your billing counter never faces unexpected disruption.",
-      linkText: "Read Subscription & Renewal Policy",
-      linkHref: "/subscription-policy"
+      linkText: "Read Subscription & Auto-Renewal Terms",
+      linkHref: "/subscription-terms"
     },
     {
       id: "faq-grace-period",
@@ -69,7 +69,7 @@ function PricingContent() {
       answer:
         "If your subscription expires before renewal, your software never locks you out of your records. You get an automatic 3-day view-only grace period to view past invoices, customer Khata balances, and export records to Excel. New bill generation resumes immediately upon renewal.",
       linkText: "Read Grace Period Details",
-      linkHref: "/subscription-policy"
+      linkHref: "/subscription-terms"
     },
     {
       id: "faq-upgrade",
@@ -95,9 +95,9 @@ function PricingContent() {
       id: "faq-refunds",
       question: "What is your refund policy?",
       answer:
-        "We offer a full 3-day free trial on your own counter before any payment is collected. If you experience persistent technical defects that our team cannot resolve within 7 business days, you are eligible for a prorated refund under our policy.",
+        "We offer a full 3-day free trial on your own counter before any payment is collected. If you experience persistent technical defects that our team cannot resolve within 7 business days, you are eligible for a refund under our policy.",
       linkText: "View Refund Policy",
-      linkHref: "/refund"
+      linkHref: "/refund-policy"
     },
     {
       id: "faq-gst",
@@ -422,19 +422,19 @@ function PricingContent() {
         <div className="text-center space-y-2 pt-4">
           <RefundNote className="text-center" />
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500 pt-2">
-            <Link href="/subscription-policy" className="hover:underline">
-              Subscription Policy
+            <Link href="/subscription-terms" className="hover:underline">
+              Subscription &amp; Auto-Renewal Terms
             </Link>
             <span>•</span>
-            <Link href="/refund" className="hover:underline">
-              Refund Policy
+            <Link href="/refund-policy" className="hover:underline">
+              Cancellation &amp; Refund Policy
             </Link>
             <span>•</span>
             <Link href="/lifetime-terms" className="hover:underline">
-              Lifetime Terms
+              Lifetime Licence Terms
             </Link>
             <span>•</span>
-            <Link href="/sla" className="hover:underline">
+            <Link href="/support-sla" className="hover:underline">
               Support SLA
             </Link>
           </div>

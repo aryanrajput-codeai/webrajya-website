@@ -37,8 +37,19 @@ export async function POST(request: NextRequest) {
       languagePreference,
       utmSource,
       utmCampaign,
-      source
+      source,
+      legalConsent,
+      consentTimestamp,
+      marketingConsent
     } = body;
+
+    // Validate legal consent
+    if (legalConsent !== true) {
+      return NextResponse.json(
+        { error: "You must agree to the Privacy Policy and Terms to continue." },
+        { status: 400 }
+      );
+    }
 
     // Validate Indian phone number (10 digits starting with 6-9)
     const cleanPhone = String(phone || "").replace(/\D/g, "");
@@ -74,6 +85,9 @@ export async function POST(request: NextRequest) {
       utmSource: utmSource || undefined,
       utmCampaign: utmCampaign || undefined,
       source: source || "website_demo_form",
+      legalConsent: true,
+      consentTimestamp: consentTimestamp || new Date().toISOString(),
+      marketingConsent: Boolean(marketingConsent),
       submittedAt: new Date().toISOString(),
       ownerNotifyEmail: LAUNCH_CONFIG.OWNER_NOTIFICATION_EMAIL
     };

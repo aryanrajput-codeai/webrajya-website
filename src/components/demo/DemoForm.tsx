@@ -215,7 +215,7 @@ export function DemoForm({ initialProduct, initialPlan }: DemoFormProps) {
         {/* Privacy Notice */}
         <div className="pt-2 text-[11px] text-[#525866] font-mono leading-relaxed border-t border-[#020C2B]/10">
           By continuing to WhatsApp, you agree that WebRajya may use the information you provide to respond to your demo request. View our{" "}
-          <Link href="/privacy" className="text-[#020C2B] underline font-semibold hover:text-[#E58145]">
+          <Link href="/privacy-policy" className="text-[#020C2B] underline font-semibold hover:text-[#E58145]">
             Privacy Policy
           </Link>.
         </div>

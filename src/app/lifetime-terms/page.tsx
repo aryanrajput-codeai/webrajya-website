@@ -1,87 +1,117 @@
-import React from "react";
-import type { Metadata } from "next";
-import { LAUNCH_CONFIG } from "@/config/launch";
-import { LegalDraftBanner } from "@/components/legal/LegalDraftBanner";
-import { LIFETIME_INCLUSION_STATEMENT } from "@/config/pricing";
+import { Metadata } from "next";
+import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
+import { Placeholder } from "@/components/legal/Placeholder";
+import { LEGAL_CONFIG } from "@/config/legal";
+import { getLegalMetadata } from "@/components/legal/metadata";
 
-export const metadata: Metadata = {
-  title: "Lifetime Licence Terms — WebRajya Invoice",
-  description:
-    "Perpetual software licence terms, included bug fixes, maintenance, and upgrade definitions.",
-  robots: LAUNCH_CONFIG.LEGAL_APPROVED
-    ? { index: true, follow: true }
-    : { index: false, follow: false }
-};
+export const metadata: Metadata = getLegalMetadata(
+  "Lifetime Licence Terms",
+  "WebRajya Invoice Lifetime Licence Terms: scope, definition, major upgrades, and fair-use limits."
+);
 
 export default function LifetimeTermsPage() {
   return (
-    <div className="w-full bg-[#F8F3EB] text-[#020C2B] min-h-screen pt-24 pb-20">
-      <LegalDraftBanner documentName="Lifetime Licence Terms" />
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 pt-8">
-        <div className="border-b border-[#020C2B]/10 pb-6 space-y-2">
-          <span className="text-xs font-mono uppercase text-[#2563EB] font-bold">
-            Perpetual Software Agreement
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#020C2B]">
-            Lifetime Licence Terms
-          </h1>
-          <p className="text-xs text-slate-500 font-mono">
-            Pay Once, Use Forever • Standard Perpetual Licensing
+    <LegalPageLayout
+      title="5. Lifetime Licence Terms"
+      subtitle="WebRajya Invoice: Website Policies"
+    >
+      <section className="space-y-6">
+        <div>
+          <h2 className="!mt-0 !pt-0 !border-0 text-lg font-bold text-slate-900 mb-2">
+            1. What you get
+          </h2>
+          <p>
+            A non-exclusive, non-transferable licence to use WebRajya Invoice for one business at one shop location, for as long as this licence lasts. Transfer to another owner is possible only with our written consent.
           </p>
         </div>
 
-        <div className="space-y-8 text-sm text-slate-700 leading-relaxed font-normal bg-white p-6 sm:p-10 rounded-3xl border border-slate-200">
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#020C2B]">1. Scope of the Lifetime Licence</h2>
-            <p className="p-4 bg-slate-50 border-l-4 border-[#2563EB] rounded-r-xl font-medium text-slate-800">
-              &ldquo;{LIFETIME_INCLUSION_STATEMENT}&rdquo;
-            </p>
-            <p>
-              A Lifetime license grants the registered business entity the perpetual right to operate
-              WebRajya Invoice for internal business billing without recurring monthly or yearly
-              software renewal fees.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#020C2B]">2. Included Maintenance &amp; Bug Fixes</h2>
-            <p>Lifetime license holders receive:</p>
-            <ul className="list-disc pl-5 space-y-1.5 text-slate-600">
-              <li>All stability improvements, bug fixes, and maintenance patches on the current core branch.</li>
-              <li>Basic customer support via WhatsApp and phone desk (Mon-Sat, 9 AM - 8 PM).</li>
-              <li>Local backup utilities and data export functions.</li>
-            </ul>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#020C2B]">
-              3. Major Upgrades &amp; Version Releases
-            </h2>
-            <div className="bg-amber-50 p-4 rounded-xl border border-amber-200 space-y-2">
-              <p className="font-bold text-amber-900">
-                [DEFINITION OF MAJOR UPGRADE - TO BE FINALISED BY FOUNDER &amp; LEGAL COUNSEL]
-              </p>
-              <p className="text-xs text-amber-800">
-                Placeholder notice: Routine maintenance updates and statutory bug fixes are included.
-                Major architectural version transitions, optional add-on cloud modules, or brand-new
-                product engines introduced in subsequent major versions may be offered as optional
-                paid upgrades, as formally specified prior to commercial checkout enablement.
-              </p>
-            </div>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-[#020C2B]">4. Terminal &amp; Device Transfer</h2>
-            <p>
-              Each Lifetime license is assigned to one primary commercial establishment. If you
-              replace your billing PC or computer hardware, our support team can re-activate your
-              license on your replacement terminal with identity verification.
-            </p>
-          </section>
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">
+            2. More locations
+          </h2>
+          <p>
+            Each additional shop location needs its own licence, at{" "}
+            <Placeholder>{LEGAL_CONFIG.ADDITIONAL_LOCATION_PRICE}</Placeholder>.
+          </p>
         </div>
-      </div>
-    </div>
+
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">
+            3. What “lifetime” means
+          </h2>
+          <p>
+            It means for as long as we offer and support WebRajya Invoice. If we decide to shut the product down, we will give you at least 12 months written notice and a full export of your data during that period at no charge.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">
+            4. What is included
+          </h2>
+          <ul className="list-disc pl-5 space-y-1.5">
+            <li>
+              Hosting of your data within the fair-use limits:{" "}
+              <Placeholder>{LEGAL_CONFIG.FAIR_USE_LIMITS}</Placeholder>.
+            </li>
+            <li>Basic support, as set out in the Support SLA.</li>
+            <li>Bug fixes, security updates and maintenance.</li>
+            <li>Updates needed to keep core billing working when tax rules or other laws change.</li>
+            <li>Smaller improvements and new features released within your current version.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">
+            5. What is a major upgrade
+          </h2>
+          <p>We may charge separately for:</p>
+          <ul className="list-disc pl-5 space-y-1.5 mt-2">
+            <li>
+              A new generation of the product released as a new version or product name, for example “version 2.0”, and marketed as a new version.
+            </li>
+            <li>A new optional paid module or add-on.</li>
+          </ul>
+          <p className="mt-3">
+            The following are never major upgrades: bug fixes, security updates, performance work, compliance changes and small feature additions. We will publish the list of what is a major upgrade on our website, and decide in good faith. You are never forced to upgrade. Your current version keeps working and stays supported for at least 12 months after a major upgrade is released.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">
+            6. Fair use
+          </h2>
+          <p>
+            Use must stay within the limits above and the Terms and Conditions. We may limit or end a licence used to abuse the service.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">
+            7. Ending the licence
+          </h2>
+          <p>
+            The licence ends if you stop using it and ask us to close the account, if we end it for serious or repeated breach of the Terms, or if the product is shut down. A licence ended for breach is not refunded. In other cases the Cancellation and Refund Policy applies. The 1-year data retention period starts from the date the licence ends.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">
+            8. Refunds
+          </h2>
+          <p>
+            Lifetime is covered by the Cancellation and Refund Policy, with the same 7-day claim window.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 mb-2">
+            9. GST
+          </h2>
+          <p>
+            We are not registered for GST at present and do not charge it. After we register, GST will apply to new purchases as the law requires.
+          </p>
+        </div>
+      </section>
+    </LegalPageLayout>
   );
 }
-

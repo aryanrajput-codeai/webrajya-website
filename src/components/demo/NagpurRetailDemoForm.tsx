@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   CalendarCheck,
@@ -67,6 +68,8 @@ export function NagpurRetailDemoForm() {
     preferredTime: "Evening (5:00 PM – 8:00 PM)",
     demoType: "In-Shop Visit (Nagpur)",
     languagePreference: "Hindi",
+    agreedToTerms: false,
+    marketingConsent: false,
     website_url: "" // Honeypot spam trap
   });
 
@@ -95,16 +98,31 @@ export function NagpurRetailDemoForm() {
       return;
     }
 
+    if (!formData.agreedToTerms) {
+      setError("Please agree to the Privacy Policy and Terms and Conditions to proceed.");
+      return;
+    }
+
     setLoading(true);
     const utm = getUtmParams();
+    const consentTimestamp = new Date().toISOString();
 
     try {
       const response = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
+          fullName: formData.fullName,
+          shopName: formData.shopName,
+          shopType: formData.shopType,
           phone: cleanPhone,
+          areaInNagpur: formData.areaInNagpur,
+          preferredTime: formData.preferredTime,
+          demoType: formData.demoType,
+          languagePreference: formData.languagePreference,
+          legalConsent: true,
+          consentTimestamp,
+          marketingConsent: formData.marketingConsent,
           utmSource: utm.utm_source,
           utmCampaign: utm.utm_campaign,
           source: utm.src || searchParams.get("src") || "demo_page"
@@ -313,6 +331,46 @@ export function NagpurRetailDemoForm() {
               <option value="English">English</option>
               <option value="Marathi">Marathi (मराठी)</option>
             </select>
+          </div>
+        </div>
+
+        {/* 5. Legal & Marketing Consent Checkboxes */}
+        <div className="space-y-3 pt-2 border-t border-slate-100">
+          {/* Required Legal Consent */}
+          <div className="flex items-start gap-2.5">
+            <input
+              id="legalConsent"
+              type="checkbox"
+              required
+              checked={formData.agreedToTerms}
+              onChange={(e) => setFormData({ ...formData, agreedToTerms: e.target.checked })}
+              className="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+            />
+            <label htmlFor="legalConsent" className="text-xs text-slate-700 leading-snug cursor-pointer select-none">
+              I agree to the{" "}
+              <Link href="/privacy-policy" target="_blank" className="text-emerald-700 underline font-semibold hover:text-emerald-800">
+                Privacy Policy
+              </Link>{" "}
+              and{" "}
+              <Link href="/terms" target="_blank" className="text-emerald-700 underline font-semibold hover:text-emerald-800">
+                Terms and Conditions
+              </Link>
+              . <span className="text-rose-600 font-bold">*</span>
+            </label>
+          </div>
+
+          {/* Optional Marketing Consent */}
+          <div className="flex items-start gap-2.5">
+            <input
+              id="marketingConsent"
+              type="checkbox"
+              checked={formData.marketingConsent}
+              onChange={(e) => setFormData({ ...formData, marketingConsent: e.target.checked })}
+              className="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+            />
+            <label htmlFor="marketingConsent" className="text-xs text-slate-600 leading-snug cursor-pointer select-none">
+              (Optional) Send me product updates, retail tips, and offers via WhatsApp, SMS, or email.
+            </label>
           </div>
         </div>
 

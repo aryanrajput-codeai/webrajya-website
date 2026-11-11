@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { SITE_CONFIG } from '@/data/config';
 import { LAUNCH_CONFIG } from '@/config/launch';
+import { LEGAL_CONFIG } from '@/config/legal';
 import { INDUSTRIES_DATA } from '@/data/industries';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -86,15 +87,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // Only include legal pages if LEGAL_APPROVED === true
-  if (LAUNCH_CONFIG.LEGAL_APPROVED) {
+  const isLegalApproved = LEGAL_CONFIG.LEGAL_APPROVED && LAUNCH_CONFIG.LEGAL_APPROVED;
+  if (isLegalApproved) {
     const legalPages = [
-      '/privacy',
+      '/privacy-policy',
       '/terms',
-      '/subscription-policy',
-      '/refund',
+      '/subscription-terms',
+      '/refund-policy',
       '/lifetime-terms',
       '/data-retention',
-      '/sla',
+      '/support-sla',
+      '/legal',
     ];
     legalPages.forEach((path) => {
       routes.push({

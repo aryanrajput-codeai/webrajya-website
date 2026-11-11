@@ -20,7 +20,7 @@ export function RefundNote({ className = "", showLink = true }: RefundNoteProps)
       {LAUNCH_CONFIG.REFUND_TEXT}{" "}
       {showLink && (
         <Link
-          href="/refund"
+          href="/refund-policy"
           className="text-[#2563EB] hover:text-[#020C2B] underline underline-offset-2 transition-colors font-medium"
         >
           View Refund Policy &rarr;

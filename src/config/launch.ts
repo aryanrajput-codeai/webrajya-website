@@ -91,20 +91,20 @@ export const LAUNCH_CONFIG: LaunchConfig = {
   EARLY_LIFETIME_SLOTS_REMAINING: 50,
 
   // Contact details & Nagpur local presence
-  PHONE: "+919876543210",
-  PHONE_DISPLAY: "+91 98765 43210",
-  WHATSAPP: "919876543210",
-  EMAIL: "support@webrajya.com",
+  PHONE: "+919630013483",
+  PHONE_DISPLAY: "+91 96300 13483",
+  WHATSAPP: "919630013483",
+  EMAIL: "info@webrajya.com",
   TARGET_CITY: "Nagpur",
   TARGET_STATE: "Maharashtra",
-  NAGPUR_ADDRESS: "[ADDRESS: Dharampeth / Sitabuldi, Nagpur, Maharashtra 440010 - To be confirmed]",
+  NAGPUR_ADDRESS: "52 Surve Nagar, Nagpur, Maharashtra",
   OPERATING_HOURS: {
     weekdays: "Monday – Saturday: 9:00 AM – 8:00 PM IST",
-    sunday: "Sunday: Emergency support via Phone & WhatsApp"
+    sunday: "Sunday: Emergency support via Phone & WhatsApp (response target: 4 hours)"
   },
 
   // Shared Tax & Refund statements
-  GST_NOTE: "", // Default empty string per strict instructions; populated via CA confirmation
+  GST_NOTE: "Prices shown are final. No GST is charged at present.", // Page 12 instruction
   REFUND_TEXT: "Subscriptions and licenses are covered under our transparent Cancellation & Refund Policy.",
 
   // External endpoints
