@@ -28,7 +28,10 @@ export type AnalyticsEventName =
   | "demo_product_selected"
   | "demo_form_started"
   | "demo_whatsapp_opened"
-  | "demo_whatsapp_open_failed";
+  | "demo_whatsapp_open_failed"
+  | "launch_offer_popup_shown"
+  | "launch_offer_popup_dismissed"
+  | "launch_offer_popup_claimed";
 
 /**
  * Extracts campaign tracking parameters from the current URL search parameters.

@@ -9,6 +9,7 @@ import { NagpurLocalBusinessSchema } from "@/components/seo/NagpurLocalBusinessS
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { LaunchOfferModal } from "@/components/ui/LaunchOfferModal";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { cn } from "@/lib/utils";
 
@@ -91,6 +92,7 @@ export default function RootLayout({
             <FloatingWhatsApp />
             <MobileBottomDock />
             <CookieConsent />
+            <LaunchOfferModal />
           </TooltipProvider>
         </LanguageProvider>
       </body>

@@ -1,7 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
 import { NagpurLaunchHero } from "@/components/sections/NagpurLaunchHero";
-import { DecemberOfferBanner } from "@/components/sections/DecemberOfferBanner";
 import { CustomerMarquee } from "@/components/sections/CustomerMarquee";
 import { ProblemToSolutionStrip } from "@/components/sections/ProblemToSolutionStrip";
 import { ShopIndustryTiles } from "@/components/sections/ShopIndustryTiles";
@@ -39,10 +38,7 @@ export default function HomePage() {
       {/* 1. HERO SECTION */}
       <NagpurLaunchHero />
 
-      {/* 2. DECEMBER LAUNCH OFFER BANNER */}
-      <DecemberOfferBanner />
-
-      {/* 3. VERIFIED CUSTOMERS PROOF MARQUEE */}
+      {/* 2. VERIFIED CUSTOMERS PROOF MARQUEE */}
       <CustomerMarquee />
 
       {/* 4. PROBLEM TO SOLUTION STRIP */}
