@@ -28,6 +28,7 @@
     @apply border-border outline-ring/50;
   }
   html {
+    scroll-padding-top: 5.5rem;
     @apply font-sans;
   }
 }

@@ -37,10 +37,10 @@ export function FounderSection() {
                 Software should serve shop owners, not lock them in.
               </h2>
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
-                When building WebRajya, we noticed retail store owners in Nagpur struggling with two extremes: clunky desktop software with zero support, or expensive SaaS platforms that double their renewal rates each year.
+                When building WebRajya, we noticed retail store owners struggling with two extremes: clunky desktop software with zero support, or expensive SaaS platforms that double their renewal rates each year.
               </p>
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
-                We engineered WebRajya Invoice to be lightning fast, completely offline-resilient, and backed by someone who will actually visit your shop in person to set up your scanners and train your staff.
+                We engineered WebRajya Invoice to be lightning fast, completely offline-resilient, and backed by direct onboarding support — guided step-by-step via video call and WhatsApp nationwide, and in-person shop visits right here in our hometown of Nagpur.
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold">

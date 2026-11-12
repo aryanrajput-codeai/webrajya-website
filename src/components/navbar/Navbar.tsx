@@ -234,7 +234,7 @@ export function Navbar() {
             href={`tel:${LAUNCH_CONFIG.PHONE}`}
             onClick={() => trackEvent("call_click", { location: "header_nav" })}
             className="flex items-center gap-1.5 text-xs font-mono font-bold text-slate-700 hover:text-[#020C2B] px-2 py-1 rounded-full transition-colors"
-            title="Call WebRajya Nagpur Desk"
+            title="Call WebRajya Support Desk"
           >
             <Phone className="w-3.5 h-3.5 text-[#E58145]" />
             <span>{LAUNCH_CONFIG.PHONE_DISPLAY}</span>
@@ -277,7 +277,7 @@ export function Navbar() {
             >
               <div className="space-y-3">
                 <span className="text-[10px] font-mono uppercase text-slate-500 tracking-wider block font-semibold">
-                  Built for Nagpur Shops
+                  Shops We Serve Across India
                 </span>
                 <div className="grid grid-cols-2 gap-2">
                   {SHOP_LINKS.map((shop) => (
@@ -325,7 +325,7 @@ export function Navbar() {
                   Support &amp; SLA
                 </Link>
                 <Link href="/contact" className="py-1 hover:text-[#E58145] text-xs">
-                  Contact Nagpur Team
+                  Contact Us
                 </Link>
               </div>
 

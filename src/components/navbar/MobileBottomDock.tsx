@@ -19,7 +19,7 @@ export function MobileBottomDock() {
   };
 
   const whatsappMessage = encodeURIComponent(
-    "Hi WebRajya, I want to book a free demo of WebRajya Invoice for my shop in Nagpur."
+    "Hi WebRajya, I want to book a free demo of WebRajya Invoice for my business."
   );
   const whatsappUrl = `https://wa.me/${LAUNCH_CONFIG.WHATSAPP}?text=${whatsappMessage}`;
 

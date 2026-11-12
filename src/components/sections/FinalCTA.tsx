@@ -1,15 +1,15 @@
 import React from "react";
-import { ArrowRight, Phone, ShieldCheck } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LAUNCH_CONFIG } from "@/config/launch";
+import { COMPANY_CONFIG } from "@/config/company";
 import { GstNote } from "@/components/ui/GstNote";
 import { RefundNote } from "@/components/ui/RefundNote";
 
 export function FinalCTA() {
   const whatsappMessage = encodeURIComponent(
-    "Hi WebRajya, I want to book a free demo of WebRajya Invoice for my shop in Nagpur."
+    "Hi WebRajya, I want to book a free demo of WebRajya Invoice for my business."
   );
-  const whatsappUrl = `https://wa.me/${LAUNCH_CONFIG.WHATSAPP}?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/${COMPANY_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <section className="py-24 bg-[#020C2B] text-white relative overflow-hidden font-sans">
@@ -22,8 +22,8 @@ export function FinalCTA() {
         </h2>
 
         <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          Book a 20-minute live demonstration in your shop or online. If you like it, get a 3-day
-          free trial on your own counter with hands-on setup support from our Nagpur team.
+          Book a 20-minute live demonstration by video call or WhatsApp, with in-shop visits available in Nagpur.
+          Test WebRajya free for 3 days on your own counter with personal setup assistance.
         </p>
 
         {/* Action Buttons */}
@@ -35,7 +35,7 @@ export function FinalCTA() {
             className="w-full sm:w-auto font-bold shadow-lg shadow-[#E58145]/20"
             icon={<ArrowRight className="w-4 h-4" />}
           >
-            Book In-Shop Free Demo
+            Book Free Demo
           </Button>
 
           <a
@@ -55,10 +55,12 @@ export function FinalCTA() {
         <div className="pt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 font-mono">
           <span>3-day free trial after live demo</span>
           <span>•</span>
-          <span>Free personal setup help in Nagpur</span>
+          <span>Setup assistance across India</span>
           <span>•</span>
-          <a href={`tel:${LAUNCH_CONFIG.PHONE}`} className="hover:text-white transition-colors">
-            Call: {LAUNCH_CONFIG.PHONE_DISPLAY}
+          <span>In-shop visits in Nagpur</span>
+          <span>•</span>
+          <a href={`tel:${COMPANY_CONFIG.phoneRaw}`} className="hover:text-white transition-colors">
+            Call: {COMPANY_CONFIG.phone}
           </a>
         </div>
 

@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { Smartphone, Bell, CheckCircle2, QrCode, ArrowRight } from "lucide-react";
+import { Smartphone, Bell, CheckCircle2, QrCode } from "lucide-react";
 import { LAUNCH_CONFIG } from "@/config/launch";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { trackEvent } from "@/lib/analytics";
 
 export function MobileAppSection() {
@@ -16,7 +15,7 @@ export function MobileAppSection() {
   const handleWaitlistSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!phone || phone.replace(/\D/g, "").length < 10) {
-      alert("Please enter a valid 10-digit WhatsApp number.");
+      alert("Please enter a valid 10-digit mobile number.");
       return;
     }
 
@@ -62,11 +61,10 @@ export function MobileAppSection() {
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
             {isLive
               ? "Download WebRajya Invoice on your smartphone to check live shop billing, review daily closing cash, and monitor Khata balances on the move."
-              : "We are currently finalizing our companion mobile application for Android and iOS. View live sales reports, customer Khata, and stock alerts straight from your phone."}
+              : "We are finalizing our companion mobile application for Android and iOS. View live sales reports, customer Khata, and stock alerts straight from your phone."}
           </p>
 
           {isLive ? (
-            /* APP STORE & PLAY STORE BUTTONS (ACTIVE WHEN APP_LIVE = true) */
             <div className="space-y-4 pt-2">
               <div className="flex flex-wrap items-center gap-4">
                 {LAUNCH_CONFIG.APP_PLAY_URL && (
@@ -99,7 +97,6 @@ export function MobileAppSection() {
               </p>
             </div>
           ) : (
-            /* NOTIFY-ME WAITLIST FORM (ACTIVE WHEN APP_LIVE = false) */
             <div className="pt-2">
               {submitted ? (
                 <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-1.5 animate-in fade-in">
@@ -142,7 +139,7 @@ export function MobileAppSection() {
                     {loading ? "Joining..." : "Get Notified on WhatsApp"}
                   </Button>
                   <p className="text-[11px] text-slate-500">
-                    Source tag: source=app_waitlist • No spam, strictly launch notification.
+                    No spam. Strictly launch notification via WhatsApp.
                   </p>
                 </form>
               )}
@@ -179,7 +176,7 @@ export function MobileAppSection() {
                     Beta Testing Phase
                   </span>
                   <p className="text-xs max-w-xs mx-auto">
-                    Optimized for 4G/5G networks across Maharashtra with zero lag.
+                    Optimized for 4G/5G mobile networks across India.
                   </p>
                 </div>
               )}
@@ -190,4 +187,3 @@ export function MobileAppSection() {
     </section>
   );
 }
-

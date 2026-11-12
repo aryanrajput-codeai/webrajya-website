@@ -10,7 +10,6 @@ import {
   ArrowRight,
   CheckCircle2
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 
 export function ShopIndustryTiles() {
   const TILES = [
@@ -70,11 +69,11 @@ export function ShopIndustryTiles() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <h2 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            Built for Your Shop in Nagpur
+            Built for Your Shop, Anywhere in India
           </h2>
           <p className="text-slate-700 text-base sm:text-lg leading-relaxed">
-            Every retail business is different. WebRajya Invoice provides verified workflows tailored
-            to your specific daily counter and inventory demands.
+            Every retail counter operates differently. WebRajya Invoice provides practical features tailored
+            to your specific daily billing, stock categorization, and customer ledger needs.
           </p>
         </div>
 
@@ -125,4 +124,3 @@ export function ShopIndustryTiles() {
     </section>
   );
 }
-

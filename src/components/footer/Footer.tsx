@@ -1,14 +1,22 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, Shield, Layers, Globe, MessageCircle, Phone, Mail, MapPin } from "lucide-react";
-import { SITE_CONFIG } from "@/data/config";
+import {
+  ArrowUpRight,
+  Shield,
+  Layers,
+  MessageCircle,
+  Phone,
+  Mail,
+  MapPin,
+  ExternalLink
+} from "lucide-react";
 import { WebRajyaLogo } from "@/components/brand/WebRajyaLogo";
-import { LAUNCH_CONFIG } from "@/config/launch";
+import { COMPANY_CONFIG } from "@/config/company";
 import { GstNote } from "@/components/ui/GstNote";
 
 export function Footer() {
   return (
-    <footer className="bg-[#020C2B] text-white border-t border-white/10 pt-16 pb-12 relative overflow-hidden">
+    <footer className="bg-[#020C2B] text-white border-t border-white/10 pt-16 pb-12 relative overflow-hidden font-sans">
       {/* Subtle Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-[#2563EB]/15 blur-3xl pointer-events-none" />
 
@@ -21,185 +29,224 @@ export function Footer() {
               <WebRajyaLogo size={40} showText={true} whiteContainer={true} />
             </Link>
 
-            <div className="space-y-1">
-              <span className="font-bold text-white text-sm block">WebRajya Technologies</span>
-              <p className="text-xs text-[#CBD5E1] max-w-sm leading-relaxed">
-                Reliable, easy-to-use business &amp; retail operating software with personal hands-on setup support. Home to WebRajya Invoice, POS, and MyGarage.
+            <div className="space-y-1.5">
+              <span className="font-bold text-white text-base block">{COMPANY_CONFIG.legalName}</span>
+              <p className="text-sm text-slate-300 max-w-sm leading-relaxed">
+                Affordable, easy-to-use billing and inventory software for retail stores and businesses across India.
+                Personal setup support via video call, WhatsApp, or on-site (Nagpur).
               </p>
             </div>
 
-            <div className="space-y-1.5 text-xs text-[#94A3B8]">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#E58145] shrink-0" />
-                <span>{LAUNCH_CONFIG.NAGPUR_ADDRESS}</span>
+            <div className="space-y-2 text-xs sm:text-sm text-slate-300">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-[#E58145] shrink-0 mt-0.5" />
+                <div>
+                  <span className="text-white font-medium block">Head Office:</span>
+                  <a
+                    href={COMPANY_CONFIG.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white hover:underline transition-colors text-slate-300"
+                  >
+                    {COMPANY_CONFIG.headOfficeAddress}
+                  </a>
+                </div>
               </div>
+
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#E58145] shrink-0" />
-                <a href={`tel:${LAUNCH_CONFIG.PHONE}`} className="hover:text-white transition-colors">
-                  {LAUNCH_CONFIG.PHONE_DISPLAY}
+                <Phone className="w-4 h-4 text-[#E58145] shrink-0" />
+                <a href={`tel:${COMPANY_CONFIG.phoneRaw}`} className="hover:text-white transition-colors text-slate-200">
+                  {COMPANY_CONFIG.phone}
                 </a>
               </div>
+
               <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#E58145] shrink-0" />
-                <a href={`mailto:${LAUNCH_CONFIG.EMAIL}`} className="hover:text-white transition-colors">
-                  {LAUNCH_CONFIG.EMAIL}
+                <Mail className="w-4 h-4 text-[#E58145] shrink-0" />
+                <a href={`mailto:${COMPANY_CONFIG.email}`} className="hover:text-white transition-colors text-slate-200">
+                  {COMPANY_CONFIG.email}
                 </a>
               </div>
             </div>
 
+            {/* Social links if configured */}
+            {(COMPANY_CONFIG.social.instagram || COMPANY_CONFIG.social.youtube) && (
+              <div className="flex items-center gap-3 pt-1">
+                {COMPANY_CONFIG.social.instagram && (
+                  <a
+                    href={COMPANY_CONFIG.social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-slate-300 hover:text-white transition-colors"
+                  >
+                    Instagram
+                  </a>
+                )}
+                {COMPANY_CONFIG.social.youtube && (
+                  <a
+                    href={COMPANY_CONFIG.social.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-slate-300 hover:text-white transition-colors"
+                  >
+                    YouTube
+                  </a>
+                )}
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center gap-2 pt-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 text-[#F8F3EB] border border-white/10 text-xs font-mono">
-                <Shield className="w-3.5 h-3.5 text-[#2563EB]" /> 3-Day Free Trial
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-slate-100 border border-white/15 text-xs font-mono">
+                <Shield className="w-3.5 h-3.5 text-[#60A5FA]" /> 3-Day Free Trial
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 text-[#F8F3EB] border border-white/10 text-xs font-mono">
-                <Layers className="w-3.5 h-3.5 text-[#2563EB]" /> Offline Local-First
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-slate-100 border border-white/15 text-xs font-mono">
+                <Layers className="w-3.5 h-3.5 text-[#60A5FA]" /> Works Offline
               </span>
             </div>
           </div>
 
-          {/* Nagpur Industry Shops Col */}
+          {/* Shops We Serve Col */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">
-              Shops in Nagpur
+              Shops We Serve
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/industry/mobile-shops" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/industry/mobile-shops" className="text-slate-300 hover:text-white transition-colors">
                   Mobile &amp; Accessories
                 </Link>
               </li>
               <li>
-                <Link href="/industry/electronics" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/industry/electronics" className="text-slate-300 hover:text-white transition-colors">
                   Consumer Electronics
                 </Link>
               </li>
               <li>
-                <Link href="/industry/clothing-garments" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/industry/clothing-garments" className="text-slate-300 hover:text-white transition-colors">
                   Clothing &amp; Garments
                 </Link>
               </li>
               <li>
-                <Link href="/industry/footwear" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/industry/footwear" className="text-slate-300 hover:text-white transition-colors">
                   Footwear &amp; Shoes
                 </Link>
               </li>
               <li>
-                <Link href="/industry/stationery-books" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/industry/stationery-books" className="text-slate-300 hover:text-white transition-colors">
                   Stationery &amp; Books
                 </Link>
               </li>
               <li>
-                <Link href="/industry/furniture" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/industry/furniture" className="text-slate-300 hover:text-white transition-colors">
                   Furniture Showrooms
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Product & Resources Col */}
+          {/* Products & Support Col */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">
               Products &amp; Support
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/invoice" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors flex items-center gap-1 group">
+                <Link href="/invoice" className="text-slate-300 hover:text-white transition-colors flex items-center gap-1 group">
                   <span>WebRajya Invoice</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
-                <Link href="/pos" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors flex items-center gap-1 group">
+                <Link href="/pos" className="text-slate-300 hover:text-white transition-colors flex items-center gap-1 group">
                   <span>WebRajya POS</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
-                <Link href="/mygarage" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors flex items-center gap-1 group">
+                <Link href="/mygarage" className="text-slate-300 hover:text-white transition-colors flex items-center gap-1 group">
                   <span>MyGarage SaaS</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/pricing" className="text-slate-300 hover:text-white transition-colors">
                   Transparent Pricing
                 </Link>
               </li>
               <li>
-                <Link href="/demo" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/demo" className="text-slate-300 hover:text-white transition-colors">
                   Book Free Demo
                 </Link>
               </li>
               <li>
-                <Link href="/features" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Verified Features
+                <Link href="/features" className="text-slate-300 hover:text-white transition-colors">
+                  Features List
                 </Link>
               </li>
               <li>
-                <Link href="/learn" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Tutorials &amp; Learn
+                <Link href="/learn" className="text-slate-300 hover:text-white transition-colors">
+                  Tutorials &amp; Guides
                 </Link>
               </li>
               <li>
-                <Link href="/support" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/support" className="text-slate-300 hover:text-white transition-colors">
                   Support Desk
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/about" className="text-slate-300 hover:text-white transition-colors">
                   About WebRajya
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Contact Nagpur Team
+                <Link href="/contact" className="text-slate-300 hover:text-white transition-colors">
+                  Contact Us
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Legal Column (All 7 Legal Pages + /legal index) */}
+          {/* Legal Column (High Contrast WCAG AA) */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono uppercase text-[#60A5FA] tracking-wider font-semibold">
-              Legal
+              Legal &amp; Policy
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-[13px] leading-relaxed">
               <li>
-                <Link href="/privacy-policy" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/privacy-policy" className="text-slate-300 hover:text-white transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/terms" className="text-slate-300 hover:text-white transition-colors">
                   Terms and Conditions
                 </Link>
               </li>
               <li>
-                <Link href="/subscription-terms" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Subscription and Renewal Terms
+                <Link href="/subscription-terms" className="text-slate-300 hover:text-white transition-colors">
+                  Subscription &amp; Renewal Terms
                 </Link>
               </li>
               <li>
-                <Link href="/refund-policy" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Cancellation and Refund Policy
+                <Link href="/refund-policy" className="text-slate-300 hover:text-white transition-colors">
+                  Cancellation &amp; Refund Policy
                 </Link>
               </li>
               <li>
-                <Link href="/lifetime-terms" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/lifetime-terms" className="text-slate-300 hover:text-white transition-colors">
                   Lifetime Licence Terms
                 </Link>
               </li>
               <li>
-                <Link href="/data-retention" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
-                  Data Retention and Deletion
+                <Link href="/data-retention" className="text-slate-300 hover:text-white transition-colors">
+                  Data Retention &amp; Deletion
                 </Link>
               </li>
               <li>
-                <Link href="/support-sla" className="text-[#CBD5E1] hover:text-[#60A5FA] transition-colors">
+                <Link href="/support-sla" className="text-slate-300 hover:text-white transition-colors">
                   Support SLA
                 </Link>
               </li>
-              <li className="pt-1 border-t border-white/10">
+              <li className="pt-1.5 border-t border-white/10">
                 <Link href="/legal" className="text-[#60A5FA] hover:text-white transition-colors font-medium">
                   View All Policies &rarr;
                 </Link>
@@ -211,25 +258,27 @@ export function Footer() {
 
         {/* GST Note directly under footer columns */}
         <div className="py-4">
-          <GstNote className="text-slate-400 text-center" />
+          <GstNote className="text-slate-300 text-center text-xs sm:text-sm font-normal" />
         </div>
 
         {/* Bottom copyright bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#94A3B8] font-mono border-t border-white/5">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300 border-t border-white/10">
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-            <p>© 2026 WEBRAJYA. All rights reserved.</p>
-            <span className="hidden sm:inline text-white/20">•</span>
-            <p className="text-white/80">Nagpur, Maharashtra · Affordable, complete billing software.</p>
+            <p>© 2026 {COMPANY_CONFIG.brandName}. All rights reserved.</p>
+            <span className="hidden sm:inline text-white/30">•</span>
+            <p className="text-slate-200">
+              Head Office: Nagpur, Maharashtra · Serving retailers across India.
+            </p>
           </div>
           
-          <div className="flex items-center gap-4 text-[#CBD5E1]">
+          <div className="flex items-center gap-4 text-slate-200">
             <a
-              href={`https://wa.me/${LAUNCH_CONFIG.WHATSAPP}?text=${encodeURIComponent("Hi WebRajya, I have an enquiry about billing software in Nagpur.")}`}
+              href={`https://wa.me/${COMPANY_CONFIG.whatsappNumber}?text=${encodeURIComponent("Hi WebRajya, I have an enquiry about billing software.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-emerald-400 transition-colors flex items-center gap-1"
+              className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-400" /> WhatsApp
+              <MessageCircle className="w-4 h-4 text-emerald-400" /> WhatsApp
             </a>
             <Link href="/demo" className="hover:text-[#60A5FA] transition-colors flex items-center gap-1">
               Book Free Demo

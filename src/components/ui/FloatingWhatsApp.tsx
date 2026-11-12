@@ -13,7 +13,7 @@ export function FloatingWhatsApp() {
   const whatsappUrl = `https://wa.me/${cleanNumber}?text=${defaultMessage}`;
 
   return (
-    <div className="fixed bottom-20 md:bottom-6 right-5 z-40">
+    <div className="fixed bottom-24 md:bottom-6 right-4 sm:right-6 z-40">
       <Tooltip>
         <TooltipTrigger
           render={

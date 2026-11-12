@@ -4,9 +4,10 @@ import React from "react";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight, Sparkles, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PRICING_CONFIG, FEATURE_INCLUSION_ASSUMPTION_NOTE } from "@/config/pricing";
+import { PRICING_CONFIG, LIFETIME_SLOT_CONFIG, FEATURE_INCLUSION_ASSUMPTION_NOTE } from "@/config/pricing";
 import { GstNote } from "@/components/ui/GstNote";
 import { LAUNCH_CONFIG } from "@/config/launch";
+import { WhatLifetimeIncludes } from "@/components/pricing/WhatLifetimeIncludes";
 
 export function InvoicePricingSection() {
   const invoiceConfig = PRICING_CONFIG.invoice;
@@ -47,10 +48,10 @@ export function InvoicePricingSection() {
                 <div className="flex-1 flex flex-col">
                   {/* Aligned Badge Slot */}
                   <div className="h-6 flex items-center mb-2">
-                    {isEarlyLifetime ? (
+                    {isEarlyLifetime && LIFETIME_SLOT_CONFIG.isSlotLimitReal ? (
                       <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold tracking-wider bg-[#E58145] text-white">
                         <Flame className="w-3 h-3 animate-pulse" />
-                        Limited • {LAUNCH_CONFIG.EARLY_LIFETIME_SLOTS_REMAINING} Slots
+                        Limited • {LIFETIME_SLOT_CONFIG.slotsRemaining} Slots Left
                       </span>
                     ) : isYearly ? (
                       <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold tracking-wider bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20">
@@ -87,7 +88,7 @@ export function InvoicePricingSection() {
                       <span className="text-3xl sm:text-4xl font-black text-[#0F172A] tracking-tight leading-none">
                         {plan.formattedPrice}
                       </span>
-                      <span className="text-xs font-semibold text-slate-500">
+                      <span className="text-xs font-semibold text-slate-500 whitespace-nowrap">
                         {plan.billingPeriod}
                       </span>
                     </div>
@@ -96,11 +97,15 @@ export function InvoicePricingSection() {
                       <span className="text-xs font-bold text-slate-700">
                         {plan.effectiveMonthlyCost}
                       </span>
-                      {plan.savingsText && (
+                      {isEarlyLifetime ? (
                         <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                          {isEarlyLifetime ? "Save ₹6,000" : "Save 17%"}
+                          Save ₹6,000
                         </span>
-                      )}
+                      ) : isYearly ? (
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          Save 17%
+                        </span>
+                      ) : null}
                     </div>
 
                     <div className="mt-2 text-[11px] text-slate-400">
@@ -151,6 +156,9 @@ export function InvoicePricingSection() {
             );
           })}
         </div>
+
+        {/* Clear What Lifetime Includes Block */}
+        <WhatLifetimeIncludes />
 
         {/* Demo & Full Pricing Link */}
         <div className="text-center pt-2">
