@@ -107,7 +107,7 @@ export function LaunchOfferModal() {
                   {LAUNCH_CONFIG.OFFER_TEXT}
                 </h3>
                 <p className="text-sm font-mono font-bold text-[#E58145]">
-                  (Early Lifetime: ₹19,999 for first {total} shops)
+                  (Early Lifetime Offer: Pehle {total} dukaano ke liye ₹19,999)
                 </p>
               </div>
 
@@ -118,7 +118,7 @@ export function LaunchOfferModal() {
                   <span>Valid till {LAUNCH_CONFIG.OFFER_EXPIRY_DISPLAY}</span>
                   <span className="text-slate-300">•</span>
                   <span className="font-bold text-white bg-rose-600 px-2 py-0.5 rounded-md text-[11px] animate-pulse">
-                    {remaining} slots left
+                    {remaining} slots bache hain
                   </span>
                 </div>
               </div>
@@ -130,7 +130,7 @@ export function LaunchOfferModal() {
                   onClick={handleClaim}
                   className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-bold text-sm text-white bg-gradient-to-r from-[#E58145] to-[#f59955] hover:from-[#d67236] hover:to-[#e88c48] shadow-lg shadow-[#E58145]/35 transition-all duration-200 active:scale-[0.98] cursor-pointer"
                 >
-                  <span>Claim Offer</span>
+                  <span>Offer Claim Karein</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 
@@ -139,7 +139,7 @@ export function LaunchOfferModal() {
                   onClick={handleDismiss}
                   className="w-full sm:w-auto px-4 py-2.5 text-xs font-semibold text-slate-600 hover:text-[#020C2B] transition-colors cursor-pointer"
                 >
-                  Maybe later
+                  Baad mein dekhenge
                 </button>
               </div>
             </div>

@@ -22,15 +22,14 @@ export function HomepagePricingTeaser() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#E58145] font-bold">
+            Seedha Aur Saaf Hisaab
+          </span>
           <h2 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            Fair Pricing.{" "}
-            <Link href="/subscription-terms" className="underline hover:text-[#2563EB] decoration-slate-300">
-              Zero Surprise Hikes
-            </Link>
-            .
+            Seedha aur Saaf Pricing. Koi Chhupe Hue Charges Nahi.
           </h2>
           <p className="text-slate-700 text-base sm:text-lg">
-            Choose your billing solution. All core features included across every plan.
+            Har plan mein sabhi core features shamil. Monthly suvidha ya Lifetime bachat — apni dukaan ke hisaab se chunein.
           </p>
 
           {/* Product Toggle (Invoice | POS, default Invoice) */}
@@ -170,7 +169,7 @@ export function HomepagePricingTeaser() {
                     {/* Features List */}
                     <div className="pt-4 space-y-2.5 flex-1">
                       <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold block">
-                        Included:
+                        Kya-Kya Shamil Hai:
                       </span>
                       <ul className="space-y-2 text-xs text-slate-700 min-h-[130px]">
                         {plan.features.slice(0, 4).map((feat) => (

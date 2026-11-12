@@ -1,15 +1,15 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-
-export type Language = "en" | "hi";
+import { TRANSLATIONS, Language, TranslationsType } from "@/i18n";
 
 interface LanguageContextType {
   language: Language;
   toggleLanguage: () => void;
   setLanguage: (lang: Language) => void;
   isHindi: boolean;
-  t: (key: string, defaultEn: string, hindiOverride?: string) => string;
+  strings: TranslationsType;
+  t: (key: string, defaultEn?: string, hindiOverride?: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType>({
@@ -17,53 +17,23 @@ const LanguageContext = createContext<LanguageContextType>({
   toggleLanguage: () => {},
   setLanguage: () => {},
   isHindi: false,
-  t: (_key, defaultEn) => defaultEn
+  strings: TRANSLATIONS.en,
+  t: (_key, defaultEn = "") => defaultEn
 });
 
-const DICTIONARY: Record<string, { en: string; hi: string }> = {
-  // CTAs & Buttons
-  book_demo: {
-    en: "Book Free Demo",
-    hi: "Free demo book karein"
-  },
-  whatsapp_us: {
-    en: "WhatsApp Us",
-    hi: "WhatsApp par baat karein"
-  },
-  call_us: {
-    en: "Call Us",
-    hi: "Call karein"
-  },
-  start_trial: {
-    en: "Start 3-Day Free Trial",
-    hi: "3 din ka free trial shuru karein"
-  },
-  free_setup: {
-    en: "Free Personal Setup in Nagpur",
-    hi: "Nagpur me free personal setup"
-  },
-  explore_features: {
-    en: "Explore Verified Features",
-    hi: "Features dekhein"
-  },
-  see_pricing: {
-    en: "View Transparent Pricing",
-    hi: "Pricing dekhein"
-  },
-  // Trust Badges
-  trial_trust: {
-    en: "3-day free trial after live demo. Personal setup help.",
-    hi: "Live demo ke baad 3 din ka free trial. Personal setup me poori madad."
-  },
-  december_offer: {
-    en: "December Launch Offer",
-    hi: "December Launch Offer"
-  },
-  limited_slots: {
-    en: "Limited: first 50 customers",
-    hi: "Limited: pehle 50 shop owners ke liye"
+// Helper to look up nested dot notation in translations object, e.g. "hero.headline"
+function getNestedValue(obj: Record<string, unknown>, path: string): string | undefined {
+  const parts = path.split(".");
+  let current: unknown = obj;
+  for (const part of parts) {
+    if (current && typeof current === "object" && part in (current as Record<string, unknown>)) {
+      current = (current as Record<string, unknown>)[part];
+    } else {
+      return undefined;
+    }
   }
-};
+  return typeof current === "string" ? current : undefined;
+}
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("en");
@@ -92,12 +62,19 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setLanguage(language === "en" ? "hi" : "en");
   };
 
-  const t = (key: string, defaultEn: string, hindiOverride?: string): string => {
-    if (language === "hi") {
-      if (hindiOverride) return hindiOverride;
-      if (DICTIONARY[key]) return DICTIONARY[key].hi;
+  const currentStrings = TRANSLATIONS[language] || TRANSLATIONS.en;
+
+  const t = (key: string, defaultEn = "", hindiOverride?: string): string => {
+    if (language === "hi" && hindiOverride) {
+      return hindiOverride;
     }
-    return DICTIONARY[key]?.en || defaultEn;
+
+    const value = getNestedValue(currentStrings as unknown as Record<string, unknown>, key);
+    if (value) return value;
+
+    // Fallback to English/Hinglish
+    const fallbackValue = getNestedValue(TRANSLATIONS.en as unknown as Record<string, unknown>, key);
+    return fallbackValue || defaultEn;
   };
 
   return (
@@ -107,6 +84,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         toggleLanguage,
         setLanguage,
         isHindi: language === "hi",
+        strings: currentStrings,
         t
       }}
     >
@@ -118,4 +96,3 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 export function useLanguage() {
   return useContext(LanguageContext);
 }
-

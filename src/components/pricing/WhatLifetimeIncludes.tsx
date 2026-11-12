@@ -45,9 +45,10 @@ export function WhatLifetimeIncludes() {
       <div className="pt-2 text-[11px] text-slate-500 font-mono flex items-center gap-2">
         <Info className="w-3.5 h-3.5 text-slate-400 shrink-0" />
         <span>
-          Note: Zero recurring annual maintenance contracts (AMC). Full local data export available anytime.
+          Note: Har saal ka koi AMC ya hidden renewal charges nahi. Aapka data hamesha aapke control mein safe rehta hai.
         </span>
       </div>
     </div>
   );
 }
+

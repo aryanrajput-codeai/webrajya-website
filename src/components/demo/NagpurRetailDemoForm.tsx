@@ -155,47 +155,47 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
 
     const cleanPhone = formData.phone.replace(/\D/g, "");
     if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
-      setError("Please enter a valid 10-digit Indian mobile number (e.g., 9823012345).");
+      setError("Kripya 10 digit ka sahi Indian mobile number daalein (jaise: 9823012345).");
       return;
     }
 
     if (formData.fullName.trim().length < 2) {
-      setError("Please enter your name.");
+      setError("Kripya apna poora naam darj karein.");
       return;
     }
 
     if (!formData.state) {
-      setError("Please select your state.");
+      setError("Kripya apna rajya (State) chunein.");
       return;
     }
 
     if (!formData.city.trim()) {
-      setError("Please enter your city or town.");
+      setError("Kripya apna sheher ya town darj karein.");
       return;
     }
 
     if (!formData.shopType) {
-      setError("Please select your business / shop category.");
+      setError("Kripya apni dukaan ki category chunein.");
       return;
     }
 
     if (!formData.productInterest) {
-      setError("Please select which product you are interested in.");
+      setError("Kripya chunein ki aapko konsa product dekhna hai.");
       return;
     }
 
     if (!formData.demoType) {
-      setError("Please choose how you would like to take the demo.");
+      setError("Kripya chunein ki aap demo kaise lena chahenge.");
       return;
     }
 
     if (!formData.languagePreference) {
-      setError("Please choose your preferred language for the demo.");
+      setError("Kripya demo ke liye bhasha chunein.");
       return;
     }
 
     if (!formData.agreedToTerms) {
-      setError("Please agree to the Privacy Policy and Terms and Conditions to proceed.");
+      setError("Kripya aage badhne ke liye Privacy Policy aur Terms & Conditions se sehmati dein.");
       return;
     }
 
@@ -270,18 +270,18 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
 
         <div className="space-y-2">
           <h2 className="text-2xl sm:text-3xl font-black text-[#020C2B]">
-            Demo Request Confirmed, {successLead.fullName}!
+            Dhanyavaad! Aapka Demo Book Ho Gaya, {successLead.fullName}!
           </h2>
           <p className="text-slate-600 text-sm sm:text-base max-w-md mx-auto">
-            Our onboarding team will contact you within 2 business hours to schedule your {successLead.demoType} in {successLead.city}.
+            Humari onboarding team agle 2 business hours mein aapse WhatsApp ya call par time confirm karegi ({successLead.demoType}, {successLead.city}).
           </p>
         </div>
 
-        <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-700 max-w-md mx-auto space-y-1">
-          <p className="font-bold text-[#020C2B]">Next Steps:</p>
-          <p>1. We will verify your barcode scanner &amp; printer model over WhatsApp/phone.</p>
-          <p>2. We will import your product catalog (Excel/CSV).</p>
-          <p>3. You begin your 3-day full-feature trial on your counter.</p>
+        <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-700 max-w-md mx-auto space-y-1.5 text-left">
+          <p className="font-bold text-[#020C2B]">Aage Kya Hoga:</p>
+          <p>1. Hum phone ya WhatsApp par aapka barcode scanner aur thermal printer model check karenge.</p>
+          <p>2. Excel se aapke saamaan ki list upload karwayenge.</p>
+          <p>3. Aapke counter par 3 din ka full-feature trial shuru hoga.</p>
         </div>
 
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -292,13 +292,13 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white font-bold text-sm hover:bg-[#1ebe57] transition-all shadow-md"
           >
             <MessageCircle className="w-4 h-4 fill-white" />
-            <span>Connect on WhatsApp Now</span>
+            <span>WhatsApp Par Turant Connect Karein</span>
           </a>
           <Link
             href="/"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-100 text-slate-800 font-bold text-sm hover:bg-slate-200 transition-all"
           >
-            Back to Home
+            Home Par Wapas Jayein
           </Link>
         </div>
       </div>
@@ -314,14 +314,14 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
             All-India Onboarding
           </span>
           <span className="text-xs font-mono text-emerald-700 font-bold flex items-center gap-1 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
-            <ShieldCheck className="w-3.5 h-3.5" /> 3-Day Free Trial
+            <ShieldCheck className="w-3.5 h-3.5" /> 3-Din Ka Free Trial
           </span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-black text-[#020C2B] tracking-tight">
-          Book a Free 20-Minute Live Demo
+          Apni Dukaan Ke Liye Free Demo Book Karein
         </h2>
         <p className="text-slate-600 text-xs sm:text-sm">
-          See how WebRajya works with your real products and printers. Setup help by video call and WhatsApp across India, with in-shop visits available in Nagpur.
+          Dekhiye WebRajya aapke saamaan aur counter par kaise tez kaam karta hai. Video call aur WhatsApp par guided setup poore India mein (Nagpur mein shop visits).
         </p>
       </div>
 
@@ -351,11 +351,11 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
             <Label htmlFor="fullName" className="text-xs font-bold text-slate-800">
-              Your Full Name <span className="text-rose-600">*</span>
+              Aapka Poora Naam <span className="text-rose-600">*</span>
             </Label>
             <Input
               id="fullName"
-              placeholder="e.g. Ramesh Sharma"
+              placeholder="Jaise: Ramesh Sharma"
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               required
@@ -365,13 +365,14 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
 
           <div className="space-y-1.5">
             <Label htmlFor="shopName" className="text-xs font-bold text-slate-800">
-              Business / Shop Name
+              Dukaan / Business Ka Naam <span className="text-rose-600">*</span>
             </Label>
             <Input
               id="shopName"
-              placeholder="e.g. Sharma Mobile &amp; Electronics"
+              placeholder="Jaise: Sharma Mobile &amp; Electronics"
               value={formData.shopName}
               onChange={(e) => setFormData({ ...formData, shopName: e.target.value })}
+              required
               className="bg-slate-50/70"
             />
           </div>
@@ -403,7 +404,7 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
 
           <div className="space-y-1.5">
             <Label htmlFor="shopType" className="text-xs font-bold text-slate-800">
-              Business Category <span className="text-rose-600">*</span>
+              Dukaan Ka Type / Category <span className="text-rose-600">*</span>
             </Label>
             <select
               id="shopType"
@@ -412,7 +413,7 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
               className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50/70 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
               required
             >
-              <option value="" disabled>Select your business category...</option>
+              <option value="" disabled>Apni dukaan ki category chunein...</option>
               {SHOP_CATEGORIES.map((cat) => (
                 <option key={cat} value={cat}>{cat}</option>
               ))}
@@ -424,7 +425,7 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
             <Label htmlFor="state" className="text-xs font-bold text-slate-800">
-              State / UT <span className="text-rose-600">*</span>
+              Aapka Rajya (State) <span className="text-rose-600">*</span>
             </Label>
             <select
               id="state"
@@ -433,7 +434,7 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
               className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50/70 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
               required
             >
-              <option value="" disabled>Select your state...</option>
+              <option value="" disabled>Apna rajya chunein...</option>
               {INDIAN_STATES_AND_UTS.map((st) => (
                 <option key={st} value={st}>{st}</option>
               ))}
@@ -442,11 +443,11 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
 
           <div className="space-y-1.5">
             <Label htmlFor="city" className="text-xs font-bold text-slate-800">
-              City / Town <span className="text-rose-600">*</span>
+              Aapka Sheher / Town <span className="text-rose-600">*</span>
             </Label>
             <Input
               id="city"
-              placeholder="e.g. Pune, Indore, Nagpur, Jaipur"
+              placeholder="Jaise: Pune, Indore, Nagpur, Jaipur"
               value={formData.city}
               onChange={(e) => setFormData({ ...formData, city: e.target.value })}
               required
@@ -521,7 +522,7 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
           <div className="space-y-1.5">
             <Label htmlFor="demoType" className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
               <Video className="w-3.5 h-3.5 text-[#2563EB]" />
-              <span>How would you like the demo? <span className="text-rose-600">*</span></span>
+              <span>Demo Kaise Lena Chahenge? <span className="text-rose-600">*</span></span>
             </Label>
             <select
               id="demoType"
@@ -530,11 +531,11 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
               className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50/70 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
               required
             >
-              <option value="" disabled>Select demo method...</option>
-              <option value="Video Call (Google Meet / Zoom)">Video Call (Google Meet / Zoom Screen Share)</option>
-              <option value="Phone / WhatsApp Call">Phone &amp; WhatsApp Walkthrough</option>
+              <option value="" disabled>Demo ka tareeka chunein...</option>
+              <option value="Video Call (Google Meet / Zoom)">Video Call (Google Meet / Screen Share) — Poore India Ke Liye</option>
+              <option value="Phone / WhatsApp Call">Phone &amp; WhatsApp Pe Guidance</option>
               {isNagpurCity && (
-                <option value="In-Shop Visit (Nagpur)">In-Shop Visit (Our Specialist Visits Your Nagpur Shop)</option>
+                <option value="In-Shop Visit (Nagpur)">In-Shop Counter Visit (Sirf Nagpur Sheher)</option>
               )}
             </select>
           </div>
@@ -542,7 +543,7 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
           <div className="space-y-1.5">
             <Label htmlFor="languagePreference" className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
               <Languages className="w-3.5 h-3.5 text-[#2563EB]" />
-              <span>Preferred Language <span className="text-rose-600">*</span></span>
+              <span>Demo Ke Liye Bhasha <span className="text-rose-600">*</span></span>
             </Label>
             <select
               id="languagePreference"
@@ -551,7 +552,7 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
               className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50/70 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
               required
             >
-              <option value="" disabled>Select preferred language...</option>
+              <option value="" disabled>Bhasha chunein...</option>
               {LANGUAGE_OPTIONS.map((lang) => (
                 <option key={lang.value} value={lang.value}>{lang.label}</option>
               ))}
@@ -571,15 +572,15 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
               className="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
             />
             <label htmlFor="legalConsent" className="text-xs text-slate-700 leading-snug cursor-pointer select-none">
-              I agree to the{" "}
+              Main WebRajya ki{" "}
               <Link href="/privacy-policy" target="_blank" className="text-emerald-700 underline font-semibold hover:text-emerald-800">
                 Privacy Policy
               </Link>{" "}
-              and{" "}
+              aur{" "}
               <Link href="/terms" target="_blank" className="text-emerald-700 underline font-semibold hover:text-emerald-800">
                 Terms and Conditions
-              </Link>
-              . <span className="text-rose-600 font-bold">*</span>
+              </Link>{" "}
+              se sehmat hoon. <span className="text-rose-600 font-bold">*</span>
             </label>
           </div>
 
@@ -592,7 +593,7 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
               className="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
             />
             <label htmlFor="marketingConsent" className="text-xs text-slate-600 leading-snug cursor-pointer select-none">
-              (Optional) Send me product updates, retail tips, and offers via WhatsApp or SMS.
+              (Optional) Mujhe WhatsApp ya SMS par zaroori updates aur dukaan ke tips bhejein.
             </label>
           </div>
         </div>
@@ -607,10 +608,10 @@ export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct
             className="w-full font-bold shadow-md"
             icon={<ArrowRight className="w-4 h-4" />}
           >
-            {loading ? "Scheduling Demo..." : "Confirm & Book Free Live Demo"}
+            {loading ? "Booking Confirm Ho Rahi Hai..." : "Free Demo Slot Confirm Karein"}
           </Button>
           <p className="text-[11px] text-center text-slate-500 mt-2 font-mono">
-            3-Day Free Trial • Setup Assistance Across India • In-Shop Visits in Nagpur
+            3-Din Ka Free Trial • Setup Madad Poore India Mein • Nagpur Mein Shop Visits
           </p>
         </div>
       </form>

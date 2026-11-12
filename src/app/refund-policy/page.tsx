@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
+import { LegalSummaryBox } from "@/components/legal/LegalSummaryBox";
 import { LEGAL_CONFIG } from "@/config/legal";
 import { getLegalMetadata } from "@/components/legal/metadata";
 
@@ -15,6 +16,15 @@ export default function RefundPolicyPage() {
       subtitle="WebRajya Invoice: Website Policies"
       effectiveDate="18 November 2026"
     >
+      <LegalSummaryBox
+        points={[
+          "Kharidne se pehle 3 din ka full free trial milta hai, taaki aap sabkuch chala kar dekh sakein.",
+          "Payment ke 7 din ke andar agar koi genuine technical dikkat aati hai jo 7 din mein solve na ho sake, ya double payment ho jaye, toh pura refund milta hai.",
+          "Sirf 'mann badal gaya' ya bina use kiye chhod dene par refund nahi milta.",
+          "Koi bhi dikkat aane par WhatsApp ya email (+91 96300 13483 / info@webrajya.com) par turant sampark karein."
+        ]}
+      />
+
       <section className="space-y-6">
         <div>
           <p>

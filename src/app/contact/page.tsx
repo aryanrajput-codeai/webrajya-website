@@ -29,7 +29,7 @@ export default function ContactPage() {
     setSuccessMessage(null);
 
     if (!formData.name.trim() || !formData.phone.trim()) {
-      setErrorMessage("Please enter your name and contact phone number.");
+      setErrorMessage("Kripya apna naam aur mobile number likhein.");
       return;
     }
 
@@ -53,10 +53,10 @@ export default function ContactPage() {
         throw new Error("Failed to send message.");
       }
 
-      setSuccessMessage("Thank you! Your message has been sent. We will call you back shortly.");
+      setSuccessMessage("Dhanyavaad! Aapka message mil gaya hai. Hamari team jald hi aapse sampark karegi.");
       setFormData({ name: "", email: "", phone: "", businessName: "", message: "" });
     } catch {
-      setErrorMessage("Unable to send message right now. Please message us directly on WhatsApp.");
+      setErrorMessage("Message bhejne mein dikkat aayi. Kripya direct WhatsApp par connect karein.");
     } finally {
       setLoading(false);
     }
@@ -73,13 +73,13 @@ export default function ContactPage() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-bold">
-            Support Desk &amp; Head Office
+            Helpdesk &amp; Head Office
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            Contact Us
+            Humse Sampark Karein
           </h1>
           <p className="text-slate-700 text-base sm:text-lg">
-            Have questions about WebRajya Invoice or POS? Connect with our team by phone, WhatsApp, or schedule a free live counter demo.
+            WebRajya Invoice ya POS ke baare mein koi bhi sawaal ho? Hamein direct call karein, WhatsApp par message bhejein, ya counter demo book karein.
           </p>
         </div>
 
@@ -89,7 +89,7 @@ export default function ContactPage() {
           {/* Left Column: Direct Info & Map */}
           <div className="lg:col-span-5 space-y-6">
             <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
-              <h3 className="text-xl font-bold text-[#020C2B]">Direct Contact</h3>
+              <h3 className="text-xl font-bold text-[#020C2B]">Direct Sampark</h3>
               
               <div className="space-y-4 text-sm">
                 <div className="flex items-start gap-3">
@@ -97,7 +97,7 @@ export default function ContactPage() {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 block font-mono">Phone Desk</span>
+                    <span className="text-xs text-slate-500 block font-mono">Call Desk</span>
                     <a
                       href={`tel:${LAUNCH_CONFIG.PHONE}`}
                       onClick={() => trackEvent("call_click", { location: "contact_page" })}
@@ -113,7 +113,7 @@ export default function ContactPage() {
                     <MessageCircle className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 block font-mono">WhatsApp Support</span>
+                    <span className="text-xs text-slate-500 block font-mono">WhatsApp Helpline</span>
                     <a
                       href={whatsappUrl}
                       target="_blank"
@@ -143,7 +143,7 @@ export default function ContactPage() {
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 block font-mono">Support Hours</span>
+                    <span className="text-xs text-slate-500 block font-mono">Support Ka Samay</span>
                     <span className="font-medium text-[#020C2B] text-xs">
                       {LAUNCH_CONFIG.OPERATING_HOURS.weekdays}
                     </span>
@@ -162,9 +162,9 @@ export default function ContactPage() {
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
             <div className="space-y-1">
-              <h3 className="text-2xl font-black text-[#020C2B]">Send Us a Message</h3>
+              <h3 className="text-2xl font-black text-[#020C2B]">Hamein Message Bhejein</h3>
               <p className="text-xs text-slate-600">
-                Let us know what shop you run and what you need help with.
+                Apni dukaan ka naam aur sawaal batayein, hamari team jald hi call karegi.
               </p>
             </div>
 
@@ -186,12 +186,12 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label htmlFor="contactName" className="text-xs font-bold text-slate-800">
-                    Your Name *
+                    Aapka Naam *
                   </Label>
                   <Input
                     id="contactName"
                     required
-                    placeholder="e.g. Amit Verma"
+                    placeholder="Jaise: Amit Verma"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
@@ -205,7 +205,7 @@ export default function ContactPage() {
                     id="contactPhone"
                     type="tel"
                     required
-                    placeholder="10-digit mobile"
+                    placeholder="10-digit mobile number"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   />
@@ -215,7 +215,7 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label htmlFor="contactEmail" className="text-xs font-bold text-slate-800">
-                    Email Address
+                    Email ID (Optional)
                   </Label>
                   <Input
                     id="contactEmail"
@@ -228,11 +228,11 @@ export default function ContactPage() {
 
                 <div className="space-y-1.5">
                   <Label htmlFor="businessName" className="text-xs font-bold text-slate-800">
-                    Shop / Store Name
+                    Dukaan / Business Ka Naam
                   </Label>
                   <Input
                     id="businessName"
-                    placeholder="e.g. Verma General Store"
+                    placeholder="Jaise: Verma General Store"
                     value={formData.businessName}
                     onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                   />
@@ -241,12 +241,12 @@ export default function ContactPage() {
 
               <div className="space-y-1.5">
                 <Label htmlFor="contactMessage" className="text-xs font-bold text-slate-800">
-                  How can we help your shop?
+                  Hum aapki kya madad kar sakte hain?
                 </Label>
                 <textarea
                   id="contactMessage"
                   rows={4}
-                  placeholder="Tell us about your billing setup, current software, or questions..."
+                  placeholder="Apni dukaan ke billing setup ya zaroorat ke baare mein batayein..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
@@ -260,7 +260,7 @@ export default function ContactPage() {
                 disabled={loading}
                 className="w-full font-bold shadow-md"
               >
-                {loading ? "Sending..." : "Send Message"}
+                {loading ? "Bheja jaa raha hai..." : "Message Bhejein"}
               </Button>
             </form>
           </div>

@@ -78,11 +78,10 @@ export default function LearnPage() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <h1 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            Learn WebRajya Invoice
+            WebRajya Sikhein Aur Chalayein
           </h1>
           <p className="text-slate-600 text-base sm:text-lg">
-            Free video tutorials and step-by-step operational guides in Hindi and English. Learn in
-            minutes, start billing immediately.
+            Hindi aur English mein aasaan video guides aur tutorials. Kuch hi minute mein sikhein aur apne counter par tez billing shuru karein.
           </p>
         </div>
 
@@ -93,7 +92,7 @@ export default function LearnPage() {
               <Video className="w-5 h-5 text-[#2563EB]" />
               Video Guides (Hindi &amp; English)
             </h2>
-            <span className="text-xs font-mono text-slate-500">3 Core Tutorials</span>
+            <span className="text-xs font-mono text-slate-500">3 Zaroori Tutorials</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -127,7 +126,7 @@ export default function LearnPage() {
                   </div>
                   <div className="pt-4">
                     <Button href="/demo" variant="outline" size="xs" className="w-full">
-                      Watch Video &amp; Test Live
+                      Video Dekhein &amp; Test Karein
                     </Button>
                   </div>
                 </div>
@@ -141,7 +140,7 @@ export default function LearnPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-xl sm:text-2xl font-bold text-[#020C2B] flex items-center gap-2">
               <BookOpen className="w-5 h-5 text-[#2563EB]" />
-              Retail Guides &amp; Best Practices
+              Dukaan Ke Niyam &amp; Best Practices
             </h2>
             <span className="text-xs font-mono text-slate-500">Retail Insights</span>
           </div>
@@ -166,7 +165,7 @@ export default function LearnPage() {
                     href="/demo"
                     className="text-xs font-bold text-[#2563EB] hover:text-[#020C2B] flex items-center gap-1"
                   >
-                    <span>Read Full Guide in Demo</span>
+                    <span>Poora Guide Demo Ke Saath Dekhein</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -179,14 +178,14 @@ export default function LearnPage() {
         <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 text-center space-y-4">
           <HelpCircle className="w-8 h-8 text-[#E58145] mx-auto" />
           <h3 className="text-xl sm:text-2xl font-black text-[#020C2B]">
-            Need Personal Guidance for Your Shop?
+            Apni Dukaan Ke Liye Personal Guidance Chahiye?
           </h3>
           <p className="text-slate-600 text-sm max-w-lg mx-auto">
-            Our onboarding team offers personal setup via video call across India, with in-shop visits available in Nagpur.
+            Hamari team poore India mein video call se personal setup aur training deti hai, aur Nagpur mein direct in-shop visit uplabdh hai.
           </p>
           <div className="pt-2">
             <Button href="/demo" variant="cta" size="lg">
-              Book Free Demo &amp; Setup &rarr;
+              Free Demo &amp; Setup Book Karein &rarr;
             </Button>
           </div>
         </div>

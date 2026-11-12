@@ -116,7 +116,7 @@ export function InvoicePricingSection() {
                   {/* Feature Checklist */}
                   <div className="pt-4 space-y-2.5 flex-1">
                     <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold block">
-                      Included:
+                      Kya-Kya Shamil Hai:
                     </span>
                     <ul className="space-y-2 text-xs text-slate-700 min-h-[130px]">
                       {plan.features.map((feature) => (

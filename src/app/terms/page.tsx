@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
+import { LegalSummaryBox } from "@/components/legal/LegalSummaryBox";
 import { LEGAL_CONFIG } from "@/config/legal";
 import { getLegalMetadata } from "@/components/legal/metadata";
 
@@ -37,6 +38,15 @@ export default function TermsPage() {
       effectiveDate="18 November 2026"
       toc={tocItems}
     >
+      <LegalSummaryBox
+        points={[
+          "WebRajya aapki dukaan ke liye billing, inventory aur business software provide karta hai.",
+          "Aapka data hamesha aapka hi rehta hai — hum na use bechte hain na kisi anjaan ke saath share karte hain.",
+          "GST filing, tax calculations aur kanooni niyam manna dukaan malik ki zimmedari hai; software hisaab aasaan banata hai.",
+          "Online support WhatsApp aur video call par poore India mein milta hai; in-person visit sirf Nagpur head office area tak seemit hai."
+        ]}
+      />
+
       <section id="section-1" className="mb-6">
         <h2 className="!mt-0 !pt-0 !border-0 text-lg font-bold text-slate-900 mb-2">
           1. Who we are and what we provide

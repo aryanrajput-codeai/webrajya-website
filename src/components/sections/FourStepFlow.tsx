@@ -6,35 +6,35 @@ export function FourStepFlow() {
   const STEPS = [
     {
       step: "01",
-      title: "Book Free Demo",
+      title: "Free Demo Book Karein",
       description:
-        "Schedule a 20-minute live demonstration. Our team joins via video call or WhatsApp, with in-shop visits in Nagpur.",
+        "Apne time ke anusaar 20 minute ka live demo book karein. Hum video call ya Nagpur counter visit par software dikhayenge.",
       icon: CalendarCheck,
-      tag: "Video Call / In-Shop (Nagpur)"
+      tag: "Video Call / Counter Visit (Nagpur)"
     },
     {
       step: "02",
-      title: "3-Day Free Trial",
+      title: "3-Din Ka Free Counter Trial",
       description:
-        "Test billing on your own counter with your real products and printer. Zero advance payment or card required.",
+        "Aapke apne computer par software install hoga. Real saamaan aur thermal printer ke saath 3 din test karein bina kisi advance fees ke.",
       icon: PlayCircle,
       tag: "Zero Upfront Risk"
     },
     {
       step: "03",
-      title: "Guided Setup Help",
+      title: "Guided Setup & Staff Training",
       description:
-        "We assist with Excel catalog import, barcode scanner pairing, thermal printer margins, and staff onboarding.",
+        "Excel se saamaan ki list dalna, barcode scanner connect karna aur counter staff ko train karna — sab mein hum madad karenge.",
       icon: Settings,
-      tag: "Hindi & English Support"
+      tag: "Hindi & English Madad"
     },
     {
       step: "04",
-      title: "Start Smooth Billing",
+      title: "Tez Billing Shuru Karein",
       description:
-        "Settle customer bills in seconds, monitor live inventory, and keep your customer khata ledgers accurate.",
+        "Grahak ko 2 second mein bill thamaayein, udhaar ka hisaab software mein rakhein, aur shaam ko daily sales check karein.",
       icon: Store,
-      tag: "Live On Your Counter"
+      tag: "Dukaan Ready"
     }
   ];
 
@@ -43,11 +43,14 @@ export function FourStepFlow() {
       <div className="max-w-6xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-bold">
+            Aasaan Shuruaat
+          </span>
           <h2 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            From Demo to Live Billing in 4 Simple Steps
+            WebRajya Shuru Karna Hai Bilkul Aasaan — Sirf 4 Steps
           </h2>
           <p className="text-slate-700 text-base sm:text-lg">
-            No technical headaches. Our onboarding team guides you step-by-step by video call and WhatsApp, with on-site visits in Nagpur.
+            Koi technical jhanjhat nahi. Humari onboarding team video call aur WhatsApp par aapke counter par setup karwayegi (Nagpur mein shop visit).
           </p>
         </div>
 
@@ -89,10 +92,10 @@ export function FourStepFlow() {
         {/* Action Callout */}
         <div className="text-center pt-2">
           <Button href="/demo" variant="cta" size="xl">
-            Book Your Free Demo Today &rarr;
+            Apna Free Demo Slot Book Karein &rarr;
           </Button>
           <p className="text-xs text-slate-500 font-mono mt-3">
-            3-day free trial after live demo • Setup assistance across India • In-shop visits in Nagpur
+            3-din ka free counter trial • Personal setup madad poore India mein • Nagpur mein shop visit
           </p>
         </div>
       </div>

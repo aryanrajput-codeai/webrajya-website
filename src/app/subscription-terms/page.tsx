@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
+import { LegalSummaryBox } from "@/components/legal/LegalSummaryBox";
 import { getLegalMetadata } from "@/components/legal/metadata";
 
 export const metadata: Metadata = getLegalMetadata(
@@ -14,6 +15,15 @@ export default function SubscriptionTermsPage() {
       subtitle="WebRajya Invoice: Website Policies"
       effectiveDate="18 November 2026"
     >
+      <LegalSummaryBox
+        points={[
+          "Plans: Monthly (₹599/month), Annual (₹5,999/year), aur Lifetime (ek baar payment).",
+          "Renewal bilkul transparent hai: Koi auto-debit nahi hota. Aap khud UPI ya bank transfer se renew karte hain.",
+          "Expiry se 7 din aur 2 din pehle hum aapko WhatsApp ya SMS par reminder bhejte hain.",
+          "Plan khatam hone ke baad bhi 15 din ka grace period milta hai taaki aapka counter ruke bina data surakshit rahe."
+        ]}
+      />
+
       <section className="space-y-6">
         <div>
           <h2 className="!mt-0 !pt-0 !border-0 text-lg font-bold text-slate-900 mb-2">

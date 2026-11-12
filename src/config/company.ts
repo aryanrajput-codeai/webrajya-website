@@ -68,7 +68,7 @@ export const COMPANY_CONFIG: CompanyConfig = {
     sunday: "Sunday: Emergency support via Phone & WhatsApp (response target: 4 hours)"
   },
 
-  gstNote: "Prices shown are final. No GST is charged at present.",
+  gstNote: "Dikhaye gaye daam final hain. Filhaal alag se koi GST charge nahi hai (Prices shown are final).",
   gstin: "", // [TODO: Owner to add GSTIN when available]
   trialDays: 3, // [TODO: Owner to confirm if 3-day or 7-day trial]
 
@@ -78,3 +78,4 @@ export const COMPANY_CONFIG: CompanyConfig = {
     youtube: ""    // [TODO: Owner add YouTube URL]
   }
 };
+

@@ -41,13 +41,13 @@ export default function DemoPage() {
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight leading-tight">
-                See WebRajya on Your Counter.
+                Apne Counter Par WebRajya Chalaakar Dekhein.
               </h1>
               <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
-                Affordable, easy-to-use, complete billing and inventory software with personal customer onboarding across India.
+                Aasaan, affordable aur poora billing-inventory software. Video call aur WhatsApp par personal onboarding poore India mein.
               </p>
               <p className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-3 py-2 rounded-xl border border-emerald-200 inline-block">
-                3-day free trial after live demo • Personal setup help
+                Live demo ke baad 3 din ka free trial • Personal setup madad
               </p>
             </div>
 

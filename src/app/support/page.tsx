@@ -27,9 +27,9 @@ export default function SupportPage() {
         {/* Support Header & Large Search */}
         <div className="space-y-8">
           <SupportHeader
-            eyebrow="WEBRAJYA SUPPORT"
-            headline="How can we help?"
-            subheadline="Explore guides, technical documentation, and answers for WebRajya POS and WebRajya Invoice."
+            eyebrow="WEBRAJYA HELPDESK"
+            headline="Aapki kya madad karein?"
+            subheadline="WebRajya Invoice aur POS ke step-by-step guides, printer setup aur counter solutions dekhein."
           />
           <SupportSearch />
         </div>

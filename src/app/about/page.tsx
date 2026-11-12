@@ -31,12 +31,10 @@ export default function AboutPage() {
         {/* HERO Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <h1 className="text-4xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            Software Built for Real Everyday Operations
+            Dukaan Ke Asli Kaam Ke Liye Bana Software
           </h1>
           <p className="text-slate-700 text-base sm:text-lg leading-relaxed">
-            Positioning: &ldquo;Affordable, easy-to-use, complete billing and inventory software with
-            personal customer support.&rdquo; Built for Indian retailers, wholesalers, and small
-            businesses.
+            Aasaan, kifaayati aur complete billing &amp; stock management software — personal customer support ke saath. Poore Bharat ke dukaandaaron, wholesalers aur vyapariyon ke liye.
           </p>
         </div>
 
@@ -46,11 +44,9 @@ export default function AboutPage() {
             <div className="w-10 h-10 rounded-xl bg-orange-50 text-[#E58145] border border-orange-100 flex items-center justify-center font-bold">
               <Layers className="w-5 h-5" />
             </div>
-            <h2 className="text-2xl font-bold text-[#020C2B]">The WebRajya Vision</h2>
+            <h2 className="text-2xl font-bold text-[#020C2B]">WebRajya Ka Vision</h2>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Business billing shouldn&apos;t feel complicated or require expensive consultants. We
-              create software tools that eliminate counter friction, prevent stock errors, and give
-              shop owners complete control over their store finances.
+              Dukaan ki billing na toh kathin honi chahiye aur na hi kisi mehenge consultant ki zaroorat honi chahiye. Hum aise saral tools banate hain jo counter ki bheed tez karein, stock ki galti rokein aur dukaan ke hisaab-kitaab par aapko poora control dein.
             </p>
           </div>
 
@@ -58,11 +54,9 @@ export default function AboutPage() {
             <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#2563EB] border border-blue-100 flex items-center justify-center font-bold">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h2 className="text-2xl font-bold text-[#020C2B]">Personal Onboarding Support</h2>
+            <h2 className="text-2xl font-bold text-[#020C2B]">Personal Setup &amp; Support</h2>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Software is only as good as the onboarding behind it. Our team guides you step-by-step
-              via video call and WhatsApp across India, with in-person counter visits, hardware
-              calibration, and staff training available in Nagpur.
+              Software tabhi kaam ka hai jab counter par smoothly chale. Poore India mein hamari team video call aur WhatsApp par personal setup aur staff training karwati hai, aur Nagpur mein head office se direct in-shop visit uplabdh hai.
             </p>
           </div>
         </div>
@@ -102,13 +96,13 @@ export default function AboutPage() {
 
         {/* BOTTOM CTA */}
         <div className="p-10 rounded-3xl bg-[#020C2B] text-white text-center space-y-6 shadow-xl">
-          <h2 className="text-3xl font-extrabold text-white">Experience WebRajya Invoice</h2>
+          <h2 className="text-3xl font-extrabold text-white">WebRajya Invoice Chala Kar Dekhein</h2>
           <p className="text-slate-300 text-sm max-w-lg mx-auto">
-            Book a 20-minute live demonstration. Test it free for 3 days on your own counter.
+            20-minute ka live online demo dekhein ya apne counter par 3 din free trial chala kar dekhein.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button href="/demo" variant="cta" size="md">
-              Book Free In-Shop Demo
+              Free Demo Book Karein
             </Button>
             <Button
               href="/pricing"
@@ -116,7 +110,7 @@ export default function AboutPage() {
               size="md"
               className="text-white border-white/20 hover:bg-white/10"
             >
-              View Transparent Plans
+              Plans &amp; Pricing Dekhein
             </Button>
           </div>
         </div>

@@ -12,14 +12,14 @@ export function InvoiceFinalCta() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
         
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-          Ready to Make <br className="hidden sm:inline" />
+          Dukaan Ki Billing Ko <br className="hidden sm:inline" />
           <span className="text-[#60A5FA]">
-            Billing Simpler?
+            Aasaan Banane Ke Liye Taiyaar Hain?
           </span>
         </h2>
 
         <p className="text-[#CBD5E1] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          Spend less time navigating complicated software and more time running your business. Bring your billing, inventory and customer records into one organized workflow with WebRajya Invoice.
+          Mushkil software mein waqt kharab karne ke bajaye apne business par dhyan dein. Billing, stock aur grahakon ka hisaab — WebRajya Invoice ke saath sab ek jagah sambhalein.
         </p>
 
         {/* Action Buttons */}
@@ -31,7 +31,7 @@ export function InvoiceFinalCta() {
             className="bg-[#2563EB] hover:bg-[#1D4ED8] border-[#2563EB] text-white shadow-xl shadow-[#2563EB]/30"
             icon={<ArrowRight className="w-5 h-5" />}
           >
-            Get Started
+            Free Trial Shuru Karein
           </Button>
 
           <Button
@@ -40,7 +40,7 @@ export function InvoiceFinalCta() {
             size="xl"
             className="text-white border-white/30 hover:bg-white/10"
           >
-            Book a Demo
+            Free Demo Book Karein
           </Button>
         </div>
 

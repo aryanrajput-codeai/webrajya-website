@@ -27,20 +27,20 @@ export function PosHero({ onBookDemoClick }: PosHeroProps) {
         {/* Hero Header */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#020C2B] tracking-tight leading-[1.08]">
-            The Lightning-Fast Restaurant POS <br />
+            Super-Fast Restaurant POS <br />
             <span className="text-[#E58145]">
-              Built for Zero-Lag Cashier Speed.
+              Rush Hours Mein Zero-Lag Speed.
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl text-[#525866] max-w-3xl mx-auto leading-relaxed font-normal">
-            Process orders, dispatch KOTs, and settle bills in under 3 seconds. Complete 100% keyboard control engineered natively for Mac and Windows.
+            Order lo, kitchen mein KOT bhejo, aur 3 second mein bill settle karo. 100% keyboard shortcuts — mouse chhoone ki bhi zaroorat nahi.
           </p>
 
           {/* Action CTAs */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Button href="/demo" variant="cta" size="xl" icon={<ArrowRight className="w-5 h-5" />}>
-              Start Free Trial — No Credit Card
+              Free Demo Book Karein
             </Button>
             
             <Button
@@ -50,20 +50,20 @@ export function PosHero({ onBookDemoClick }: PosHeroProps) {
               icon={<Play className="w-4 h-4 text-[#020C2B]" />}
               iconPosition="left"
             >
-              Try Hotkey Simulator
+              Hotkey Simulator Dekhein
             </Button>
           </div>
 
           {/* Trust badges */}
           <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-[#525866] font-mono">
             <span className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-[#E58145]" /> Sub-3s Cashier Billing
+              <Zap className="w-4 h-4 text-[#E58145]" /> 3 Second Mein Tez Billing
             </span>
             <span className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#E58145]" /> Mac (⌘) &amp; Win (Alt) Native Hotkeys
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Kitchen KOT Turant Print
             </span>
             <span className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#020C2B]" /> 100% Local Timezone Revenue Accuracy
+              <ShieldCheck className="w-4 h-4 text-[#2563EB]" /> 100% Offline Chalta Hai
             </span>
           </div>
         </div>

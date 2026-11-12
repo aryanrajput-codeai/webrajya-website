@@ -20,14 +20,14 @@ export function MyGarageHero() {
         {/* Hero Header */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#020C2B] tracking-tight leading-[1.08]">
-            Never Miss RC, Insurance or <br />
+            RC, Insurance Ya <br />
             <span className="text-[#0EA5E9]">
-              PUC Expiries Ever Again.
+              PUC Expiry Kabhi Mat Bhooliye.
             </span>
           </h1>
 
           <p className="text-base sm:text-lg text-[#525866] max-w-2xl mx-auto leading-relaxed font-normal">
-            Manage your cars &amp; bikes, track document expiries, maintenance invoices, fuel logs, and traffic challans in one sleek digital dashboard.
+            Apni gaadiyon ke zaroori documents, service hisaab-kitaab, fuel kharcha aur challan alert — sab ek aasaan dashboard mein.
           </p>
 
           {/* Trust Highlights */}

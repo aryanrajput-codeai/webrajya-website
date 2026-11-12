@@ -59,7 +59,7 @@ export const LAUNCH_CONFIG: LaunchConfig = {
 
   // All-India Launch Offer
   OFFER_TITLE: "All-India Retail Launch Offer",
-  OFFER_TEXT: "Get a 3-Day Free Trial + 100% Free Personal Setup Assistance by video call, WhatsApp, or in-shop (Nagpur).",
+  OFFER_TEXT: "3-Din Ka Free Trial + 100% Free Personal Setup Support (Video Call, WhatsApp ya Nagpur In-Shop).",
   OFFER_EXPIRY: "2026-12-31",
   OFFER_EXPIRY_DISPLAY: "31 December 2026",
   EARLY_LIFETIME_SLOTS_TOTAL: 50,

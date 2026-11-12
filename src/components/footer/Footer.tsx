@@ -32,8 +32,8 @@ export function Footer() {
             <div className="space-y-1.5">
               <span className="font-bold text-white text-base block">{COMPANY_CONFIG.legalName}</span>
               <p className="text-sm text-slate-300 max-w-sm leading-relaxed">
-                Affordable, easy-to-use billing and inventory software for retail stores and businesses across India.
-                Personal setup support via video call, WhatsApp, or on-site (Nagpur).
+                Poore Bharat ke retailers aur vyapariyon ke liye aasaan aur kifaayati billing &amp; stock software.
+                Personal setup support video call, WhatsApp ya Nagpur in-shop visit ke dwaara.
               </p>
             </div>
 
@@ -96,10 +96,10 @@ export function Footer() {
 
             <div className="flex flex-wrap items-center gap-2 pt-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-slate-100 border border-white/15 text-xs font-mono">
-                <Shield className="w-3.5 h-3.5 text-[#60A5FA]" /> 3-Day Free Trial
+                <Shield className="w-3.5 h-3.5 text-[#60A5FA]" /> 3-Din Free Trial
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-slate-100 border border-white/15 text-xs font-mono">
-                <Layers className="w-3.5 h-3.5 text-[#60A5FA]" /> Works Offline
+                <Layers className="w-3.5 h-3.5 text-[#60A5FA]" /> Works Offline (Bina Net Ke)
               </span>
             </div>
           </div>
@@ -267,7 +267,7 @@ export function Footer() {
             <p>© 2026 {COMPANY_CONFIG.brandName}. All rights reserved.</p>
             <span className="hidden sm:inline text-white/30">•</span>
             <p className="text-slate-200">
-              Head Office: Nagpur, Maharashtra · Serving retailers across India.
+              Head Office: Nagpur, Maharashtra · Poore Bharat ke dukaandaaron ki seva mein.
             </p>
           </div>
           
@@ -281,7 +281,7 @@ export function Footer() {
               <MessageCircle className="w-4 h-4 text-emerald-400" /> WhatsApp
             </a>
             <Link href="/demo" className="hover:text-[#60A5FA] transition-colors flex items-center gap-1">
-              Book Free Demo
+              Free Demo Book Karein
             </Link>
           </div>
         </div>

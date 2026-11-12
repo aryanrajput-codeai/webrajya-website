@@ -34,7 +34,8 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const pathname = usePathname();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isHindi = language === "hi";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +53,7 @@ export function Navbar() {
   const PRODUCT_LINKS = [
     {
       name: "WebRajya Invoice",
-      desc: "Fast retail billing, stock & customer khata",
+      desc: isHindi ? "आसान जीएसटी बिलिंग, बारकोड व खाता" : "Aasaan GST billing, barcode aur customer khata",
       href: "/invoice",
       icon: FileText,
       accent: "text-[#2563EB]",
@@ -60,7 +61,7 @@ export function Navbar() {
     },
     {
       name: "WebRajya POS",
-      desc: "Restaurant, cafe & hotkey billing terminal",
+      desc: isHindi ? "रेस्टोरेंट, कैफे व टेबल बिलिंग सिस्टम" : "Restaurant, cafe aur kitchen KOT billing",
       href: "/pos",
       icon: UtensilsCrossed,
       accent: "text-[#E58145]",
@@ -68,7 +69,7 @@ export function Navbar() {
     },
     {
       name: "MyGarage SaaS",
-      desc: "Vehicle document locker & fleet maintenance",
+      desc: isHindi ? "गाड़ी पेपर्स व सर्विस रिमाइंडर लॉकर" : "Gaadi papers aur maintenance reminder locker",
       href: "/mygarage",
       icon: Car,
       accent: "text-emerald-600",
@@ -248,7 +249,7 @@ export function Navbar() {
               className="rounded-full shadow-sm text-xs px-4 py-1.5 font-bold bg-[#E58145] hover:bg-[#d47035] text-white"
               icon={<ArrowRight className="w-3.5 h-3.5" />}
             >
-              {t("book_demo", "Book Free Demo", "Free Demo Book")}
+              {t("nav.book_demo", "Free Demo Book Karein", "मुफ़्त डेमो बुक करें")}
             </Button>
           </MagneticHover>
         </div>

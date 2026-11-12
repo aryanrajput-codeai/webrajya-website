@@ -89,14 +89,14 @@ export function CookieConsent() {
         <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
         <div className="space-y-2 flex-1">
           <p className="text-xs text-slate-700 leading-relaxed">
-            We use necessary cookies to make our site work, and optional analytics cookies to measure site traffic. Analytics cookies are loaded only if you accept.
+            Website ko theek chalane aur sudharne ke liye hum zaroori cookies use karte hain. Analytics tabhi chalu hoti hai jab aap manzoor karein.
           </p>
           <div className="flex items-center gap-2 pt-1">
             <Button size="xs" variant="primary" onClick={handleAccept} className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold">
-              Accept
+              Theek Hai
             </Button>
             <Button size="xs" variant="outline" onClick={handleReject} className="border-slate-300 text-slate-700 hover:bg-slate-100 font-medium">
-              Reject
+              Nahi
             </Button>
             <Link
               href="/privacy-policy"

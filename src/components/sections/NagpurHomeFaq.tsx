@@ -12,38 +12,38 @@ export function NagpurHomeFaq() {
   const FAQS = [
     {
       id: "faq-1",
-      question: "Where do you provide demonstrations and setup assistance?",
+      question: "Demo aur setup madad humein kaise milegi?",
       answer:
-        "We serve retail shops across all of India through interactive video calls (Google Meet / Zoom) and WhatsApp/phone onboarding. If your store is located in Nagpur, Maharashtra, our local team can also visit your shop in person for on-site setup."
+        "Hum poore India mein video call (Google Meet / Zoom) aur WhatsApp par live judkar aapke counter par software chalana sikhate hain. Agar aapki dukaan Nagpur mein hai, to humari team counter par aakar bhi personal visit karti hai."
     },
     {
       id: "faq-2",
-      question: "How does the 3-day free trial work?",
+      question: "3 din ka free trial kaise kaam karta hai?",
       answer:
-        "Following your demonstration, we help set up WebRajya Invoice directly on your counter computer. You get 3 full days to bill customers, scan barcodes, and test receipt printing with your real products. No credit card or advance payment is required."
+        "Demo dekhne ke baad, hum aapke computer par software setup karte hain. 3 din tak bina kisi advance fees ya card ke aap apne real saamaan ke bills banakar aasaani se test kar sakte hain."
     },
     {
       id: "faq-3",
-      question: "Can I use WebRajya Invoice without an internet connection?",
+      question: "Agar internet ya broadband band ho jaye to kya billing chalegi?",
       answer:
-        "Yes. WebRajya Invoice is built around a local-first architecture. All customer billing, barcode scanning, and thermal receipt printing run locally on your computer, so your counter never halts when the internet drops. Data syncs when you reconnect."
+        "Haan, bilkul chalegi! WebRajya 100% offline-first engine par bana hai. Internet band hone par bhi barcode scan hoga, bill banega, aur thermal receipt turant print hogi. Net aane par data apne-aap sync ho jata hai."
     },
     {
       id: "faq-4",
-      question: "Will WebRajya Invoice work with our existing thermal printer and barcode scanner?",
+      question: "Kya humara purana thermal printer aur barcode scanner chalega?",
       answer:
-        "Yes. WebRajya Invoice supports standard 2-inch (58mm) and 3-inch (80mm) thermal receipt printers (USB, Bluetooth, LAN) as well as standard USB/wireless handheld barcode scanners."
+        "Haan, sabhi standard 2-inch (58mm) aur 3-inch (80mm) thermal receipt printers (TVS, NGX, USB, Bluetooth, LAN) aur USB handheld scanners seedha plug-and-play chalte hain."
     },
     {
       id: "faq-5",
-      question: "How do we transfer our existing product list from Excel or notebooks?",
+      question: "Register ya Excel se purana saamaan ka hisaab kaise aayega?",
       answer:
-        "You can import your product catalog in minutes via our bulk Excel/CSV import tool. During your setup session, our onboarding specialist will guide you step-by-step through importing your inventory."
+        "Excel ya CSV file se poora product catalog kuch hi minutes mein import ho jata hai. Setup session ke dauran humari team aapke saath connect karke poori list upload karwati hai."
     }
   ];
 
   const whatsappMessage = encodeURIComponent(
-    "Hi WebRajya, I have a question about WebRajya Invoice for my shop."
+    "Namaste WebRajya, mujhe software ke baare mein kuch sawaal poochhne hain."
   );
   const whatsappUrl = `https://wa.me/${COMPANY_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
 
@@ -51,11 +51,14 @@ export function NagpurHomeFaq() {
     <section className="py-24 bg-white border-t border-[#020C2B]/10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-12">
         <div className="text-center space-y-3">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-bold">
+            Aapke Sawaal
+          </span>
           <h2 className="text-3xl sm:text-4xl font-black text-[#020C2B] tracking-tight">
-            Frequently Asked Questions
+            Dukaandaaron Ke Aksar Pooche Jaane Wale Sawaal
           </h2>
           <p className="text-slate-600 text-sm sm:text-base">
-            Everything you need to know about setting up WebRajya Invoice in your shop.
+            WebRajya shuru karne ke baare mein jo zaroori baatein aap jaan-na chahte hain.
           </p>
         </div>
 
@@ -82,8 +85,8 @@ export function NagpurHomeFaq() {
         </div>
 
         <div className="text-center space-y-3 pt-2">
-          <p className="text-xs text-slate-500 font-mono">
-            Have a different question? Speak with our team directly:
+          <p className="text-xs text-slate-500 font-medium">
+            Koi aur sawaal hai? Seedha humari team se baat karein:
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
@@ -93,7 +96,7 @@ export function NagpurHomeFaq() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold hover:bg-emerald-100 transition-colors"
             >
               <MessageCircle className="w-4 h-4 text-emerald-600" />
-              <span>Ask on WhatsApp</span>
+              <span>WhatsApp Par Poochhein</span>
             </a>
             <a
               href={`tel:${COMPANY_CONFIG.phoneRaw}`}

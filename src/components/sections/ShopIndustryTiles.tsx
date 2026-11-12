@@ -15,15 +15,15 @@ export function ShopIndustryTiles() {
   const TILES = [
     {
       title: "Mobile & Accessories Shops",
-      tagline: "IMEI & serial number logging, fast accessory barcodes, and customer Khata.",
+      tagline: "Handset ka IMEI aur serial number bill par print karein, covers ke tez barcode, aur customer khata.",
       href: "/industry/mobile-shops",
       icon: Smartphone,
       keyFeature: "IMEI & Serial Tracking",
-      badge: "Mobile Retail"
+      badge: "Mobile Store"
     },
     {
       title: "Consumer Electronics & Appliances",
-      tagline: "Serial numbers, multi-slab GST tax invoices, and distributor warranty tracking.",
+      tagline: "Serial numbers, multi-rate GST tax bills, aur distributor purchase warranty ka saaf hisaab.",
       href: "/industry/electronics",
       icon: Tv,
       keyFeature: "Serial & GST Invoices",
@@ -31,7 +31,7 @@ export function ShopIndustryTiles() {
     },
     {
       title: "Clothing & Garment Retailers",
-      tagline: "Sizes, colours, and variant matrices with instant barcode tag checkout.",
+      tagline: "Size (S, M, L, XL, XXL) aur rang ke hisaab se live stock count aur tez barcode tag billing.",
       href: "/industry/clothing-garments",
       icon: Shirt,
       keyFeature: "Size & Color Matrix",
@@ -39,7 +39,7 @@ export function ShopIndustryTiles() {
     },
     {
       title: "Footwear & Shoe Stores",
-      tagline: "Shoe size tracking (UK 6-11), brand categorization, and exchange lookups.",
+      tagline: "Shoe size (UK 6 se 11) ka hisaab, brand categorization, aur purane bill se aasaan exchange.",
       href: "/industry/footwear",
       icon: Footprints,
       keyFeature: "Shoe Size Management",
@@ -47,15 +47,15 @@ export function ShopIndustryTiles() {
     },
     {
       title: "Stationery & Book Stores",
-      tagline: "High-speed keyword lookup across 2,000+ items, wholesale pricing, and school Khata.",
+      tagline: "2,000+ saamaan ka instant keyword search, wholesale box pricing, aur school udhaar khata.",
       href: "/industry/stationery-books",
       icon: BookOpen,
-      keyFeature: "Rapid Catalog Search",
+      keyFeature: "Rapid Item Lookup",
       badge: "Stationery"
     },
     {
       title: "Furniture & Decor Showrooms",
-      tagline: "Custom dimensions, advance payment records, and branded GST quotations.",
+      tagline: "Custom dimensions, advance booking amount ki receipt, aur branded GST delivery bills.",
       href: "/industry/furniture",
       icon: Layers,
       keyFeature: "Advance Downpayments",
@@ -68,12 +68,14 @@ export function ShopIndustryTiles() {
       <div className="max-w-6xl mx-auto space-y-14">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-bold">
+            Har Trade Ke Liye Ready
+          </span>
           <h2 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            Built for Your Shop, Anywhere in India
+            Aapki Dukaan Ke Anusaar Banaya Gaya Hai
           </h2>
           <p className="text-slate-700 text-base sm:text-lg leading-relaxed">
-            Every retail counter operates differently. WebRajya Invoice provides practical features tailored
-            to your specific daily billing, stock categorization, and customer ledger needs.
+            Har dukaan ka counter alag tarike se chalta hai. WebRajya Invoice aapki trade ki zaroorat ke hisaab se ready features deta hai.
           </p>
         </div>
 

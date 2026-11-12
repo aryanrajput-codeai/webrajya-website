@@ -383,3 +383,4 @@ export const CITIES_DATA: Record<string, CityData> = {
     popularHardware: "High-speed thermal printers, 2D wireless barcode scanners"
   }
 };
+

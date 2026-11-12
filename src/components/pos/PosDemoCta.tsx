@@ -11,14 +11,14 @@ export function PosDemoCta() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
         
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-          Your restaurant runs every day. <br />
+          Restaurant Har Din Non-Stop Chalta Hai. <br />
           <span className="text-[#E58145]">
-            Your software should keep up.
+            Software Bhi Utna Hi Tez Hona Chahiye.
           </span>
         </h2>
 
         <p className="text-[#F8F3EB]/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          Upgrade your venue operations with WebRajya POS today. Sub-3 second billing, real-time KOT routing, and complete inventory control.
+          WebRajya POS ke saath counter aur kitchen dono tez karein. 3 second se kam mein billing, direct KOT routing aur recipe-level stock hisaab.
         </p>
 
         {/* Action Buttons */}
@@ -30,7 +30,7 @@ export function PosDemoCta() {
             icon={<ArrowRight className="w-5 h-5" />}
             className="w-full sm:w-auto"
           >
-            Get Started
+            Free Trial Shuru Karein
           </Button>
 
           <Button
@@ -41,12 +41,12 @@ export function PosDemoCta() {
             iconPosition="left"
             className="w-full sm:w-auto text-white border-white/20 hover:bg-white/10"
           >
-            Book a Demo
+            Free Demo Book Karein
           </Button>
         </div>
 
         <p className="text-xs text-[#F8F3EB]/60 font-mono pt-4">
-          Setup menus &amp; thermal printers in under 15 minutes • No mandatory lock-in contract
+          15 minute mein menu aur thermal printer setup • Koi lock-in contract nahi
         </p>
 
       </div>

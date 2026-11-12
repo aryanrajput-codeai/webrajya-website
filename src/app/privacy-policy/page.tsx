@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
+import { LegalSummaryBox } from "@/components/legal/LegalSummaryBox";
 import { LEGAL_CONFIG } from "@/config/legal";
 import { getLegalMetadata } from "@/components/legal/metadata";
 
@@ -29,6 +30,15 @@ export default function PrivacyPolicyPage() {
       effectiveDate="18 November 2026"
       toc={tocItems}
     >
+      <LegalSummaryBox
+        points={[
+          "Aapki dukaan ka data, grahakon ke number aur inventory sirf aapka hai — WebRajya ise kisi third-party ko nahi bechta.",
+          "Hum aapka contact info sirf software service, account setup aur important updates ke liye use karte hain.",
+          "Aap jab chahein apna account data export kar sakte hain ya account delete karne ki request bhej sakte hain.",
+          "Data security ke liye industry-standard encryption aur secure cloud servers use kiye jaate hain."
+        ]}
+      />
+
       <section id="who-we-are">
         <p>
           <strong>Who we are.</strong> WebRajya Invoice (“we”, “us”) is operated by {LEGAL_CONFIG.OWNER_FULL_NAME}, trading as WebRajya, at {LEGAL_CONFIG.CONTACT_ADDRESS}, India. Contact:{" "}

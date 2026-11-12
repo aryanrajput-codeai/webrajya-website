@@ -61,7 +61,7 @@ export function MobileBottomDock() {
             <CalendarCheck className="w-6 h-6" />
           </div>
           <span className="text-[10px] font-black text-[#020C2B] tracking-tight mt-1">
-            {t("book_demo", "Book Demo", "Demo Book")}
+            {t("nav.book_demo", "Free Demo", "मुफ़्त डेमो")}
           </span>
         </Link>
 

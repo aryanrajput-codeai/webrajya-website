@@ -22,52 +22,52 @@ export function InvoiceHero() {
         {/* Hero Header */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0F172A] tracking-tight leading-[1.08]">
-            Billing That Keeps Your <br />
+            Dukaan Ki Tez Billing &amp; Stock, <br />
             <span className="text-[#2563EB]">
-              Business Moving.
+              Aapke Apne Andaaz Mein.
             </span>
           </h1>
 
           <p className="text-base sm:text-lg text-[#64748B] max-w-2xl mx-auto leading-relaxed font-normal">
-            Create bills faster, manage your inventory, track customer payments and stay in control of your business—all from one simple platform.
+            2 second mein bill banao, live stock dekho, aur grahak ka khata sambhalo — sab ek aasaan aur bharosemand software se.
           </p>
 
           <p className="text-xs sm:text-sm font-semibold text-[#0F172A] bg-white inline-block px-4 py-2 rounded-2xl border border-[#E2E8F0] shadow-xs">
-            Designed for Indian retailers, stationery shops, wholesalers and growing businesses.
+            Bharat ke mobile, kapda, electronics, kirana aur retail dukaandaaron ke liye banaya gaya.
           </p>
 
           {/* Action CTAs */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Button
-              href={INVOICE_PRICING.ctaPrimary.href}
+              href="/demo"
               variant="primary"
               size="xl"
               className="bg-[#2563EB] hover:bg-[#1D4ED8] border-[#2563EB] text-white shadow-lg shadow-[#2563EB]/20"
               icon={<ArrowRight className="w-5 h-5" />}
             >
-              Get Started
+              Free Demo Book Karein
             </Button>
             
             <Button
-              href={INVOICE_PRICING.ctaSecondary.href}
+              href="/pricing"
               variant="outline"
               size="xl"
               className="border-[#0F172A]/20 hover:bg-[#0F172A]/5 text-[#0F172A]"
             >
-              Book a Demo
+              Pricing Dekhein
             </Button>
           </div>
 
           {/* Trust indicators */}
           <div className="pt-6 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs text-[#0F172A]/80 font-mono">
             <span className="flex items-center gap-2">
-              <Keyboard className="w-4 h-4 text-[#2563EB]" /> Fast, keyboard-friendly billing
+              <Keyboard className="w-4 h-4 text-[#2563EB]" /> Tez keyboard shortcuts se billing
             </span>
             <span className="flex items-center gap-2">
-              <Boxes className="w-4 h-4 text-[#2563EB]" /> Integrated inventory management
+              <Boxes className="w-4 h-4 text-[#2563EB]" /> Live stock &amp; hisaab-kitaab
             </span>
             <span className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#16A34A]" /> GST &amp; non-GST billing options
+              <CheckCircle2 className="w-4 h-4 text-[#16A34A]" /> GST aur non-GST bill dono supported
             </span>
           </div>
         </div>

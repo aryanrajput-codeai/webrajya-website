@@ -21,7 +21,7 @@ export function DecemberOfferBanner() {
           <p className="text-xs sm:text-sm text-slate-200">
             <strong className="text-white font-bold">{LAUNCH_CONFIG.OFFER_TEXT}</strong>{" "}
             <span className="inline-block mt-0.5 sm:mt-0 text-[#E58145] font-mono font-semibold">
-              (Early Lifetime: ₹19,999 for first {total} shops)
+              (Early Lifetime Offer: Pehle {total} dukaano ke liye ₹19,999)
             </span>
           </p>
         </div>
@@ -33,7 +33,7 @@ export function DecemberOfferBanner() {
             <span>Valid till {LAUNCH_CONFIG.OFFER_EXPIRY_DISPLAY}</span>
             <span className="hidden sm:inline text-white/30">•</span>
             <span className="font-bold text-white bg-rose-600 px-1.5 py-0.5 rounded text-[11px]">
-              {remaining} slots left
+              {remaining} slots bache hain
             </span>
           </div>
 
@@ -44,7 +44,7 @@ export function DecemberOfferBanner() {
             className="rounded-full font-bold shadow-sm whitespace-nowrap"
             icon={<ArrowRight className="w-3 h-3" />}
           >
-            Claim Offer
+            Offer Claim Karein
           </Button>
         </div>
       </div>

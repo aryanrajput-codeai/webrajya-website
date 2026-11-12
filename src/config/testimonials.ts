@@ -117,3 +117,4 @@ export const TESTIMONIALS: TestimonialItem[] = [
 export function getApprovedTestimonials(): TestimonialItem[] {
   return TESTIMONIALS.filter((t) => t.verified && t.consentToPublish);
 }
+

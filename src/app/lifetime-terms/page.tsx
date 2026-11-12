@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
+import { LegalSummaryBox } from "@/components/legal/LegalSummaryBox";
 import { getLegalMetadata } from "@/components/legal/metadata";
 
 export const metadata: Metadata = getLegalMetadata(
@@ -14,6 +15,15 @@ export default function LifetimeTermsPage() {
       subtitle="WebRajya Invoice: Website Policies"
       effectiveDate="18 November 2026"
     >
+      <LegalSummaryBox
+        points={[
+          "Lifetime Plan ka matlab: Ek baar payment kijiye aur bina kisi monthly ya annual subscription ke use kijiye.",
+          "Yeh licence 1 business / 1 shop location aur 1 user account ke liye valid hai.",
+          "Sabhi minor updates, bug fixes aur core billing features isme shamil hain.",
+          "Agar kabhi service band karni pade (sunset), toh kam se kam 12 mahine pehle notice aur poora data export free diya jayega."
+        ]}
+      />
+
       <section className="space-y-6">
         <div>
           <h2 className="!mt-0 !pt-0 !border-0 text-lg font-bold text-slate-900 mb-2">

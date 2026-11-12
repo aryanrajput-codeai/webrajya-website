@@ -27,34 +27,34 @@ export default function ThankYouPage() {
         {/* Heading */}
         <div className="space-y-2">
           <span className="text-xs font-mono uppercase text-[#2563EB] font-bold tracking-wider">
-            Booking Confirmed
+            Booking Confirm Ho Gayi Hai
           </span>
           <h1 className="text-2xl sm:text-4xl font-black text-[#020C2B] tracking-tight">
-            Thank You! We&apos;ve Received Your Request
+            Dhanyavaad! Aapki Request Mil Gayi Hai
           </h1>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Our onboarding team will reach out to you within 2 business hours via WhatsApp or
-            phone to confirm your preferred video call or in-shop demo slot.
+            Humari onboarding team agle 2 ghante ke andar aapse WhatsApp ya call par connect karke
+            demo time confirm karegi (video call ya Nagpur counter visit).
           </p>
         </div>
 
         {/* What Happens Next Card */}
         <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-left space-y-3">
           <span className="text-xs font-mono uppercase text-slate-500 font-bold block">
-            What Happens Next:
+            Aage Kya Hoga:
           </span>
           <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
             <li className="flex items-start gap-2">
               <Calendar className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
-              <span>We confirm your preferred demo time and format (video call or Nagpur in-shop visit).</span>
+              <span>Hum aapse connect karke demo ka suvidhajanak time confirm karenge.</span>
             </li>
             <li className="flex items-start gap-2">
               <ShieldCheck className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
-              <span>You receive a 20-minute live demonstration tailored to your retail shop type.</span>
+              <span>Aapki dukaan ke saamaan ke hisaab se 20 minute ka live software demo dikhayenge.</span>
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-              <span>Your 3-day free trial starts on your own counter with personal setup help.</span>
+              <span>Aapke apne counter par 3 din ka free trial shuru hoga personal setup madad ke saath.</span>
             </li>
           </ul>
         </div>
@@ -70,11 +70,11 @@ export default function ThankYouPage() {
             className="w-full flex items-center justify-center gap-2"
           >
             <MessageCircle className="w-5 h-5 text-white" />
-            Fast-Track on WhatsApp
+            WhatsApp Par Fast-Track Karein
           </Button>
 
           <p className="text-xs text-slate-500">
-            Urgent query? Call our desk directly at{" "}
+            Zaroori sawaal? Seedha call karein{" "}
             <a
               href={`tel:${LAUNCH_CONFIG.PHONE}`}
               className="text-[#2563EB] font-bold underline font-mono"

@@ -124,11 +124,14 @@ function PricingContent() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#E58145] font-bold">
+            Seedha Aur Saaf Hisaab
+          </span>
           <h1 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            Simple, Fair Pricing for Your Shop
+            Seedha aur Saaf Pricing. Koi Chhupe Hue Charges Nahi.
           </h1>
           <p className="text-[#020C2B]/80 text-base sm:text-lg leading-relaxed">
-            All core features included across every plan. No hidden charges, zero surprise price hikes.
+            Sabhi core features har plan mein shamil hain. Koi hidden fees ya achanak price hike nahi.
           </p>
 
           {/* Product Switch Tabs */}
@@ -253,7 +256,7 @@ function PricingContent() {
                     {/* Features List */}
                     <div className="pt-4 space-y-2.5 flex-1">
                       <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold block">
-                        Included:
+                        Kya-Kya Shamil Hai:
                       </span>
                       <ul className="space-y-2 text-xs text-slate-700 min-h-[150px]">
                         {plan.features.map((feat) => (

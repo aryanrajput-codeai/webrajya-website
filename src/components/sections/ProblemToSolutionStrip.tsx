@@ -5,39 +5,39 @@ import { Badge } from "@/components/ui/badge";
 export function ProblemToSolutionStrip() {
   const PAIRS = [
     {
-      problemTitle: "Slow Manual Billing Queues",
+      problemTitle: "Rush Hours Mein Counter Par Lambi Bheed",
       problemDesc:
-        "Writing paper receipts or calculating totals by hand during evening rush hours creates frustrated customer lines.",
-      solutionTitle: "Sub-Second Barcode Counter Billing",
+        "Shaam ke rush mein haath se bill banana ya calculation karna grahak ko pareshan karta hai aur line lambi hoti hai.",
+      solutionTitle: "Barcode Scan Se 2 Second Mein Bill Ready",
       solutionDesc:
-        "Scan barcodes or search item shortcuts in milliseconds. Print clear 3-inch thermal receipts or A4 bills instantly.",
+        "Item barcode beep karein ya keyboard shortcut dabayein. 3-inch thermal printer se turant saaf receipt nikalein.",
       icon: Zap
     },
     {
-      problemTitle: "Stock Mistakes & Missing Items",
+      problemTitle: "Stock Khatam Hone Ka Pata Na Chalna",
       problemDesc:
-        "Running out of popular sizes or accessories without realizing, resulting in lost sales to neighboring shops.",
-      solutionTitle: "Automated Live Stock Deductions",
+        "Dukaan mein popular model ya size khatam ho jata hai aur pata tab chalta hai jab grahak khali haath laut jata hai.",
+      solutionTitle: "Live Stock Update Aur Low-Stock Alert",
       solutionDesc:
-        "Every sale automatically updates current inventory. Automatic low-stock warnings alert you before items run out.",
+        "Har bill ke saath live stock automatic kam hota hai. Maal khatam hone se pehle software aapko warning deta hai.",
       icon: PackageX
     },
     {
-      problemTitle: "GST & Tax Calculation Confusion",
+      problemTitle: "GST Aur Tax Calculation Ka Jhanjhat",
       problemDesc:
-        "Struggling with multi-rate GST slabs, HSN codes, and month-end ledger reconciliation headaches.",
-      solutionTitle: "Automated GST & Non-GST Formats",
+        "Alag-alag GST slab aur HSN code ka hisaab jodte-jodte dukaandaar ka ghanto ka time kharab hota hai.",
+      solutionTitle: "Automated GST & Non-GST Bilkul Saaf",
       solutionDesc:
-        "Pre-configured tax rules calculate exact CGST, SGST, and IGST breakdowns automatically on every receipt.",
+        "Kachcha thermal bill ya pakka A4 GST invoice — software automatic CGST, SGST aur tax breakdown jod deta hai.",
       icon: Calculator
     },
     {
-      problemTitle: "Uncollected Udhaar & Khata Disputes",
+      problemTitle: "Bahi-Khate Mein Udhaar Ka Hisaab Bhoolna",
       problemDesc:
-        "Forgotten customer credit ledgers written in paper bahi-khata leading to unpaid balances and disputes.",
-      solutionTitle: "Digital Customer Khata Ledgers",
+        "Purane register mein likha udhaar panna phatne ya bhool jane se dukaandaar ka mehnat ka paisa atak jata hai.",
+      solutionTitle: "Surakshit Customer Khata & WhatsApp Reminder",
       solutionDesc:
-        "Log customer credit balances with complete transaction history and instant payment settlement records.",
+        "Grahak ka hisaab software mein safe rehta hai. Payment reminder seedha grahak ke WhatsApp par bhejein.",
       icon: ShieldCheck
     }
   ];
@@ -47,11 +47,14 @@ export function ProblemToSolutionStrip() {
       <div className="max-w-6xl mx-auto space-y-14">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
+          <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-bold">
+            Dukaan Ki Roz Ki Dikkaton Ka Hal
+          </span>
           <h2 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            Stop Counter Bottlenecks in Your Shop
+            Register Aur Purane Software Ke Jhanjhat Se Azaadi
           </h2>
           <p className="text-slate-600 text-base sm:text-lg">
-            How WebRajya Invoice replaces manual retail chaos with dependable, error-free counter operations.
+            Dekhiye WebRajya aapki dukaan ka hisaab-kitaab aur counter billing kaise aasaan aur tez banata hai.
           </p>
         </div>
 
@@ -68,7 +71,7 @@ export function ProblemToSolutionStrip() {
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-rose-600 text-xs font-mono font-bold uppercase tracking-wide">
                     <AlertCircle className="w-4 h-4 shrink-0" />
-                    <span>The Everyday Challenge</span>
+                    <span>Roz Ki Pareshani</span>
                   </div>
                   <h3 className="text-lg font-bold text-slate-800">{item.problemTitle}</h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
@@ -80,7 +83,7 @@ export function ProblemToSolutionStrip() {
                 <div className="pt-5 border-t border-slate-200/80 space-y-2 bg-white -mx-6 -mb-6 sm:-mx-8 sm:-mb-8 p-6 sm:p-8 rounded-b-3xl">
                   <div className="flex items-center gap-2 text-emerald-700 text-xs font-mono font-bold uppercase tracking-wide">
                     <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
-                    <span>How WebRajya Fixes It</span>
+                    <span>WebRajya Ka Aasaan Hal</span>
                   </div>
                   <h4 className="text-base font-bold text-[#020C2B] flex items-center gap-2">
                     <Icon className="w-4 h-4 text-[#2563EB]" />

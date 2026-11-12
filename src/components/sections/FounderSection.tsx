@@ -31,16 +31,16 @@ export function FounderSection() {
             <div className="md:col-span-8 space-y-4">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-mono text-slate-700">
                 <HeartHandshake className="w-3.5 h-3.5 text-[#E58145]" />
-                <span>Founder&apos;s Commitment</span>
+                <span>Founder Ka Vada</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#020C2B] tracking-tight">
-                Software should serve shop owners, not lock them in.
+                Software dukaandaar ke fayde ke liye hona chahiye, unhe baandhne ke liye nahi.
               </h2>
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
-                When building WebRajya, we noticed retail store owners struggling with two extremes: clunky desktop software with zero support, or expensive SaaS platforms that double their renewal rates each year.
+                WebRajya banate waqt humne dekha ki dukaandaaron ke saamne do badi pareshaniyan thin: ya to purana clunky software jisme koi madad nahi milti, ya fir mehnge software jo har saal renewal ka rate badha dete hain.
               </p>
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
-                We engineered WebRajya Invoice to be lightning fast, completely offline-resilient, and backed by direct onboarding support — guided step-by-step via video call and WhatsApp nationwide, and in-person shop visits right here in our hometown of Nagpur.
+                Humne WebRajya Invoice ko super-fast, 100% offline-ready aur sach mein aasaan banaya hai. Saath hi video call aur WhatsApp par personal onboarding madad, aur Nagpur mein counter par aakar direct visit.
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold">
@@ -48,7 +48,7 @@ export function FounderSection() {
                   href="/about"
                   className="inline-flex items-center gap-1.5 text-[#2563EB] hover:underline"
                 >
-                  Read our full story <ArrowRight className="w-3.5 h-3.5" />
+                  Humari Poori Kahani Padhein <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
                 <span className="text-slate-300">•</span>
                 <a
