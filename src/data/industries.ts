@@ -27,10 +27,10 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
     slug: "mobile-shops",
     name: "Mobile & Accessories Shops",
     shopTypeLabel: "Mobile Shop",
-    seoTitle: "Billing Software for Mobile Shops in Nagpur | WebRajya Invoice",
+    seoTitle: "Billing Software for Mobile Shops | WebRajya Invoice",
     seoDescription:
-      "Fast billing and inventory software for mobile and smartphone accessory shops in Nagpur. IMEI and serial tracking, accessory barcodes, and customer khata.",
-    heroHeadline: "Smart Billing & IMEI Tracking for Mobile Shops in Nagpur",
+      "Fast billing and inventory software for mobile and smartphone accessory shops across India. IMEI and serial tracking, accessory barcodes, and customer khata.",
+    heroHeadline: "Smart Billing & IMEI Tracking for Mobile Shops",
     heroSubheadline:
       "Scan barcodes, record handset serial numbers and warranty details, manage phone accessories, and track customer balances with ease.",
     screenshotPlaceholderText:
@@ -57,7 +57,7 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
       {
         title: "Offline Counter Resilience",
         description:
-          "Keep generating customer bills and printing thermal receipts even during Nagpur network interruptions.",
+          "Keep generating customer bills and printing thermal receipts even during local internet outages.",
         icon: "WifiOff"
       }
     ],
@@ -78,9 +78,9 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
           "Yes. WebRajya Invoice prints product descriptions along with custom serial or IMEI lines on standard 3-inch (80mm) and 2-inch (58mm) thermal paper as well as A4 bills."
       },
       {
-        question: "Will you help us set up our mobile shop in Nagpur?",
+        question: "How do you help us set up our mobile shop?",
         answer:
-          "Yes! Our local Nagpur onboarding team provides free personal in-shop setup, product catalog entry, and staff training."
+          "Our onboarding team guides you step-by-step via screen share and WhatsApp video call anywhere in India, with hands-on in-shop setup available in Nagpur."
       }
     ]
   },
@@ -88,10 +88,10 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
     slug: "electronics",
     name: "Consumer Electronics & Appliances",
     shopTypeLabel: "Electronics Store",
-    seoTitle: "Billing Software for Electronics Shops in Nagpur | WebRajya Invoice",
+    seoTitle: "Billing Software for Electronics Shops | WebRajya Invoice",
     seoDescription:
-      "Reliable billing and stock management software for electronics and appliance stores in Nagpur. Serial number tracking, GST invoices, and vendor khata.",
-    heroHeadline: "Complete Retail Billing for Electronics Retailers in Nagpur",
+      "Reliable billing and stock management software for electronics and appliance stores across India. Serial number tracking, GST invoices, and vendor khata.",
+    heroHeadline: "Complete Retail Billing for Electronics Retailers",
     heroSubheadline:
       "Manage serial numbers, generate compliant tax invoices, track supplier purchases, and handle customer payment records.",
     screenshotPlaceholderText:
@@ -139,9 +139,9 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
           "Yes. WebRajya Invoice supports standard A4 invoice layouts with buyer GSTIN, HSN codes, and itemized tax breakdowns."
       },
       {
-        question: "Do you offer in-person demonstrations in Nagpur?",
+        question: "Do you offer live demonstrations for store staff?",
         answer:
-          "Yes. We schedule in-shop demos across Nagpur (Sitabuldi, Dharampeth, Itwari, Sadar, Wardhaman Nagar, and all localities)."
+          "Yes. We schedule personal live demos via Google Meet/video call across India, or in-shop visits if your business is based in Nagpur."
       }
     ]
   },
@@ -149,10 +149,10 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
     slug: "clothing-garments",
     name: "Clothing & Garment Retailers",
     shopTypeLabel: "Clothing Store",
-    seoTitle: "Billing Software for Clothing Shops in Nagpur | WebRajya Invoice",
+    seoTitle: "Billing Software for Clothing & Garment Shops | WebRajya Invoice",
     seoDescription:
-      "Fast billing and inventory software for clothing, apparel, and garment stores in Nagpur. Size, colour, and design variants with barcode scanning.",
-    heroHeadline: "Effortless Garment Billing & Size-Variant Stock in Nagpur",
+      "Fast billing and inventory software for clothing, apparel, and garment stores across India. Size, colour, and design variants with barcode scanning.",
+    heroHeadline: "Effortless Garment Billing & Size-Variant Stock",
     heroSubheadline:
       "Scan garment tags, manage size and color variations, handle seasonal stock, and serve festival rush crowds in seconds.",
     screenshotPlaceholderText:
@@ -200,9 +200,9 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
           "Yes. WebRajya Invoice works with standard barcode label and thermal printer hardware."
       },
       {
-        question: "Is there a free trial for garment shops in Nagpur?",
+        question: "Is there a free trial for garment shops?",
         answer:
-          "Yes! We provide a 3-day free trial after an in-shop demonstration so your staff can test billing with your own clothes."
+          "Yes! We provide a 3-day free trial after your live demo so your staff can test billing on your counter with your own inventory."
       }
     ]
   },
@@ -210,10 +210,10 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
     slug: "footwear",
     name: "Footwear & Shoe Stores",
     shopTypeLabel: "Footwear Store",
-    seoTitle: "Billing Software for Footwear Shops in Nagpur | WebRajya Invoice",
+    seoTitle: "Billing Software for Footwear & Shoe Stores | WebRajya Invoice",
     seoDescription:
-      "Simple billing and shoe size inventory software for footwear stores in Nagpur. Track UK/India shoe sizes, brands, and counter sales.",
-    heroHeadline: "Fast Billing & Shoe Size Inventory for Footwear Shops in Nagpur",
+      "Simple billing and shoe size inventory software for footwear stores across India. Track UK/India shoe sizes, brands, and counter sales.",
+    heroHeadline: "Fast Billing & Shoe Size Inventory for Footwear Shops",
     heroSubheadline:
       "Track shoe sizes (UK 6 to 11), organize brands and styles, print thermal receipts, and keep customers happy without checkout delay.",
     screenshotPlaceholderText:
@@ -271,12 +271,12 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
     slug: "stationery-books",
     name: "Stationery & Book Stores",
     shopTypeLabel: "Stationery Store",
-    seoTitle: "Billing Software for Stationery & Book Shops in Nagpur | WebRajya Invoice",
+    seoTitle: "Billing Software for Stationery & Book Shops | WebRajya Invoice",
     seoDescription:
-      "High-speed retail and wholesale billing software for stationery, school books, and paper supply shops in Nagpur. Quick item lookup and Khata.",
-    heroHeadline: "High-Speed Billing & Inventory for Stationery Stores in Nagpur",
+      "High-speed retail and wholesale billing software for stationery, school books, and paper supply shops across India. Quick item lookup and Khata.",
+    heroHeadline: "High-Speed Billing & Inventory for Stationery Stores",
     heroSubheadline:
-      "Manage thousands of small items, notebooks, pens, and school books. Fast keyboard billing, barcode scanning, and school account Khata.",
+      "Manage thousands of small items, notebooks, pens, and school books. Fast keyboard billing, barcode scanning, and institutional credit Khata.",
     screenshotPlaceholderText:
       "[LIVE SCREENSHOT PLACEHOLDER: Stationery Billing Interface with Rapid Item Search and Multi-Unit Quantities]",
     verifiedFeatures: [
@@ -319,12 +319,12 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
       {
         question: "How long does it take to enter 2,000 stationery products?",
         answer:
-          "You can bulk-import your entire product list from Excel or CSV in a few minutes, with hands-on help from our Nagpur team."
+          "You can bulk-import your entire product list from Excel or CSV in a few minutes, with hands-on help from our onboarding team."
       },
       {
         question: "Can my staff learn this quickly?",
         answer:
-          "Yes! The interface is built specifically for Indian retailers. Most shop assistants learn the complete counter workflow in 10 minutes."
+          "Yes! The interface is built specifically for Indian retail shops. Most shop assistants learn the complete counter workflow in 10 minutes."
       }
     ]
   },
@@ -332,10 +332,10 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
     slug: "furniture",
     name: "Furniture & Home Decor Showrooms",
     shopTypeLabel: "Furniture Showroom",
-    seoTitle: "Billing Software for Furniture Shops in Nagpur | WebRajya Invoice",
+    seoTitle: "Billing Software for Furniture & Interior Showrooms | WebRajya Invoice",
     seoDescription:
-      "Professional invoicing and order advance tracking for furniture showrooms and interior shops in Nagpur. Manage custom orders, GST, and customer Khata.",
-    heroHeadline: "Complete Invoicing & Advance Khata for Furniture Stores in Nagpur",
+      "Professional invoicing and order advance tracking for furniture showrooms and interior shops across India. Manage custom orders, GST, and customer Khata.",
+    heroHeadline: "Complete Invoicing & Advance Khata for Furniture Stores",
     heroSubheadline:
       "Manage showroom collections, print formal GST quotes and delivery invoices, track custom customer advance payments, and reconcile balances.",
     screenshotPlaceholderText:
@@ -390,4 +390,3 @@ export const INDUSTRIES_DATA: Record<string, IndustryShopConfig> = {
     ]
   }
 };
-

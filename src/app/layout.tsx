@@ -36,22 +36,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: "WebRajya Invoice — Retail Billing & Inventory Software in Nagpur",
-  description: "Affordable, easy-to-use billing and inventory software with personal customer support for retail shops in Nagpur. 3-day free trial after live demo.",
+  title: "WebRajya — Affordable Billing & Inventory Software for Indian Retailers",
+  description: "Easy-to-use GST billing, barcode scanning, and khata software for retail shops across India. Free 3-day trial with personal setup support via video call, WhatsApp, or in-shop (Nagpur).",
   keywords: [
-    "Billing Software Nagpur",
-    "Retail Billing Software Nagpur",
-    "GST Billing Software Maharashtra",
-    "Shop Inventory Management Nagpur",
-    "Mobile Shop Billing Software Nagpur",
-    "Cloth Shop Billing Nagpur",
+    "Billing Software India",
+    "Retail Billing Software",
+    "GST Billing Software India",
+    "Shop Inventory Management Software",
+    "Mobile Shop Billing Software",
+    "Cloth Shop Billing Software",
     "WebRajya Invoice",
-    "Offline Thermal Billing India"
+    "Offline Thermal Billing India",
+    "Billing Software Nagpur"
   ],
   authors: [{ name: "WebRajya Platform" }],
   openGraph: {
-    title: "WebRajya Invoice — Retail Billing & Inventory Software in Nagpur",
-    description: "Affordable, complete billing and inventory software for small and medium retail businesses in Nagpur with in-person setup help.",
+    title: "WebRajya — Affordable Billing & Inventory Software for Indian Retailers",
+    description: "Easy-to-use billing and inventory software for small and medium retail businesses across India. Personal onboarding via video call or in-shop (Nagpur).",
     url: "https://webrajya.com",
     siteName: "WebRajya",
     locale: "en_IN",
@@ -59,8 +60,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "WebRajya Invoice — Retail Billing & Inventory Software in Nagpur",
-    description: "Start your 3-day free trial with personal setup support in Nagpur, Maharashtra.",
+    title: "WebRajya — Affordable Billing & Inventory Software for Indian Retailers",
+    description: "Start your 3-day free trial with personal onboarding support via video call or in-shop in Nagpur.",
   },
   robots: {
     index: true,
@@ -75,7 +76,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className={cn(
         "scroll-smooth",
         plusJakartaSans.variable,

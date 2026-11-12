@@ -31,7 +31,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { INDUSTRIES_DATA, IndustryShopConfig } from "@/data/industries";
-import { LAUNCH_CONFIG } from "@/config/launch";
+import { COMPANY_CONFIG } from "@/config/company";
 import { Button } from "@/components/ui/button";
 import { GstNote } from "@/components/ui/GstNote";
 import {
@@ -91,11 +91,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: industry.seoTitle,
     description: industry.seoDescription,
     keywords: [
-      `Billing software ${industry.name} Nagpur`,
-      `Retail POS Nagpur`,
+      `Billing software ${industry.name}`,
+      `Retail POS software India`,
       industry.shopTypeLabel,
-      "WebRajya Invoice Nagpur",
-      "GST billing Maharashtra"
+      "WebRajya Invoice",
+      "GST billing software India"
     ],
     openGraph: {
       title: industry.seoTitle,
@@ -117,9 +117,9 @@ export default async function IndustryPage({ params }: PageProps) {
   }
 
   const whatsappMessage = encodeURIComponent(
-    `Hi, I want a demo of WebRajya Invoice for my ${industry.shopTypeLabel} in Nagpur.`
+    `Hi, I want a demo of WebRajya Invoice for my ${industry.shopTypeLabel}.`
   );
-  const whatsappUrl = `https://wa.me/${LAUNCH_CONFIG.WHATSAPP}?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/${COMPANY_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <div className="w-full bg-[#F8F3EB] text-[#020C2B] min-h-screen">
@@ -136,12 +136,12 @@ export default async function IndustryPage({ params }: PageProps) {
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
-              href={`/demo?shopType=${encodeURIComponent(industry.shopTypeLabel)}`}
+              href={`/demo?product=invoice&shopType=${encodeURIComponent(industry.shopTypeLabel)}`}
               variant="cta"
               size="xl"
               className="w-full sm:w-auto"
             >
-              Book Free In-Shop Demo
+              Book a Free Demo
             </Button>
             <a
               href={whatsappUrl}
@@ -162,10 +162,10 @@ export default async function IndustryPage({ params }: PageProps) {
               <CheckCircle2 className="w-4 h-4 text-emerald-600" /> 3-Day Free Trial
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Personal Setup Help in Nagpur
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Video Call &amp; WhatsApp Onboarding
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" /> 100% Offline Resilience
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" /> 100% Offline Billing Resilience
             </span>
           </div>
         </div>
@@ -191,7 +191,7 @@ export default async function IndustryPage({ params }: PageProps) {
               </div>
               <div className="pt-2">
                 <Button
-                  href={`/demo?shopType=${encodeURIComponent(industry.shopTypeLabel)}`}
+                  href={`/demo?product=invoice&shopType=${encodeURIComponent(industry.shopTypeLabel)}`}
                   variant="primary"
                   size="sm"
                 >
@@ -279,7 +279,7 @@ export default async function IndustryPage({ params }: PageProps) {
               Questions &amp; Onboarding
             </span>
             <h2 className="text-2xl sm:text-3xl font-black text-[#020C2B]">
-              Frequently Asked by Nagpur Shop Owners
+              Frequently Asked Questions
             </h2>
           </div>
 
@@ -315,15 +315,15 @@ export default async function IndustryPage({ params }: PageProps) {
           </h2>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
             Book a 20-minute live demonstration. If you like it, get a 3-day free trial on your own
-            counter with personal setup help from our Nagpur team.
+            counter with personal setup guidance via video call or WhatsApp (in-shop visits available in Nagpur).
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
-              href={`/demo?shopType=${encodeURIComponent(industry.shopTypeLabel)}`}
+              href={`/demo?product=invoice&shopType=${encodeURIComponent(industry.shopTypeLabel)}`}
               variant="cta"
               size="xl"
             >
-              Book In-Shop Free Demo
+              Book a Free Demo
             </Button>
             <a
               href={whatsappUrl}
@@ -344,4 +344,3 @@ export default async function IndustryPage({ params }: PageProps) {
     </div>
   );
 }
-

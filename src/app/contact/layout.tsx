@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact WebRajya — Local Nagpur Office & Help Desk",
+  title: "Contact WebRajya — Head Office & Support Desk",
   description:
-    "Get in touch with the WebRajya team in Nagpur. In-shop onboarding, phone support, and technical help for retail shop owners.",
+    "Get in touch with the WebRajya team. Online onboarding via video call across India, phone/WhatsApp support, and Nagpur in-shop visits.",
   alternates: {
     canonical: "https://webrajya.com/contact",
   },
   openGraph: {
-    title: "Contact WebRajya — Nagpur Office",
-    description: "Reach our local Nagpur team by phone, WhatsApp, or schedule an in-shop visit.",
+    title: "Contact WebRajya — Support Desk & Head Office",
+    description: "Reach our onboarding team by phone, WhatsApp, or schedule a personal counter demo.",
     url: "https://webrajya.com/contact",
     siteName: "WebRajya",
     locale: "en_IN",
@@ -24,4 +24,3 @@ export default function ContactLayout({
 }) {
   return <>{children}</>;
 }
-

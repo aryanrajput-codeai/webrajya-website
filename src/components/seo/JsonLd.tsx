@@ -1,13 +1,17 @@
 import React from "react";
 import { PRICING_CONFIG } from "@/config/pricing";
-import { INITIAL_REVIEWS } from "@/data/reviews";
+import { COMPANY_CONFIG } from "@/config/company";
+import { getApprovedTestimonials, TestimonialItem } from "@/config/testimonials";
 
 export function JsonLd() {
-  // Aggregate rating calculated strictly from real review dataset
-  const totalReviews = INITIAL_REVIEWS.length;
+  const verifiedReviews = getApprovedTestimonials();
+  const totalReviews = verifiedReviews.length;
   const averageRating =
     totalReviews > 0
-      ? (INITIAL_REVIEWS.reduce((sum, r) => sum + r.rating, 0) / totalReviews).toFixed(1)
+      ? (
+          verifiedReviews.reduce((sum: number, r: TestimonialItem) => sum + (r.rating || 5), 0) /
+          totalReviews
+        ).toFixed(1)
       : null;
 
   const invoicePlans = PRICING_CONFIG.invoice.plans || [];
@@ -53,7 +57,7 @@ export function JsonLd() {
     "description": "Smart retail billing, inventory management, customer khata ledger, and GST/non-GST invoicing software.",
     "publisher": {
       "@type": "Organization",
-      "name": "WebRajya",
+      "name": COMPANY_CONFIG.brandName,
       "url": "https://webrajya.com"
     }
   };
@@ -76,10 +80,10 @@ export function JsonLd() {
         }
       : {}),
     "offers": createOffersForProduct(posPlans, "https://webrajya.com/pos"),
-    "description": "Zero-lag restaurant POS billing software with sub-3-second billing, kitchen KOT routing, and visual table management.",
+    "description": "Fast restaurant and retail POS billing software with thermal printing and multi-mode payment handling.",
     "publisher": {
       "@type": "Organization",
-      "name": "WebRajya",
+      "name": COMPANY_CONFIG.brandName,
       "url": "https://webrajya.com"
     }
   };
@@ -87,19 +91,27 @@ export function JsonLd() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "WebRajya",
+    "name": COMPANY_CONFIG.brandName,
+    "legalName": COMPANY_CONFIG.legalName,
     "url": "https://webrajya.com",
     "logo": "https://webrajya.com/webrajya-logo.svg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": COMPANY_CONFIG.headOfficeAddress,
+      "addressLocality": "Nagpur",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
     "sameAs": [
       "https://twitter.com/webrajya",
       "https://linkedin.com/company/webrajya"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+91-9313264426",
+      "telephone": COMPANY_CONFIG.phone,
       "contactType": "customer service",
       "areaServed": "IN",
-      "availableLanguage": ["English", "Hindi"]
+      "availableLanguage": ["English", "Hindi", "Marathi"]
     }
   };
 
@@ -109,10 +121,10 @@ export function JsonLd() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Does WebRajya POS work without internet connection?",
+        "name": "Does WebRajya work without internet connection?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, WebRajya POS is 100% offline-resilient. Bills and KOT tickets continue printing even during internet outages, and automatically synchronize with the cloud once connection is restored."
+          "text": "Yes, WebRajya is 100% offline-resilient. Invoices and thermal receipts print continuously even during internet outages, synchronizing when connectivity is available."
         }
       },
       {
@@ -120,15 +132,15 @@ export function JsonLd() {
         "name": "Does WebRajya support thermal receipt printers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, WebRajya supports all standard 58mm and 80mm ESC/POS thermal printers via USB, Bluetooth, LAN Wi-Fi, and serial ports."
+          "text": "Yes, WebRajya supports standard 58mm (2-inch) and 80mm (3-inch) thermal printers via USB, Bluetooth, LAN, and Wi-Fi."
         }
       },
       {
         "@type": "Question",
-        "name": "What are the pricing options for WebRajya Invoice and POS?",
+        "name": "What are the pricing options for WebRajya Invoice?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Both WebRajya Invoice and WebRajya POS offer three transparent plans: Monthly at ₹599/month, Yearly at ₹5,999/year (saves ₹1,189 vs paying monthly), and a Lifetime license at ₹25,999 one-time payment."
+          "text": "WebRajya Invoice offers three transparent plans: Monthly at ₹599/month, Yearly at ₹5,999/year (saves ₹1,189 vs paying monthly), and a Lifetime license at ₹25,999 (with early pilot slots at ₹19,999)."
         }
       }
     ]

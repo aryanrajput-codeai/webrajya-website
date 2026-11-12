@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
   const src = searchParams.get("src") || "direct";
 
   const message = encodeURIComponent(
-    `Hi WebRajya, I scanned your ${src} in Nagpur and want to enquire about WebRajya Invoice.`
+    `Hi WebRajya, I scanned your ${src} and want to enquire about WebRajya Invoice.`
   );
 
   const destination = `https://wa.me/${LAUNCH_CONFIG.WHATSAPP}?text=${message}`;

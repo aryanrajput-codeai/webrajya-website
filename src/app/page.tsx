@@ -12,25 +12,26 @@ import { FounderSection } from "@/components/sections/FounderSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Billing & Inventory Software in Nagpur | WebRajya Invoice",
+  title: "Affordable Billing & Inventory Software for Indian Retailers | WebRajya",
   description:
-    "Affordable, easy-to-use retail billing and stock software with personal customer support in Nagpur. Part of the WebRajya ecosystem alongside WebRajya POS and MyGarage SaaS.",
+    "Easy-to-use retail billing, barcode scanning, and inventory software for shops across India. Personal setup via video call, WhatsApp, or in-shop in Nagpur.",
   keywords: [
-    "Billing Software Nagpur",
-    "Retail Billing Nagpur",
-    "Shop Inventory Software Nagpur",
+    "Billing Software India",
+    "Retail Billing Software",
+    "Shop Inventory Software India",
     "WebRajya Invoice",
     "WebRajya POS",
     "MyGarage SaaS",
-    "Mobile Shop Software Nagpur",
-    "GST Billing Nagpur"
+    "Mobile Shop Software",
+    "GST Billing India",
+    "Billing Software Nagpur"
   ],
   alternates: {
     canonical: "https://webrajya.com",
   },
   openGraph: {
-    title: "Billing & Inventory Software in Nagpur | WebRajya Invoice",
-    description: "Start your 3-day free trial with personal setup support in Nagpur, Maharashtra.",
+    title: "Affordable Billing & Inventory Software for Indian Retailers | WebRajya",
+    description: "Start your 3-day free counter trial with personal setup support across India.",
     url: "https://webrajya.com",
     siteName: "WebRajya",
     locale: "en_IN",

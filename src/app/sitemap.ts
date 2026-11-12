@@ -3,6 +3,7 @@ import { SITE_CONFIG } from '@/data/config';
 import { LAUNCH_CONFIG } from '@/config/launch';
 import { LEGAL_CONFIG } from '@/config/legal';
 import { INDUSTRIES_DATA } from '@/data/industries';
+import { CITIES_DATA } from '@/data/cities';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.siteUrl;
@@ -76,10 +77,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Add the 6 Nagpur Industry Shop Pages
+  // Add the 6 Industry Shop Pages
   Object.keys(INDUSTRIES_DATA).forEach((slug) => {
     routes.push({
       url: `${baseUrl}/industry/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    });
+  });
+
+  // Add the 18 Nationwide City Landing Pages
+  Object.keys(CITIES_DATA).forEach((city) => {
+    routes.push({
+      url: `${baseUrl}/billing-software/${city}`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.85,

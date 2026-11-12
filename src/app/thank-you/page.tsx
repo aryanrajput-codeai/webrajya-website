@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Demo Request Received — WebRajya Invoice",
-  description: "Thank you for scheduling your WebRajya Invoice demonstration in Nagpur.",
+  description: "Thank you for scheduling your WebRajya Invoice demonstration.",
   robots: { index: false, follow: false }
 };
 
@@ -33,8 +33,8 @@ export default function ThankYouPage() {
             Thank You! We&apos;ve Received Your Request
           </h1>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Our local Nagpur team will reach out to you within 2 business hours via WhatsApp or
-            phone to confirm your preferred in-shop or online demo slot.
+            Our onboarding team will reach out to you within 2 business hours via WhatsApp or
+            phone to confirm your preferred video call or in-shop demo slot.
           </p>
         </div>
 
@@ -46,11 +46,11 @@ export default function ThankYouPage() {
           <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
             <li className="flex items-start gap-2">
               <Calendar className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
-              <span>We confirm your preferred time and in-shop visit date in Nagpur.</span>
+              <span>We confirm your preferred demo time and format (video call or Nagpur in-shop visit).</span>
             </li>
             <li className="flex items-start gap-2">
               <ShieldCheck className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
-              <span>You receive a 20-minute live demonstration tailored to your shop type.</span>
+              <span>You receive a 20-minute live demonstration tailored to your retail shop type.</span>
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
@@ -74,7 +74,7 @@ export default function ThankYouPage() {
           </Button>
 
           <p className="text-xs text-slate-500">
-            Urgent query? Call our Nagpur desk directly at{" "}
+            Urgent query? Call our desk directly at{" "}
             <a
               href={`tel:${LAUNCH_CONFIG.PHONE}`}
               className="text-[#2563EB] font-bold underline font-mono"

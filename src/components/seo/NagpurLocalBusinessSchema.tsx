@@ -1,5 +1,5 @@
 import React from "react";
-import { LAUNCH_CONFIG } from "@/config/launch";
+import { COMPANY_CONFIG } from "@/config/company";
 
 export function NagpurLocalBusinessSchema() {
   const schemaData = {
@@ -8,20 +8,20 @@ export function NagpurLocalBusinessSchema() {
       {
         "@type": "LocalBusiness",
         "@id": "https://webrajya.com/#localbusiness",
-        name: "WebRajya Invoice - Nagpur",
+        name: "WebRajya - Nagpur Head Office",
         url: "https://webrajya.com",
-        telephone: LAUNCH_CONFIG.PHONE,
-        email: LAUNCH_CONFIG.EMAIL,
+        telephone: COMPANY_CONFIG.phone,
+        email: COMPANY_CONFIG.email,
         priceRange: "₹₹",
         image: "https://webrajya.com/icon.svg",
         description:
-          "Billing, inventory, and Khata business management software for retail shops in Nagpur, Maharashtra. Free 3-day in-shop trial and personal setup assistance.",
+          "WebRajya software head office and local on-site onboarding center in Nagpur, Maharashtra. On-site retail software setup and support for Nagpur shop owners.",
         address: {
           "@type": "PostalAddress",
-          streetAddress: LAUNCH_CONFIG.NAGPUR_ADDRESS,
-          addressLocality: LAUNCH_CONFIG.TARGET_CITY,
-          addressRegion: LAUNCH_CONFIG.TARGET_STATE,
-          postalCode: "440010",
+          streetAddress: COMPANY_CONFIG.headOfficeAddress,
+          addressLocality: "Nagpur",
+          addressRegion: "Maharashtra",
+          postalCode: "440022",
           addressCountry: "IN"
         },
         geo: {
@@ -39,12 +39,12 @@ export function NagpurLocalBusinessSchema() {
         ],
         areaServed: [
           {
-            "@type": "City",
-            name: "Nagpur"
+            "@type": "Country",
+            name: "India"
           },
           {
-            "@type": "State",
-            name: "Maharashtra"
+            "@type": "City",
+            name: "Nagpur"
           }
         ]
       },
@@ -88,4 +88,3 @@ export function NagpurLocalBusinessSchema() {
     />
   );
 }
-

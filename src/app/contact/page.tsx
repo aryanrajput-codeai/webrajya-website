@@ -53,7 +53,7 @@ export default function ContactPage() {
         throw new Error("Failed to send message.");
       }
 
-      setSuccessMessage("Thank you! Your message has been sent to our Nagpur team. We will call you back shortly.");
+      setSuccessMessage("Thank you! Your message has been sent. We will call you back shortly.");
       setFormData({ name: "", email: "", phone: "", businessName: "", message: "" });
     } catch {
       setErrorMessage("Unable to send message right now. Please message us directly on WhatsApp.");
@@ -63,7 +63,7 @@ export default function ContactPage() {
   };
 
   const whatsappUrl = `https://wa.me/${LAUNCH_CONFIG.WHATSAPP}?text=${encodeURIComponent(
-    "Hi WebRajya, I want to speak with your Nagpur team about WebRajya Invoice."
+    "Hi WebRajya, I want to speak with your team about WebRajya Invoice."
   )}`;
 
   return (
@@ -73,14 +73,13 @@ export default function ContactPage() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-xs font-mono uppercase tracking-wider text-[#2563EB] font-bold">
-            Nagpur Onboarding &amp; Support Hub
+            Support Desk &amp; Head Office
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-[#020C2B] tracking-tight">
-            Contact the Nagpur Team
+            Contact Us
           </h1>
           <p className="text-slate-700 text-base sm:text-lg">
-            Have questions about WebRajya Invoice or want an in-shop demonstration in Nagpur?
-            Our local software specialists are ready to assist you.
+            Have questions about WebRajya Invoice or POS? Connect with our team by phone, WhatsApp, or schedule a free live counter demo.
           </p>
         </div>
 
@@ -261,7 +260,7 @@ export default function ContactPage() {
                 disabled={loading}
                 className="w-full font-bold shadow-md"
               >
-                {loading ? "Sending..." : "Send Message to Nagpur Team"}
+                {loading ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>

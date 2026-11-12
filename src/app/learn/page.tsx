@@ -182,11 +182,11 @@ export default function LearnPage() {
             Need Personal Guidance for Your Shop?
           </h3>
           <p className="text-slate-600 text-sm max-w-lg mx-auto">
-            Our local Nagpur team offers in-person onboarding, product imports, and staff training.
+            Our onboarding team offers personal setup via video call across India, with in-shop visits available in Nagpur.
           </p>
           <div className="pt-2">
             <Button href="/demo" variant="cta" size="lg">
-              Book Free In-Shop Training &rarr;
+              Book Free Demo &amp; Setup &rarr;
             </Button>
           </div>
         </div>

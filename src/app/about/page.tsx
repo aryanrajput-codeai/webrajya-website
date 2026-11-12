@@ -9,13 +9,13 @@ import { NagpurLocationMap } from "@/components/ui/NagpurLocationMap";
 export const metadata: Metadata = {
   title: "About WebRajya — Affordable, Complete Retail Billing Software",
   description:
-    "WebRajya engineers fast, offline-first billing and inventory management software with personal in-shop setup support for retailers in Nagpur, Maharashtra.",
+    "WebRajya engineers fast, offline-first billing and inventory management software with personal onboarding support for retailers across India.",
   alternates: {
     canonical: "https://webrajya.com/about",
   },
   openGraph: {
     title: "About WebRajya — Retail Technology Platform",
-    description: "Built for Indian retail shop owners with hands-on setup support in Nagpur.",
+    description: "Built for Indian retail shop owners with hands-on setup support across India and head office in Nagpur.",
     url: "https://webrajya.com/about",
     siteName: "WebRajya",
     locale: "en_IN",
@@ -58,11 +58,11 @@ export default function AboutPage() {
             <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#2563EB] border border-blue-100 flex items-center justify-center font-bold">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h2 className="text-2xl font-bold text-[#020C2B]">Personal In-Shop Support</h2>
+            <h2 className="text-2xl font-bold text-[#020C2B]">Personal Onboarding Support</h2>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Software is only as good as the onboarding behind it. In Nagpur, our local team visits
-              your shop in person, sets up your barcode scanners and thermal printers, imports your
-              product list, and trains your staff.
+              Software is only as good as the onboarding behind it. Our team guides you step-by-step
+              via video call and WhatsApp across India, with in-person counter visits, hardware
+              calibration, and staff training available in Nagpur.
             </p>
           </div>
         </div>

@@ -42,7 +42,7 @@ export default function NotFound() {
             className="text-xs text-emerald-700 hover:underline flex items-center justify-center gap-1.5 font-semibold"
           >
             <MessageCircle className="w-3.5 h-3.5" />
-            <span>Need help? Message our Nagpur desk</span>
+            <span>Need help? Message our support desk</span>
           </a>
         </div>
       </div>
