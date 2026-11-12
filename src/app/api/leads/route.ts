@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { LAUNCH_CONFIG } from "@/config/launch";
+import { COMPANY_CONFIG } from "@/config/company";
 
 // In-memory rate limiting map for basic spam mitigation
 const submissionLog = new Map<string, { count: number; lastTime: number }>();
@@ -10,11 +11,11 @@ export async function POST(request: NextRequest) {
     const now = Date.now();
     const windowMs = 60 * 60 * 1000; // 1 hour
 
-    // Check rate limit (max 5 requests per IP per hour)
+    // Check rate limit (max 8 requests per IP per hour)
     const userLog = submissionLog.get(ip) || { count: 0, lastTime: now };
-    if (now - userLog.lastTime < windowMs && userLog.count >= 5) {
+    if (now - userLog.lastTime < windowMs && userLog.count >= 8) {
       return NextResponse.json(
-        { error: "Too many submissions. Please try again after an hour or contact us on WhatsApp." },
+        { error: "Too many submissions from this connection. Please reach out to us directly on WhatsApp." },
         { status: 429 }
       );
     }
@@ -31,7 +32,11 @@ export async function POST(request: NextRequest) {
       shopName,
       shopType,
       phone,
+      state,
+      city,
       areaInNagpur,
+      productInterest,
+      planInterest,
       preferredTime,
       demoType,
       languagePreference,
@@ -44,9 +49,10 @@ export async function POST(request: NextRequest) {
     } = body;
 
     // Validate legal consent
-    if (legalConsent !== true) {
+    const hasLegalConsent = legalConsent === true || body.agreedToTerms === true;
+    if (!hasLegalConsent) {
       return NextResponse.json(
-        { error: "You must agree to the Privacy Policy and Terms to continue." },
+        { error: "You must agree to the Privacy Policy and Terms and Conditions to proceed." },
         { status: 400 }
       );
     }
@@ -67,20 +73,40 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (!state || state.trim().length === 0) {
+      return NextResponse.json(
+        { error: "Please select your state." },
+        { status: 400 }
+      );
+    }
+
+    if (!city || city.trim().length === 0) {
+      return NextResponse.json(
+        { error: "Please enter your city or town." },
+        { status: 400 }
+      );
+    }
+
     // Update rate limit counter
     submissionLog.set(ip, {
       count: now - userLog.lastTime < windowMs ? userLog.count + 1 : 1,
       lastTime: now
     });
 
+    const isNagpurCity = city.trim().toLowerCase() === "nagpur";
+
     const leadPayload = {
       fullName: fullName.trim(),
       shopName: (shopName || "").trim(),
       shopType: shopType || "Retail Store",
       phone: cleanPhone,
-      areaInNagpur: areaInNagpur || "Nagpur",
+      state: state.trim(),
+      city: city.trim(),
+      areaInNagpur: isNagpurCity ? (areaInNagpur || "").trim() : undefined,
+      productInterest: productInterest || "WebRajya Invoice",
+      planInterest: planInterest || "Not sure",
       preferredTime: preferredTime || "Morning",
-      demoType: demoType || "In-Shop Visit",
+      demoType: demoType || "Video Call",
       languagePreference: languagePreference || "Hindi",
       utmSource: utmSource || undefined,
       utmCampaign: utmCampaign || undefined,
@@ -104,16 +130,22 @@ export async function POST(request: NextRequest) {
           body: JSON.stringify(leadPayload)
         });
       } catch (crmErr) {
-        console.error("[CRM Webhook Error]", crmErr);
+        console.error("[CRM Webhook Forwarding Error]", crmErr);
       }
     }
 
-    console.log("[WebRajya New Nagpur Lead]", leadPayload);
+    console.log("[WebRajya Nationwide Lead Captured]", leadPayload);
 
     return NextResponse.json({
       success: true,
       message: "Demo request booked successfully",
-      redirectUrl: "/thank-you"
+      redirectUrl: "/thank-you",
+      lead: {
+        fullName: leadPayload.fullName,
+        city: leadPayload.city,
+        state: leadPayload.state,
+        demoType: leadPayload.demoType
+      }
     });
   } catch (error) {
     console.error("[Lead Submission API Error]", error);
@@ -123,4 +155,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-

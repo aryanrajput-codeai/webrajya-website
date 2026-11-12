@@ -14,73 +14,140 @@ import {
   Video,
   Languages,
   ArrowRight,
-  AlertCircle
+  AlertCircle,
+  CheckCircle2,
+  Sparkles
 } from "lucide-react";
-import { LAUNCH_CONFIG } from "@/config/launch";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { COMPANY_CONFIG } from "@/config/company";
 import { trackEvent, getUtmParams } from "@/lib/analytics";
 
-const SHOP_TYPES = [
+export const INDIAN_STATES_AND_UTS = [
+  "Andaman and Nicobar Islands",
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chandigarh",
+  "Chhattisgarh",
+  "Dadra and Nagar Haveli and Daman and Diu",
+  "Delhi (NCR)",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jammu and Kashmir",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Ladakh",
+  "Lakshadweep",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Puducherry",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal"
+];
+
+const SHOP_CATEGORIES = [
   "Mobile & Accessories",
-  "Consumer Electronics",
-  "Clothing & Garments",
+  "Consumer Electronics & Appliances",
+  "Clothing & Garment Retail",
   "Footwear & Shoes",
   "Stationery & Books",
-  "Furniture & Showroom",
-  "Supermarket / Grocery",
+  "Furniture & Home Decor",
+  "Supermarket & Provision Store",
   "Hardware & Sanitary",
-  "General Retail Shop"
+  "Restaurant / Cafe / Food",
+  "Automotive / Spare Parts",
+  "Other Retail Shop"
 ];
 
-const NAGPUR_AREAS = [
-  "Sitabuldi",
-  "Dharampeth",
-  "Sadar",
-  "Itwari / Gandhibagh",
-  "Wardhaman Nagar",
-  "Mahal",
-  "Pratap Nagar",
-  "Manish Nagar",
-  "Ramdaspeth",
-  "MIDC Hingna / Wadi",
-  "Nandanvan",
-  "Other Area in Nagpur"
+const LANGUAGE_OPTIONS = [
+  { value: "Hindi", label: "Hindi (हिंदी)" },
+  { value: "English", label: "English" },
+  { value: "Marathi", label: "Marathi (मराठी)" },
+  { value: "Gujarati", label: "Gujarati (ગુજરાતી)" },
+  { value: "Punjabi", label: "Punjabi (ਪੰਜਾਬੀ)" },
+  { value: "Bengali", label: "Bengali (বাংলা)" },
+  { value: "Tamil", label: "Tamil (தமிழ்)" },
+  { value: "Telugu", label: "Telugu (తెలుగు)" },
+  { value: "Kannada", label: "Kannada (ಕನ್ನಡ)" },
+  { value: "Malayalam", label: "Malayalam (മലയാളം)" },
+  { value: "Other", label: "Other Indian Language" }
 ];
 
-export function NagpurRetailDemoForm() {
+interface DemoFormProps {
+  initialCity?: string;
+  initialState?: string;
+  initialProduct?: string;
+}
+
+export function NagpurRetailDemoForm({ initialCity, initialState, initialProduct }: DemoFormProps = {}) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const urlShopType = searchParams.get("shopType") || "";
-  const initialShopType = SHOP_TYPES.find((s) =>
-    s.toLowerCase().includes(urlShopType.toLowerCase())
-  ) || "Mobile & Accessories";
+  // Query parameter pre-selection (?product=, ?plan=, ?city=)
+  const queryProduct = initialProduct || searchParams.get("product") || "";
+  const queryPlan = searchParams.get("plan") || "";
+  const queryCity = initialCity || searchParams.get("city") || "";
 
   const [formData, setFormData] = useState({
     fullName: "",
     shopName: "",
-    shopType: initialShopType,
+    shopType: "",
     phone: "",
-    areaInNagpur: "Sitabuldi",
-    preferredTime: "Evening (5:00 PM – 8:00 PM)",
-    demoType: "In-Shop Visit (Nagpur)",
-    languagePreference: "Hindi",
+    state: initialState || "",
+    city: queryCity || "",
+    areaInNagpur: "",
+    productInterest: queryProduct || "",
+    planInterest: queryPlan || "",
+    preferredTime: "",
+    demoType: "",
+    languagePreference: "",
     agreedToTerms: false,
     marketingConsent: false,
-    website_url: "" // Honeypot spam trap
+    website_url: "" // Honeypot trap
   });
 
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [successLead, setSuccessLead] = useState<{ fullName: string; city: string; demoType: string } | null>(null);
+
+  const isNagpurCity = formData.city.trim().toLowerCase() === "nagpur";
+
+  // Pre-fill or adjust demoType based on city
+  useEffect(() => {
+    if (queryCity && !formData.city) {
+      setFormData((prev) => ({ ...prev, city: queryCity }));
+    }
+  }, [queryCity, formData.city]);
 
   useEffect(() => {
-    trackEvent("demo_page_view", {
-      shopType: formData.shopType,
-      src: searchParams.get("src") || "direct"
-    });
-  }, [searchParams, formData.shopType]);
+    if (isNagpurCity) {
+      if (!formData.demoType) {
+        setFormData((prev) => ({ ...prev, demoType: "In-Shop Visit (Nagpur)" }));
+      }
+    } else {
+      if (formData.demoType === "In-Shop Visit (Nagpur)") {
+        setFormData((prev) => ({ ...prev, demoType: "Video Call (Google Meet / Zoom)" }));
+      }
+    }
+  }, [isNagpurCity, formData.demoType]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,12 +155,42 @@ export function NagpurRetailDemoForm() {
 
     const cleanPhone = formData.phone.replace(/\D/g, "");
     if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
-      setError("Please enter a valid 10-digit Indian mobile number (e.g. 9823012345).");
+      setError("Please enter a valid 10-digit Indian mobile number (e.g., 9823012345).");
       return;
     }
 
     if (formData.fullName.trim().length < 2) {
       setError("Please enter your name.");
+      return;
+    }
+
+    if (!formData.state) {
+      setError("Please select your state.");
+      return;
+    }
+
+    if (!formData.city.trim()) {
+      setError("Please enter your city or town.");
+      return;
+    }
+
+    if (!formData.shopType) {
+      setError("Please select your business / shop category.");
+      return;
+    }
+
+    if (!formData.productInterest) {
+      setError("Please select which product you are interested in.");
+      return;
+    }
+
+    if (!formData.demoType) {
+      setError("Please choose how you would like to take the demo.");
+      return;
+    }
+
+    if (!formData.languagePreference) {
+      setError("Please choose your preferred language for the demo.");
       return;
     }
 
@@ -115,8 +212,12 @@ export function NagpurRetailDemoForm() {
           shopName: formData.shopName,
           shopType: formData.shopType,
           phone: cleanPhone,
-          areaInNagpur: formData.areaInNagpur,
-          preferredTime: formData.preferredTime,
+          state: formData.state,
+          city: formData.city,
+          areaInNagpur: isNagpurCity ? formData.areaInNagpur : undefined,
+          productInterest: formData.productInterest,
+          planInterest: formData.planInterest || "Not sure",
+          preferredTime: formData.preferredTime || "Flexible",
           demoType: formData.demoType,
           languagePreference: formData.languagePreference,
           legalConsent: true,
@@ -124,217 +225,342 @@ export function NagpurRetailDemoForm() {
           marketingConsent: formData.marketingConsent,
           utmSource: utm.utm_source,
           utmCampaign: utm.utm_campaign,
-          source: utm.src || searchParams.get("src") || "demo_page"
+          source: utm.src || searchParams.get("src") || "nationwide_demo_form",
+          website_url: formData.website_url
         })
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to submit request.");
+        throw new Error(data.error || "Failed to submit demo request.");
       }
 
       trackEvent("demo_form_submit", {
         shopType: formData.shopType,
-        area: formData.areaInNagpur,
-        demoType: formData.demoType
+        state: formData.state,
+        city: formData.city,
+        demoType: formData.demoType,
+        product: formData.productInterest
       });
 
-      router.push("/thank-you");
+      setSuccessLead({
+        fullName: formData.fullName,
+        city: formData.city,
+        demoType: formData.demoType
+      });
     } catch (err: unknown) {
-      const errMsg = err instanceof Error ? err.message : "Submission failed. Please try again or reach us on WhatsApp.";
+      const errMsg = err instanceof Error ? err.message : "Submission failed. Please reach us directly on WhatsApp.";
       setError(errMsg);
       setLoading(false);
     }
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hi, I want a demo of WebRajya Invoice for my ${formData.shopType} shop in Nagpur.`
+    `Hi WebRajya, I requested a demo of ${formData.productInterest || "WebRajya"} for my ${formData.shopType || "retail"} business in ${formData.city || "India"}.`
   );
-  const whatsappUrl = `https://wa.me/${LAUNCH_CONFIG.WHATSAPP}?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/${COMPANY_CONFIG.whatsappNumber}?text=${whatsappMessage}`;
+
+  if (successLead) {
+    return (
+      <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl p-8 sm:p-12 text-center space-y-6">
+        <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+          <CheckCircle2 className="w-8 h-8" />
+        </div>
+
+        <div className="space-y-2">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#020C2B]">
+            Demo Request Confirmed, {successLead.fullName}!
+          </h2>
+          <p className="text-slate-600 text-sm sm:text-base max-w-md mx-auto">
+            Our onboarding team will contact you within 2 business hours to schedule your {successLead.demoType} in {successLead.city}.
+          </p>
+        </div>
+
+        <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-700 max-w-md mx-auto space-y-1">
+          <p className="font-bold text-[#020C2B]">Next Steps:</p>
+          <p>1. We will verify your barcode scanner &amp; printer model over WhatsApp/phone.</p>
+          <p>2. We will import your product catalog (Excel/CSV).</p>
+          <p>3. You begin your 3-day full-feature trial on your counter.</p>
+        </div>
+
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white font-bold text-sm hover:bg-[#1ebe57] transition-all shadow-md"
+          >
+            <MessageCircle className="w-4 h-4 fill-white" />
+            <span>Connect on WhatsApp Now</span>
+          </a>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-100 text-slate-800 font-bold text-sm hover:bg-slate-200 transition-all"
+          >
+            Back to Home
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl p-6 sm:p-10 space-y-8">
       {/* Form Header */}
       <div className="space-y-2 border-b border-slate-100 pb-5">
-        <div className="flex items-center justify-end">
-          <span className="text-xs font-mono text-emerald-700 font-bold flex items-center gap-1">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" /> 3-Day Free Trial
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-mono uppercase text-slate-500 font-bold tracking-wider">
+            All-India Onboarding
+          </span>
+          <span className="text-xs font-mono text-emerald-700 font-bold flex items-center gap-1 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+            <ShieldCheck className="w-3.5 h-3.5" /> 3-Day Free Trial
           </span>
         </div>
-        <h2 className="text-2xl font-black text-[#020C2B]">Book Your Nagpur Demonstration</h2>
-        <p className="text-xs sm:text-sm text-slate-600">
-          We will visit your shop in Nagpur or connect over video call to show live billing on your own counter.
+        <h2 className="text-2xl sm:text-3xl font-black text-[#020C2B] tracking-tight">
+          Book a Free 20-Minute Live Demo
+        </h2>
+        <p className="text-slate-600 text-xs sm:text-sm">
+          See how WebRajya works with your real products and printers. Setup help by video call and WhatsApp across India, with in-shop visits available in Nagpur.
         </p>
       </div>
 
+      {/* Error Message */}
       {error && (
-        <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm flex items-start gap-2.5">
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm flex items-start gap-2.5 animate-in fade-in">
           <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
           <span>{error}</span>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {/* Honeypot field (hidden from genuine users) */}
+      {/* Demo Booking Form */}
+      <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+        {/* Spam Honeypot Field (Hidden) */}
         <div className="hidden" aria-hidden="true">
           <input
             type="text"
             name="website_url"
-            value={formData.website_url}
-            onChange={(e) => setFormData({ ...formData, website_url: e.target.value })}
             tabIndex={-1}
             autoComplete="off"
+            value={formData.website_url}
+            onChange={(e) => setFormData({ ...formData, website_url: e.target.value })}
           />
         </div>
 
-        {/* 1. Full Name & Shop Name */}
+        {/* 1. Name & Shop Name */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
             <Label htmlFor="fullName" className="text-xs font-bold text-slate-800">
-              Your Name *
+              Your Full Name <span className="text-rose-600">*</span>
             </Label>
             <Input
               id="fullName"
-              type="text"
-              required
-              placeholder="e.g. Rajesh Sharma"
+              placeholder="e.g. Ramesh Sharma"
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+              required
+              className="bg-slate-50/70"
             />
           </div>
 
           <div className="space-y-1.5">
             <Label htmlFor="shopName" className="text-xs font-bold text-slate-800">
-              Shop / Business Name
+              Business / Shop Name
             </Label>
             <Input
               id="shopName"
-              type="text"
               placeholder="e.g. Sharma Mobile &amp; Electronics"
               value={formData.shopName}
               onChange={(e) => setFormData({ ...formData, shopName: e.target.value })}
+              className="bg-slate-50/70"
             />
           </div>
         </div>
 
-        {/* 2. Shop Type & Phone */}
+        {/* 2. Mobile Number & Shop Category */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <Label htmlFor="shopType" className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-              <Store className="w-3.5 h-3.5 text-[#2563EB]" /> Shop Type *
+            <Label htmlFor="phone" className="text-xs font-bold text-slate-800 flex items-center justify-between">
+              <span>WhatsApp / Mobile Number <span className="text-rose-600">*</span></span>
+              <span className="text-[10px] text-slate-400 font-mono font-normal">10 digits</span>
+            </Label>
+            <div className="relative">
+              <span className="absolute left-3 top-2.5 text-xs text-slate-500 font-mono font-semibold">
+                +91
+              </span>
+              <Input
+                id="phone"
+                type="tel"
+                maxLength={10}
+                placeholder="9823012345"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                required
+                className="pl-11 bg-slate-50/70 font-mono"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="shopType" className="text-xs font-bold text-slate-800">
+              Business Category <span className="text-rose-600">*</span>
             </Label>
             <select
               id="shopType"
               value={formData.shopType}
               onChange={(e) => setFormData({ ...formData, shopType: e.target.value })}
-              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50/70 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              required
             >
-              {SHOP_TYPES.map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
+              <option value="" disabled>Select your business category...</option>
+              {SHOP_CATEGORIES.map((cat) => (
+                <option key={cat} value={cat}>{cat}</option>
               ))}
             </select>
           </div>
-
-          <div className="space-y-1.5">
-            <Label htmlFor="phone" className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5 text-[#2563EB]" /> WhatsApp / Mobile Number *
-            </Label>
-            <div className="flex rounded-xl border border-slate-300 overflow-hidden focus-within:ring-2 focus-within:ring-[#2563EB]">
-              <span className="bg-slate-100 px-3 py-2 text-xs font-mono font-bold text-slate-600 flex items-center border-r border-slate-200">
-                +91
-              </span>
-              <input
-                id="phone"
-                type="tel"
-                required
-                maxLength={10}
-                placeholder="10-digit number"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, "") })}
-                className="w-full px-3 py-2 text-sm font-mono focus:outline-none"
-              />
-            </div>
-          </div>
         </div>
 
-        {/* 3. Area in Nagpur & Preferred Time */}
+        {/* 3. State & City (Nationwide) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <Label htmlFor="areaInNagpur" className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-[#2563EB]" /> Locality / Area in Nagpur *
+            <Label htmlFor="state" className="text-xs font-bold text-slate-800">
+              State / UT <span className="text-rose-600">*</span>
             </Label>
             <select
-              id="areaInNagpur"
-              value={formData.areaInNagpur}
-              onChange={(e) => setFormData({ ...formData, areaInNagpur: e.target.value })}
-              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              id="state"
+              value={formData.state}
+              onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50/70 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              required
             >
-              {NAGPUR_AREAS.map((area) => (
-                <option key={area} value={area}>
-                  {area}
-                </option>
+              <option value="" disabled>Select your state...</option>
+              {INDIAN_STATES_AND_UTS.map((st) => (
+                <option key={st} value={st}>{st}</option>
               ))}
             </select>
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="preferredTime" className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-[#2563EB]" /> Preferred Demo Time
+            <Label htmlFor="city" className="text-xs font-bold text-slate-800">
+              City / Town <span className="text-rose-600">*</span>
+            </Label>
+            <Input
+              id="city"
+              placeholder="e.g. Pune, Indore, Nagpur, Jaipur"
+              value={formData.city}
+              onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+              required
+              className="bg-slate-50/70"
+            />
+          </div>
+        </div>
+
+        {/* Conditional Nagpur Area / Locality Input */}
+        {isNagpurCity && (
+          <div className="space-y-1.5 p-3.5 rounded-2xl bg-orange-50/60 border border-orange-100">
+            <Label htmlFor="areaInNagpur" className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-[#E58145]" />
+              <span>Nagpur Locality / Area (Optional for In-Shop Visit)</span>
+            </Label>
+            <Input
+              id="areaInNagpur"
+              placeholder="e.g. Sitabuldi, Dharampeth, Itwari, Sadar"
+              value={formData.areaInNagpur}
+              onChange={(e) => setFormData({ ...formData, areaInNagpur: e.target.value })}
+              className="bg-white"
+            />
+            <p className="text-[11px] text-slate-600">
+              Our Nagpur onboarding specialist visits your shop directly in person.
+            </p>
+          </div>
+        )}
+
+        {/* 4. Product & Plan Interest */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-1.5">
+            <Label htmlFor="productInterest" className="text-xs font-bold text-slate-800">
+              Product Interest <span className="text-rose-600">*</span>
             </Label>
             <select
-              id="preferredTime"
-              value={formData.preferredTime}
-              onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              id="productInterest"
+              value={formData.productInterest}
+              onChange={(e) => setFormData({ ...formData, productInterest: e.target.value })}
+              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50/70 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              required
             >
-              <option value="Morning (10:00 AM – 1:00 PM)">Morning (10:00 AM – 1:00 PM)</option>
-              <option value="Afternoon (1:00 PM – 5:00 PM)">Afternoon (1:00 PM – 5:00 PM)</option>
-              <option value="Evening (5:00 PM – 8:00 PM)">Evening (5:00 PM – 8:00 PM)</option>
+              <option value="" disabled>Select product...</option>
+              <option value="WebRajya Invoice">WebRajya Invoice (Retail Store Billing &amp; Khata)</option>
+              <option value="WebRajya POS">WebRajya POS (Restaurant, Cafe &amp; KOT)</option>
+              <option value="Both">Both (Invoice + POS)</option>
+              <option value="Not sure">Not sure yet / Need guidance</option>
+            </select>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="planInterest" className="text-xs font-bold text-slate-800">
+              Plan Interest (Optional)
+            </Label>
+            <select
+              id="planInterest"
+              value={formData.planInterest}
+              onChange={(e) => setFormData({ ...formData, planInterest: e.target.value })}
+              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50/70 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+            >
+              <option value="">Select plan if decided...</option>
+              <option value="monthly">Monthly (₹599 / month)</option>
+              <option value="yearly">Annual (₹5,999 / year - Recommended)</option>
+              <option value="early_lifetime">Early Lifetime (₹19,999 one-time)</option>
+              <option value="lifetime">Regular Lifetime (₹25,999 one-time)</option>
+              <option value="not_sure">Not sure yet</option>
             </select>
           </div>
         </div>
 
-        {/* 4. Demo Type & Language */}
+        {/* 5. Demo Method & Language */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
             <Label htmlFor="demoType" className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-              <Video className="w-3.5 h-3.5 text-[#2563EB]" /> How Would You Like the Demo?
+              <Video className="w-3.5 h-3.5 text-[#2563EB]" />
+              <span>How would you like the demo? <span className="text-rose-600">*</span></span>
             </Label>
             <select
               id="demoType"
               value={formData.demoType}
               onChange={(e) => setFormData({ ...formData, demoType: e.target.value })}
-              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50/70 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              required
             >
-              <option value="In-Shop Visit (Nagpur)">In-Shop Visit by Nagpur Team</option>
-              <option value="WhatsApp Video Call">WhatsApp Video Walkthrough</option>
-              <option value="Google Meet Screen Share">Google Meet Screen Share</option>
+              <option value="" disabled>Select demo method...</option>
+              <option value="Video Call (Google Meet / Zoom)">Video Call (Google Meet / Zoom Screen Share)</option>
+              <option value="Phone / WhatsApp Call">Phone &amp; WhatsApp Walkthrough</option>
+              {isNagpurCity && (
+                <option value="In-Shop Visit (Nagpur)">In-Shop Visit (Our Specialist Visits Your Nagpur Shop)</option>
+              )}
             </select>
           </div>
 
           <div className="space-y-1.5">
             <Label htmlFor="languagePreference" className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-              <Languages className="w-3.5 h-3.5 text-[#2563EB]" /> Preferred Language
+              <Languages className="w-3.5 h-3.5 text-[#2563EB]" />
+              <span>Preferred Language <span className="text-rose-600">*</span></span>
             </Label>
             <select
               id="languagePreference"
               value={formData.languagePreference}
               onChange={(e) => setFormData({ ...formData, languagePreference: e.target.value })}
-              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              className="w-full px-3 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50/70 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+              required
             >
-              <option value="Hindi">Hindi (हिंदी)</option>
-              <option value="English">English</option>
-              <option value="Marathi">Marathi (मराठी)</option>
+              <option value="" disabled>Select preferred language...</option>
+              {LANGUAGE_OPTIONS.map((lang) => (
+                <option key={lang.value} value={lang.value}>{lang.label}</option>
+              ))}
             </select>
           </div>
         </div>
 
-        {/* 5. Legal & Marketing Consent Checkboxes */}
-        <div className="space-y-3 pt-2 border-t border-slate-100">
-          {/* Required Legal Consent */}
+        {/* 6. Legal & Marketing Consent Checkboxes */}
+        <div className="space-y-3 pt-3 border-t border-slate-100">
           <div className="flex items-start gap-2.5">
             <input
               id="legalConsent"
@@ -357,7 +583,6 @@ export function NagpurRetailDemoForm() {
             </label>
           </div>
 
-          {/* Optional Marketing Consent */}
           <div className="flex items-start gap-2.5">
             <input
               id="marketingConsent"
@@ -367,7 +592,7 @@ export function NagpurRetailDemoForm() {
               className="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
             />
             <label htmlFor="marketingConsent" className="text-xs text-slate-600 leading-snug cursor-pointer select-none">
-              (Optional) Send me product updates, retail tips, and offers via WhatsApp, SMS, or email.
+              (Optional) Send me product updates, retail tips, and offers via WhatsApp or SMS.
             </label>
           </div>
         </div>
@@ -382,17 +607,17 @@ export function NagpurRetailDemoForm() {
             className="w-full font-bold shadow-md"
             icon={<ArrowRight className="w-4 h-4" />}
           >
-            {loading ? "Scheduling Demo..." : "Confirm & Book Free In-Shop Demo"}
+            {loading ? "Scheduling Demo..." : "Confirm & Book Free Live Demo"}
           </Button>
           <p className="text-[11px] text-center text-slate-500 mt-2 font-mono">
-            3-Day Free Trial • Free Personal Setup Help in Nagpur • Zero Commitment
+            3-Day Free Trial • Setup Assistance Across India • In-Shop Visits in Nagpur
           </p>
         </div>
       </form>
 
-      {/* WhatsApp Click-to-Chat Fallback */}
-      <div className="pt-4 border-t border-slate-100 text-center space-y-3">
-        <span className="text-xs text-slate-500 font-mono">Prefer instant chat?</span>
+      {/* WhatsApp Fallback */}
+      <div className="pt-4 border-t border-slate-100 text-center space-y-2">
+        <span className="text-xs text-slate-500 font-mono">Prefer to chat directly?</span>
         <div>
           <a
             href={whatsappUrl}
@@ -402,11 +627,10 @@ export function NagpurRetailDemoForm() {
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold hover:bg-emerald-100 transition-colors"
           >
             <MessageCircle className="w-4 h-4 text-emerald-600" />
-            <span>Chat Directly on WhatsApp: &ldquo;Hi, I want a demo...&rdquo;</span>
+            <span>Message Us on WhatsApp (+91 96300 13483)</span>
           </a>
         </div>
       </div>
     </div>
   );
 }
-
