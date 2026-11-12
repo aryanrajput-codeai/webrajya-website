@@ -1,32 +1,15 @@
 /**
  * WebRajya Launch-State Configuration File
  * 
- * Central control panel for the WebRajya Invoice launch in Nagpur, Maharashtra.
- * All flags, marketing copy, contact numbers, and legal statuses can be edited here
- * without modifying UI components or business logic.
+ * Central control panel for the WebRajya Invoice launch.
+ * Synchronized with COMPANY_CONFIG for nationwide operations.
  */
 
+import { COMPANY_CONFIG } from "./company";
+
 export interface LaunchConfig {
-  // --- LAUNCH FLAGS ---
-  /**
-   * While false: No "Buy now", "Pay" or checkout buttons are shown.
-   * Plan CTA buttons say "Book Free Demo" and lead to /demo.
-   * When true: Enables checkout/payment links.
-   */
   PAYMENTS_ENABLED: boolean;
-
-  /**
-   * While false: Every legal page shows a "Draft - pending review" banner,
-   * is set to noindex, and is excluded from sitemap.xml.
-   * When true: Removes draft banner and enables search indexing.
-   */
   LEGAL_APPROVED: boolean;
-
-  /**
-   * While false: Shows "Mobile app coming soon" section with notify-me form
-   * (source=app_waitlist) and hides App Store / Play Store buttons.
-   * When true: Shows Google Play / App Store buttons, screenshots and QR code.
-   */
   APP_LIVE: boolean;
   APP_PLAY_URL: string;
   APP_IOS_URL: string;
@@ -39,13 +22,15 @@ export interface LaunchConfig {
   EARLY_LIFETIME_SLOTS_TOTAL: number;
   EARLY_LIFETIME_SLOTS_REMAINING: number;
 
-  // --- CONTACT & TARGET MARKET (NAGPUR) ---
+  // --- CONTACT & TARGET MARKET ---
   PHONE: string;
   PHONE_DISPLAY: string;
-  WHATSAPP: string; // International digits without + or spaces
+  WHATSAPP: string;
   EMAIL: string;
   TARGET_CITY: string;
   TARGET_STATE: string;
+  HEAD_OFFICE_CITY: string;
+  HEAD_OFFICE_STATE: string;
   NAGPUR_ADDRESS: string;
   OPERATING_HOURS: {
     weekdays: string;
@@ -53,20 +38,10 @@ export interface LaunchConfig {
   };
 
   // --- LEGAL & TAX NOTES (SHARED SINGLE SOURCES) ---
-  /**
-   * GST Note: Default empty string.
-   * Rendered directly under prices via <GstNote />.
-   * CA will confirm if prices are inclusive or exclusive before setting text here.
-   */
   GST_NOTE: string;
-
-  /**
-   * Refund Note: Shared string linking to /refund.
-   * No blanket "no refund" claims allowed.
-   */
   REFUND_TEXT: string;
 
-  // --- PAYMENT GATEWAY CONFIG (ACTIVE WHEN PAYMENTS_ENABLED = true) ---
+  // --- PAYMENT GATEWAY CONFIG ---
   PAYMENT_GATEWAY_URL: string;
 
   // --- CRM / WEBHOOK ENDPOINT ---
@@ -82,29 +57,28 @@ export const LAUNCH_CONFIG: LaunchConfig = {
   APP_PLAY_URL: "",
   APP_IOS_URL: "",
 
-  // December Launch Offer for Nagpur
-  OFFER_TITLE: "Nagpur Retail Launch Offer",
-  OFFER_TEXT: "Get a 3-Day Free In-Shop Trial + 100% Free Personal Setup Assistance by our local Nagpur onboarding team.",
+  // All-India Launch Offer
+  OFFER_TITLE: "All-India Retail Launch Offer",
+  OFFER_TEXT: "Get a 3-Day Free Trial + 100% Free Personal Setup Assistance by video call, WhatsApp, or in-shop (Nagpur).",
   OFFER_EXPIRY: "2026-12-31",
   OFFER_EXPIRY_DISPLAY: "31 December 2026",
   EARLY_LIFETIME_SLOTS_TOTAL: 50,
-  EARLY_LIFETIME_SLOTS_REMAINING: 50,
+  EARLY_LIFETIME_SLOTS_REMAINING: 36, // [TODO: Owner confirm real slot count remaining]
 
-  // Contact details & Nagpur local presence
-  PHONE: "+919630013483",
-  PHONE_DISPLAY: "+91 96300 13483",
-  WHATSAPP: "919630013483",
-  EMAIL: "info@webrajya.com",
-  TARGET_CITY: "Nagpur",
-  TARGET_STATE: "Maharashtra",
-  NAGPUR_ADDRESS: "52 Surve Nagar, Nagpur, Maharashtra",
-  OPERATING_HOURS: {
-    weekdays: "Monday – Saturday: 9:00 AM – 8:00 PM IST",
-    sunday: "Sunday: Emergency support via Phone & WhatsApp (response target: 4 hours)"
-  },
+  // Contact details & Head Office
+  PHONE: COMPANY_CONFIG.phoneRaw,
+  PHONE_DISPLAY: COMPANY_CONFIG.phone,
+  WHATSAPP: COMPANY_CONFIG.whatsappNumber,
+  EMAIL: COMPANY_CONFIG.email,
+  TARGET_CITY: "India",
+  TARGET_STATE: "All India",
+  HEAD_OFFICE_CITY: COMPANY_CONFIG.headOfficeCity,
+  HEAD_OFFICE_STATE: COMPANY_CONFIG.headOfficeState,
+  NAGPUR_ADDRESS: COMPANY_CONFIG.headOfficeAddress,
+  OPERATING_HOURS: COMPANY_CONFIG.operatingHours,
 
   // Shared Tax & Refund statements
-  GST_NOTE: "Prices shown are final. No GST is charged at present.", // Page 12 instruction
+  GST_NOTE: COMPANY_CONFIG.gstNote,
   REFUND_TEXT: "Subscriptions and licenses are covered under our transparent Cancellation & Refund Policy.",
 
   // External endpoints
@@ -112,4 +86,3 @@ export const LAUNCH_CONFIG: LaunchConfig = {
   CRM_WEBHOOK_URL: process.env.CRM_WEBHOOK_URL || "/api/leads",
   OWNER_NOTIFICATION_EMAIL: "aaryanrajputofficial@gmail.com"
 };
-

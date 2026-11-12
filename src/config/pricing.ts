@@ -18,6 +18,7 @@
  */
 
 import { LAUNCH_CONFIG } from "./launch";
+import { COMPANY_CONFIG } from "./company";
 
 export type PlanBillingCycle = "monthly" | "yearly" | "early_lifetime" | "lifetime";
 
@@ -53,31 +54,74 @@ export interface ProductPricingConfig {
   comingSoonNote?: string;
 }
 
+/**
+ * Early Lifetime slot configuration driven by single source of truth.
+ * [TODO: Owner confirm exact number of slots claimed to date]
+ */
+export const LIFETIME_SLOT_CONFIG = {
+  totalSlots: 50,
+  slotsTaken: 14, // [TODO: Owner confirm real slot count]
+  isSlotLimitReal: true, // Set to false to hide badge if slot limit is promotional
+  get slotsRemaining() {
+    return Math.max(0, this.totalSlots - this.slotsTaken);
+  }
+};
+
 export const LIFETIME_INCLUSION_STATEMENT =
   "Includes software licence, basic support, bug fixes and maintenance. Major upgrades may be charged separately as defined in the Lifetime Terms.";
 
 export const FEATURE_INCLUSION_ASSUMPTION_NOTE =
   "All core product features (billing, inventory, khata, and reports) are fully included across Monthly, Annual, and Lifetime plans. Only the billing period, savings, and license duration differ.";
 
-// Common verified features for WebRajya Invoice
+export const WHAT_LIFETIME_INCLUDES = {
+  title: "What Lifetime Licence Includes",
+  description:
+    "A one-time payment giving your business perpetual operational rights without recurring monthly or yearly subscription fees.",
+  points: [
+    {
+      title: "Perpetual Counter Licence",
+      description: "One license covers 1 billing counter / device with full inventory & khata features."
+    },
+    {
+      title: "Standard Updates Included",
+      description: "Continuous bug fixes, security patches, and minor point updates at zero additional charge."
+    },
+    {
+      title: "Support Coverage",
+      description: "Priority setup support via video call or WhatsApp (plus in-shop visit in Nagpur) included during onboarding."
+    },
+    {
+      title: "Data Ownership & Portability",
+      description: "All invoice data stays on your device with local backups and zero-lock-in Excel export anytime."
+    },
+    {
+      title: "Major Version Upgrades",
+      description: "Future major architectural upgrades may be offered at a discounted upgrade price as outlined in our Lifetime Licence Terms."
+    }
+  ],
+  termsHref: "/lifetime-terms",
+  termsLabel: "View Complete Lifetime Licence Terms"
+};
+
+// Common verified features for WebRajya Invoice (softened honest claims)
 export const INVOICE_FEATURES = [
   "Fast counter billing & GST/non-GST invoicing",
-  "Product catalog & barcode scanner integration",
-  "Inventory management with low-stock alerts",
+  "Product catalog & quick barcode scanner search",
+  "Live inventory management with low-stock alerts",
   "Customer Khata ledger & credit balance tracking",
   "Purchase & supplier management records",
-  "Daily sales, tax, and revenue reports",
-  "Offline-first resilience with local storage",
+  "Daily sales, tax, and revenue register reports",
+  "Works offline: print bills and store transactions without internet",
   "Thermal receipt (58mm/80mm) & A4 invoice printing"
 ];
 
-// Common verified features for WebRajya POS
+// Common verified features for WebRajya POS (softened honest claims)
 export const POS_FEATURES = [
-  "Sub-3-second cashier billing & instant hotkeys",
+  "Rapid keyboard cashier billing with instant hotkeys",
   "Kitchen Order Ticket (KOT) thermal routing",
   "Visual floor plan & live table status management",
   "Recipe costing & ingredient-level deduction",
-  "Offline local network resilience (bills print without internet)",
+  "Works offline: local printing continues during internet drops",
   "Daily sales, taxes & payment mode analytics",
   "Multi-counter & waiter tablet connectivity",
   "Standard thermal printer & cash drawer integration"
@@ -98,12 +142,12 @@ export const INVOICE_PLANS: PlanPricingItem[] = [
     formattedPrice: "₹599",
     billingPeriod: "/ month",
     billingCadence: "Billed monthly",
-    effectiveMonthlyCost: "₹599 / month",
+    effectiveMonthlyCost: "Complete flexibility",
     isPopular: false,
     tagline: "Pay as you go with complete monthly flexibility.",
     features: [
       "Full billing, inventory & khata features",
-      "Offline-first local billing capability",
+      "Works offline on local device",
       "Standard phone & WhatsApp support (Mon-Sat)",
       "Continuous bug fixes & maintenance updates",
       "Monthly data backups"
@@ -146,16 +190,15 @@ export const INVOICE_PLANS: PlanPricingItem[] = [
     billingCadence: "One-time investment",
     effectiveMonthlyCost: "Pay once, use forever",
     savingsText: "Save ₹6,000 off regular lifetime price",
-    badgeText: `Limited: first ${LAUNCH_CONFIG.EARLY_LIFETIME_SLOTS_TOTAL} customers (${LAUNCH_CONFIG.EARLY_LIFETIME_SLOTS_REMAINING} slots remaining)`,
-    isPopular: false,
+    badgeText: `Limited • ${LIFETIME_SLOT_CONFIG.slotsRemaining} Slots`,
     isEarlyBird: true,
-    tagline: "Special launch price for our first 50 Nagpur customers.",
+    tagline: "Special launch price for our first 50 customers across India.",
     features: [
       "Perpetual software licence (never pay monthly renewal fees)",
       "Zero monthly or yearly subscription charges",
       "Basic support, bug fixes and maintenance included",
-      "Free in-shop or remote setup by Nagpur team",
-      "Regular price ₹25,999 after first 50 customers"
+      "Free setup assistance by video call, WhatsApp, or in-shop (Nagpur)",
+      "Regular price ₹25,999 after first 50 customers are claimed"
     ],
     lifetimeNote: LIFETIME_INCLUSION_STATEMENT,
     ctaLabel: LAUNCH_CONFIG.PAYMENTS_ENABLED ? "Claim Early Lifetime" : "Book Free Demo",
@@ -169,7 +212,7 @@ export const INVOICE_PLANS: PlanPricingItem[] = [
     billingPeriod: "one-time payment",
     billingCadence: "One-time investment",
     effectiveMonthlyCost: "Standard perpetual license",
-    savingsText: "Price after first 50 customers are claimed",
+    savingsText: "Standard one-time license price",
     badgeText: "Standard Lifetime",
     isPopular: false,
     tagline: "Perpetual license for long-term operational certainty.",
@@ -193,7 +236,7 @@ export const POS_PLANS: PlanPricingItem[] = [
     formattedPrice: "₹599",
     billingPeriod: "/ month",
     billingCadence: "Billed monthly",
-    effectiveMonthlyCost: "₹599 / month",
+    effectiveMonthlyCost: "Complete flexibility",
     isPopular: false,
     tagline: "Pay as you go with restaurant billing flexibility.",
     features: POS_FEATURES,
@@ -244,7 +287,7 @@ export const PRICING_CONFIG: Record<"invoice" | "pos" | "mygarage", ProductPrici
     name: "WebRajya Invoice",
     brandTitle: "WEBRAJYA INVOICE",
     tagline: "Affordable, easy-to-use billing and inventory software with personal customer support.",
-    description: "Built for mobile, electronics, clothing, footwear, stationery, and furniture retail shops.",
+    description: "Built for mobile, electronics, clothing, footwear, stationery, and furniture retail shops across India.",
     status: "active",
     plans: INVOICE_PLANS
   },
@@ -252,8 +295,8 @@ export const PRICING_CONFIG: Record<"invoice" | "pos" | "mygarage", ProductPrici
     id: "pos",
     name: "WebRajya POS",
     brandTitle: "WEBRAJYA POS",
-    tagline: "Zero-lag restaurant POS billing with instant KOT and table management.",
-    description: "Built for cafes, quick-service counters, fine dine, bars, and cloud kitchens.",
+    tagline: "Fast restaurant POS billing with instant KOT and table management.",
+    description: "Built for cafes, quick-service counters, fine dine, bars, and cloud kitchens across India.",
     status: "active",
     plans: POS_PLANS
   },
